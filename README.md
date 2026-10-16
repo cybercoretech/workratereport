@@ -11,6 +11,7 @@ A pro wrestling match-review site. It covers modern wrestling first (WWE, AEW, N
 - **Phase 0 · Brand:** done (PR #1).
 - **Phase 1 · Skeleton:** built. Astro static site with 83 pages, the ring-rope hamburger drawer, the Cybercore theme picker (90 themes), Pyro effects and 12 launch matches.
 - **Live:** 🌐 **https://workrate-report.pages.dev/** (Cloudflare Pages, auto-deploys from `main`).
+- **Phase 2A · Author's Desk:** a private `/desk/` page to write and publish reviews from the browser.
 
 👉 The full plan is in **[BLUEPRINT.md](BLUEPRINT.md)**.
 
@@ -30,14 +31,42 @@ Needs Node 22.12 or newer.
 ```sh
 npm install
 npm run dev       # http://localhost:4321 with live reload
-npm run check     # type check + content schema
+npm run check     # type check (site + functions) + content schema
 npm run build     # static site → dist/
 npm run preview   # serve dist/
 ```
 
-## ✍️ Add a match review
+## 🖋️ The Author's Desk (owner only)
 
-Create one file in `src/content/matches/`, named `YYYY-MM-DD-wrestler-wrestler-event.md`:
+**https://workrate-report.pages.dev/desk/**: sign in with the desk password, pick a match (or **New match**), set your rating with the star slider, write the review, and hit **Publish**. It's live in about a minute. Drafts are saved in your browser as you type.
+
+Under the hood, Publish commits the Markdown file to `main` through the GitHub API, and Cloudflare rebuilds. Every publish is a commit you can revert. See BLUEPRINT §13.1.
+
+### 🔐 One-time setup (Cloudflare Pages secrets)
+
+| Secret | How to set it |
+|---|---|
+| `SESSION_SECRET` | Already set (random). Re-run to sign every session out: `node -e "process.stdout.write(require('crypto').randomBytes(32).toString('base64url'))" \| npx wrangler pages secret put SESSION_SECRET --project-name workrate-report` |
+| `ADMIN_PASSWORD_HASH` | `node scripts/set-desk-password.mjs` in your own terminal. It asks for the password twice (hidden) and uploads only a PBKDF2 hash. |
+| `DESK_GITHUB_TOKEN` | A GitHub **fine-grained** token from the cybercore-tech account: repository access *only* `workratereport`, permission **Contents: Read and write**. Then `npx wrangler pages secret put DESK_GITHUB_TOKEN --project-name workrate-report` and paste it. |
+
+Secrets take effect on the next deployment (a merge to `main`, or **Retry deployment** in the Cloudflare dashboard).
+
+### 🧪 Test the desk locally
+
+```sh
+npm run build
+npx wrangler d1 migrations apply workrate-report --local
+# .dev.vars (gitignored): ADMIN_PASSWORD_HASH, SESSION_SECRET, DESK_GITHUB_TOKEN,
+# and CONTENT_BRANCH=<a throwaway branch> so tests never touch main
+npx wrangler pages dev dist --port 8788      # http://localhost:8788/desk/
+```
+
+Delete `.dev.vars` and the throwaway branch when you're done.
+
+## ✍️ Add a match review by hand
+
+You can also skip the desk and create one file in `src/content/matches/`, named `YYYY-MM-DD-wrestler-wrestler-event.md`:
 
 ```yaml
 ---
@@ -75,7 +104,11 @@ Every list, filter, wrestler page, year page and highlight block updates on its 
 | `src/layouts/Base.astro` | Header, hamburger drawer, theme pickers, ticker, footer |
 | `src/components/` | Stars, cards, grids, video facade, breadcrumbs; `brand/` = theme-following SVGs |
 | `src/styles/global.css` | Tokens, layout and all effect styles |
-| `public/js/` | `theme.js` (theme engine), `nav.js` (drawer), `pyro.js` (effects). Cache-busted by content hash |
+| `public/js/` | `theme.js` (theme engine), `nav.js` (drawer), `pyro.js` (effects), `desk.js` (Author's Desk). Cache-busted by content hash |
+| `functions/` | Cloudflare Pages Functions: `/api/desk/*` (login, session, publish match, add wrestler, log) and `_lib/` helpers |
+| `migrations/` | D1 schema (`workrate-report` database) |
+| `scripts/` | `set-desk-password.mjs` |
+| `wrangler.toml` | Pages config: D1 binding, repo/branch vars (no secrets) |
 | `brand/` | Source graphics and generators |
 
 ## 🎨 Brand assets

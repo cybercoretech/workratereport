@@ -5,7 +5,9 @@ The state of the project for the next agent (or person). Update it with every ph
 ## 📍 Repository state (2026-10-16)
 
 - **Repo:** `github.com/cybercore-tech/workratereport` (public) · local `~/Webdev/workrate-report`.
-- **`main`:** `71cbc27`, the merge of PR #2 (Phase 1: Astro site, 83 pages). `npm run check` is clean.
+- **`main`:** `7c61d1d`, the merge of PR #3 (docs: live deployment).
+- **Phase 2A (Author's Desk)** is on branch `phase-2a/author-desk` → PR #4: `/desk/` editor, Pages Functions in `functions/`, D1 `workrate-report` (id `861ea80a-3d45-4394-978d-5b97f1816b13`, migration 0001 applied remotely), `wrangler.toml`.
+- **Pages secrets:** `SESSION_SECRET` set (random, by Claude). `ADMIN_PASSWORD_HASH` and `DESK_GITHUB_TOKEN` must be set **by the user** (README "One-time setup"). Never choose or see the user's password; never put a broad gh CLI token into Cloudflare.
 - **Hosting: LIVE** at https://workrate-report.pages.dev/ (connected 2026-10-16). It's a Cloudflare **Pages** project (created via the dashboard's "Continue to Pages" link; the default "Continue with GitHub" makes a Worker instead) connected to this repo: preset Astro, `npm run build`, output `dist`, `NODE_VERSION=22`. Every push to `main` deploys; PRs get preview URLs. Never hand-deploy.
 - **New-hostname DNS:** for the first minutes after creation, `pages.dev` names can return NXDOMAIN (Cloudflare's nameservers update unevenly; 60 s negative TTL). Check with `dig @1.1.1.1` before assuming a problem.
 - **CI:** `.github/workflows/build.yml` runs `npm ci`, `npm run check` and `npm run build` on PRs and pushes to main.
@@ -30,6 +32,9 @@ The state of the project for the next agent (or person). Update it with every ph
 - **DNA launch pairs:** MJF ↔ Ric Flair (flagship), Cody Rhodes ↔ Dusty Rhodes.
 - **Launch matches:** the original 10 minus open slots 5–6, plus Savage–Steamboat WM3 and Bret–Austin WM13.
 - **Contact:** info@cybercoretech.net.
+- **Desk publishing goes live right away** (user, 2026-10-16): commits to `main` via the GitHub API, limited to `src/content/matches|wrestlers/`. This is the only exception to branch + PR.
+- **Cloudflare resources:** the user approved Claude creating them with wrangler (D1 created 2026-10-16).
+- **Forum:** options are in BLUEPRINT §13.3 (recommended C: NCV-style D1 forum + per-match threads). **Waiting for the user's choice.**
 - **Stack:** Astro 7.3.8 static, plain JS in `public/js` (no framework, no animation library), Google Fonts (Anton, Inter, Source Serif 4).
 
 ## 🏗️ Architecture
@@ -38,6 +43,7 @@ The state of the project for the next agent (or person). Update it with every ph
 - **`src/lib/site.ts`:** `SECTIONS` (drives header, drawer and footer), sort helpers, `pick()` for highlight blocks (featured first).
 - **`src/lib/ratings.ts`:** rating text/labels; `value()` for sorting (unrated = -Infinity, DUD = 0).
 - **Theme engine** `public/js/theme.js`: fetches `cybergrid.json` + palettes cross-origin, maps registry slots to site vars (orange→`--gold`, cyan→`--blue`...), caches the resolved palette in `localStorage` (`wr-theme-palette`) so the inline boot script in `Base.astro` paints it before first render.
+- **Desk backend** `functions/api/desk/*`: `_middleware.ts` (config check, Origin + JSON for writes, session) → `login` (PBKDF2 verify, D1 rate limit), `logout`, `session`, `match` (PUT: validate via `_lib/content.ts`, which mirrors the schema, then commit), `wrestler` (POST), `log`. The catalog of valid ids comes from the deployed `/data/catalog.json` (built by `src/pages/data/catalog.json.ts`), plus a GitHub lookup for wrestlers added since the last build.
 - **Effects** `public/js/pyro.js`: `html.pyro` gates everything; toggle key `wr-pyro`; reduced-motion removes the class; canvas only on 5-star reveal; tilt/spotlight need a fine pointer.
 - **Graphics:** inline SVGs in `src/components/brand/` are *generated* by `brand/tools/themeable.py` (fixed colors → CSS vars). Don't hand-edit them.
 
@@ -49,6 +55,9 @@ The state of the project for the next agent (or person). Update it with every ph
 - `public/js/*` files are served with immutable caching; `Base.astro` appends `?v=<sha256>` automatically, so no manual bumping.
 - Anton has no `★` glyph. Brand stars are polygons; CSS stars use an SVG mask.
 - Every effect must respect `html.pyro`, `prefers-reduced-motion`, visibility pausing and fine-pointer gating.
+- `functions/` has its own tsconfig (Workers types) and is excluded from the root one; `npm run check` runs both.
+- **When the content schema changes, update `functions/_lib/content.ts` too**, or the desk could publish a file the build rejects. Cloudflare would then keep the old version live, but the review wouldn't appear.
+- Global `[hidden] { display: none !important }` is relied on: component display rules would otherwise unhide elements.
 - Duplicate inline SVG gradient ids (`wr-gold`) are intentional and identical. If one is ever recolored differently, give it its own id.
 
 ## 🧪 How Phase 1 was verified
@@ -64,8 +73,20 @@ The state of the project for the next agent (or person). Update it with every ph
 
 - **#1** Phase 0: brand assets, blueprint, README, handoff (merged).
 - **#2** Phase 1: Astro skeleton, nav, theme picker, effects, launch content (merged).
-- **#3** Docs: record the live Cloudflare Pages deployment.
+- **#3** Docs: record the live Cloudflare Pages deployment (merged).
+- **#4** Phase 2A: Author's Desk.
 
-## ⏭️ Next (Phase 2, BLUEPRINT §10)
+## 🧪 How Phase 2A was verified
+
+- `wrangler pages dev` locally with local D1, a test password, and `CONTENT_BRANCH=desk-test` (a throwaway branch, since deleted):
+  - Unauthenticated session → 401; wrong password → 401 with tries left; foreign Origin → 403; right password → cookie, and the session works.
+  - A rating of 6 → 422; add wrestler → commit; create match → commit; duplicate create → 409; update → commit; identical save → "unchanged"; publish log listed.
+  - 5 failures → 429 lockout, and the correct password is refused while locked.
+- The `desk-test` branch with the desk-written files passed `astro build`. Quotes, colons, Unicode, YouTube URL → ID and type slugging all came through, and all commits used the cybercore-tech noreply identity.
+- A CDP browser run: login screen, wrong-password message, sign-in, list (10 matches), open a match (fields + wrestler chips), rating slider (4.75), review preview, draft saved in localStorage, clean console.
+- `wrangler pages functions build` compiled; `npm run check` clean for site and functions.
+- **Not verified:** the live production desk, until the user sets `ADMIN_PASSWORD_HASH` + `DESK_GITHUB_TOKEN` and PR #4 deploys.
+
+## ⏭️ Next (Phase 2B, BLUEPRINT §10)
 
 Wrestler profile text and Vault history (author), Pagefind search, Lists and Columns hubs, events/feuds sub-pages, starter paths, a mashup contrast audit.
