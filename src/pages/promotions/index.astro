@@ -1,0 +1,38 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import Crumbs from '../../components/Crumbs.astro';
+import SectionHead from '../../components/SectionHead.astro';
+import PromoLogo from '../../components/PromoLogo.astro';
+import { matches } from '../../lib/site';
+const all = await matches();
+const promos = (await getCollection('promotions')).sort((a, b) => a.data.order - b.data.order);
+const count = (id: string) => all.filter((m) => m.data.promotion.id === id).length;
+const SECTIONS = [
+  ['The majors', 'Today', promos.filter((p) => p.data.group === 'modern' && p.data.tier === 'major')],
+  ['The independents', 'Today', promos.filter((p) => p.data.group === 'modern' && p.data.tier === 'independent')],
+  ['The Classic Vault', 'History', promos.filter((p) => p.data.group === 'vault')],
+  ['The territories', 'History', promos.filter((p) => p.data.group === 'territory')],
+] as const;
+---
+<Base title="Promotions" section="/promotions/" description="Every wrestling promotion on The Workrate Report: company histories, owners, founders, standout stars and official sites.">
+  <Crumbs trail={[['Promotions']]} />
+  <section class="hero"><div class="hero-glow" aria-hidden="true"></div><div class="wrap">
+    <p class="eyebrow">Promotions</p><h1>Every <em>company</em></h1>
+    <p class="lede">From WWE, AEW and New Japan to the indies (GCW, PWG, RevPro, Progress, CZW) and the companies that built the business: owners, founders, standout stars and where to find them.</p>
+  </div></section>
+  {SECTIONS.map(([title, eyebrow, list]) => list.length > 0 && (
+    <section class="section wrap">
+      <SectionHead eyebrow={eyebrow} title={title} />
+      <div class="grid">{list.map((p) => (
+        <a class="card pcard reveal" href={`/promotions/${p.id}/`}>
+          <PromoLogo slug={p.id} short={p.data.short} />
+          <div class="card-meta"><span class="promo">{p.data.years}</span>{count(p.id) > 0 && <span>{count(p.id)} {count(p.id) === 1 ? 'match' : 'matches'}</span>}</div>
+          <h3>{p.data.name}</h3>
+          <p class="summary">{p.data.summary}</p>
+        </a>
+      ))}</div>
+    </section>
+  ))}
+  <section class="section wrap"><p class="muted" style="font-size:13px">Logos are shown only where a free-licensed version exists on Wikimedia Commons (see <a href="/credits/">credits</a>); other promotions appear with the site's own name badge. All names and marks belong to their owners.</p></section>
+</Base>

@@ -1,6 +1,6 @@
 ---
 name: "Toni Storm"
-promotions: [aew, wwe]
+promotions: [aew, wwe, nxt, progress]
 eras: [modern]
 featured: false
 ---

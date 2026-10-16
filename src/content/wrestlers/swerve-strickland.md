@@ -1,6 +1,6 @@
 ---
 name: "Swerve Strickland"
-promotions: [aew, wwe]
+promotions: [aew, wwe, mlw, nxt, pwg]
 eras: [modern]
 featured: false
 ---

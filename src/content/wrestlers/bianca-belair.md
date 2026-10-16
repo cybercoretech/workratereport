@@ -1,6 +1,6 @@
 ---
 name: "Bianca Belair"
-promotions: [wwe]
+promotions: [wwe, nxt]
 eras: [modern]
 featured: false
 ---

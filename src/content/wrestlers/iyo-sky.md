@@ -1,6 +1,6 @@
 ---
 name: "Iyo Sky"
-promotions: [wwe]
+promotions: [wwe, nxt]
 eras: [modern]
 featured: false
 ---

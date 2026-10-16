@@ -1,0 +1,70 @@
+---
+import { getCollection, render } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import Crumbs from '../../components/Crumbs.astro';
+import SectionHead from '../../components/SectionHead.astro';
+import MatchGrid from '../../components/MatchGrid.astro';
+import WrestlerCard from '../../components/WrestlerCard.astro';
+import PromoLogo from '../../components/PromoLogo.astro';
+import { matches, byRatingDesc } from '../../lib/site';
+import { promoFacts, prettyUrl } from '../../lib/promos';
+import { fmtFactDate } from '../../lib/facts';
+export async function getStaticPaths() {
+  return (await getCollection('promotions')).map((p) => ({ params: { slug: p.id }, props: { p } }));
+}
+const { p } = Astro.props;
+const d = p.data;
+const f = promoFacts(p.id);
+const { Content } = await render(p);
+const all = await matches();
+const list = all.filter((m) => m.data.promotion.id === p.id).sort(byRatingDesc);
+const roster = (await getCollection('wrestlers')).filter((w) => w.data.promotions.some((x) => x.id === p.id)).sort((a, b) => a.data.name.localeCompare(b.data.name));
+const byName = new Map((await getCollection('wrestlers')).map((w) => [w.data.name.replace(/"/g, '').toLowerCase(), w.id]));
+const linkFor = (n: string) => byName.get(n.replace(/"/g, '').toLowerCase());
+const status = f?.dissolved ? `Closed ${fmtFactDate(f.dissolved)?.replace(/^\w+ \d+, /, '') ?? f.dissolved.slice(0, 4)}` : d.group === 'modern' ? 'Active' : 'Closed';
+const rows = ([
+  ['Founded', d.founded ?? (f?.founded ? f.founded.slice(0, 4) : null)],
+  ['Founders', (d.founders.length ? d.founders : f?.founders ?? []).join(', ') || null],
+  ['Owner', d.owner ?? (f?.owners?.length ? f.owners.join(', ') : null)],
+  ['Based', d.based ?? ([f?.headquarters, f?.country].filter(Boolean).join(', ') || null)],
+  ['Status', status],
+] as [string, string | null][]).filter(([, v]) => v);
+const website = d.website ?? (d.group === 'modern' ? f?.website : null);
+const isVault = d.group !== 'modern';
+---
+<Base title={d.name} section="/promotions/" vault={isVault} description={d.summary} search="Promotion">
+  <Crumbs trail={[['Promotions', '/promotions/'], [d.short]]} />
+  <section class:list={['hero', isVault && 'vault-hero']}><div class="hero-glow" aria-hidden="true"></div><div class="wrap pprofile">
+    <PromoLogo slug={p.id} short={d.short} size="lg" />
+    <div>
+      <p class="eyebrow">{isVault ? (d.group === 'territory' ? 'Territory' : 'Classic Vault') : d.tier === 'major' ? 'Major promotion' : 'Independent'} · {d.years}</p>
+      <h1>{d.name}</h1>
+      <p class="lede">{d.summary}</p>
+      <div class="btn-row">
+        {website && <a class="btn" href={website} rel="noopener" target="_blank">Official site · {prettyUrl(website)}</a>}
+        {isVault && <a class="btn ghost" href={`/vault/${p.id}/`}>In the Vault</a>}
+        {list.length > 0 && <a class="btn ghost" href={`/matches/promotion/${p.id}/`}>{list.length === 1 ? '1 match' : `All ${list.length} matches`}</a>}
+      </div>
+    </div>
+  </div></section>
+  <section class="section wrap match-layout">
+    <article>
+      <SectionHead eyebrow="The company" title="History" />
+      <div class="prose"><Content /></div>
+      {d.standouts.length > 0 && (<>
+        <SectionHead eyebrow="Standout stars" title="Who made it" />
+        <ul class="chips">{d.standouts.map((n) => { const id = linkFor(n); return <li>{id ? <a href={`/wrestlers/${id}/`}>{n}</a> : <span class="chip-plain">{n}</span>}</li>; })}</ul>
+      </>)}
+    </article>
+    <aside class="panel">
+      <p class="eyebrow">At a glance</p>
+      <table class="facts"><tbody>{rows.map(([k, v]) => <tr><th scope="row">{k}</th><td>{v}</td></tr>)}
+        {website && <tr><th scope="row">Website</th><td><a href={website} rel="noopener" target="_blank">{prettyUrl(website)}</a></td></tr>}
+      </tbody></table>
+      {f?.logo && <p class="photo-credit">Logo: {f.logo.credit} · {f.logo.license_url ? <a href={f.logo.license_url} rel="license noopener" target="_blank">{f.logo.license}</a> : f.logo.license} · <a href={f.logo.source} rel="noopener" target="_blank">Wikimedia Commons</a></p>}
+      {f?.qid && <p class="muted" style="font-size:12px;margin-top:14px">Facts checked against <a href={`https://www.wikidata.org/wiki/${f.qid}`} rel="noopener" target="_blank">Wikidata</a>.</p>}
+    </aside>
+  </section>
+  {roster.length > 0 && <section class="section wrap"><SectionHead eyebrow="On the site" title={`${d.short} wrestlers`} /><div class="grid">{roster.slice(0, 12).map((w) => <WrestlerCard w={w} count={all.filter((m) => m.data.wrestlers.some((x) => x.id === w.id)).length} />)}</div></section>}
+  {list.length > 0 && <section class="section wrap"><SectionHead eyebrow="Reviewed" title="Matches, best first" href={`/matches/promotion/${p.id}/`} /><MatchGrid list={list.slice(0, 6)} /></section>}
+</Base>

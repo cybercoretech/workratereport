@@ -12,6 +12,7 @@ A pro wrestling match-review site. It covers modern wrestling first (WWE, AEW, N
 - **Phase 1 · Skeleton:** built. Astro static site with 83 pages, the ring-rope hamburger drawer, the Cybercore theme picker (90 themes), Pyro effects and 12 launch matches.
 - **Live:** 🌐 **https://workrate-report.pages.dev/** (Cloudflare Pages, auto-deploys from `main`).
 - **Phase 2A · Author's Desk:** a private `/desk/` page to write and publish reviews and columns from the browser.
+- **Promotions page:** 26 companies (majors, independents, Vault, territories) with bios, founders, owners, standout stars, official sites and free-license logos.
 - **Phase 2B · Depth:** search, 149 wrestler profiles with photos and bios, Lists, Columns, Starter Paths, Then & Now, Vault events and feuds, ECW and ROH, and a contrast guard on all 90 themes.
 
 👉 The full plan is in **[BLUEPRINT.md](BLUEPRINT.md)**.
@@ -107,6 +108,16 @@ node scripts/fetch-wrestler-data.mjs --all      # refresh everyone
 
 It writes `src/data/wrestler-facts.json` and `public/wrestlers/<slug>.jpg` (400px, metadata stripped; needs ImageMagick). Name collisions are real ("Steve Williams" is also Stone Cold's real name), so check new matches and pin the right Wikidata ID in the script's `PIN` table when needed. Bios are in each wrestler's Markdown file and are yours to edit.
 
+## 🏢 Promotions
+
+`/promotions/` lists every company; each has a page with its history, an at-a-glance table, standout stars (linked when they have a profile), the site's wrestlers and matches, and the official site. Hand-checked facts live in each `src/content/promotions/*.md`; Wikidata facts and free logos are the fallback:
+
+```sh
+node scripts/fetch-promotion-data.mjs   # src/data/promotion-facts.json + public/promotions/<slug>.png
+```
+
+Logos appear only when Commons lists a free license; everyone else gets the site's own name badge. `SKIP_LOGO` in the script drops out-of-date marks (TNA's Wikidata logo is still Impact's).
+
 ## 🎨 Theme readability
 
 `public/js/contrast.js` nudges any too-faint text color in a theme until it meets WCAG AA. Red and blue keep their true colors for backgrounds and get readable copies (`--red-text`, `--blue-text`) for text. Audit every theme with:
@@ -128,8 +139,9 @@ node scripts/contrast-audit.mjs   # also runs in CI; fails if any pair is below 
 | `public/js/` | `theme.js` (theme engine), `nav.js` (drawer), `pyro.js` (effects), `desk.js` (Author's Desk). Cache-busted by content hash |
 | `functions/` | Cloudflare Pages Functions: `/api/desk/*` (login, session, publish match, add wrestler, log) and `_lib/` helpers |
 | `migrations/` | D1 schema (`workrate-report` database) |
-| `scripts/` | `set-desk-password.mjs`, `fetch-wrestler-data.mjs`, `contrast-audit.mjs` |
-| `src/data/` | `wrestler-facts.json` (generated: Wikidata facts + photo credits) |
+| `scripts/` | `set-desk-password.mjs`, `fetch-wrestler-data.mjs`, `fetch-promotion-data.mjs`, `contrast-audit.mjs` |
+| `src/data/` | `wrestler-facts.json`, `promotion-facts.json` (generated: Wikidata facts, photo and logo credits) |
+| `public/promotions/` | Free-license promotion logos (see `/credits/`) |
 | `public/wrestlers/` | Wrestler photos (free licenses, see `/credits/`) |
 | `wrangler.toml` | Pages config: D1 binding, repo/branch vars (no secrets) |
 | `brand/` | Source graphics and generators |

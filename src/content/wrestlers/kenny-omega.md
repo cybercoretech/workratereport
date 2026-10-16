@@ -1,6 +1,6 @@
 ---
 name: "Kenny Omega"
-promotions: [njpw, aew]
+promotions: [njpw, aew, pwg]
 eras: [modern]
 featured: true
 ---

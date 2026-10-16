@@ -1,6 +1,6 @@
 ---
 name: "Kevin Owens"
-promotions: [wwe, indies, roh]
+promotions: [wwe, indies, roh, pwg, nxt]
 eras: [modern]
 featured: false
 ---

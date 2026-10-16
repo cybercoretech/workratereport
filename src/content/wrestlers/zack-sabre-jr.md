@@ -1,6 +1,6 @@
 ---
 name: "Zack Sabre Jr."
-promotions: [njpw, indies]
+promotions: [njpw, indies, revpro, progress, pwg, evolve]
 eras: [modern]
 featured: false
 ---

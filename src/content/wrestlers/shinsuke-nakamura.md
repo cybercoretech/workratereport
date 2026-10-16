@@ -1,6 +1,6 @@
 ---
 name: "Shinsuke Nakamura"
-promotions: [njpw, wwe]
+promotions: [njpw, wwe, nxt]
 eras: [modern]
 featured: false
 ---

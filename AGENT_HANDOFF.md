@@ -32,7 +32,8 @@ The state of the project for the next agent (or person). Update it with every ph
 - **DNA launch pairs:** MJF ↔ Ric Flair (flagship), Cody Rhodes ↔ Dusty Rhodes.
 - **Launch matches:** the original 10 minus open slots 5–6, plus Savage–Steamboat WM3 and Bret–Austin WM13.
 - **Contact:** info@cybercoretech.net.
-- **Promotions:** ECW added to the Vault, ROH to the modern side (user, 2026-10-16). 14 promotions.
+- **Promotions:** ECW added to the Vault, ROH to the modern side; then (user, 2026-10-16) NXT, MLW, GCW, HOG, West Coast Pro, PWG, RevPro, Progress, CZW, CMLL, NWA and Evolve. 26 in all, each with a `/promotions/<slug>/` page. `tier: major | independent` drives the page sections. The modern `nwa` is Billy Corgan's NWA; the 1980s NWA stays `jcp-nwa`.
+- **Logos:** only free-license Commons logos (WWE, AEW, ROH, GCW, JCP, WCW); everyone else gets the site's own name badge, never a copy of their artwork. Logos sit on a light plate so dark marks stay visible.
 - **Photos only from Wikimedia Commons under free licenses**, credited per profile and on `/credits/`. Facts from Wikidata (CC0). Bios were written by Claude as drafts for the user to edit; they were fact-checked and 16 claims corrected before shipping.
 - **Desk publishing goes live right away** (user, 2026-10-16): commits to `main` via the GitHub API, limited to `src/content/matches|wrestlers/`. This is the only exception to branch + PR.
 - **Cloudflare resources:** the user approved Claude creating them with wrangler (D1 created 2026-10-16).
@@ -60,6 +61,8 @@ The state of the project for the next agent (or person). Update it with every ph
 - Every effect must respect `html.pyro`, `prefers-reduced-motion`, visibility pausing and fine-pointer gating.
 - **Wikidata name collisions:** "Steve Williams" matched Stone Cold and "Rey Mysterio" matched Rey Misterio Sr. Both are pinned in `scripts/fetch-wrestler-data.mjs` (`PIN`). Check every new wrestler's `wikidata_label` and birth year after fetching.
 - **Class-name collisions:** don't name component classes `card` or `hero` (global rules). The photo frame uses `is-card` / `is-hero`.
+- **Promotion facts:** hand-checked frontmatter wins over Wikidata. Wikidata had Evolve's founder wrong (it's Sapolsky and Hamaoui, not Davey Richards), lists every past ROH owner, and has TNA's old Impact logo. Unconfirmed facts are left blank (e.g. West Coast Pro and HOG owners), never guessed.
+- **Astro 7 preview:** only one preview server runs at a time; stop it with `npx astro preview stop`.
 - **Contrast:** never use `var(--red)`/`var(--blue)` for text; use `--red-text`/`--blue-text`. The CI audit fails if any theme drops below target.
 - `functions/` has its own tsconfig (Workers types) and is excluded from the root one; `npm run check` runs both.
 - **When the content schema changes, update `functions/_lib/content.ts` too**, or the desk could publish a file the build rejects. Cloudflare would then keep the old version live, but the review wouldn't appear.
@@ -82,7 +85,8 @@ The state of the project for the next agent (or person). Update it with every ph
 - **#3** Docs: record the live Cloudflare Pages deployment (merged).
 - **#4** Phase 2A: Author's Desk (merged).
 - **#5** Roster to 138 wrestlers, 0.01-precision ratings, forum option C recorded (merged).
-- **#6** Phase 2B: search, ECW/ROH, photos + facts + bios, lists, columns (+ desk), starter paths, Then & Now, events, feuds, contrast guard.
+- **#6** Phase 2B: search, ECW/ROH, photos + facts + bios, lists, columns (+ desk), starter paths, Then & Now, events, feuds, contrast guard (merged).
+- **#7** Promotions page: 26 companies with bios/facts/logos; 12 new promotions; 30 wrestlers tagged.
 
 ## 🧪 How Phase 2A was verified
 

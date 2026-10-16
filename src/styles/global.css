@@ -569,3 +569,19 @@ p { margin: 0 0 1em; }
 .feud-pair .dna-side { display: grid; gap: 14px; justify-items: center; }
 .feud-pair .wphoto { width: min(240px, 60vw); border-radius: var(--radius); border: 2px solid color-mix(in oklab, var(--gold), transparent 45%); }
 .feud-pair .vs { font: 400 clamp(28px, 3vw, 44px)/1 var(--display); color: var(--ink); background: linear-gradient(var(--gold-hi), var(--gold)); width: 2.2em; height: 2.2em; display: grid; place-items: center; border-radius: 50%; justify-self: center; box-shadow: 0 0 0 4px var(--ink), 0 0 0 6px var(--gold); }
+
+/* ---------- promotions ---------- */
+.plogo { display: grid; place-items: center; background: color-mix(in oklab, var(--canvas), transparent 92%); border: 1px solid var(--line); border-radius: 12px; overflow: hidden; }
+.plogo:not(.is-badge) { background: linear-gradient(160deg, #f7f4ee, #e6e0d4); border-color: color-mix(in oklab, var(--gold), transparent 55%); }
+.plogo img { max-width: 82%; width: auto; height: auto; object-fit: contain; }
+.plogo.is-sm img { max-height: 78px; }
+.plogo.is-lg img { max-height: 150px; }
+.plogo.is-sm { height: 110px; }
+.plogo.is-lg { width: min(320px, 100%); aspect-ratio: 16 / 10; }
+.plogo.is-badge { background: radial-gradient(circle at 50% 35%, color-mix(in oklab, var(--gold), transparent 78%), transparent 70%), linear-gradient(160deg, var(--panel-2), var(--ink)); }
+.plogo-text { font: 400 clamp(26px, 3.4vw, 40px)/1 var(--display); letter-spacing: .04em; text-transform: uppercase; color: var(--gold); text-align: center; padding: 0 12px; text-shadow: 0 2px 0 #0008; }
+.plogo.is-lg .plogo-text { font-size: clamp(40px, 6vw, 64px); }
+.pcard { gap: 12px; }
+.pprofile { display: grid; gap: clamp(24px, 4vw, 48px); align-items: center; }
+@media (min-width: 860px) { .pprofile { grid-template-columns: 320px minmax(0, 1fr); } }
+.chip-plain { display: inline-block; padding: 7px 12px; border-radius: 999px; border: 1px dashed var(--line); color: var(--soft); font-size: 14px; font-weight: 600; }

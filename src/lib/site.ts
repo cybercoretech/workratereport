@@ -17,8 +17,9 @@ export const SECTIONS = [
   { href: '/vault/', label: 'Classic Vault', sub: [
     ['/vault/jcp-nwa/', 'JCP / NWA'], ['/vault/wcw/', 'WCW'], ['/vault/wwf/', 'WWF'], ['/vault/ecw/', 'ECW'],
     ['/vault/territories/', 'Territories'], ['/vault/events/', 'Events'], ['/vault/feuds/', 'Feuds'] ] },
+  { href: '/promotions/', label: 'Promotions', sub: [] },
   { href: '/dna/', label: 'Territory DNA', sub: [] },
-  { href: '/me-vs-meltzer/', label: 'Me vs. Meltzer', sub: [] },
+  { href: '/me-vs-meltzer/', label: 'Me vs. Meltzer', sub: [], inline: false },
   { href: '/watch/', label: 'Watch', sub: [['/watch/starter-paths/', 'Starter paths'], ['/watch/then-and-now/', 'Then & Now'], ['/watch/services/', 'Where to watch']] },
   // Drawer and footer only (the inline header nav has no room for these).
   { href: '/lists/', label: 'Lists', sub: [], inline: false },

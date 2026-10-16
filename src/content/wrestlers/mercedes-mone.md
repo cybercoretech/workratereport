@@ -1,6 +1,6 @@
 ---
 name: "Mercedes Moné"
-promotions: [wwe, njpw, aew]
+promotions: [wwe, njpw, aew, nxt]
 eras: [modern]
 featured: false
 ---

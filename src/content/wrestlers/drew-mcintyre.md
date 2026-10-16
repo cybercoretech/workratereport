@@ -1,6 +1,6 @@
 ---
 name: "Drew McIntyre"
-promotions: [wwe, tna]
+promotions: [wwe, tna, evolve, nxt]
 eras: [modern]
 featured: false
 ---

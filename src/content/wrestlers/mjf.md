@@ -1,6 +1,6 @@
 ---
 name: "MJF"
-promotions: [aew]
+promotions: [aew, mlw]
 eras: [modern]
 featured: true
 ---
