@@ -1,0 +1,7 @@
+---
+import ListPage from '../../components/ListPage.astro';
+import { matches } from '../../lib/site';
+const list = (await matches()).filter((m) => m.data.era === 'classic');
+---
+<ListPage title="Classic era" eyebrow="Match Guide · Vault" lede="Jim Crockett Promotions and the NWA, WCW, the WWF and the territories." vault
+  list={list} trail={[['Match Guide', '/matches/'], ['Classic era']]} />

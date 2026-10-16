@@ -1,0 +1,19 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import Base from '../layouts/Base.astro';
+import Crumbs from './Crumbs.astro';
+import MatchGrid from './MatchGrid.astro';
+interface Props { title: string; eyebrow: string; lede?: string; list: CollectionEntry<'matches'>[]; trail: [string, string?][]; section?: string; vault?: boolean; empty?: string }
+const { title, eyebrow, lede, list, trail, section = '/matches/', vault = false, empty } = Astro.props;
+---
+<Base title={title} section={section} vault={vault} description={lede}>
+  <Crumbs trail={trail} />
+  <section class="section wrap">
+    <p class="eyebrow">{eyebrow}</p>
+    <h1>{title}</h1>
+    {lede && <p class="lede">{lede}</p>}
+    <p class="filter-count">{list.length} {list.length === 1 ? 'match' : 'matches'}</p>
+    <MatchGrid list={list} empty={empty} />
+    <slot />
+  </section>
+</Base>

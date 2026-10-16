@@ -1,0 +1,29 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import { getEntry } from 'astro:content';
+import Stars from './Stars.astro';
+import { fmtDate } from '../lib/site';
+import { isFiveStar } from '../lib/ratings';
+interface Props { match: CollectionEntry<'matches'>; reveal?: boolean }
+const { match, reveal = true } = Astro.props;
+const m = match.data;
+const promo = await getEntry(m.promotion);
+const five = isFiveStar(m.my_rating) || isFiveStar(m.meltzer_rating);
+---
+<a href={`/matches/${match.id}/`} class:list={['card', reveal && 'reveal', m.featured && 'featured', five && 'is-five']}
+   data-match data-era={m.era} data-promotion={m.promotion.id} data-year={m.date.getUTCFullYear()}
+   data-type={m.type} data-rating={m.my_rating ?? ''} data-search={`${m.title} ${m.event}`.toLowerCase()}
+   style={`view-transition-name: match-${match.id}`}>
+  <div class="card-meta">
+    <span class="promo">{promo?.data.short}</span>
+    <span>{fmtDate(m.date)}</span>
+    {m.era === 'classic' && <span>Vault</span>}
+  </div>
+  <h3>{m.title}</h3>
+  <p class="event">{m.event}{m.title_match && ` · ${m.title_match}`}</p>
+  {m.summary && <p class="summary">{m.summary}</p>}
+  <div class="card-foot">
+    <div class="card-ratings"><Stars rating={m.my_rating} who="Mine" /></div>
+    {m.meltzer_rating !== null && <div class="card-ratings"><Stars rating={m.meltzer_rating} who="Meltzer" /></div>}
+  </div>
+</a>

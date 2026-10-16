@@ -1,0 +1,189 @@
+---
+import '../styles/global.css';
+import Svg from '../components/Svg.astro';
+import { SECTIONS, CONTACT, matches } from '../lib/site';
+import { text } from '../lib/ratings';
+import { readFileSync } from 'node:fs';
+import { createHash } from 'node:crypto';
+
+// Cache-bust the plain scripts in public/js by content hash.
+const v = (f: string) => createHash('sha256').update(readFileSync(`public/js/${f}`)).digest('hex').slice(0, 10);
+
+interface Props {
+  title: string;
+  description?: string;
+  /** Section href for the active nav state, e.g. "/vault/" */
+  section?: string;
+  /** VHS flavour on Classic Vault pages */
+  vault?: boolean;
+}
+const { title, description = 'Pro wrestling match reviews, then and now: modern classics and the NWA, WCW and WWF vault, rated out of five stars by a fan since 1980.', section, vault = false } = Astro.props;
+const pageTitle = title === 'Home' ? 'The Workrate Report: Then & Now' : `${title} · The Workrate Report`;
+const canonical = new URL(Astro.url.pathname, Astro.site);
+const og = new URL('/brand/og-card.png', Astro.site);
+
+// Ticker: newest reviews + anything with a Meltzer rating
+const all = await matches();
+const ticker = all.slice(0, 6).map((m) => ({
+  tag: m.data.era === 'classic' ? 'From the vault' : 'New',
+  text: m.data.title,
+  extra: m.data.meltzer_rating !== null ? `Meltzer ${text(m.data.meltzer_rating)}` : m.data.event,
+  href: `/matches/${m.id}/`,
+}));
+const isActive = (href: string) => (section ? section === href : Astro.url.pathname.startsWith(href));
+---
+<!doctype html>
+<html lang="en" class="pyro" data-theme="ten-pounds-of-gold">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>{pageTitle}</title>
+  <meta name="description" content={description} />
+  <link rel="canonical" href={canonical} />
+  <meta name="theme-color" content="#111014" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="The Workrate Report" />
+  <meta property="og:title" content={pageTitle} />
+  <meta property="og:description" content={description} />
+  <meta property="og:url" content={canonical} />
+  <meta property="og:image" content={og} />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  <link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preconnect" href="https://cybercore-tech.github.io" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap" />
+  <script is:inline>
+    // Before first paint: last theme's palette (no flash) and the effects preference.
+    (() => {
+      const r = document.documentElement;
+      try {
+        const vars = JSON.parse(localStorage.getItem('wr-theme-palette') || 'null');
+        if (vars && localStorage.getItem('cybercore-theme') && !new URLSearchParams(location.search).get('theme')) {
+          for (const k in vars) r.style.setProperty(k, vars[k]);
+        }
+        if (localStorage.getItem('wr-pyro') === 'off') r.classList.remove('pyro');
+      } catch {}
+      if (matchMedia('(prefers-reduced-motion: reduce)').matches) r.classList.remove('pyro');
+    })();
+  </script>
+  <script is:inline src={`/js/theme.js?v=${v('theme.js')}`} defer></script>
+  <script is:inline src={`/js/nav.js?v=${v('nav.js')}`} defer></script>
+  <script is:inline src={`/js/pyro.js?v=${v('pyro.js')}`} defer></script>
+</head>
+<body class:list={[vault && 'vault-scope']}>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <div class="rope-progress" aria-hidden="true"></div>
+
+  <header class="site-header">
+    <div class="wrap">
+      <a class="brand" href="/" aria-label="The Workrate Report, home"><Svg name="emblem" /><span class="brand-word" aria-hidden="true"><small>The</small><b>Workrate Report</b></span></a>
+      <nav class="inline-nav" aria-label="Main sections">
+        {SECTIONS.map((s) => <a href={s.href} aria-current={isActive(s.href) ? 'page' : undefined}>{s.label}</a>)}
+      </nav>
+      <div class="header-tools">
+        <div class="theme-picker" data-theme-picker>
+          <button class="theme-button" type="button" aria-haspopup="listbox" aria-expanded="false" aria-controls="themeMenuHeader">
+            <span class="swatch" aria-hidden="true"></span>
+            <span class="tb-label">Theme ·</span>
+            <span data-active-theme>TEN POUNDS OF GOLD</span>
+          </button>
+          <div id="themeMenuHeader" class="theme-menu" role="listbox" aria-label="Theme" hidden></div>
+        </div>
+        <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="siteDrawer" aria-label="Open site navigation">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <div class="ticker" role="region" aria-label="Latest from The Workrate Report">
+    <span class="ticker-live"><i aria-hidden="true"></i>Live</span>
+    <div class="ticker-viewport">
+      <ul class="ticker-track">
+        {ticker.map((t) => <li><b>{t.tag}</b><a href={t.href}>{t.text}</a><span class="muted">{t.extra}</span></li>)}
+      </ul>
+    </div>
+  </div>
+
+  <div class="drawer-scrim" hidden></div>
+  <aside id="siteDrawer" class="drawer" data-open="false" aria-label="Site navigation">
+    <div class="drawer-head">
+      <span class="brand"><Svg name="emblem" /><span class="brand-word"><small>The</small><b>Workrate Report</b></span></span>
+      <button class="drawer-close" type="button" aria-label="Close site navigation">×</button>
+    </div>
+    <nav aria-label="All sections">
+      <ul>
+        <li class="drawer-group" style="--i:0"><div class="drawer-row"><a href="/" aria-current={Astro.url.pathname === '/' ? 'page' : undefined}>Home</a></div></li>
+        {SECTIONS.map((s, i) => (
+          <li class="drawer-group" style={`--i:${i + 1}`}>
+            <div class="drawer-row">
+              <a href={s.href} aria-current={isActive(s.href) ? 'page' : undefined}>{s.label}</a>
+              {s.sub.length > 0 && <button class="drawer-expand" type="button" aria-expanded="false" aria-controls={`drawer-sub-${i}`} aria-label={`Show ${s.label} pages`}>+</button>}
+            </div>
+            {s.sub.length > 0 && (
+              <ul class="drawer-sub" id={`drawer-sub-${i}`} hidden>
+                {s.sub.map(([href, label]) => <li><a href={href}>{label}</a></li>)}
+              </ul>
+            )}
+          </li>
+        ))}
+        <li class="drawer-group" style={`--i:${SECTIONS.length + 1}`}><div class="drawer-row"><a href="/ratings/">How we rate</a></div></li>
+        <li class="drawer-group" style={`--i:${SECTIONS.length + 2}`}><div class="drawer-row"><a href="/about/">About</a></div></li>
+      </ul>
+    </nav>
+    <div class="drawer-tools">
+      <div class="theme-picker" data-theme-picker>
+        <span class="tool-label">Theme · <span data-theme-count>…</span></span>
+        <button class="theme-button" type="button" aria-haspopup="listbox" aria-expanded="false" aria-controls="themeMenuDrawer">
+          <span class="swatch" aria-hidden="true"></span>
+          <span data-active-theme>TEN POUNDS OF GOLD</span>
+        </button>
+        <div id="themeMenuDrawer" class="theme-menu" role="listbox" aria-label="Theme" hidden></div>
+      </div>
+      <button class="pyro-toggle" type="button" data-pyro-toggle aria-pressed="true">Pyro effects <span data-pyro-state>ON</span></button>
+    </div>
+    <p class="drawer-contact">Corrections or questions: <a href={`mailto:${CONTACT}`}>{CONTACT}</a></p>
+  </aside>
+
+  <main id="main">
+    <slot />
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <Svg name="emblem" />
+          <p>Then &amp; Now. Match ratings from a fan who's watched since 1980.</p>
+        </div>
+        {SECTIONS.slice(0, 3).map((s) => (
+          <div>
+            <h4><a href={s.href}>{s.label}</a></h4>
+            <ul>{s.sub.map(([href, label]) => <li><a href={href}>{label}</a></li>)}</ul>
+          </div>
+        ))}
+        <div>
+          <h4>The Report</h4>
+          <ul>
+            <li><a href="/dna/">Territory DNA</a></li>
+            <li><a href="/me-vs-meltzer/">Me vs. Meltzer</a></li>
+            <li><a href="/ratings/">How we rate</a></li>
+            <li><a href="/about/">About</a></li>
+            <li><a href="/contact/">Contact</a></li>
+            <li><a href="/copyright/">Copyright &amp; takedowns</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-legal">
+        <span>© {new Date().getFullYear()} The Workrate Report. An independent fan site, not affiliated with any wrestling promotion.</span>
+        <span>Theme: <span data-active-theme>TEN POUNDS OF GOLD</span> · <a href={`mailto:${CONTACT}`}>{CONTACT}</a></span>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

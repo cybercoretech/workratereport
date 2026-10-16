@@ -1,0 +1,19 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import Base from '../layouts/Base.astro';
+import Crumbs from './Crumbs.astro';
+import WrestlerCard from './WrestlerCard.astro';
+import { matches } from '../lib/site';
+interface Props { title: string; lede?: string; list: CollectionEntry<'wrestlers'>[]; trail: [string, string?][] }
+const { title, lede, list, trail } = Astro.props;
+const all = await matches();
+const count = (id: string) => all.filter((m) => m.data.wrestlers.some((w) => w.id === id)).length;
+---
+<Base title={title} section="/wrestlers/">
+  <Crumbs trail={trail} />
+  <section class="section wrap">
+    <p class="eyebrow">Wrestlers</p><h1>{title}</h1>
+    {lede && <p class="lede">{lede}</p>}
+    <div class="grid">{list.map((w) => <WrestlerCard w={w} count={count(w.id)} />)}</div>
+  </section>
+</Base>

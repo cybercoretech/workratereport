@@ -1,0 +1,13 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../../../layouts/Base.astro';
+import Crumbs from '../../../components/Crumbs.astro';
+const factions = await getCollection('factions');
+---
+<Base title="Factions" section="/wrestlers/">
+  <Crumbs trail={[['Wrestlers', '/wrestlers/'], ['Factions']]} />
+  <section class="section wrap">
+    <p class="eyebrow">Wrestlers</p><h1>Factions</h1>
+    <div class="grid">{factions.map((f) => <a class="card featured reveal" href={`/wrestlers/factions/${f.id}/`}><div class="card-meta"><span class="promo">{f.data.years}</span></div><h3>{f.data.name}</h3><p class="summary">{f.data.summary}</p></a>)}</div>
+  </section>
+</Base>

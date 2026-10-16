@@ -1,0 +1,11 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import MatchCard from './MatchCard.astro';
+interface Props { list: CollectionEntry<'matches'>[]; empty?: string; wide?: boolean }
+const { list, empty = 'No matches here yet. Reviews are on the way.', wide = false } = Astro.props;
+---
+{list.length ? (
+  <div class:list={['grid', wide && 'wide']} data-grid>
+    {list.map((m) => <MatchCard match={m} />)}
+  </div>
+) : <p class="placeholder">{empty}</p>}

@@ -1,0 +1,9 @@
+---
+import InfoPage from '../components/InfoPage.astro';
+import { CONTACT } from '../lib/site';
+---
+<InfoPage title="Contact" eyebrow="Get in touch">
+  <p>Corrections, match suggestions, questions or rights requests:</p>
+  <p><a href={`mailto:${CONTACT}`}>{CONTACT}</a></p>
+  <p class="muted">For video or image takedown requests, see the <a href="/copyright/">copyright policy</a>.</p>
+</InfoPage>

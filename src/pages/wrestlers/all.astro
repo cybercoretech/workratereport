@@ -1,0 +1,6 @@
+---
+import { getCollection } from 'astro:content';
+import WrestlerList from '../../components/WrestlerList.astro';
+const list = (await getCollection('wrestlers')).sort((a, b) => a.data.name.replace(/^"[^"]*"\s*/, '').localeCompare(b.data.name.replace(/^"[^"]*"\s*/, '')));
+---
+<WrestlerList title="A–Z" list={list} trail={[['Wrestlers', '/wrestlers/'], ['A–Z']]} />

@@ -1,0 +1,28 @@
+---
+import { getCollection, getEntry } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import Crumbs from '../../components/Crumbs.astro';
+const pairs = (await getCollection('dna')).sort((a, b) => Number(b.data.flagship) - Number(a.data.flagship));
+const rows = await Promise.all(pairs.map(async (d) => ({ d, modern: await getEntry(d.data.modern), classic: await getEntry(d.data.classic) })));
+---
+<Base title="Territory DNA" section="/dna/">
+  <Crumbs trail={[['Territory DNA']]} />
+  <section class="hero"><div class="hero-glow" aria-hidden="true"></div><div class="wrap">
+    <p class="eyebrow">Territory DNA</p>
+    <h1>Old school, <em>new blood</em></h1>
+    <p class="lede">Modern wrestlers who wrestle, talk and carry themselves like the territory-era greats: side-by-side comparisons with matches to watch back to back.</p>
+  </div></section>
+  <section class="section wrap grid wide">
+    {rows.map(({ d, modern, classic }) => (
+      <a class:list={['card reveal', d.data.flagship && 'featured']} href={`/dna/${d.id}/`}>
+        <div class="badges">{d.data.flagship && <span class="badge classic">Flagship</span>}{d.data.draft && <span class="badge draft">Draft</span>}</div>
+        <div class="dna-pair">
+          <div class="dna-side modern"><span class="era">Modern</span><h3>{modern?.data.name}</h3></div>
+          <div class="dna-link" aria-hidden="true"><svg viewBox="0 0 60 60"><path d="M15 6c30 12-30 36 0 48M45 6c-30 12 30 36 0 48" fill="none" stroke="var(--blue)" stroke-width="3" stroke-linecap="round"/><path d="M20 18h20M18 30h24M20 42h20" stroke="var(--gold)" stroke-width="2"/></svg></div>
+          <div class="dna-side classic"><span class="era">Classic</span><h3>{classic?.data.name}</h3></div>
+        </div>
+        <p class="summary" style="text-align:center">{d.data.summary}</p>
+      </a>
+    ))}
+  </section>
+</Base>

@@ -3,7 +3,7 @@
 > **Then & Now · Match ratings since 1980**
 > Modern classics up front, with an NWA/WCW vault behind them, all rated by a fan who has watched since 1980.
 
-Status: **Blueprint v1** (2026-10-16). Brand graphics done (`brand/`). Site not built yet.
+Status: **Blueprint v1.1** (2026-10-16). Phase 0 (brand) merged; Phase 1 (Astro site skeleton) built. See the README for how to run it.
 
 ---
 
@@ -21,7 +21,7 @@ Status: **Blueprint v1** (2026-10-16). Brand graphics done (`brand/`). Site not 
 ### Positioning
 
 - **Modern-first.** Most content covers current wrestling: WWE, AEW, NJPW, TNA, indies (Ospreay, Danielson, Omega, Okada, MJF...).
-- **Classic specialty.** The **Classic Vault** covers NWA/Crockett and WCW in depth: Dusty Rhodes, Ric Flair, Sting, the Four Horsemen, Starrcade, the Great American Bash, Clash of the Champions. Other territories (UWF/Mid-South, USWA/Memphis, AWA, World Class) appear as supporting history.
+- **Classic specialty.** The **Classic Vault** covers NWA/Crockett, WCW and the **WWF** (added 2026-10-16) in depth: Dusty Rhodes, Ric Flair, Sting, the Four Horsemen, Starrcade, the Great American Bash, Clash of the Champions; the WWF's Golden Era, New Generation and Attitude Era. Other territories (UWF/Mid-South, USWA/Memphis, AWA, World Class) appear as supporting history.
 - **The bridge: Territory DNA.** Modern wrestlers who wrestle, talk and act like territory-era stars. **MJF is the flagship example:** a chickenshit heel champion in the Flair mold, with Memphis-style heat and promos that work like old studio TV. This feature makes the modern/classic mix feel like one site, not two.
 - **One expert voice.** Cagematch averages thousands of users. Here, every rating and review comes from one person who watched it the first time around.
 
@@ -55,6 +55,7 @@ Status: **Blueprint v1** (2026-10-16). Brand graphics done (`brand/`). Site not 
 /vault/                             Classic Vault hub: From the Vault picks, eras timeline, feuds
   /vault/jcp-nwa/                   Jim Crockett Promotions / NWA
   /vault/wcw/                       WCW
+  /vault/wwf/                       WWF: Golden Era, New Generation, Attitude Era (1979–2002)
   /vault/territories/               UWF/Mid-South, USWA/Memphis, AWA, World Class (supporting)
   /vault/territories/<slug>/        One territory
   /vault/events/                    Starrcade, Great American Bash, Clash of the Champions...
@@ -246,7 +247,7 @@ Display rule: Meltzer's rating is a **quoted fact with attribution** ("Dave Melt
 | **Match of the Week** | Home hero, rotated weekly | A reason to come back |
 | **I Was There** | Column series: memories of watching live or on TV in the 80s | Credibility no database has |
 
-### Launch set (10 matches, ratings yours to give)
+### Launch set (12 matches, ratings yours to give)
 
 Approved as the launch set (2026-10-16). **Before publishing each one, still verify its date, details and where it can legally be watched.** Slots 5 and 6 are picked when they're written.
 
@@ -263,6 +264,11 @@ Approved as the launch set (2026-10-16). **Before publishing each one, still ver
 8. Ric Flair vs. Sting, Clash of the Champions I, 45-minute draw (1988-03-27)
 9. Ric Flair vs. Harley Race, Starrcade '83 cage (1983-11-24)
 10. The first WarGames: Horsemen vs. Dusty & co., Great American Bash (1987)
+
+*WWF additions (2026-10-16, after the user asked for WWF/WWE coverage)*
+
+11. "Macho Man" Randy Savage vs. Ricky Steamboat, WrestleMania III (1987-03-29)
+12. Bret Hart vs. "Stone Cold" Steve Austin, WrestleMania 13 submission match (1997-03-23)
 
 ---
 
@@ -345,7 +351,7 @@ The site itself renders ratings with a CSS star component (one gold star row cli
 | Phase | Deliverable |
 |---|---|
 | **0 · Brand** ✅ | Name, domain check, graphics, this blueprint |
-| **1 · Skeleton** | Astro project, layouts, header and footer, **hamburger drawer + theme picker** (§12), match page, section hubs, Match Guide list, first 10 matches, deploy to `pages.dev` |
+| **1 · Skeleton** ✅ | Astro project, layouts, header and footer, **hamburger drawer + theme picker** (§12), match page, section hubs, Match Guide list, first 10 matches, deploy to `pages.dev` |
 | **2 · Depth** | Wrestler profiles, Vault promotion pages, filters, Pagefind search |
 | **3 · Signature** | Territory DNA (MJF ↔ Flair first), Me vs. Meltzer, On This Day, Starter Paths, **full Pyro effects set** (§12.2) |
 | **4 · Grow** | Buy domain, analytics, newsletter, dead-embed CI, columns cadence |
@@ -368,7 +374,6 @@ The site itself renders ratings with a CSS star component (one gold star row cli
 
 1. **Body font:** a serif for reviews (recommended) or all sans-serif. This can be settled in Phase 1 by comparing both in the browser.
 2. **Cloudflare Pages project:** connect the repo in the Cloudflare dashboard once Phase 1 has a buildable site.
-3. **Signature mashup names** (§12.3): approve, rename or swap.
 
 ---
 
@@ -440,9 +445,9 @@ The same engine as the Cybercore project sites, so the wrestling site gets every
 | `hot_pink` | `--hot` | Hover glows, pyro sparks |
 | `acid_green` / `purple` | `--acid` / `--purple` | Badges, Me vs. Meltzer meter |
 
-- **Graphics follow the theme.** The site inlines the logo, emblem, stars, badges and ropes as SVG using `var(--gold)` and the other variables, so they recolor with every theme. The fixed-color files in `brand/` stay for social cards, favicons and print. Phase 1 adds themeable variants to `make_brand.py`.
+- **Graphics follow the theme.** The site inlines the logo, emblem, stars, badges and ropes as SVG using `var(--gold)` and the other variables, so they recolor with every theme. The fixed-color files in `brand/` stay for social cards, favicons and print. `brand/tools/themeable.py` writes the theme-following copies to `src/components/brand/`.
 
-**Signature mashups.** These are *proposed names, for the user to approve* (base = surfaces/text, accent = neons):
+**Signature mashups.** Names approved by the user on 2026-10-16 (base = surfaces/text, accent = neons). The two WWF-era mashups avoid trademarked phrases:
 
 | ID | Name | Base × Accent | Idea |
 |---|---|---|---|
@@ -452,5 +457,7 @@ The same engine as the Cybercore project sites, so the wrestling site gets every
 | `nitro-nights` | **NITRO NIGHTS** | `neosynth-core` × `cyberpunk-neon` | Monday Nitro, mid-90s neon |
 | `dome-show` | **DOME SHOW** | `tokyo-night` × `neosynth-plasma` | Wrestle Kingdom at the Tokyo Dome |
 | `bunkhouse` | **BUNKHOUSE** | `gruvbox-dark` × `dystopian-ash` | Denim, boots and dust; the Bunkhouse Stampede |
+| `red-and-yellow` | **RED & YELLOW** | `dystopian-ash` × `cyberdyne-t800` | The 1980s WWF: yellow and red under the arena lights |
+| `attitude` | **ATTITUDE** | `demon` × `cyberdyne-judgment` | Late-90s WWF: black with scratched-in red |
 
 Before launch, each mashup gets a contrast check (WCAG AA for body text) in both the hub and the match-page layout.

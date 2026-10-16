@@ -1,0 +1,20 @@
+---
+import Base from '../../layouts/Base.astro';
+import Crumbs from '../../components/Crumbs.astro';
+const services = [
+  ['Peacock (WWE library)', 'The WWE archive, which includes WWF, WCW, the Crockett NWA and the ECW libraries, in the US.'],
+  ['WWE Network', 'The WWE archive outside the US, in some regions (in others it has moved to Netflix).'],
+  ['NJPW World', "New Japan's own streaming service, with Wrestle Kingdom and the G1."],
+  ['TrillerTV', 'Pay-per-view and subscription access to many promotions.'],
+  ['IWTV', "Independent Wrestling TV, the indie circuit's streaming home."],
+  ['Official YouTube channels', 'WWE, WWE Vault, AEW, NJPW, TNA and NWA all post full matches. These are the only videos we embed.'],
+];
+---
+<Base title="Where to watch: services" section="/watch/">
+  <Crumbs trail={[['Watch', '/watch/'], ['Services']]} />
+  <section class="section wrap">
+    <p class="eyebrow">Watch</p><h1>Services</h1>
+    <p class="lede">Availability changes by country and over time. Check the service before you subscribe.</p>
+    <div class="grid">{services.map(([name, text]) => <div class="card reveal"><h3>{name}</h3><p class="summary">{text}</p></div>)}</div>
+  </section>
+</Base>

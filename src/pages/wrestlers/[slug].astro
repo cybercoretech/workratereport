@@ -1,0 +1,34 @@
+---
+import { getCollection, getEntries, render } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import Crumbs from '../../components/Crumbs.astro';
+import SectionHead from '../../components/SectionHead.astro';
+import MatchGrid from '../../components/MatchGrid.astro';
+import { matches, byRatingDesc } from '../../lib/site';
+export async function getStaticPaths() {
+  return (await getCollection('wrestlers')).map((w) => ({ params: { slug: w.id }, props: { w } }));
+}
+const { w } = Astro.props;
+const promos = await getEntries(w.data.promotions);
+const factions = await getEntries(w.data.factions);
+const list = (await matches()).filter((m) => m.data.wrestlers.some((x) => x.id === w.id)).sort(byRatingDesc);
+const dna = (await getCollection('dna')).filter((d) => d.data.modern.id === w.id || d.data.classic.id === w.id);
+const { Content } = await render(w);
+const hasBio = (w.body ?? '').replace(/<!--[\s\S]*?-->/g, '').trim().length > 0;
+const legend = w.data.eras.includes('classic');
+---
+<Base title={w.data.name} section="/wrestlers/" vault={legend && !w.data.eras.includes('modern')}>
+  <Crumbs trail={[['Wrestlers', '/wrestlers/'], [legend ? 'Legends' : 'Modern roster', legend ? '/wrestlers/legends/' : '/wrestlers/modern/'], [w.data.name]]} />
+  <section class:list={['hero', legend && 'vault-hero']}><div class="hero-glow" aria-hidden="true"></div><div class="wrap">
+    <p class="eyebrow">{legend ? 'Legend' : 'Modern'} · {promos.map((p) => p.data.short).join(' · ')}</p>
+    <h1>{w.data.name}</h1>
+    <div class="badges">
+      {factions.map((f) => <a class="badge classic" href={`/wrestlers/factions/${f.id}/`}>{f.data.name}</a>)}
+      {dna.map((d) => <a class="badge dna" href={`/dna/${d.id}/`}>DNA: {d.data.title}</a>)}
+    </div>
+  </div></section>
+  <section class="section wrap">
+    {hasBio ? <div class="prose"><Content /></div> : <p class="placeholder">A full profile is being written.</p>}
+  </section>
+  <section class="section wrap"><SectionHead eyebrow="Signature matches" title="Best first" /><MatchGrid list={list} /></section>
+</Base>

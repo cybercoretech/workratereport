@@ -1,0 +1,12 @@
+---
+import { getCollection } from 'astro:content';
+import ListPage from '../../../components/ListPage.astro';
+import { matches, byRatingDesc } from '../../../lib/site';
+export async function getStaticPaths() {
+  const all = await matches();
+  return (await getCollection('promotions')).map((p) => ({ params: { promo: p.id }, props: { p, list: all.filter((m) => m.data.promotion.id === p.id).sort(byRatingDesc) } }));
+}
+const { p, list } = Astro.props;
+---
+<ListPage title={p.data.name} eyebrow={`Match Guide · ${p.data.years}`} lede={p.data.summary} vault={p.data.group !== 'modern'}
+  list={list} trail={[['Match Guide', '/matches/'], ['By promotion', '/matches/promotion/'], [p.data.short]]} />

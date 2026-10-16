@@ -1,0 +1,26 @@
+---
+import Base from '../../layouts/Base.astro';
+import Crumbs from '../../components/Crumbs.astro';
+import MatchGrid from '../../components/MatchGrid.astro';
+import SectionHead from '../../components/SectionHead.astro';
+import { matches } from '../../lib/site';
+import { value } from '../../lib/ratings';
+const all = await matches();
+const both = all.filter((m) => m.data.my_rating !== null && m.data.meltzer_rating !== null)
+  .sort((a, b) => Math.abs(value(b.data.meltzer_rating) - value(b.data.my_rating)) - Math.abs(value(a.data.meltzer_rating) - value(a.data.my_rating)));
+const higher = both.filter((m) => value(m.data.my_rating) > value(m.data.meltzer_rating));
+const lower = both.filter((m) => value(m.data.my_rating) < value(m.data.meltzer_rating));
+const waiting = all.filter((m) => m.data.meltzer_rating !== null && m.data.my_rating === null);
+---
+<Base title="Me vs. Meltzer" section="/me-vs-meltzer/">
+  <Crumbs trail={[['Me vs. Meltzer']]} />
+  <section class="hero"><div class="hero-glow" aria-hidden="true"></div><div class="wrap">
+    <p class="eyebrow">Me vs. Meltzer</p>
+    <h1>Was it <em>really</em> five stars?</h1>
+    <p class="lede">Every match where both of us gave a rating, biggest disagreement first. Our scale stops at five; his doesn't.</p>
+  </div></section>
+  <section class="section wrap"><SectionHead eyebrow="Biggest gaps" title="Disagreements" /><MatchGrid list={both} empty="Once matches have both ratings, the biggest disagreements show up here." /></section>
+  {higher.length > 0 && <section class="section wrap"><SectionHead eyebrow="I rated it higher" title="Underrated by the Observer" /><MatchGrid list={higher} /></section>}
+  {lower.length > 0 && <section class="section wrap"><SectionHead eyebrow="Meltzer rated it higher" title="Overrated?" /><MatchGrid list={lower} /></section>}
+  {waiting.length > 0 && <section class="section wrap"><SectionHead eyebrow="Waiting on my rating" title="Meltzer has spoken" /><MatchGrid list={waiting} /></section>}
+</Base>

@@ -1,0 +1,20 @@
+---
+import { text, label, type Rating } from '../lib/ratings';
+interface Props { rating: Rating; size?: 'sm' | 'lg'; who?: string }
+const { rating, size = 'sm', who } = Astro.props;
+const n = typeof rating === 'number' ? rating : null;
+// Our scale caps at 5; Meltzer can go past it, shown as "+1", "+2".
+const fill = n === null ? 0 : Math.max(0, Math.min(5, n)) / 5;
+const plus = n !== null && n > 5 ? n - 5 : 0;
+---
+{who && <span class="rating-who">{who}</span>}
+{rating === null && <span class="unrated">Not rated yet</span>}
+{rating === 'dud' && <span class="stamp" aria-label="DUD">DUD</span>}
+{n !== null && n < 0 && <span class="stamp" aria-label={label(n)}>MINUS {Math.abs(n)}★</span>}
+{n !== null && n >= 0 && (
+  <span class:list={['stars', size === 'lg' && 'lg']} style={`--r:${fill}`} role="img" aria-label={label(n, plus ? n : 5)}>
+    <span class="stars-row"><i></i></span>
+    {plus > 0 && <span class="stars-plus" aria-hidden="true">+{plus}</span>}
+    {plus === 0 && <span class="stars-text" aria-hidden="true">{text(n)}</span>}
+  </span>
+)}

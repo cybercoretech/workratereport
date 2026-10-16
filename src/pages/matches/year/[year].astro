@@ -1,0 +1,12 @@
+---
+import ListPage from '../../../components/ListPage.astro';
+import { matches, year, byRatingDesc } from '../../../lib/site';
+export async function getStaticPaths() {
+  const all = await matches();
+  return [...new Set(all.map(year))].map((y) => ({ params: { year: String(y) }, props: { list: all.filter((m) => year(m) === y).sort(byRatingDesc) } }));
+}
+const { year: y } = Astro.params;
+const { list } = Astro.props;
+---
+<ListPage title={`${y}`} eyebrow="Match Guide · By year" lede={`Every match from ${y} we've logged, best first.`}
+  list={list} trail={[['Match Guide', '/matches/'], ['By year', '/matches/year/'], [String(y)]]} />

@@ -1,0 +1,111 @@
+---
+import { getCollection, getEntry, getEntries, render } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import Crumbs from '../../components/Crumbs.astro';
+import Stars from '../../components/Stars.astro';
+import Video from '../../components/Video.astro';
+import MatchGrid from '../../components/MatchGrid.astro';
+import SectionHead from '../../components/SectionHead.astro';
+import { fmtDate, matches } from '../../lib/site';
+import { value, isFiveStar } from '../../lib/ratings';
+
+export async function getStaticPaths() {
+  return (await getCollection('matches')).map((m) => ({ params: { slug: m.id }, props: { match: m } }));
+}
+const { match } = Astro.props;
+const m = match.data;
+const promo = await getEntry(m.promotion);
+const people = await getEntries(m.wrestlers);
+const dna = await getEntries(m.dna);
+const { Content } = await render(match);
+const hasReview = (match.body ?? '').replace(/<!--[\s\S]*?-->/g, '').trim().length > 0;
+
+// Tale of the tape: split "A vs. B" (tags and multi-man fall back to the full title)
+const [sideA, sideB] = m.title.split(/\s+vs\.\s+/);
+// Me vs. Meltzer meter: 0% = I rated it higher, 100% = Meltzer did.
+const both = m.my_rating !== null && m.meltzer_rating !== null;
+const diff = both ? value(m.meltzer_rating) - value(m.my_rating) : 0;
+const pos = 50 + Math.max(-45, Math.min(45, diff * 22.5));
+
+const all = await matches();
+const related = all.filter((o) => o.id !== match.id && o.data.wrestlers.some((w) => m.wrestlers.some((x) => x.id === w.id))).slice(0, 3);
+const vault = m.era === 'classic';
+const typeLabel = m.type.replace('-', ' ');
+---
+<Base title={m.title} description={m.summary ?? `${m.title} at ${m.event}, ${fmtDate(m.date)}.`} section={vault ? '/vault/' : '/matches/'} vault={vault}>
+  <Crumbs trail={[[vault ? 'Classic Vault' : 'Match Guide', vault ? '/vault/' : '/matches/'], [promo?.data.short ?? '', `/matches/promotion/${m.promotion.id}/`], [m.title]]} />
+  <header class:list={['tape hero', vault && 'vault-hero', isFiveStar(m.meltzer_rating) || isFiveStar(m.my_rating) ? 'five-star-burst' : '']} style={`view-transition-name: match-${match.id}`}>
+    <div class="hero-glow" aria-hidden="true"></div>
+    <div class="wrap">
+      <div class="badges" style="justify-content:center;margin-bottom:22px">
+        <span class:list={['badge', vault ? 'classic' : 'modern']}>{vault ? 'Classic Vault' : 'Modern era'}</span>
+        {dna.length > 0 && <span class="badge dna">Territory DNA</span>}
+        {m.type !== 'singles' && <span class="badge classic">{typeLabel}</span>}
+      </div>
+      <h1 class="visually-hidden">{m.title}</h1>
+      {sideB ? (
+        <div class="tape-names" aria-hidden="true">
+          <p class="side a">{sideA}</p><span class="vs">VS</span><p class="side b">{sideB}</p>
+        </div>
+      ) : <p class="tape-names side" aria-hidden="true">{m.title}</p>}
+      <p class="tape-event">{m.event} · {fmtDate(m.date)}{m.venue && ` · ${m.venue}`}</p>
+      <div class="ratings-bar">
+        <div class="panel"><span class="rating-who">My rating</span><Stars rating={m.my_rating} size="lg" /></div>
+        <div class="panel"><span class="rating-who">Dave Meltzer, Wrestling Observer</span>{m.meltzer_rating === null ? <span class="unrated">Not on file</span> : <Stars rating={m.meltzer_rating} size="lg" />}</div>
+      </div>
+      {both && (
+        <div class="meter" role="img" aria-label={diff === 0 ? 'We agree' : diff > 0 ? `Meltzer rated it ${diff} stars higher` : `I rated it ${-diff} stars higher`}>
+          <div class="meter-track"><span class="meter-knot" style={`--pos:${pos}%`}></span></div>
+          <div class="meter-labels"><span>I rated it higher</span><span>Meltzer rated it higher</span></div>
+        </div>
+      )}
+    </div>
+  </header>
+
+  <section class="section wrap match-layout">
+    <article>
+      {m.youtube ? <Video id={m.youtube} title={m.title} /> : (
+        <div class="panel watch-box">
+          <p class="eyebrow">Where to watch</p>
+          {m.where_to_watch.length ? <ul>{m.where_to_watch.map((w) => <li>{w}</li>)}</ul> : <p class="muted">Legal viewing options are being checked.</p>}
+          <p class="muted" style="font-size:14px;margin:0">We only embed official uploads and link to licensed services. <a href="/copyright/">Our policy</a></p>
+        </div>
+      )}
+      <div class="section" style="padding-bottom:0">
+        <h2>The review</h2>
+        {hasReview ? <div class="prose"><Content /></div> : <p class="placeholder">The review for this match is being written.</p>}
+      </div>
+    </article>
+    <aside class="panel">
+      <p class="eyebrow">The facts</p>
+      <table class="facts">
+        <tbody>
+          <tr><th scope="row">Promotion</th><td><a href={`/matches/promotion/${m.promotion.id}/`}>{promo?.data.name}</a></td></tr>
+          <tr><th scope="row">Event</th><td>{m.event}</td></tr>
+          <tr><th scope="row">Date</th><td><a href={`/matches/year/${m.date.getUTCFullYear()}/`}>{fmtDate(m.date)}</a></td></tr>
+          {m.venue && <tr><th scope="row">Venue</th><td>{m.venue}</td></tr>}
+          {m.title_match && <tr><th scope="row">Stakes</th><td>{m.title_match}</td></tr>}
+          <tr><th scope="row">Type</th><td style="text-transform:capitalize">{typeLabel}</td></tr>
+          {m.duration && <tr><th scope="row">Time</th><td>{m.duration}</td></tr>}
+          {m.result && <tr><th scope="row">Result</th><td>{m.result}</td></tr>}
+        </tbody>
+      </table>
+      <p class="eyebrow" style="margin-top:24px">In this match</p>
+      <ul class="chips">{people.map((w) => <li><a href={`/wrestlers/${w.id}/`}>{w.data.name}</a></li>)}</ul>
+      {dna.length > 0 && (<>
+        <p class="eyebrow" style="margin-top:24px">Territory DNA</p>
+        <ul class="chips">{dna.map((d) => <li><a href={`/dna/${d.id}/`}>{d.data.title}</a></li>)}</ul>
+      </>)}
+      {m.verify.length > 0 && (
+        <p class="muted" style="font-size:13px;margin-top:24px"><span class="badge verify">Being verified</span><br />{m.verify.join(' · ')}</p>
+      )}
+    </aside>
+  </section>
+
+  {related.length > 0 && (
+    <section class="section wrap">
+      <SectionHead eyebrow="Related" title="More from these wrestlers" />
+      <MatchGrid list={related} />
+    </section>
+  )}
+</Base>

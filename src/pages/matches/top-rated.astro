@@ -1,0 +1,8 @@
+---
+import ListPage from '../../components/ListPage.astro';
+import { matches, byRatingDesc } from '../../lib/site';
+import { value } from '../../lib/ratings';
+const list = (await matches()).filter((m) => value(m.data.my_rating) >= 4.75 || value(m.data.meltzer_rating) >= 5).sort(byRatingDesc);
+---
+<ListPage title="Top rated" eyebrow="Match Guide" lede="Everything at ★★★★¾ or higher on our scale, plus every match Meltzer gave five stars or more."
+  list={list} trail={[['Match Guide', '/matches/'], ['Top rated']]} />
