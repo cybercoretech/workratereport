@@ -178,6 +178,47 @@
     }, 650);
   }
 
+  /* Ring bell: "ding ding" synthesised with WebAudio (no sound file to license).
+   * Off by default; only ever plays right after a click (Play on a video). */
+  const BELL = 'wr-bell';
+  let bellOn = false;
+  try { bellOn = localStorage.getItem(BELL) === 'on'; } catch {}
+  let ctx = null;
+  function strike(at) {
+    const out = ctx.createGain();
+    out.gain.setValueAtTime(0.0001, at);
+    out.gain.exponentialRampToValueAtTime(0.5, at + 0.005);
+    out.gain.exponentialRampToValueAtTime(0.0001, at + 1.8);
+    out.connect(ctx.destination);
+    // Inharmonic partials give a metallic, bell-like ring.
+    [[1180, 1], [2390, 0.45], [3570, 0.3], [5220, 0.16], [6840, 0.08]].forEach(([f, g]) => {
+      const o = ctx.createOscillator(), og = ctx.createGain();
+      o.type = 'sine'; o.frequency.setValueAtTime(f, at);
+      og.gain.value = g; o.connect(og).connect(out);
+      o.start(at); o.stop(at + 1.9);
+    });
+  }
+  function ringBell() {
+    if (!bellOn || reduced.matches) return;
+    try {
+      ctx = ctx || new (window.AudioContext || window.webkitAudioContext)();
+      const t = ctx.currentTime + 0.02;
+      strike(t); strike(t + 0.32);
+    } catch {}
+  }
+  window.WRBell = ringBell;
+  document.querySelectorAll('[data-bell-toggle]').forEach((btn) => {
+    const sync = () => { btn.setAttribute('aria-pressed', String(bellOn)); btn.querySelector('[data-bell-state]').textContent = bellOn ? 'ON' : 'OFF'; };
+    sync();
+    btn.addEventListener('click', () => {
+      bellOn = !bellOn;
+      try { localStorage.setItem(BELL, bellOn ? 'on' : 'off'); } catch {}
+      document.querySelectorAll('[data-bell-toggle]').forEach((b) => { b.setAttribute('aria-pressed', String(bellOn)); b.querySelector('[data-bell-state]').textContent = bellOn ? 'ON' : 'OFF'; });
+      if (bellOn) ringBell(); // a preview, and it unlocks audio on this click
+    });
+  });
+  document.addEventListener('click', (e) => { if (e.target.closest('.video[data-yt] button')) ringBell(); });
+
   /* Ticker: duplicate the track so the marquee loops seamlessly */
   document.querySelectorAll('.ticker-track').forEach((t) => {
     const copy = t.cloneNode(true);

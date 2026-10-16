@@ -1,0 +1,23 @@
+---
+import Base from '../../layouts/Base.astro';
+import Crumbs from '../../components/Crumbs.astro';
+import MatchGrid from '../../components/MatchGrid.astro';
+import { byDay, allDays, dayLabel } from '../../lib/onthisday';
+export async function getStaticPaths() {
+  const days = await byDay();
+  return allDays().map((k) => ({ params: { day: k }, props: { list: days.get(k) ?? [] } }));
+}
+const { day } = Astro.params;
+const { list } = Astro.props;
+const all = allDays();
+const i = all.indexOf(day!);
+const prev = all[(i + all.length - 1) % all.length], next = all[(i + 1) % all.length];
+---
+<Base title={`On this day: ${dayLabel(day!)}`} section="/on-this-day/" description={`Wrestling history from ${dayLabel(day!)}.`}>
+  <Crumbs trail={[['On this day', '/on-this-day/'], [dayLabel(day!)]]} />
+  <section class="section wrap">
+    <p class="eyebrow">On this day</p><h1>{dayLabel(day!)}</h1>
+    <div class="btn-row" style="margin:0 0 28px"><a class="btn ghost" href={`/on-this-day/${prev}/`}>← {dayLabel(prev)}</a><a class="btn ghost" href={`/on-this-day/${next}/`}>{dayLabel(next)} →</a></div>
+    <MatchGrid list={list} empty={`No matches from ${dayLabel(day!)} on the site yet.`} />
+  </section>
+</Base>

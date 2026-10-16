@@ -12,6 +12,7 @@ A pro wrestling match-review site. It covers modern wrestling first (WWE, AEW, N
 - **Phase 1 · Skeleton:** built. Astro static site with 83 pages, the ring-rope hamburger drawer, the Cybercore theme picker (90 themes), Pyro effects and 12 launch matches.
 - **Live:** 🌐 **https://workrate-report.pages.dev/** (Cloudflare Pages, auto-deploys from `main`).
 - **Phase 2A · Author's Desk:** a private `/desk/` page to write and publish reviews and columns from the browser.
+- **Phase 3:** On This Day (homepage block, ticker item, calendar, 366 day pages), the Me vs. Meltzer scoreboard (agreement, average gap, by promotion), and an optional ring-bell sound on video play.
 - **Promotions page:** 26 companies (majors, independents, Vault, territories) with bios, founders, owners, standout stars, official sites and free-license logos.
 - **Phase 2B · Depth:** search, 149 wrestler profiles with photos and bios, Lists, Columns, Starter Paths, Then & Now, Vault events and feuds, ECW and ROH, and a contrast guard on all 90 themes.
 

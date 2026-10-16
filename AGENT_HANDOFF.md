@@ -63,6 +63,8 @@ The state of the project for the next agent (or person). Update it with every ph
 - **Class-name collisions:** don't name component classes `card` or `hero` (global rules). The photo frame uses `is-card` / `is-hero`.
 - **Promotion facts:** hand-checked frontmatter wins over Wikidata. Wikidata had Evolve's founder wrong (it's Sapolsky and Hamaoui, not Davey Richards), lists every past ROH owner, and has TNA's old Impact logo. Unconfirmed facts are left blank (e.g. West Coast Pro and HOG owners), never guessed.
 - **Astro 7 preview:** only one preview server runs at a time; stop it with `npx astro preview stop`.
+- **On This Day is client-side:** the site is static, so `public/js/onthisday.js` picks "today" in the visitor's time zone from `/data/on-this-day.json` (built by `src/pages/data/on-this-day.json.ts`). The 366 `/on-this-day/<mm-dd>/` pages are static.
+- **Bell:** WebAudio synthesis in `pyro.js` (`window.WRBell`), off by default (`wr-bell`), and only ever played on a click, because browsers block audio without a user gesture.
 - **Contrast:** never use `var(--red)`/`var(--blue)` for text; use `--red-text`/`--blue-text`. The CI audit fails if any theme drops below target.
 - `functions/` has its own tsconfig (Workers types) and is excluded from the root one; `npm run check` runs both.
 - **When the content schema changes, update `functions/_lib/content.ts` too**, or the desk could publish a file the build rejects. Cloudflare would then keep the old version live, but the review wouldn't appear.
@@ -86,7 +88,8 @@ The state of the project for the next agent (or person). Update it with every ph
 - **#4** Phase 2A: Author's Desk (merged).
 - **#5** Roster to 138 wrestlers, 0.01-precision ratings, forum option C recorded (merged).
 - **#6** Phase 2B: search, ECW/ROH, photos + facts + bios, lists, columns (+ desk), starter paths, Then & Now, events, feuds, contrast guard (merged).
-- **#7** Promotions page: 26 companies with bios/facts/logos; 12 new promotions; 30 wrestlers tagged.
+- **#7** Promotions page: 26 companies with bios/facts/logos; 12 new promotions; 30 wrestlers tagged (merged).
+- **#8** Phase 3: On This Day, Me vs. Meltzer scoreboard, ring bell.
 
 ## 🧪 How Phase 2A was verified
 
@@ -107,6 +110,6 @@ The state of the project for the next agent (or person). Update it with every ph
 - Contrast audit: 90 themes, 109 failing pairs before the guard, 0 after.
 - Screenshots: wrestlers A–Z, Flair profile, Lesnar placeholder (390px), feud page, search; the theme drive test still lists 90 themes with no errors.
 
-## ⏭️ Next (Phase 3, BLUEPRINT §10)
+## ⏭️ Next
 
-Phase 3: Me vs. Meltzer depth, On This Day, the full Pyro set; Phase 3B: Google sign-in, profiles, fan ratings, forum (option C). Content for the author: Vault promotion histories, starter paths, hand-picked lists, columns.
+1. **Full wrestler bios** (user, 2026-10-16): real names, previous ring names and gimmicks, breakout moment, signature match, multi-paragraph bios, using Wikipedia as the **fact source** (original prose plus a source link; never copy CC BY-SA text). 2. **Phase 3B community:** Google sign-in, profiles, fan ratings, forum (option C). Content for the author: Vault promotion histories, starter paths, hand-picked lists, columns.
