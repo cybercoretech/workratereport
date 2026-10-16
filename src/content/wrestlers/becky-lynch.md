@@ -1,6 +1,6 @@
 ---
 name: "Becky Lynch"
-promotions: [wwe]
+promotions: [wwe, nxt]
 eras: [modern]
 featured: false
 ---

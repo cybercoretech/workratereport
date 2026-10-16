@@ -1,6 +1,6 @@
 ---
 name: "Charlotte Flair"
-promotions: [wwe]
+promotions: [wwe, nxt]
 eras: [modern]
 featured: false
 ---

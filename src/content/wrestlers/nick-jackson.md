@@ -1,6 +1,6 @@
 ---
 name: "Nick Jackson"
-promotions: [aew, njpw, indies, roh]
+promotions: [aew, njpw, indies, roh, pwg, tna]
 eras: [modern]
 featured: false
 ---

@@ -1,6 +1,6 @@
 ---
 name: "Will Ospreay"
-promotions: [njpw, aew]
+promotions: [njpw, aew, revpro, progress, pwg]
 eras: [modern]
 featured: true
 ---

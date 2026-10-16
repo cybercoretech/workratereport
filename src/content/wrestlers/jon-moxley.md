@@ -1,6 +1,6 @@
 ---
 name: "Jon Moxley"
-promotions: [wwe, aew, njpw]
+promotions: [wwe, aew, njpw, czw, gcw]
 eras: [modern]
 featured: false
 ---

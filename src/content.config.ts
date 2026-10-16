@@ -63,8 +63,17 @@ const promotions = defineCollection({
     years: z.string(),
     vault: z.boolean().default(false),
     group: z.enum(['modern', 'vault', 'territory']).default('modern'),
+    // Promotions page section: the majors, or the independents.
+    tier: z.enum(['major', 'independent']).default('major'),
     order: z.number().default(50),
     summary: z.string(),
+    // Company facts, checked by hand (Wikidata facts in src/data are the fallback).
+    founded: z.string().optional(),
+    founders: z.array(z.string()).default([]),
+    owner: z.string().optional(),
+    based: z.string().optional(),
+    website: z.string().url().optional(),
+    standouts: z.array(z.string()).default([]),
   }),
 });
 

@@ -1,6 +1,6 @@
 ---
 name: "Gunther"
-promotions: [wwe, indies]
+promotions: [wwe, indies, progress, nxt]
 eras: [modern]
 featured: false
 ---

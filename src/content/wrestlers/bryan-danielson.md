@@ -1,6 +1,6 @@
 ---
 name: "Bryan Danielson"
-promotions: [wwe, aew, indies, roh]
+promotions: [wwe, aew, indies, roh, pwg, evolve]
 eras: [modern]
 featured: false
 ---

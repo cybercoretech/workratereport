@@ -1,6 +1,6 @@
 ---
 name: "Seth Rollins"
-promotions: [wwe, indies, roh]
+promotions: [wwe, indies, roh, nxt]
 eras: [modern]
 featured: false
 ---

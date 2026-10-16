@@ -1,0 +1,12 @@
+---
+// A promotion's logo when Commons has a free-licensed one; otherwise the
+// site's own badge with the promotion's name (never a copy of their artwork).
+import { promoFacts } from '../lib/promos';
+interface Props { slug: string; short: string; size?: 'sm' | 'lg' }
+const { slug, short, size = 'sm' } = Astro.props;
+const logo = promoFacts(slug)?.logo;
+---
+<span class:list={['plogo', `is-${size}`, !logo && 'is-badge']}>
+  {logo ? <img src={logo.src} width={logo.width} height={logo.height} alt={`${short} logo`} loading="lazy" decoding="async" />
+        : <span class="plogo-text" aria-label={short}>{short}</span>}
+</span>

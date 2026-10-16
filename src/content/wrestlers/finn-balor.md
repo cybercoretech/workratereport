@@ -1,6 +1,6 @@
 ---
 name: "Finn Bálor"
-promotions: [njpw, wwe]
+promotions: [njpw, wwe, nxt]
 eras: [modern]
 featured: false
 ---

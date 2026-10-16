@@ -1,6 +1,6 @@
 ---
 name: "Samoa Joe"
-promotions: [tna, wwe, aew, indies, roh]
+promotions: [tna, wwe, aew, indies, roh, pwg, nxt]
 eras: [modern]
 featured: false
 ---

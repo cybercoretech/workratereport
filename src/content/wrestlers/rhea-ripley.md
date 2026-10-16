@@ -1,6 +1,6 @@
 ---
 name: "Rhea Ripley"
-promotions: [wwe]
+promotions: [wwe, nxt]
 eras: [modern]
 featured: false
 ---

@@ -1,6 +1,6 @@
 ---
 name: "Tetsuya Naito"
-promotions: [njpw]
+promotions: [njpw, cmll]
 eras: [modern]
 featured: false
 ---

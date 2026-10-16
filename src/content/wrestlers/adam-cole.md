@@ -1,6 +1,6 @@
 ---
 name: "Adam Cole"
-promotions: [aew, wwe, indies, roh]
+promotions: [aew, wwe, indies, roh, pwg, nxt]
 eras: [modern]
 featured: false
 ---

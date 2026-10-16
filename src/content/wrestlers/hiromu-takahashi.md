@@ -1,6 +1,6 @@
 ---
 name: "Hiromu Takahashi"
-promotions: [njpw]
+promotions: [njpw, cmll]
 eras: [modern]
 featured: false
 ---

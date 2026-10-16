@@ -1,0 +1,437 @@
+{
+  "wwe": {
+    "qid": "Q35339",
+    "label": "WWE",
+    "founded": "1952-01-01",
+    "dissolved": null,
+    "founders": [
+      "Jess McMahon"
+    ],
+    "owners": [
+      "TKO Group Holdings"
+    ],
+    "headquarters": "Stamford",
+    "country": "United States",
+    "website": "https://www.wwe.com/",
+    "logo": {
+      "src": "/promotions/wwe.png",
+      "width": 212,
+      "height": 200,
+      "credit": "WWE/John Lefteratos",
+      "license": "Public domain",
+      "license_url": null,
+      "source": "https://commons.wikimedia.org/wiki/File:WWE_Official_Logo.svg"
+    },
+    "logo_rejected": null
+  },
+  "wwf": {
+    "qid": "Q35339",
+    "label": "WWE",
+    "founded": "1952-01-01",
+    "dissolved": null,
+    "founders": [
+      "Jess McMahon"
+    ],
+    "owners": [
+      "TKO Group Holdings"
+    ],
+    "headquarters": "Stamford",
+    "country": "United States",
+    "website": "https://www.wwe.com/",
+    "logo": null,
+    "logo_rejected": null
+  },
+  "aew": {
+    "qid": "Q60324825",
+    "label": "All Elite Wrestling",
+    "founded": "2019-01-01",
+    "dissolved": null,
+    "founders": [
+      "Shahid Khan",
+      "Tony Khan"
+    ],
+    "owners": [],
+    "headquarters": null,
+    "country": "United States",
+    "website": "https://www.allelitewrestling.com/",
+    "logo": {
+      "src": "/promotions/aew.png",
+      "width": 400,
+      "height": 200,
+      "credit": "All Elite Wrestling",
+      "license": "Public domain",
+      "license_url": null,
+      "source": "https://commons.wikimedia.org/wiki/File:All_Elite_Wrestling_logo_2023.png"
+    },
+    "logo_rejected": null
+  },
+  "njpw": {
+    "qid": "Q1150494",
+    "label": "New Japan Pro-Wrestling",
+    "founded": "1972-01-13",
+    "dissolved": null,
+    "founders": [
+      "Antonio Inoki"
+    ],
+    "owners": [
+      "Bushiroad"
+    ],
+    "headquarters": "Nakano",
+    "country": "Japan",
+    "website": "https://www.njpw.co.jp/",
+    "logo": null,
+    "logo_rejected": null
+  },
+  "tna": {
+    "qid": "Q131728",
+    "label": "Total Nonstop Action Wrestling",
+    "founded": "2002-05-10",
+    "dissolved": null,
+    "founders": [
+      "Jeff Jarrett",
+      "Jerry Jarrett",
+      "Bob Ryder"
+    ],
+    "owners": [],
+    "headquarters": "Nashville",
+    "country": "United States",
+    "website": "https://tnawrestling.com/",
+    "logo": null,
+    "logo_rejected": null
+  },
+  "roh": {
+    "qid": "Q588459",
+    "label": "Ring of Honor",
+    "founded": "2002",
+    "dissolved": null,
+    "founders": [
+      "Gabe Sapolsky",
+      "Rob Feinstein"
+    ],
+    "owners": [
+      "Cary Silkin",
+      "Tony Khan",
+      "Rob Feinstein"
+    ],
+    "headquarters": null,
+    "country": "United States",
+    "website": "https://www.rohwrestling.com/",
+    "logo": {
+      "src": "/promotions/roh.png",
+      "width": 364,
+      "height": 200,
+      "credit": "Original: Ring of Honor Vector: DarkVoidPictures",
+      "license": "Public domain",
+      "license_url": null,
+      "source": "https://commons.wikimedia.org/wiki/File:Ring_Of_Honor_(2022)_Logo.svg"
+    },
+    "logo_rejected": null
+  },
+  "nxt": {
+    "qid": "Q35903",
+    "label": "WWE NXT",
+    "founded": "2010-02-23",
+    "dissolved": null,
+    "founders": [
+      "Triple H"
+    ],
+    "owners": [
+      "WWE"
+    ],
+    "headquarters": "Orlando",
+    "country": null,
+    "website": "https://www.wwe.com/shows/wwenxt",
+    "logo": null,
+    "logo_rejected": null
+  },
+  "mlw": {
+    "qid": "Q1488298",
+    "label": "Major League Wrestling",
+    "founded": "2002",
+    "dissolved": null,
+    "founders": [],
+    "owners": [],
+    "headquarters": "Philadelphia",
+    "country": "United States",
+    "website": "https://mlw.com/",
+    "logo": null,
+    "logo_rejected": null
+  },
+  "gcw": {
+    "qid": "Q85762606",
+    "label": "Game Changer Wrestling",
+    "founded": "1999-01",
+    "dissolved": null,
+    "founders": [],
+    "owners": [
+      "Brett Lauderdale"
+    ],
+    "headquarters": null,
+    "country": "United States",
+    "website": null,
+    "logo": {
+      "src": "/promotions/gcw.png",
+      "width": 400,
+      "height": 191,
+      "credit": "Game Changer Wrestling",
+      "license": "Public domain",
+      "license_url": null,
+      "source": "https://commons.wikimedia.org/wiki/File:Game_Changer_Wrestling_Logo_(black).png"
+    },
+    "logo_rejected": null
+  },
+  "hog": {
+    "qid": "Q25000598",
+    "label": "House of Glory",
+    "founded": "2012",
+    "dissolved": null,
+    "founders": [],
+    "owners": [],
+    "headquarters": null,
+    "country": "United States",
+    "website": "http://www.hogwrestling.net/",
+    "logo": null,
+    "logo_rejected": null
+  },
+  "west-coast-pro": {
+    "qid": "Q138004957",
+    "label": "West Coast Pro Wrestling",
+    "founded": "2018",
+    "dissolved": null,
+    "founders": [],
+    "owners": [],
+    "headquarters": "San Francisco",
+    "country": "United States",
+    "website": "https://www.westcoastprowrestling.com",
+    "logo": null,
+    "logo_rejected": null
+  },
+  "pwg": {
+    "qid": "Q592276",
+    "label": "Pro Wrestling Guerrilla",
+    "founded": "2003",
+    "dissolved": null,
+    "founders": [],
+    "owners": [],
+    "headquarters": "Southern California",
+    "country": "United States",
+    "website": "http://www.prowrestlingguerrilla.com/",
+    "logo": null,
+    "logo_rejected": null
+  },
+  "revpro": {
+    "qid": "Q21006854",
+    "label": "Revolution Pro Wrestling",
+    "founded": "2012",
+    "dissolved": null,
+    "founders": [],
+    "owners": [],
+    "headquarters": "Portsmouth",
+    "country": "United Kingdom",
+    "website": "https://www.revolutionprowrestling.com/",
+    "logo": null,
+    "logo_rejected": null
+  },
+  "progress": {
+    "qid": "Q7248581",
+    "label": "Progress Wrestling",
+    "founded": "2011",
+    "dissolved": null,
+    "founders": [],
+    "owners": [],
+    "headquarters": null,
+    "country": "United Kingdom",
+    "website": "https://www.progresswrestling.com/",
+    "logo": null,
+    "logo_rejected": null
+  },
+  "czw": {
+    "qid": "Q1113590",
+    "label": "Combat Zone Wrestling",
+    "founded": "1998",
+    "dissolved": null,
+    "founders": [
+      "John Zandig"
+    ],
+    "owners": [],
+    "headquarters": "Philadelphia",
+    "country": "United States",
+    "website": "http://www.czwrestling.com/",
+    "logo": null,
+    "logo_rejected": null
+  },
+  "cmll": {
+    "qid": "Q1207955",
+    "label": "Consejo Mundial de Lucha Libre",
+    "founded": "1933",
+    "dissolved": null,
+    "founders": [
+      "Salvador Lutteroth"
+    ],
+    "owners": [],
+    "headquarters": "Mexico City",
+    "country": "Mexico",
+    "website": "http://www.cmll.com",
+    "logo": null,
+    "logo_rejected": null
+  },
+  "nwa": {
+    "qid": "Q1068680",
+    "label": "National Wrestling Alliance",
+    "founded": "1948",
+    "dissolved": null,
+    "founders": [],
+    "owners": [],
+    "headquarters": "Houston",
+    "country": "United States",
+    "website": "https://www.nationalwrestlingalliance.com/",
+    "logo": null,
+    "logo_rejected": null
+  },
+  "evolve": {
+    "qid": "Q4921457",
+    "label": "Evolve",
+    "founded": "2009",
+    "dissolved": "2020-07-02",
+    "founders": [
+      "Davey Richards"
+    ],
+    "owners": [],
+    "headquarters": "Philadelphia",
+    "country": "United States",
+    "website": "http://www.evolvewrestling.com/",
+    "logo": null,
+    "logo_rejected": null
+  },
+  "jcp-nwa": {
+    "qid": "Q1931754",
+    "label": "Jim Crockett Promotions",
+    "founded": "1931",
+    "dissolved": "1988",
+    "founders": [
+      "Jim Crockett"
+    ],
+    "owners": [
+      "Jim Crockett"
+    ],
+    "headquarters": "Charlotte",
+    "country": "United States",
+    "website": null,
+    "logo": {
+      "src": "/promotions/jcp-nwa.png",
+      "width": 234,
+      "height": 200,
+      "credit": "Jim Crockett Promotions",
+      "license": "Public domain",
+      "license_url": null,
+      "source": "https://commons.wikimedia.org/wiki/File:Jim_Crockett_Promotions_(Logo).svg"
+    },
+    "logo_rejected": null
+  },
+  "wcw": {
+    "qid": "Q130171",
+    "label": "World Championship Wrestling",
+    "founded": "1988-10-11",
+    "dissolved": "2001-03-26",
+    "founders": [
+      "Ted Turner"
+    ],
+    "owners": [
+      "WWE"
+    ],
+    "headquarters": "Atlanta",
+    "country": "United States",
+    "website": "http://www.wwe.com/classics/wcw/",
+    "logo": {
+      "src": "/promotions/wcw.png",
+      "width": 400,
+      "height": 139,
+      "credit": "WCW",
+      "license": "Public domain",
+      "license_url": null,
+      "source": "https://commons.wikimedia.org/wiki/File:Wcw_logo.svg"
+    },
+    "logo_rejected": null
+  },
+  "ecw": {
+    "qid": "Q73002",
+    "label": "Extreme Championship Wrestling",
+    "founded": "1992-04-25",
+    "dissolved": "2001-04-04",
+    "founders": [
+      "Tod Gordon",
+      "Paul Heyman"
+    ],
+    "owners": [
+      "Paul Heyman",
+      "Tod Gordon",
+      "Vince McMahon",
+      "WWE"
+    ],
+    "headquarters": "Philadelphia",
+    "country": "United States",
+    "website": "http://www.wwe.com/shows/ecw",
+    "logo": null,
+    "logo_rejected": null
+  },
+  "mid-south": {
+    "qid": "Q4520528",
+    "label": "Universal Wrestling Federation",
+    "founded": "1986",
+    "dissolved": "1987",
+    "founders": [
+      "Bill Watts"
+    ],
+    "owners": [],
+    "headquarters": "Bixby",
+    "country": "United States",
+    "website": null,
+    "logo": null,
+    "logo_rejected": null
+  },
+  "memphis": {
+    "qid": "Q1128866",
+    "label": "Continental Wrestling Association",
+    "founded": "1977",
+    "dissolved": "1989",
+    "founders": [
+      "Jerry Jarrett"
+    ],
+    "owners": [],
+    "headquarters": "Memphis",
+    "country": "United States",
+    "website": "http://www.onlineworldofwrestling.com/promotions/cwa.html",
+    "logo": null,
+    "logo_rejected": null
+  },
+  "awa": {
+    "qid": "Q467330",
+    "label": "American Wrestling Association",
+    "founded": "1960",
+    "dissolved": "1991",
+    "founders": [
+      "Verne Gagne"
+    ],
+    "owners": [],
+    "headquarters": "Minneapolis",
+    "country": "United States",
+    "website": null,
+    "logo": null,
+    "logo_rejected": null
+  },
+  "world-class": {
+    "qid": "Q1817448",
+    "label": "World Class Championship Wrestling",
+    "founded": "1966",
+    "dissolved": "1990",
+    "founders": [],
+    "owners": [
+      "Fritz Von Erich"
+    ],
+    "headquarters": "Dallas",
+    "country": "United States",
+    "website": null,
+    "logo": null,
+    "logo_rejected": null
+  }
+}

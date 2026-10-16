@@ -4,6 +4,9 @@
 import { getCollection } from 'astro:content';
 import InfoPage from '../../components/InfoPage.astro';
 import { allPhotos } from '../../lib/facts';
+import { allLogos } from '../../lib/promos';
+const promoNames = Object.fromEntries((await getCollection('promotions')).map((p) => [p.id, p.data.name]));
+const logos = allLogos().filter((l) => promoNames[l.slug]);
 const names = Object.fromEntries((await getCollection('wrestlers')).map((w) => [w.id, w.data.name]));
 const photos = allPhotos().filter((p) => names[p.slug]).sort((a, b) => names[a.slug].localeCompare(names[b.slug]));
 ---
@@ -14,6 +17,16 @@ const photos = allPhotos().filter((p) => names[p.slug]).sort((a, b) => names[a.s
       <div class="credit-item">
         <img src={photo.src} alt="" loading="lazy" width="64" height="80" />
         <div><b><a href={`/wrestlers/${slug}/`}>{names[slug]}</a></b>{photo.credit} · {photo.license_url ? <a href={photo.license_url} rel="license noopener" target="_blank">{photo.license}</a> : photo.license} · <a href={photo.source} rel="noopener" target="_blank">source</a></div>
+      </div>
+    ))}
+  </div>
+  <h2 style="margin-top:48px">Promotion logos</h2>
+  <p>Shown only where Wikimedia Commons lists a free license (usually simple text logos in the public domain). Logos are trademarks of their owners and appear only to identify the promotions.</p>
+  <div class="credits-grid" style="font-family:var(--ui);margin-top:20px">
+    {logos.map(({ slug, logo }) => (
+      <div class="credit-item">
+        <img src={logo.src} alt="" loading="lazy" width="64" height="40" style="object-fit:contain;height:40px;background:#fff1" />
+        <div><b><a href={`/promotions/${slug}/`}>{promoNames[slug]}</a></b>{logo.credit} · {logo.license_url ? <a href={logo.license_url} rel="license noopener" target="_blank">{logo.license}</a> : logo.license} · <a href={logo.source} rel="noopener" target="_blank">source</a></div>
       </div>
     ))}
   </div>
