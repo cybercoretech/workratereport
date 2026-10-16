@@ -91,4 +91,65 @@ const dna = defineCollection({
   }),
 });
 
-export const collections = { matches, wrestlers, promotions, factions, dna };
+// Ranked lists written by the author. Automatic lists (every five-star match,
+// best of each year...) are built in src/lib/lists.ts from the ratings.
+const lists = defineCollection({
+  loader: glob({ pattern: '**/*.md', base: './src/content/lists' }),
+  schema: z.object({
+    title: z.string(),
+    date: z.coerce.date(),
+    summary: z.string(),
+    items: z.array(z.object({ match: reference('matches'), note: z.string().optional() })).min(1),
+    featured: z.boolean().default(false),
+  }),
+});
+
+const columns = defineCollection({
+  loader: glob({ pattern: '**/*.md', base: './src/content/columns' }),
+  schema: z.object({
+    title: z.string(),
+    date: z.coerce.date(),
+    series: z.enum(['i-was-there', 'analysis']),
+    summary: z.string(),
+    matches: z.array(reference('matches')).default([]),
+    wrestlers: z.array(reference('wrestlers')).default([]),
+    featured: z.boolean().default(false),
+  }),
+});
+
+// Starter paths: an ordered watch list for newcomers.
+const paths = defineCollection({
+  loader: glob({ pattern: '**/*.md', base: './src/content/paths' }),
+  schema: z.object({
+    title: z.string(),
+    summary: z.string(),
+    steps: z.array(z.object({ match: reference('matches'), why: z.string().optional() })).min(1),
+    featured: z.boolean().default(false),
+  }),
+});
+
+// Event series (Starrcade, WrestleMania...). Editions are matched from each
+// match's `event` text, so no per-match tagging is needed.
+const events = defineCollection({
+  loader: glob({ pattern: '**/*.md', base: './src/content/events' }),
+  schema: z.object({
+    name: z.string(),
+    promotions: z.array(reference('promotions')).min(1),
+    years: z.string(),
+    match_events: z.array(z.string()).min(1),   // event-name prefixes, e.g. ["Starrcade"]
+    summary: z.string(),
+  }),
+});
+
+// Feuds: matches are found by tag `feud-<id>` or by both wrestlers appearing.
+const feuds = defineCollection({
+  loader: glob({ pattern: '**/*.md', base: './src/content/feuds' }),
+  schema: z.object({
+    name: z.string(),
+    sides: z.array(reference('wrestlers')).length(2),
+    years: z.string(),
+    summary: z.string(),
+  }),
+});
+
+export const collections = { matches, wrestlers, promotions, factions, dna, lists, columns, paths, events, feuds };

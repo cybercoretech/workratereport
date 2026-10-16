@@ -338,7 +338,7 @@ The site itself renders ratings with a CSS star component (one gold star row cli
 ## 9. Legal & content policy
 
 - **Video:** embed **official uploads only** (WWE, WWE Vault, AEW, NJPW, TNA, NWA, promotions' own channels). Otherwise link to licensed services. Never link to unofficial uploads.
-- **Images:** own photos, licensed images, or images used under the promoter's media terms. No Google Images grabs.
+- **Images:** own photos, licensed images, or images used under the promoter's media terms. No Google Images grabs. Wrestler photos are Wikimedia Commons files under free licenses (CC0, PD, CC BY, CC BY-SA), credited on each profile and on `/credits/`; resized copies keep the original license.
 - **Text:** all reviews are original. Facts (results, dates, times) are free to use. Quote other writers briefly, with credit.
 - **Ratings:** Meltzer ratings are quoted individually with attribution. No bulk copying from Cagematch.
 - **/copyright page:** states the embed policy and gives **info@cybercoretech.net** for takedown requests, with a promise to act fast.
@@ -353,7 +353,8 @@ The site itself renders ratings with a CSS star component (one gold star row cli
 | **0 · Brand** ✅ | Name, domain check, graphics, this blueprint |
 | **1 · Skeleton** ✅ (live 2026-10-16) | Astro project, layouts, header and footer, **hamburger drawer + theme picker** (§12), match page, section hubs, Match Guide list, first 10 matches, deploy to `pages.dev` |
 | **2A · Author's Desk** ✅ | Password-protected `/desk/` editor that publishes reviews live (§13.1), D1 database, Pages Functions |
-| **2 · Depth** | Wrestler profiles, Vault promotion pages, filters, Pagefind search |
+| **2B · Depth** ✅ | Pagefind search; ECW (Vault) and ROH (modern); 149 wrestlers with Commons photos, Wikidata facts and bios; Lists (auto + hand-picked); Columns (+ desk tab); Starter Paths; Then & Now; Vault events and feuds; contrast guard + CI audit |
+| **2 · Depth (original plan)** | Wrestler profiles, Vault promotion pages, filters, Pagefind search |
 | **3 · Signature** | Territory DNA (MJF ↔ Flair first), Me vs. Meltzer, On This Day, Starter Paths, **full Pyro effects set** (§12.2) |
 | **3B · Members & forum** | Google sign-in, profiles, fan ratings, forum (option chosen from §13.3) |
 | **4 · Grow** | Buy domain, analytics, newsletter, dead-embed CI, columns cadence |
@@ -469,7 +470,7 @@ Before launch, each mashup gets a contrast check (WCAG AA for body text) in both
 
 Added 2026-10-16. The site stays static and fast; everything interactive runs as **Cloudflare Pages Functions** (`functions/`) with a **D1 database** (`workrate-report`, binding `DB`, schema in `migrations/`).
 
-### 13.1 Author's Desk (built in Phase 2A)
+### 13.1 Author's Desk (built in Phase 2A; Columns tab added in 2B)
 
 A private page at **`/desk/`** where the owner writes and publishes reviews. It isn't linked anywhere on the public site, is `noindex`, and is blocked in `robots.txt`.
 

@@ -292,5 +292,83 @@
     renderList(); loadLog();
   });
 
+  /* ---------- columns tab ---------- */
+  const cform = $('#columnForm');
+  let currentColumn = null;
+  const setTab = (tab) => {
+    $$('[data-tab]').forEach((b) => b.setAttribute('aria-selected', String(b.dataset.tab === tab)));
+    $('#matchPane').hidden = tab !== 'matches';
+    $('#columnPane').hidden = tab !== 'columns';
+    $('#newMatch').hidden = tab !== 'matches';
+    $('#newColumn').hidden = tab !== 'columns';
+    $('#deskTitle').textContent = tab === 'columns' ? 'Write a column' : 'Write a review';
+    if (tab === 'columns') { renderColumns(); if (!currentColumn) openColumn(null); }
+  };
+  $$('[data-tab]').forEach((b) => b.addEventListener('click', () => setTab(b.dataset.tab)));
+  $('#newColumn').addEventListener('click', () => openColumn(null));
+
+  function renderColumns() {
+    const list = catalog.columns || [];
+    $('#columnList').innerHTML = list.map((c) => `<li><button type="button" data-col="${esc(c.id)}" aria-current="${c.id === currentColumn}"><b>${esc(c.data.title)}</b><span>${esc(c.data.series === 'analysis' ? 'Analysis' : 'I Was There')} · ${esc(c.data.date)}</span></button></li>`).join('') || '<li class="desk-hint">No columns yet. Write the first one.</li>';
+  }
+  $('#columnList').addEventListener('click', (e) => { const b = e.target.closest('[data-col]'); if (b) openColumn(b.dataset.col); });
+
+  function openColumn(id) {
+    currentColumn = id;
+    const c = id && (catalog.columns || []).find((x) => x.id === id);
+    const d = c ? c.data : { date: new Date().toISOString().slice(0, 10), series: 'i-was-there' };
+    for (const k of ['title', 'date', 'summary']) cform.elements[k].value = d[k] ?? '';
+    cform.elements.series.value = d.series || 'i-was-there';
+    cform.elements.matches.value = (d.matches || []).join('\n');
+    cform.elements.wrestlers.value = (d.wrestlers || []).join('\n');
+    cform.elements.featured.checked = Boolean(d.featured);
+    cform.elements.body.value = c ? c.body : '';
+    let draft = null;
+    try { draft = JSON.parse(localStorage.getItem(`wr-desk-col:${id || 'new'}`) || 'null'); } catch {}
+    if (draft) { for (const [k, v] of Object.entries(draft)) if (cform.elements[k]) { if (cform.elements[k].type === 'checkbox') cform.elements[k].checked = v; else cform.elements[k].value = v; } }
+    $('#columnMode').textContent = c ? `Editing · ${c.id}` : 'New column';
+    $('#columnMsg').textContent = draft ? 'Restored your unpublished draft.' : '';
+    renderColumnPreview(); renderColumns();
+  }
+  function renderColumnPreview() {
+    const text = cform.elements.body.value.trim();
+    $('#columnPreview').innerHTML = text ? text.split(/\n\s*\n/).map((p) => `<p>${inline(p).replace(/\n/g, '<br />')}</p>`).join('') : '<p class="muted">Your column will appear here.</p>';
+    const words = text ? text.split(/\s+/).length : 0;
+    $('#columnWords').textContent = `${words} ${words === 1 ? 'word' : 'words'}`;
+  }
+  let colTimer = 0;
+  cform.addEventListener('input', () => {
+    renderColumnPreview();
+    clearTimeout(colTimer);
+    colTimer = setTimeout(() => {
+      const d = {}; for (const el of cform.elements) if (el.name) d[el.name] = el.type === 'checkbox' ? el.checked : el.value;
+      try { localStorage.setItem(`wr-desk-col:${currentColumn || 'new'}`, JSON.stringify(d)); } catch {}
+    }, 600);
+  });
+  cform.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const msg = $('#columnMsg'), btn = $('#columnPublish');
+    btn.disabled = true; msg.className = 'desk-msg'; msg.textContent = 'Publishing…';
+    const data = {
+      title: cform.elements.title.value, date: cform.elements.date.value, series: cform.elements.series.value,
+      summary: cform.elements.summary.value, matches: lines(cform.elements.matches.value), wrestlers: lines(cform.elements.wrestlers.value),
+      featured: cform.elements.featured.checked,
+    };
+    const r = await api('column', { method: 'PUT', body: JSON.stringify({ id: currentColumn, create: !currentColumn, data, body: cform.elements.body.value }) });
+    btn.disabled = false;
+    if (r.status === 401) { msg.textContent = 'Your session ended. Sign in again; your draft is safe in this browser.'; app.hidden = true; login.hidden = false; return; }
+    if (!r.ok) { msg.className = 'desk-msg warn'; msg.innerHTML = `${esc(r.error || 'Publishing failed')}${r.errors ? `<ul>${r.errors.map((x) => `<li>${esc(x)}</li>`).join('')}</ul>` : ''}`; return; }
+    try { localStorage.removeItem(`wr-desk-col:${currentColumn || 'new'}`); } catch {}
+    catalog.columns = catalog.columns || [];
+    const entry = { id: r.id, data, body: cform.elements.body.value.trim() };
+    const i = catalog.columns.findIndex((x) => x.id === r.id);
+    if (i === -1) catalog.columns.unshift(entry); else catalog.columns[i] = entry;
+    currentColumn = r.id;
+    $('#columnMode').textContent = `Editing · ${r.id}`;
+    msg.className = 'desk-msg ok';
+    msg.innerHTML = r.unchanged ? 'No changes to publish.' : `✅ Published. Live in about a minute: <a href="${esc(r.pageUrl)}" target="_blank" rel="noopener">view the column</a> · <a href="${esc(r.commitUrl)}" target="_blank" rel="noopener">commit</a>`;
+    renderColumns(); loadLog();
+  });
+
   boot();
 })();

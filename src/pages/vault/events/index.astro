@@ -1,0 +1,18 @@
+---
+import { getCollection, getEntries } from 'astro:content';
+import Base from '../../../layouts/Base.astro';
+import Crumbs from '../../../components/Crumbs.astro';
+import { matches } from '../../../lib/site';
+import { editionsOf } from '../../../lib/vault';
+const all = await matches();
+const events = await Promise.all((await getCollection('events')).map(async (e) => ({ e, promos: await getEntries(e.data.promotions), n: editionsOf(e, all).length })));
+events.sort((a, b) => b.n - a.n || a.e.data.name.localeCompare(b.e.data.name));
+---
+<Base title="Events" section="/vault/" vault>
+  <Crumbs trail={[['Classic Vault', '/vault/'], ['Events']]} />
+  <section class="section wrap">
+    <p class="eyebrow">Classic Vault</p><h1>The big shows</h1>
+    <p class="lede">Starrcade to WrestleMania, Clash of the Champions to November to Remember. Every match on the site from each event series, in order.</p>
+    <div class="grid">{events.map(({ e, promos, n }) => <a class="card reveal" href={`/vault/events/${e.id}/`}><div class="card-meta"><span class="promo">{promos.map((p) => p.data.short).join(' · ')}</span><span>{e.data.years}</span></div><h3>{e.data.name}</h3><p class="summary">{e.data.summary}</p><div class="card-foot"><span class="rating-who">{n} {n === 1 ? 'match' : 'matches'} logged</span></div></a>)}</div>
+  </section>
+</Base>

@@ -30,9 +30,9 @@ const pos = 50 + Math.max(-45, Math.min(45, diff * 22.5));
 const all = await matches();
 const related = all.filter((o) => o.id !== match.id && o.data.wrestlers.some((w) => m.wrestlers.some((x) => x.id === w.id))).slice(0, 3);
 const vault = m.era === 'classic';
-const typeLabel = m.type.replace('-', ' ');
+const typeLabel = m.type.replace(/-/g, ' ');
 ---
-<Base title={m.title} description={m.summary ?? `${m.title} at ${m.event}, ${fmtDate(m.date)}.`} section={vault ? '/vault/' : '/matches/'} vault={vault}>
+<Base title={m.title} description={m.summary ?? `${m.title} at ${m.event}, ${fmtDate(m.date)}.`} section={vault ? '/vault/' : '/matches/'} vault={vault} search="Match">
   <Crumbs trail={[[vault ? 'Classic Vault' : 'Match Guide', vault ? '/vault/' : '/matches/'], [promo?.data.short ?? '', `/matches/promotion/${m.promotion.id}/`], [m.title]]} />
   <header class:list={['tape hero', vault && 'vault-hero', isFiveStar(m.meltzer_rating) || isFiveStar(m.my_rating) ? 'five-star-burst' : '']} style={`view-transition-name: match-${match.id}`}>
     <div class="hero-glow" aria-hidden="true"></div>

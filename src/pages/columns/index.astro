@@ -1,0 +1,17 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import Crumbs from '../../components/Crumbs.astro';
+import SectionHead from '../../components/SectionHead.astro';
+import ColumnList from './_ColumnList.astro';
+const all = (await getCollection('columns')).sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+---
+<Base title="Columns" section="/columns/" description="Opinion, analysis and memories from a wrestling fan since 1980.">
+  <Crumbs trail={[['Columns']]} />
+  <section class="hero"><div class="hero-glow" aria-hidden="true"></div><div class="wrap">
+    <p class="eyebrow">Columns</p><h1>From <em>ringside</em></h1>
+    <p class="lede">Booking, eras and what worked and what didn't, plus I Was There: memories of watching it live from 1980 on.</p>
+    <div class="btn-row"><a class="btn" href="/columns/i-was-there/">I Was There</a><a class="btn ghost" href="/columns/analysis/">Analysis</a></div>
+  </div></section>
+  <section class="section wrap"><SectionHead eyebrow="Latest" title="New columns" /><ColumnList list={all.slice(0, 6)} /></section>
+</Base>

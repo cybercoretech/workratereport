@@ -27,7 +27,7 @@ const wrestlers = await getCollection('wrestlers');
       <div>
         <p class="eyebrow">Then &amp; Now · Since 1980</p>
         <h1>Every match.<br /><em>Every era.</em><br />Rated.</h1>
-        <p class="lede">Modern classics from WWE, AEW and New Japan, backed by a vault of NWA, WCW and WWF history, all rated out of five stars by a fan who watched it the first time around.</p>
+        <p class="lede">Modern classics from WWE, AEW and New Japan, backed by a vault of NWA, WCW, WWF and ECW history, all rated out of five stars by a fan who watched it the first time around.</p>
         <div class="btn-row">
           <a class="btn" href="/matches/">Match Guide</a>
           <a class="btn ghost" href="/vault/">Enter the Vault</a>
@@ -62,7 +62,7 @@ const wrestlers = await getCollection('wrestlers');
   <Divider />
 
   <section class="section wrap vault-scope" aria-label="From the Vault">
-    <SectionHead eyebrow="Classic Vault · NWA · WCW · WWF" title="From the Vault" href="/vault/" cta="Open the Vault" />
+    <SectionHead eyebrow="Classic Vault · NWA · WCW · WWF · ECW" title="From the Vault" href="/vault/" cta="Open the Vault" />
     <MatchGrid list={vault} />
   </section>
 
@@ -94,6 +94,7 @@ const wrestlers = await getCollection('wrestlers');
       <a class="tile reveal" href="/vault/jcp-nwa/" style="--tile:var(--gold)"><b>JCP / NWA</b><span>Starrcade, the Bash, the Horsemen</span></a>
       <a class="tile reveal" href="/vault/wcw/" style="--tile:var(--gold)"><b>WCW</b><span>Clash of the Champions to Nitro</span></a>
       <a class="tile reveal" href="/vault/wwf/" style="--tile:var(--hot)"><b>WWF</b><span>Golden Era, New Generation, Attitude</span></a>
+      <a class="tile reveal" href="/vault/ecw/" style="--tile:var(--red)"><b>ECW</b><span>Extreme, from the ECW Arena</span></a>
       <a class="tile reveal" href="/matches/top-rated/" style="--tile:var(--blue)"><b>Top rated</b><span>The best of the best</span></a>
     </div>
   </section>

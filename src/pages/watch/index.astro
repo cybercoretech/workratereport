@@ -1,17 +1,25 @@
 ---
+import { getCollection } from 'astro:content';
 import Base from '../../layouts/Base.astro';
 import Crumbs from '../../components/Crumbs.astro';
 import SectionHead from '../../components/SectionHead.astro';
+const paths = await getCollection('paths');
+const pairs = await getCollection('dna');
 ---
-<Base title="Where to watch" section="/watch/">
+<Base title="Watch" section="/watch/">
   <Crumbs trail={[['Watch']]} />
   <section class="hero"><div class="hero-glow" aria-hidden="true"></div><div class="wrap">
     <p class="eyebrow">Watch</p><h1>Watch it <em>legally</em></h1>
-    <p class="lede">Where the matches live: official channels and licensed services only. Starter paths and Then &amp; Now pairings are on the way.</p>
-    <div class="btn-row"><a class="btn" href="/watch/services/">Services</a></div>
+    <p class="lede">Where the matches live (official channels and licensed services only), guided starter paths for newcomers, and classic-to-modern pairings to watch back to back.</p>
+    <div class="btn-row"><a class="btn" href="/watch/starter-paths/">Starter paths</a><a class="btn ghost" href="/watch/then-and-now/">Then &amp; Now</a><a class="btn ghost" href="/watch/services/">Services</a></div>
   </div></section>
   <section class="section wrap">
-    <SectionHead eyebrow="Coming soon" title="Starter paths" />
-    <p class="placeholder">Guided watch lists, like "10 matches to understand the Four Horsemen" and "Get into New Japan in 8 matches", are being put together.</p>
+    <SectionHead eyebrow="Start here" title="Starter paths" href="/watch/starter-paths/" />
+    {paths.length ? <div class="grid wide">{paths.slice(0, 3).map((p) => <a class="card reveal" href={`/watch/starter-paths/${p.id}/`}><div class="card-meta"><span class="promo">{p.data.steps.length} matches</span></div><h3>{p.data.title}</h3><p class="summary">{p.data.summary}</p></a>)}</div>
+      : <p class="placeholder">Guided watch lists, like "10 matches to understand the Four Horsemen", are being put together.</p>}
+  </section>
+  <section class="section wrap">
+    <SectionHead eyebrow="Back to back" title="Then &amp; Now" href="/watch/then-and-now/" />
+    <p class="lede">{pairs.length} Territory DNA {pairs.length === 1 ? 'pairing' : 'pairings'} with a classic match and a modern match to watch together.</p>
   </section>
 </Base>

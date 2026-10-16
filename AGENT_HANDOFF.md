@@ -32,10 +32,12 @@ The state of the project for the next agent (or person). Update it with every ph
 - **DNA launch pairs:** MJF ↔ Ric Flair (flagship), Cody Rhodes ↔ Dusty Rhodes.
 - **Launch matches:** the original 10 minus open slots 5–6, plus Savage–Steamboat WM3 and Bret–Austin WM13.
 - **Contact:** info@cybercoretech.net.
+- **Promotions:** ECW added to the Vault, ROH to the modern side (user, 2026-10-16). 14 promotions.
+- **Photos only from Wikimedia Commons under free licenses**, credited per profile and on `/credits/`. Facts from Wikidata (CC0). Bios were written by Claude as drafts for the user to edit; they were fact-checked and 16 claims corrected before shipping.
 - **Desk publishing goes live right away** (user, 2026-10-16): commits to `main` via the GitHub API, limited to `src/content/matches|wrestlers/`. This is the only exception to branch + PR.
 - **Cloudflare resources:** the user approved Claude creating them with wrangler (D1 created 2026-10-16).
 - **Forum = option C** (user, 2026-10-16): NCV-style D1 forum + an automatic "Discuss this match" thread per review, with fan ratings. Build it in Phase 3B.
-- **Roster:** 138 wrestlers (user, 2026-10-16: "top stars and some mid-card guys that pushed to the top; no generic wrestlers, jobbers or crappy gimmicks"). Chris Benoit and Jimmy Snuka were left out pending the user's decision.
+- **Roster:** 138 wrestlers (user, 2026-10-16: "top stars and some mid-card guys that pushed to the top; no generic wrestlers, jobbers or crappy gimmicks"). Chris Benoit and Jimmy Snuka are **permanently excluded** (user confirmed 2026-10-16: sensitive, avoid blowback). For any of their matches, ask the user: skip / name-only / case by case.
 - **Stack:** Astro 7.3.8 static, plain JS in `public/js` (no framework, no animation library), Google Fonts (Anton, Inter, Source Serif 4).
 
 ## 🏗️ Architecture
@@ -56,6 +58,9 @@ The state of the project for the next agent (or person). Update it with every ph
 - `public/js/*` files are served with immutable caching; `Base.astro` appends `?v=<sha256>` automatically, so no manual bumping.
 - Anton has no `★` glyph. Brand stars are polygons; CSS stars use an SVG mask.
 - Every effect must respect `html.pyro`, `prefers-reduced-motion`, visibility pausing and fine-pointer gating.
+- **Wikidata name collisions:** "Steve Williams" matched Stone Cold and "Rey Mysterio" matched Rey Misterio Sr. Both are pinned in `scripts/fetch-wrestler-data.mjs` (`PIN`). Check every new wrestler's `wikidata_label` and birth year after fetching.
+- **Class-name collisions:** don't name component classes `card` or `hero` (global rules). The photo frame uses `is-card` / `is-hero`.
+- **Contrast:** never use `var(--red)`/`var(--blue)` for text; use `--red-text`/`--blue-text`. The CI audit fails if any theme drops below target.
 - `functions/` has its own tsconfig (Workers types) and is excluded from the root one; `npm run check` runs both.
 - **When the content schema changes, update `functions/_lib/content.ts` too**, or the desk could publish a file the build rejects. Cloudflare would then keep the old version live, but the review wouldn't appear.
 - Global `[hidden] { display: none !important }` is relied on: component display rules would otherwise unhide elements.
@@ -76,7 +81,8 @@ The state of the project for the next agent (or person). Update it with every ph
 - **#2** Phase 1: Astro skeleton, nav, theme picker, effects, launch content (merged).
 - **#3** Docs: record the live Cloudflare Pages deployment (merged).
 - **#4** Phase 2A: Author's Desk (merged).
-- **#5** Roster to 138 wrestlers, 0.01-precision ratings, forum option C recorded.
+- **#5** Roster to 138 wrestlers, 0.01-precision ratings, forum option C recorded (merged).
+- **#6** Phase 2B: search, ECW/ROH, photos + facts + bios, lists, columns (+ desk), starter paths, Then & Now, events, feuds, contrast guard.
 
 ## 🧪 How Phase 2A was verified
 
@@ -89,6 +95,14 @@ The state of the project for the next agent (or person). Update it with every ph
 - `wrangler pages functions build` compiled; `npm run check` clean for site and functions.
 - **Not verified:** the live production desk, until the user sets `ADMIN_PASSWORD_HASH` + `DESK_GITHUB_TOKEN` and PR #4 deploys.
 
-## ⏭️ Next (Phase 2B, BLUEPRINT §10)
+## 🧪 How Phase 2B was verified
 
-Wrestler profile text and Vault history (author), Pagefind search, Lists and Columns hubs, events/feuds sub-pages, starter paths, a mashup contrast audit.
+- `npm run check` 0 errors; build 250 pages; Pagefind indexed 194 pages with a type filter.
+- Live searches in Chromium: "steamboat" → feuds, profile and both matches; "starrcade" → the event page; "sabu" → his profile. No errors.
+- Wikidata: 149/149 matched; 44 birth-year checks passed after fixing two collisions; 148 free photos (Brock Lesnar has none). Photos shrunk from 14 MB to 5.5 MB with metadata stripped.
+- Contrast audit: 90 themes, 109 failing pairs before the guard, 0 after.
+- Screenshots: wrestlers A–Z, Flair profile, Lesnar placeholder (390px), feud page, search; the theme drive test still lists 90 themes with no errors.
+
+## ⏭️ Next (Phase 3, BLUEPRINT §10)
+
+Phase 3: Me vs. Meltzer depth, On This Day, the full Pyro set; Phase 3B: Google sign-in, profiles, fan ratings, forum (option C). Content for the author: Vault promotion histories, starter paths, hand-picked lists, columns.

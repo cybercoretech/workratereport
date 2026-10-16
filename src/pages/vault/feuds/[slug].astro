@@ -1,0 +1,29 @@
+---
+import { getCollection, getEntries } from 'astro:content';
+import Base from '../../../layouts/Base.astro';
+import Crumbs from '../../../components/Crumbs.astro';
+import MatchGrid from '../../../components/MatchGrid.astro';
+import WrestlerPhoto from '../../../components/WrestlerPhoto.astro';
+import { matches } from '../../../lib/site';
+import { feudMatches } from '../../../lib/vault';
+export async function getStaticPaths() {
+  return (await getCollection('feuds')).map((f) => ({ params: { slug: f.id }, props: { f } }));
+}
+const { f } = Astro.props;
+const sides = await getEntries(f.data.sides);
+const list = feudMatches(f, await matches()).sort((a, b) => a.data.date.valueOf() - b.data.date.valueOf());
+---
+<Base title={f.data.name} section="/vault/" vault description={f.data.summary} search="Feud">
+  <Crumbs trail={[['Classic Vault', '/vault/'], ['Feuds', '/vault/feuds/'], [f.data.name]]} />
+  <section class="hero vault-hero"><div class="hero-glow" aria-hidden="true"></div><div class="wrap">
+    <p class="eyebrow">Feud · {f.data.years}</p><h1 class="visually-hidden">{f.data.name}</h1>
+    <div class="dna-pair feud-pair">
+      {sides.map((w, i) => (<>
+        {i === 1 && <span class="vs" aria-hidden="true">VS</span>}
+        <a class="dna-side" href={`/wrestlers/${w.id}/`} style="color:inherit;text-decoration:none"><WrestlerPhoto slug={w.id} name={w.data.name} /><h2>{w.data.name}</h2></a>
+      </>))}
+    </div>
+    <p class="lede" style="margin:24px auto 0;text-align:center">{f.data.summary}</p>
+  </div></section>
+  <section class="section wrap"><p class="filter-count">{list.length} {list.length === 1 ? 'match' : 'matches'}, oldest first</p><MatchGrid list={list} empty="No matches from this feud on the site yet." /></section>
+</Base>

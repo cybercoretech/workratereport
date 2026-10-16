@@ -11,7 +11,8 @@ A pro wrestling match-review site. It covers modern wrestling first (WWE, AEW, N
 - **Phase 0 · Brand:** done (PR #1).
 - **Phase 1 · Skeleton:** built. Astro static site with 83 pages, the ring-rope hamburger drawer, the Cybercore theme picker (90 themes), Pyro effects and 12 launch matches.
 - **Live:** 🌐 **https://workrate-report.pages.dev/** (Cloudflare Pages, auto-deploys from `main`).
-- **Phase 2A · Author's Desk:** a private `/desk/` page to write and publish reviews from the browser.
+- **Phase 2A · Author's Desk:** a private `/desk/` page to write and publish reviews and columns from the browser.
+- **Phase 2B · Depth:** search, 149 wrestler profiles with photos and bios, Lists, Columns, Starter Paths, Then & Now, Vault events and feuds, ECW and ROH, and a contrast guard on all 90 themes.
 
 👉 The full plan is in **[BLUEPRINT.md](BLUEPRINT.md)**.
 
@@ -94,11 +95,31 @@ Your review in plain text. Blank lines start new paragraphs.
 
 Every list, filter, wrestler page, year page and highlight block updates on its own. A bad value (a rating of 6, a wrestler with no file) stops the build with a clear error.
 
+## 📷 Wrestler photos & facts
+
+Photos come only from **Wikimedia Commons** under free licenses (CC0, public domain, CC BY, CC BY-SA). Facts (born, hometown, height, debut) come from **Wikidata**, which is CC0. Each profile shows the photo credit, and `/credits/` lists them all.
+
+```sh
+node scripts/fetch-wrestler-data.mjs            # fetch anyone not fetched yet
+node scripts/fetch-wrestler-data.mjs ric-flair  # refresh one wrestler
+node scripts/fetch-wrestler-data.mjs --all      # refresh everyone
+```
+
+It writes `src/data/wrestler-facts.json` and `public/wrestlers/<slug>.jpg` (400px, metadata stripped; needs ImageMagick). Name collisions are real ("Steve Williams" is also Stone Cold's real name), so check new matches and pin the right Wikidata ID in the script's `PIN` table when needed. Bios are in each wrestler's Markdown file and are yours to edit.
+
+## 🎨 Theme readability
+
+`public/js/contrast.js` nudges any too-faint text color in a theme until it meets WCAG AA. Red and blue keep their true colors for backgrounds and get readable copies (`--red-text`, `--blue-text`) for text. Audit every theme with:
+
+```sh
+node scripts/contrast-audit.mjs   # also runs in CI; fails if any pair is below target
+```
+
 ## 🧱 Project layout
 
 | 📁 | Contents |
 |---|---|
-| `src/content/` | Matches, wrestlers, promotions, factions, Territory DNA pairings (Markdown + frontmatter) |
+| `src/content/` | Matches, wrestlers, promotions, factions, Territory DNA, lists, columns, starter paths, events, feuds (Markdown + frontmatter) |
 | `src/content.config.ts` | The content schema, including the 5-star cap |
 | `src/pages/` | Every route: hubs plus sub-pages (BLUEPRINT §2) |
 | `src/layouts/Base.astro` | Header, hamburger drawer, theme pickers, ticker, footer |
@@ -107,7 +128,9 @@ Every list, filter, wrestler page, year page and highlight block updates on its 
 | `public/js/` | `theme.js` (theme engine), `nav.js` (drawer), `pyro.js` (effects), `desk.js` (Author's Desk). Cache-busted by content hash |
 | `functions/` | Cloudflare Pages Functions: `/api/desk/*` (login, session, publish match, add wrestler, log) and `_lib/` helpers |
 | `migrations/` | D1 schema (`workrate-report` database) |
-| `scripts/` | `set-desk-password.mjs` |
+| `scripts/` | `set-desk-password.mjs`, `fetch-wrestler-data.mjs`, `contrast-audit.mjs` |
+| `src/data/` | `wrestler-facts.json` (generated: Wikidata facts + photo credits) |
+| `public/wrestlers/` | Wrestler photos (free licenses, see `/credits/`) |
 | `wrangler.toml` | Pages config: D1 binding, repo/branch vars (no secrets) |
 | `brand/` | Source graphics and generators |
 

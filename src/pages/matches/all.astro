@@ -19,7 +19,7 @@ const types = [...new Set(all.map((m) => m.data.type))].sort();
       <label>Era<select name="era"><option value="">All eras</option><option value="modern">Modern</option><option value="classic">Classic</option></select></label>
       <label>Promotion<select name="promotion"><option value="">All promotions</option>{promos.map((p) => <option value={p.id}>{p.data.short}</option>)}</select></label>
       <label>Year<select name="year"><option value="">All years</option>{years.map((y) => <option>{y}</option>)}</select></label>
-      <label>Type<select name="type"><option value="">All types</option>{types.map((t) => <option value={t}>{t.replace('-', ' ')}</option>)}</select></label>
+      <label>Type<select name="type"><option value="">All types</option>{types.map((t) => <option value={t}>{t.replace(/-/g, ' ')}</option>)}</select></label>
       <label>My rating<select name="min"><option value="">Any</option><option value="5">★★★★★</option><option value="4.5">★★★★½ +</option><option value="4">★★★★ +</option><option value="3">★★★ +</option></select></label>
     </form>
     <p class="filter-count" id="filterCount" aria-live="polite">{all.length} matches</p>

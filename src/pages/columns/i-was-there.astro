@@ -1,0 +1,11 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import Crumbs from '../../components/Crumbs.astro';
+import ColumnList from './_ColumnList.astro';
+const list = (await getCollection('columns')).filter((c) => c.data.series === 'i-was-there').sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+---
+<Base title="I Was There" section="/columns/" description="Memories of watching it live: the arenas, the TV, the tape trading, from 1980 on.">
+  <Crumbs trail={[['Columns', '/columns/'], ['I Was There']]} />
+  <section class="section wrap"><p class="eyebrow">Columns</p><h1>I Was There</h1><p class="lede">Memories of watching it live: the arenas, the TV, the tape trading, from 1980 on.</p><ColumnList list={list} /></section>
+</Base>

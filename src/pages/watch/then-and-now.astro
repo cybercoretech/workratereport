@@ -1,0 +1,31 @@
+---
+// Classic → modern back-to-back pairs, built from the Territory DNA
+// pairings: each wrestler's best-rated match on the site.
+import { getCollection, getEntry } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import Crumbs from '../../components/Crumbs.astro';
+import MatchCard from '../../components/MatchCard.astro';
+import { matches, byRatingDesc } from '../../lib/site';
+const all = await matches();
+const bestOf = (id: string) => all.filter((m) => m.data.wrestlers.some((w) => w.id === id)).sort(byRatingDesc)[0];
+const pairs = await Promise.all((await getCollection('dna')).map(async (d) => ({
+  d, modern: await getEntry(d.data.modern), classic: await getEntry(d.data.classic),
+  then: bestOf(d.data.classic.id), now: bestOf(d.data.modern.id),
+})));
+---
+<Base title="Then & Now" section="/watch/" description="Watch a classic match and a modern one back to back, and see the lineage.">
+  <Crumbs trail={[['Watch', '/watch/'], ['Then & Now']]} />
+  <section class="section wrap">
+    <p class="eyebrow">Watch</p><h1>Then &amp; Now</h1>
+    <p class="lede">Watch the classic first, then the modern match. The Territory DNA is easier to see back to back.</p>
+    {pairs.map(({ d, modern, classic, then, now }) => (
+      <div class="panel reveal" style="margin-top:26px">
+        <p class="eyebrow"><a href={`/dna/${d.id}/`} style="color:inherit">{d.data.title}</a></p>
+        <div class="grid wide">
+          <div><p class="rating-who">Then · {classic?.data.name}</p>{then ? <MatchCard match={then} reveal={false} /> : <p class="placeholder">No match on the site yet.</p>}</div>
+          <div><p class="rating-who">Now · {modern?.data.name}</p>{now ? <MatchCard match={now} reveal={false} /> : <p class="placeholder">No match on the site yet.</p>}</div>
+        </div>
+      </div>
+    ))}
+  </section>
+</Base>

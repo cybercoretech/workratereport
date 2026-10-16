@@ -1,0 +1,14 @@
+---
+import { factsFor, initials } from '../lib/facts';
+interface Props { slug: string; name: string; size?: 'card' | 'hero'; eager?: boolean }
+const { slug, name, size = 'card', eager = false } = Astro.props;
+const photo = factsFor(slug).photo;
+---
+<figure class:list={['wphoto', `is-${size}`, !photo && 'no-photo']}>
+  {photo ? (
+    <img src={photo.src} width={photo.width} height={photo.height} alt={`${name.replace(/"/g, '')}`}
+      loading={eager ? 'eager' : 'lazy'} decoding="async" />
+  ) : (
+    <span class="wphoto-initials" aria-hidden="true">{initials(name)}</span>
+  )}
+</figure>

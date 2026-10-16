@@ -11,19 +11,19 @@ const big = promos.filter((p) => p.data.group === 'vault');
 const territories = promos.filter((p) => p.data.group === 'territory');
 const count = (id: string) => all.filter((m) => m.data.promotion.id === id).length;
 ---
-<Base title="Classic Vault" section="/vault/" vault description="NWA/Crockett, WCW and the WWF: history, feuds and must-watch matches from 1980 on.">
+<Base title="Classic Vault" section="/vault/" vault description="NWA/Crockett, WCW, the WWF and ECW: history, feuds and must-watch matches from 1980 on.">
   <Crumbs trail={[['Classic Vault']]} />
   <section class="hero vault-hero"><div class="hero-glow" aria-hidden="true"></div><div class="wrap">
     <p class="eyebrow">Classic Vault · 1980 on</p>
     <h1>The <em>Vault</em></h1>
-    <p class="lede">Jim Crockett Promotions and the NWA, WCW and the WWF: Dusty and Flair, Sting, the Four Horsemen, Savage and Steamboat, Bret and Austin. Plus the territories that fed them.</p>
+    <p class="lede">Jim Crockett Promotions and the NWA, WCW, the WWF and ECW: Dusty and Flair, Sting, the Four Horsemen, Savage and Steamboat, Bret and Austin, Sabu and RVD. Plus the territories that fed them.</p>
   </div></section>
   <section class="section wrap">
     <SectionHead eyebrow="Vault picks" title="Start here" href="/matches/classic/" />
     <MatchGrid list={pick(all, 3, byRatingDesc)} />
   </section>
   <section class="section wrap">
-    <SectionHead eyebrow="The big three" title="Promotions" />
+    <SectionHead eyebrow="The national promotions" title="Promotions" />
     <div class="tiles">{big.map((p) => <a class="tile reveal" href={`/vault/${p.id}/`} style="--tile:var(--gold)"><span class="count">{count(p.id)}</span><b>{p.data.short}</b><span>{p.data.years}</span></a>)}</div>
   </section>
   <section class="section wrap">

@@ -6,7 +6,7 @@ import Base from '../../layouts/Base.astro';
 import { readFileSync } from 'node:fs';
 import { createHash } from 'node:crypto';
 const v = createHash('sha256').update(readFileSync('public/js/desk.js')).digest('hex').slice(0, 10);
-const types = ['singles', 'tag', 'six-man', 'triple-threat', 'fatal-four-way', 'cage', 'wargames', 'iron-man', 'ladder', 'submission', 'street-fight', 'battle-royal', 'other'];
+const types = ['singles', 'tag', 'six-man', 'triple-threat', 'fatal-four-way', 'two-out-of-three-falls', 'cage', 'wargames', 'iron-man', 'ladder', 'submission', 'i-quit', 'street-fight', 'texas-death', 'hardcore', 'battle-royal', 'other'];
 ---
 <Base title="Author's Desk" noindex description="Private.">
   <section class="section wrap desk">
@@ -22,15 +22,20 @@ const types = ['singles', 'tag', 'six-man', 'triple-threat', 'fatal-four-way', '
 
     <div id="deskApp" hidden>
       <div class="desk-top">
-        <div><p class="eyebrow">Author's Desk</p><h1>Write a review</h1></div>
+        <div><p class="eyebrow">Author's Desk</p><h1 id="deskTitle">Write a review</h1></div>
+        <div class="seg desk-tabs" role="tablist" aria-label="What to write">
+          <button type="button" role="tab" aria-selected="true" data-tab="matches">Match reviews</button>
+          <button type="button" role="tab" aria-selected="false" data-tab="columns">Columns</button>
+        </div>
         <div class="btn-row" style="margin:0">
           <button class="btn ghost" type="button" id="newMatch">New match</button>
+          <button class="btn ghost" type="button" id="newColumn" hidden>New column</button>
           <button class="btn ghost" type="button" id="logout">Sign out</button>
         </div>
       </div>
       <p class="desk-msg warn" id="configMsg" hidden></p>
 
-      <div class="desk-grid">
+      <div class="desk-grid" id="matchPane">
         <aside class="panel desk-list">
           <label class="field">Find a match<input type="search" id="matchSearch" placeholder="Wrestler, event, year…" autocomplete="off" /></label>
           <ul id="matchList" aria-label="Matches"></ul>
@@ -131,6 +136,38 @@ const types = ['singles', 'tag', 'six-man', 'triple-threat', 'fatal-four-way', '
         </form>
       </div>
     </div>
+
+      <div class="desk-grid" id="columnPane" hidden>
+        <aside class="panel desk-list">
+          <ul id="columnList" aria-label="Columns"></ul>
+        </aside>
+        <form id="columnForm" class="desk-form" novalidate>
+          <div class="panel">
+            <p class="eyebrow" id="columnMode">New column</p>
+            <div class="fields">
+              <label class="field wide">Title<input name="title" required placeholder="The night I saw Flair and Steamboat in Greensboro" /></label>
+              <label class="field">Date<input name="date" type="date" required /></label>
+              <label class="field">Series<select name="series"><option value="i-was-there">I Was There</option><option value="analysis">Analysis</option></select></label>
+              <label class="field wide">One-line summary<input name="summary" maxlength="300" required /></label>
+              <label class="field wide">Matches mentioned (one ID per line, optional)<textarea name="matches" rows="2" placeholder="1989-05-07-flair-steamboat-wrestlewar"></textarea></label>
+              <label class="field wide">Wrestlers mentioned (one ID per line, optional)<textarea name="wrestlers" rows="2" placeholder="ric-flair"></textarea></label>
+              <label class="check"><input type="checkbox" name="featured" /> Feature this column</label>
+            </div>
+          </div>
+          <div class="panel">
+            <p class="eyebrow">The column</p>
+            <div class="review-panes">
+              <label class="field">Text<textarea name="body" id="columnBody" rows="20" placeholder="Blank line = new paragraph. **bold**, *italic*."></textarea></label>
+              <div><span class="field-label">Preview</span><div class="prose review-preview" id="columnPreview"></div></div>
+            </div>
+            <p class="desk-hint" id="columnWords"></p>
+          </div>
+          <div class="desk-actions">
+            <p class="desk-msg" id="columnMsg" role="status" aria-live="polite"></p>
+            <button class="btn" type="submit" id="columnPublish">Publish column</button>
+          </div>
+        </form>
+      </div>
 
     <dialog id="addWrestler" class="desk-dialog">
       <form method="dialog" id="addWrestlerForm">

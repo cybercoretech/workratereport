@@ -1,0 +1,20 @@
+---
+import { getCollection, getEntry, render } from 'astro:content';
+import Base from '../../../layouts/Base.astro';
+import Crumbs from '../../../components/Crumbs.astro';
+import MatchCard from '../../../components/MatchCard.astro';
+export async function getStaticPaths() {
+  return (await getCollection('paths')).map((p) => ({ params: { slug: p.id }, props: { p } }));
+}
+const { p } = Astro.props;
+const steps = await Promise.all(p.data.steps.map(async (s) => ({ match: (await getEntry(s.match))!, why: s.why })));
+const { Content } = await render(p);
+---
+<Base title={p.data.title} section="/watch/" description={p.data.summary} search="Starter path">
+  <Crumbs trail={[['Watch', '/watch/'], ['Starter paths', '/watch/starter-paths/'], [p.data.title]]} />
+  <section class="section wrap">
+    <p class="eyebrow">Starter path · {steps.length} matches</p><h1>{p.data.title}</h1><p class="lede">{p.data.summary}</p>
+    <div class="prose" style="margin-top:20px"><Content /></div>
+    <ol class="ranked">{steps.map((s, i) => <li class="reveal"><span class="rank" aria-hidden="true">{i + 1}</span>{s.why && <p class="desk-hint" style="margin:0 0 10px">{s.why}</p>}<MatchCard match={s.match} reveal={false} /></li>)}</ol>
+  </section>
+</Base>

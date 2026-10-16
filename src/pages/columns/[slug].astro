@@ -1,0 +1,28 @@
+---
+import { getCollection, getEntries, render } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import Crumbs from '../../components/Crumbs.astro';
+import SectionHead from '../../components/SectionHead.astro';
+import MatchGrid from '../../components/MatchGrid.astro';
+import { fmtDate } from '../../lib/site';
+export async function getStaticPaths() {
+  return (await getCollection('columns')).map((c) => ({ params: { slug: c.id }, props: { c } }));
+}
+const { c } = Astro.props;
+const { Content } = await render(c);
+const linked = await getEntries(c.data.matches);
+const people = await getEntries(c.data.wrestlers);
+const SERIES = { 'i-was-there': ['I Was There', '/columns/i-was-there/'], analysis: ['Analysis', '/columns/analysis/'] } as const;
+const [seriesName, seriesHref] = SERIES[c.data.series];
+---
+<Base title={c.data.title} section="/columns/" description={c.data.summary} search="Column">
+  <Crumbs trail={[['Columns', '/columns/'], [seriesName, seriesHref], [c.data.title]]} />
+  <article class="section wrap">
+    <p class="eyebrow">{seriesName} · {fmtDate(c.data.date)}</p>
+    <h1>{c.data.title}</h1>
+    <p class="lede">{c.data.summary}</p>
+    <div class="prose" style="margin-top:28px"><Content /></div>
+    {people.length > 0 && <ul class="chips" style="margin-top:28px">{people.map((w) => <li><a href={`/wrestlers/${w.id}/`}>{w.data.name}</a></li>)}</ul>}
+  </article>
+  {linked.length > 0 && <section class="section wrap"><SectionHead eyebrow="Mentioned" title="The matches" /><MatchGrid list={linked} /></section>}
+</Base>

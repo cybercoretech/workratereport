@@ -1,0 +1,21 @@
+---
+import { getCollection, getEntries } from 'astro:content';
+import Base from '../../../layouts/Base.astro';
+import Crumbs from '../../../components/Crumbs.astro';
+import MatchGrid from '../../../components/MatchGrid.astro';
+import { matches } from '../../../lib/site';
+import { editionsOf } from '../../../lib/vault';
+export async function getStaticPaths() {
+  return (await getCollection('events')).map((e) => ({ params: { slug: e.id }, props: { e } }));
+}
+const { e } = Astro.props;
+const promos = await getEntries(e.data.promotions);
+const list = editionsOf(e, await matches()).sort((a, b) => a.data.date.valueOf() - b.data.date.valueOf());
+---
+<Base title={e.data.name} section="/vault/" vault description={e.data.summary} search="Event">
+  <Crumbs trail={[['Classic Vault', '/vault/'], ['Events', '/vault/events/'], [e.data.name]]} />
+  <section class="hero vault-hero"><div class="hero-glow" aria-hidden="true"></div><div class="wrap">
+    <p class="eyebrow">{promos.map((p) => p.data.short).join(' · ')} · {e.data.years}</p><h1>{e.data.name}</h1><p class="lede">{e.data.summary}</p>
+  </div></section>
+  <section class="section wrap"><p class="filter-count">{list.length} {list.length === 1 ? 'match' : 'matches'}, oldest first</p><MatchGrid list={list} empty={`No ${e.data.name} matches on the site yet.`} /></section>
+</Base>

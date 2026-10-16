@@ -4,6 +4,6 @@ short: "AWA"
 years: "1960–1991"
 group: territory
 vault: true
-order: 60
+order: 70
 summary: "Verne Gagne's Minneapolis-based promotion."
 ---

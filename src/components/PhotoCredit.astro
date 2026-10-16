@@ -1,0 +1,12 @@
+---
+import { factsFor } from '../lib/facts';
+interface Props { slug: string }
+const photo = factsFor(Astro.props.slug).photo;
+---
+{photo && (
+  <p class="photo-credit">
+    Photo: {photo.credit} ·
+    {photo.license_url ? <a href={photo.license_url} rel="license noopener" target="_blank">{photo.license}</a> : photo.license} ·
+    <a href={photo.source} rel="noopener" target="_blank">Wikimedia Commons</a>
+  </p>
+)}

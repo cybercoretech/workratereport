@@ -1,0 +1,26 @@
+---
+// Site search, powered by Pagefind (static index built after `astro build`).
+import Base from '../../layouts/Base.astro';
+import Crumbs from '../../components/Crumbs.astro';
+---
+<Base title="Search" description="Search every match, wrestler, promotion and column on The Workrate Report.">
+  <Crumbs trail={[['Search']]} />
+  <section class="section wrap">
+    <p class="eyebrow">Search</p>
+    <h1>Find a <em style="font-style:normal;color:var(--gold)">match</em></h1>
+    <p class="lede">Search matches, wrestlers, promotions, Territory DNA and columns. Filter by type on the left.</p>
+    <div id="search" class="search-box"></div>
+    <noscript><p class="placeholder">Search needs JavaScript. You can still browse the <a href="/matches/all/">Match Guide</a>.</p></noscript>
+  </section>
+  <link slot="scripts" rel="stylesheet" href="/pagefind/pagefind-ui.css" />
+  <script slot="scripts" is:inline src="/pagefind/pagefind-ui.js"></script>
+  <script slot="scripts" is:inline>
+    addEventListener('DOMContentLoaded', () => {
+      if (!window.PagefindUI) return;
+      const ui = new PagefindUI({ element: '#search', showSubResults: true, showImages: false, resetStyles: false,
+        translations: { placeholder: 'Wrestler, event, promotion…', zero_results: 'Nothing on the card for [SEARCH_TERM].' } });
+      const q = new URLSearchParams(location.search).get('q');
+      if (q) ui.triggerSearch(q);
+    });
+  </script>
+</Base>

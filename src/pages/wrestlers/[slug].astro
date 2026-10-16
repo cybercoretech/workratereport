@@ -5,6 +5,9 @@ import Crumbs from '../../components/Crumbs.astro';
 import SectionHead from '../../components/SectionHead.astro';
 import MatchGrid from '../../components/MatchGrid.astro';
 import { matches, byRatingDesc } from '../../lib/site';
+import WrestlerPhoto from '../../components/WrestlerPhoto.astro';
+import PhotoCredit from '../../components/PhotoCredit.astro';
+import { factsFor, fmtFactDate, fmtHeight, ageAt } from '../../lib/facts';
 export async function getStaticPaths() {
   return (await getCollection('wrestlers')).map((w) => ({ params: { slug: w.id }, props: { w } }));
 }
@@ -16,19 +19,41 @@ const dna = (await getCollection('dna')).filter((d) => d.data.modern.id === w.id
 const { Content } = await render(w);
 const hasBio = (w.body ?? '').replace(/<!--[\s\S]*?-->/g, '').trim().length > 0;
 const legend = w.data.eras.includes('classic');
+const f = factsFor(w.id);
+const age = ageAt(f.born, f.died);
+const factRows = ([
+  ['Real name', f.birth_name],
+  ['Born', f.born && `${fmtFactDate(f.born)}${f.birthplace ? `, ${f.birthplace}` : ''}${!f.died && age !== null ? ` (age ${age})` : ''}`],
+  ['Died', f.died && `${fmtFactDate(f.died)}${age !== null ? ` (aged ${age})` : ''}`],
+  ['Height', fmtHeight(f.height_cm)],
+  ['Debut', f.debut],
+] as [string, string | null | undefined][]).filter(([, v]) => v);
 ---
-<Base title={w.data.name} section="/wrestlers/" vault={legend && !w.data.eras.includes('modern')}>
+<Base title={w.data.name} section="/wrestlers/" vault={legend && !w.data.eras.includes('modern')} search="Wrestler">
   <Crumbs trail={[['Wrestlers', '/wrestlers/'], [legend ? 'Legends' : 'Modern roster', legend ? '/wrestlers/legends/' : '/wrestlers/modern/'], [w.data.name]]} />
-  <section class:list={['hero', legend && 'vault-hero']}><div class="hero-glow" aria-hidden="true"></div><div class="wrap">
-    <p class="eyebrow">{legend ? 'Legend' : 'Modern'} · {promos.map((p) => p.data.short).join(' · ')}</p>
-    <h1>{w.data.name}</h1>
-    <div class="badges">
-      {factions.map((f) => <a class="badge classic" href={`/wrestlers/factions/${f.id}/`}>{f.data.name}</a>)}
-      {dna.map((d) => <a class="badge dna" href={`/dna/${d.id}/`}>DNA: {d.data.title}</a>)}
+  <section class:list={['hero', legend && 'vault-hero']}><div class="hero-glow" aria-hidden="true"></div><div class="wrap wprofile">
+    <div class="wprofile-photo">
+      <WrestlerPhoto slug={w.id} name={w.data.name} size="hero" eager />
+      <PhotoCredit slug={w.id} />
+    </div>
+    <div>
+      <p class="eyebrow">{legend ? 'Legend' : 'Modern'} · {promos.map((p) => p.data.short).join(' · ')}</p>
+      <h1>{w.data.name}</h1>
+      <div class="badges">
+        {factions.map((fa) => <a class="badge classic" href={`/wrestlers/factions/${fa.id}/`}>{fa.data.name}</a>)}
+        {dna.map((d) => <a class="badge dna" href={`/dna/${d.id}/`}>DNA: {d.data.title}</a>)}
+      </div>
+      {factRows.length > 0 && (
+        <table class="facts wfacts">
+          <tbody>{factRows.map(([k, v]) => <tr><th scope="row">{k}</th><td>{v}</td></tr>)}</tbody>
+        </table>
+      )}
+      <p class="stat-row" style="margin-top:20px"><span class="stat"><b>{list.length}</b><span>{list.length === 1 ? 'Match' : 'Matches'} logged</span></span></p>
     </div>
   </div></section>
   <section class="section wrap">
     {hasBio ? <div class="prose"><Content /></div> : <p class="placeholder">A full profile is being written.</p>}
+    {f.qid && <p class="muted" style="font-size:13px;margin-top:18px">Birth and career facts from <a href={`https://www.wikidata.org/wiki/${f.qid}`} rel="noopener" target="_blank">Wikidata</a>.</p>}
   </section>
   <section class="section wrap"><SectionHead eyebrow="Signature matches" title="Best first" /><MatchGrid list={list} /></section>
 </Base>

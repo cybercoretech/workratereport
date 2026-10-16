@@ -1,0 +1,38 @@
+---
+import { getCollection, getEntry, render } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import Crumbs from '../../components/Crumbs.astro';
+import MatchCard from '../../components/MatchCard.astro';
+import { autoLists } from '../../lib/lists';
+export async function getStaticPaths() {
+  const mine = await getCollection('lists');
+  const auto = await autoLists();
+  return [
+    ...mine.map((l) => ({ params: { slug: l.id }, props: { kind: 'mine' as const, id: l.id } })),
+    ...auto.map((l) => ({ params: { slug: l.id }, props: { kind: 'auto' as const, id: l.id } })),
+  ];
+}
+const { kind, id } = Astro.props;
+let title = '', summary = '', items: { match: any; note?: string }[] = [], Content: any = null;
+if (kind === 'mine') {
+  const l = (await getEntry('lists', id))!;
+  title = l.data.title; summary = l.data.summary;
+  items = await Promise.all(l.data.items.map(async (i) => ({ match: await getEntry(i.match), note: i.note })));
+  Content = (await render(l)).Content;
+} else {
+  const l = (await autoLists()).find((x) => x.id === id)!;
+  ({ title, summary, items } = l);
+}
+---
+<Base title={title} section="/lists/" description={summary} search="List">
+  <Crumbs trail={[['Lists', '/lists/'], [title]]} />
+  <section class="section wrap">
+    <p class="eyebrow">{kind === 'auto' ? 'Automatic list' : 'List'}</p>
+    <h1>{title}</h1>
+    <p class="lede">{summary}</p>
+    {Content && <div class="prose" style="margin-top:20px"><Content /></div>}
+    {items.length ? (
+      <ol class="ranked">{items.map((i, n) => <li class="reveal"><span class="rank" aria-hidden="true">{n + 1}</span>{i.note && <p class="eyebrow" style="margin:0 0 8px">{i.note}</p>}<MatchCard match={i.match} reveal={false} /></li>)}</ol>
+    ) : <p class="placeholder">This list fills in as ratings are published.</p>}
+  </section>
+</Base>
