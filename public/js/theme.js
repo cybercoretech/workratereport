@@ -28,7 +28,8 @@
   ];
   // Registry slot → site variable (BLUEPRINT §12.3)
   const VARS = { bg: '--ink', white: '--canvas', panel: '--panel', line: '--line', muted: '--muted',
-    orange: '--gold', red: '--red', cyan: '--blue', hot_pink: '--hot', acid_green: '--acid', purple: '--purple' };
+    orange: '--gold', red: '--red', cyan: '--blue', hot_pink: '--hot', acid_green: '--acid', purple: '--purple',
+    red_text: '--red-text', cyan_text: '--blue-text' };
   const SURFACE = ['bg', 'white', 'panel', 'line', 'muted'];
   const LABELS = { mashup: 'SIGNATURE MASHUPS', 'cybercore-tech': 'CYBERCORE TECH / MASTER MIX', cyberdyne: 'CYBERDYNE',
     cyberpunk: 'CYBERPUNK', default: 'DEFAULT / CLASSICS', dystopian: 'DYSTOPIAN', neosynth: 'NEOSYNTH',
@@ -59,7 +60,9 @@
     return out;
   }
 
-  function paint(name, p) {
+  function paint(name, raw) {
+    // Readability first: nudge any too-faint text colour (see /js/contrast.js).
+    const p = window.WRContrast ? window.WRContrast.guard(raw).palette : raw;
     const vars = {};
     Object.entries(VARS).forEach(([k, v]) => { if (p[k]) vars[v] = `#${p[k]}`; });
     Object.entries(vars).forEach(([v, c]) => root.style.setProperty(v, c));

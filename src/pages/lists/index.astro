@@ -1,0 +1,26 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import Crumbs from '../../components/Crumbs.astro';
+import SectionHead from '../../components/SectionHead.astro';
+import { autoLists } from '../../lib/lists';
+const auto = await autoLists();
+const mine = (await getCollection('lists')).sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+---
+<Base title="Lists" section="/lists/" description="Ranked lists: every five-star match, the best of each year, Vault and modern top tens, and hand-picked rankings.">
+  <Crumbs trail={[['Lists']]} />
+  <section class="hero"><div class="hero-glow" aria-hidden="true"></div><div class="wrap">
+    <p class="eyebrow">Lists</p><h1>Ranked &amp; <em>rated</em></h1>
+    <p class="lede">Hand-picked rankings, plus lists that build themselves from the ratings as new reviews go up.</p>
+  </div></section>
+  <section class="section wrap">
+    <SectionHead eyebrow="From the author" title="Hand-picked" />
+    {mine.length ? (
+      <div class="grid wide">{mine.map((l) => <a class:list={['card reveal', l.data.featured && 'featured']} href={`/lists/${l.id}/`}><div class="card-meta"><span class="promo">{l.data.items.length} matches</span></div><h3>{l.data.title}</h3><p class="summary">{l.data.summary}</p></a>)}</div>
+    ) : <p class="placeholder">Hand-picked lists are on the way.</p>}
+  </section>
+  <section class="section wrap">
+    <SectionHead eyebrow="Built from the ratings" title="Automatic lists" />
+    <div class="grid wide">{auto.map((l) => <a class="card reveal" href={`/lists/${l.id}/`}><div class="card-meta"><span class="promo">{l.items.length} {l.items.length === 1 ? 'match' : 'matches'}</span><span>Auto</span></div><h3>{l.title}</h3><p class="summary">{l.summary}</p></a>)}</div>
+  </section>
+</Base>

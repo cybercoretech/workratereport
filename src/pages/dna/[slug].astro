@@ -17,7 +17,7 @@ const { Content } = await render(d);
 const hasVerdict = (d.body ?? '').replace(/<!--[\s\S]*?-->/g, '').trim().length > 0;
 const pending = (s: string) => s.startsWith('To be written');
 ---
-<Base title={d.data.title} section="/dna/">
+<Base title={d.data.title} section="/dna/" search="Territory DNA">
   <Crumbs trail={[['Territory DNA', '/dna/'], [d.data.title]]} />
   <section class="hero"><div class="hero-glow" aria-hidden="true"></div><div class="wrap">
     <p class="eyebrow">Territory DNA {d.data.draft && '· Draft'}</p>

@@ -1,0 +1,20 @@
+---
+// Every photo used on the site, with its author and license, as the
+// Creative Commons licenses require.
+import { getCollection } from 'astro:content';
+import InfoPage from '../../components/InfoPage.astro';
+import { allPhotos } from '../../lib/facts';
+const names = Object.fromEntries((await getCollection('wrestlers')).map((w) => [w.id, w.data.name]));
+const photos = allPhotos().filter((p) => names[p.slug]).sort((a, b) => names[a.slug].localeCompare(names[b.slug]));
+---
+<InfoPage title="Photo credits" eyebrow="Credits" description="Authors and licenses for every photo on The Workrate Report.">
+  <p>Wrestler photos come from <a href="https://commons.wikimedia.org/" rel="noopener" target="_blank">Wikimedia Commons</a> and are used under the free licenses shown. Birth and career facts come from <a href="https://www.wikidata.org/" rel="noopener" target="_blank">Wikidata</a> (CC0). The photos here are resized copies, and each one stays under its original license. If you took one of these photos and want it changed or removed, email <a href="mailto:info@cybercoretech.net">info@cybercoretech.net</a>.</p>
+  <div class="credits-grid" style="font-family:var(--ui);margin-top:28px">
+    {photos.map(({ slug, photo }) => (
+      <div class="credit-item">
+        <img src={photo.src} alt="" loading="lazy" width="64" height="80" />
+        <div><b><a href={`/wrestlers/${slug}/`}>{names[slug]}</a></b>{photo.credit} · {photo.license_url ? <a href={photo.license_url} rel="license noopener" target="_blank">{photo.license}</a> : photo.license} · <a href={photo.source} rel="noopener" target="_blank">source</a></div>
+      </div>
+    ))}
+  </div>
+</InfoPage>

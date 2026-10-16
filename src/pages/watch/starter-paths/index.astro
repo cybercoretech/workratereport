@@ -1,0 +1,15 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../../../layouts/Base.astro';
+import Crumbs from '../../../components/Crumbs.astro';
+const paths = await getCollection('paths');
+---
+<Base title="Starter paths" section="/watch/">
+  <Crumbs trail={[['Watch', '/watch/'], ['Starter paths']]} />
+  <section class="section wrap">
+    <p class="eyebrow">Watch</p><h1>Starter paths</h1>
+    <p class="lede">Short, ordered watch lists for getting into an era, a promotion or a wrestler.</p>
+    {paths.length ? <div class="grid wide">{paths.map((p) => <a class:list={['card reveal', p.data.featured && 'featured']} href={`/watch/starter-paths/${p.id}/`}><div class="card-meta"><span class="promo">{p.data.steps.length} matches</span></div><h3>{p.data.title}</h3><p class="summary">{p.data.summary}</p></a>)}</div>
+      : <p class="placeholder">Starter paths are on the way.</p>}
+  </section>
+</Base>

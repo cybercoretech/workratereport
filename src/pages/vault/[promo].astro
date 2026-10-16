@@ -14,7 +14,7 @@ const { Content } = await render(p);
 const hasHistory = (p.body ?? '').replace(/<!--[\s\S]*?-->/g, '').trim().length > 0;
 const territory = p.data.group === 'territory';
 ---
-<Base title={p.data.name} section="/vault/" vault description={p.data.summary}>
+<Base title={p.data.name} section="/vault/" vault description={p.data.summary} search="Promotion">
   <Crumbs trail={[['Classic Vault', '/vault/'], ...(territory ? [['Territories', '/vault/territories/'] as [string, string]] : []), [p.data.short]]} />
   <section class="hero vault-hero"><div class="hero-glow" aria-hidden="true"></div><div class="wrap">
     <p class="eyebrow">{territory ? 'Territory' : 'Classic Vault'} · {p.data.years}</p>

@@ -4,8 +4,8 @@
 import { getCollection } from 'astro:content';
 
 export async function GET() {
-  const [matches, wrestlers, promotions, dna] = await Promise.all([
-    getCollection('matches'), getCollection('wrestlers'), getCollection('promotions'), getCollection('dna'),
+  const [matches, wrestlers, promotions, dna, columns] = await Promise.all([
+    getCollection('matches'), getCollection('wrestlers'), getCollection('promotions'), getCollection('dna'), getCollection('columns'),
   ]);
   const body = {
     built: new Date().toISOString(),
@@ -24,6 +24,11 @@ export async function GET() {
         dna: m.data.dna.map((d) => d.id),
       },
       body: (m.body ?? '').replace(/<!--[\s\S]*?-->/g, '').trim(),
+    })),
+    columns: columns.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf()).map((c) => ({
+      id: c.id,
+      data: { ...c.data, date: c.data.date.toISOString().slice(0, 10), matches: c.data.matches.map((m) => m.id), wrestlers: c.data.wrestlers.map((w) => w.id) },
+      body: (c.body ?? '').trim(),
     })),
   };
   return new Response(JSON.stringify(body), { headers: { 'content-type': 'application/json; charset=utf-8' } });

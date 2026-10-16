@@ -43,7 +43,7 @@ const years = [...new Set(all.map(year))].sort((a, b) => b - a);
     <SectionHead eyebrow="Browse" title="By era" />
     <div class="tiles">
       <a class="tile reveal" href="/matches/modern/" style="--tile:var(--red)"><span class="count">{all.filter((m) => m.data.era === 'modern').length}</span><b>Modern era</b><span>The current era, worldwide</span></a>
-      <a class="tile reveal" href="/matches/classic/" style="--tile:var(--gold)"><span class="count">{all.filter((m) => m.data.era === 'classic').length}</span><b>Classic era</b><span>NWA · WCW · WWF · territories</span></a>
+      <a class="tile reveal" href="/matches/classic/" style="--tile:var(--gold)"><span class="count">{all.filter((m) => m.data.era === 'classic').length}</span><b>Classic era</b><span>NWA · WCW · WWF · ECW · territories</span></a>
     </div>
   </section>
 </Base>

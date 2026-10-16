@@ -1,13 +1,17 @@
 ---
 import type { CollectionEntry } from 'astro:content';
 import { getEntries } from 'astro:content';
+import WrestlerPhoto from './WrestlerPhoto.astro';
 interface Props { w: CollectionEntry<'wrestlers'>; count?: number }
 const { w, count = 0 } = Astro.props;
 const promos = await getEntries(w.data.promotions);
 ---
-<a class:list={['card reveal', w.data.featured && 'featured']} href={`/wrestlers/${w.id}/`}>
-  <div class="card-meta">{w.data.eras.map((e) => <span class={e === 'classic' ? 'promo' : ''}>{e === 'classic' ? 'Legend' : 'Modern'}</span>)}</div>
-  <h3>{w.data.name}</h3>
-  <p class="event">{promos.map((p) => p.data.short).join(' · ')}</p>
-  <div class="card-foot"><span class="rating-who">{count} {count === 1 ? 'match' : 'matches'} logged</span></div>
+<a class:list={['card wcard reveal', w.data.featured && 'featured']} href={`/wrestlers/${w.id}/`}>
+  <WrestlerPhoto slug={w.id} name={w.data.name} />
+  <div class="wcard-body">
+    <div class="card-meta">{w.data.eras.map((e) => <span class={e === 'classic' ? 'promo' : ''}>{e === 'classic' ? 'Legend' : 'Modern'}</span>)}</div>
+    <h3>{w.data.name}</h3>
+    <p class="event">{promos.map((p) => p.data.short).join(' · ')}</p>
+    <div class="card-foot"><span class="rating-who">{count} {count === 1 ? 'match' : 'matches'} logged</span></div>
+  </div>
 </a>

@@ -11,7 +11,7 @@ export interface MatchInput {
   summary?: string; verify: string[];
 }
 
-export interface Catalog { wrestlers: string[]; promotions: string[]; dna: string[] }
+export interface Catalog { wrestlers: string[]; promotions: string[]; dna: string[]; matches?: string[] }
 
 export const slugify = (s: string) =>
   s.normalize('NFKD').replace(/[̀-ͯ]/g, '').toLowerCase()
@@ -102,3 +102,34 @@ export function wrestlerFile(name: string, eras: string[], promotions: string[])
 }
 
 export const matchSlug = (d: MatchInput) => `${d.date}-${slugify(d.title.replace(/\bvs\.?\b/gi, ' '))}`.slice(0, 90).replace(/-+$/, '');
+
+export interface ColumnInput { title: string; date: string; series: 'i-was-there' | 'analysis'; summary: string; matches: string[]; wrestlers: string[]; featured: boolean }
+
+export function validateColumn(raw: Record<string, unknown>, cat: Catalog) {
+  const errors: string[] = [];
+  const title = str(raw.title, 200);
+  if (!title) errors.push('Title is required');
+  const date = str(raw.date, 10);
+  if (!/^\d{4}-\d{2}-\d{2}$/.test(date) || Number.isNaN(Date.parse(date))) errors.push('Date must be YYYY-MM-DD');
+  const series = raw.series === 'analysis' ? 'analysis' : raw.series === 'i-was-there' ? 'i-was-there' : null;
+  if (!series) errors.push('Pick a series: I Was There or Analysis');
+  const summary = str(raw.summary, 300);
+  if (!summary) errors.push('A one-line summary is required');
+  const matches = list(raw.matches, 20);
+  for (const m of matches) if (cat.matches && !cat.matches.includes(m)) errors.push(`Unknown match "${m}"`);
+  const wrestlers = list(raw.wrestlers, 30);
+  for (const w of wrestlers) if (!cat.wrestlers.includes(w)) errors.push(`Unknown wrestler "${w}"`);
+  const data: ColumnInput = { title, date, series: series ?? 'analysis', summary, matches, wrestlers, featured: raw.featured === true };
+  return { data, errors };
+}
+
+export function columnFile(d: ColumnInput, body: string) {
+  const lines = [
+    `title: ${q(d.title)}`, `date: ${d.date}`, `series: ${d.series}`, `summary: ${q(d.summary)}`,
+    d.matches.length && `matches: ${arr(d.matches, false)}`, d.wrestlers.length && `wrestlers: ${arr(d.wrestlers, false)}`,
+    `featured: ${d.featured}`,
+  ].filter(Boolean);
+  return `---\n${lines.join('\n')}\n---\n${body.replace(/\r\n/g, '\n').trim()}\n`;
+}
+
+export const columnSlug = (d: ColumnInput) => `${d.date}-${slugify(d.title)}`.slice(0, 90).replace(/-+$/, '');

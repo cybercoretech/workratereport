@@ -16,7 +16,7 @@ const all = await matches();
 const list = all.filter((m) => m.data.wrestlers.some((w) => members.some((x) => x.id === w.id)));
 const count = (id: string) => all.filter((m) => m.data.wrestlers.some((w) => w.id === id)).length;
 ---
-<Base title={f.data.name} section="/wrestlers/" vault>
+<Base title={f.data.name} section="/wrestlers/" vault search="Faction">
   <Crumbs trail={[['Wrestlers', '/wrestlers/'], ['Factions', '/wrestlers/factions/'], [f.data.name]]} />
   <section class="hero vault-hero"><div class="hero-glow" aria-hidden="true"></div><div class="wrap">
     <p class="eyebrow">{promos.map((p) => p.data.short).join(' · ')} · {f.data.years}</p>

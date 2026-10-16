@@ -22,3 +22,5 @@ jobs:
       # (e.g. a rating above 5 fails here).
       - run: npm run check
       - run: npm run build
+      # Every theme in the picker must meet WCAG contrast after the guard.
+      - run: node scripts/contrast-audit.mjs

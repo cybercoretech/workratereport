@@ -1,0 +1,14 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import { fmtDate } from '../../lib/site';
+interface Props { list: CollectionEntry<'columns'>[] }
+const SERIES = { 'i-was-there': 'I Was There', analysis: 'Analysis' } as const;
+---
+{Astro.props.list.length ? (
+  <div class="grid wide">{Astro.props.list.map((c) => (
+    <a class:list={['card reveal', c.data.featured && 'featured']} href={`/columns/${c.id}/`}>
+      <div class="card-meta"><span class="promo">{SERIES[c.data.series]}</span><span>{fmtDate(c.data.date)}</span></div>
+      <h3>{c.data.title}</h3><p class="summary">{c.data.summary}</p>
+    </a>
+  ))}</div>
+) : <p class="placeholder">Columns are on the way.</p>}

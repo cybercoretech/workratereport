@@ -5,8 +5,8 @@ import { getFile } from './github';
 /** Valid ids from the deployed site, plus anything published since that build. */
 export async function loadCatalog(env: Env, request: Request): Promise<Catalog & { check: (kind: 'wrestlers', id: string) => Promise<boolean> }> {
   const res = await env.ASSETS.fetch(new URL('/data/catalog.json', request.url));
-  const c = (await res.json()) as { wrestlers: { id: string }[]; promotions: { id: string }[]; dna: { id: string }[] };
-  const cat = { wrestlers: c.wrestlers.map((w) => w.id), promotions: c.promotions.map((p) => p.id), dna: c.dna.map((d) => d.id) };
+  const c = (await res.json()) as { wrestlers: { id: string }[]; promotions: { id: string }[]; dna: { id: string }[]; matches: { id: string }[] };
+  const cat = { wrestlers: c.wrestlers.map((w) => w.id), promotions: c.promotions.map((p) => p.id), dna: c.dna.map((d) => d.id), matches: c.matches.map((m) => m.id) };
   return {
     ...cat,
     // A wrestler added from the desk a minute ago isn't in the deployed catalog yet.
