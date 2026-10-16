@@ -6,8 +6,8 @@ The state of the project for the next agent (or person). Update it with every ph
 
 - **Repo:** `github.com/cybercore-tech/workratereport` (public) · local `~/Webdev/workrate-report`.
 - **`main`:** `7c61d1d`, the merge of PR #3 (docs: live deployment).
-- **Phase 2A (Author's Desk)** is on branch `phase-2a/author-desk` → PR #4: `/desk/` editor, Pages Functions in `functions/`, D1 `workrate-report` (id `861ea80a-3d45-4394-978d-5b97f1816b13`, migration 0001 applied remotely), `wrangler.toml`.
-- **Pages secrets:** `SESSION_SECRET` set (random, by Claude). `ADMIN_PASSWORD_HASH` and `DESK_GITHUB_TOKEN` must be set **by the user** (README "One-time setup"). Never choose or see the user's password; never put a broad gh CLI token into Cloudflare.
+- **Phase 2A (Author's Desk)** merged in PR #4 (main `5a2e201`): `/desk/` editor, Pages Functions in `functions/`, D1 `workrate-report` (id `861ea80a-3d45-4394-978d-5b97f1816b13`, migration 0001 applied remotely), `wrangler.toml`.
+- **Pages secrets:** `SESSION_SECRET` set (random, by Claude). `ADMIN_PASSWORD_HASH` and `DESK_GITHUB_TOKEN` set by the user 2026-10-16 (after one mis-set that leaked a token as a secret *name*; Claude deleted it and the user re-created the token). Never choose or see the user's password; never put a broad gh CLI token into Cloudflare.
 - **Hosting: LIVE** at https://workrate-report.pages.dev/ (connected 2026-10-16). It's a Cloudflare **Pages** project (created via the dashboard's "Continue to Pages" link; the default "Continue with GitHub" makes a Worker instead) connected to this repo: preset Astro, `npm run build`, output `dist`, `NODE_VERSION=22`. Every push to `main` deploys; PRs get preview URLs. Never hand-deploy.
 - **New-hostname DNS:** for the first minutes after creation, `pages.dev` names can return NXDOMAIN (Cloudflare's nameservers update unevenly; 60 s negative TTL). Check with `dig @1.1.1.1` before assuming a problem.
 - **CI:** `.github/workflows/build.yml` runs `npm ci`, `npm run check` and `npm run build` on PRs and pushes to main.
@@ -25,7 +25,7 @@ The state of the project for the next agent (or person). Update it with every ph
 
 - **Name:** The Workrate Report. "Card Subject to Change" and "The Hard Cam" were taken.
 - **Focus:** modern-first; the Classic Vault = NWA/Crockett, WCW **and WWF** (user, 2026-10-16: "we definitely need to add WWF / WWE as well"). Modern WWE sits in the modern section. Territories are supporting history.
-- **Ratings:** 5-star scale, quarter stars, DUD and negatives. **5 is the max**, enforced in `src/content.config.ts`. Meltzer's go past 5 and show as "+1" / "6★".
+- **Ratings:** 5-star scale, DUD and negatives. **5 is the max** and **ours are precise to 0.01** (user, 2026-10-16), enforced in `src/content.config.ts` and `functions/_lib/content.ts`. Meltzer's stay quarter steps. Meltzer's go past 5 and show as "+1" / "6★".
 - **Site structure:** every section = a hub with highlights + sub-pages; the homepage = a highlights reel.
 - **Hamburger + Pyro effects + Cybercore theme picker** (BLUEPRINT §12). References: NCV `store-nav.*`, `night-effects.*`, `neon-polish.*`; SigilWard `docs/app.js`.
 - **Mashup names approved** (2026-10-16): Ten Pounds of Gold (default), Starrcade Neon, WarGames Steel, Nitro Nights, Dome Show, Bunkhouse, plus WWF-era Red & Yellow and Attitude (deliberately no trademarked phrases like "Hulkamania" or "Attitude Era").
@@ -34,7 +34,8 @@ The state of the project for the next agent (or person). Update it with every ph
 - **Contact:** info@cybercoretech.net.
 - **Desk publishing goes live right away** (user, 2026-10-16): commits to `main` via the GitHub API, limited to `src/content/matches|wrestlers/`. This is the only exception to branch + PR.
 - **Cloudflare resources:** the user approved Claude creating them with wrangler (D1 created 2026-10-16).
-- **Forum:** options are in BLUEPRINT §13.3 (recommended C: NCV-style D1 forum + per-match threads). **Waiting for the user's choice.**
+- **Forum = option C** (user, 2026-10-16): NCV-style D1 forum + an automatic "Discuss this match" thread per review, with fan ratings. Build it in Phase 3B.
+- **Roster:** 138 wrestlers (user, 2026-10-16: "top stars and some mid-card guys that pushed to the top; no generic wrestlers, jobbers or crappy gimmicks"). Chris Benoit and Jimmy Snuka were left out pending the user's decision.
 - **Stack:** Astro 7.3.8 static, plain JS in `public/js` (no framework, no animation library), Google Fonts (Anton, Inter, Source Serif 4).
 
 ## 🏗️ Architecture
@@ -74,7 +75,8 @@ The state of the project for the next agent (or person). Update it with every ph
 - **#1** Phase 0: brand assets, blueprint, README, handoff (merged).
 - **#2** Phase 1: Astro skeleton, nav, theme picker, effects, launch content (merged).
 - **#3** Docs: record the live Cloudflare Pages deployment (merged).
-- **#4** Phase 2A: Author's Desk.
+- **#4** Phase 2A: Author's Desk (merged).
+- **#5** Roster to 138 wrestlers, 0.01-precision ratings, forum option C recorded.
 
 ## 🧪 How Phase 2A was verified
 

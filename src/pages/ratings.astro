@@ -3,8 +3,8 @@ import InfoPage from '../components/InfoPage.astro';
 import Stars from '../components/Stars.astro';
 const scale: [number | 'dud', string][] = [[5, 'All-time classic. Our scale stops here.'], [4.75, 'Match of the year contender'], [4.5, 'Match of the year contender'], [4, 'Great, worth going out of your way to see'], [3.5, 'Good, solid'], [3, 'Good, solid'], [2.5, 'Average TV match'], [2, 'Average TV match'], [1.5, 'Below average'], [1, 'Below average'], [0.5, 'Bad'], ['dud', 'Nothing worthwhile'], [-1, 'So bad it is offensive']];
 ---
-<InfoPage title="How we rate" eyebrow="The scale" description="The Workrate Report's five-star scale, in quarter stars, next to Dave Meltzer's.">
-  <p>Every match is rated on a five-star scale in quarter-star steps, the system Dave Meltzer made famous in the Wrestling Observer. Five stars is the ceiling here. When Meltzer goes past it (Omega vs. Okada went to six, then seven), we show his rating as he gave it, next to ours.</p>
+<InfoPage title="How we rate" eyebrow="The scale" description="The Workrate Report's five-star scale, precise to a hundredth of a star, next to Dave Meltzer's.">
+  <p>Every match is rated on a five-star scale, the system Dave Meltzer made famous in the Wrestling Observer, but ours is precise to a hundredth of a star, so a 4.89 and a 4.97 can say different things. Five stars is the ceiling here. When Meltzer goes past it (Omega vs. Okada went to six, then seven), we show his rating as he gave it, next to ours.</p>
   <div class="panel" style="font-family:var(--ui);margin:28px 0">
     <table class="facts"><tbody>
       {scale.map(([r, t]) => <tr><th scope="row" style="width:auto"><Stars rating={r} /></th><td>{t}</td></tr>)}

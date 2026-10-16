@@ -21,7 +21,7 @@
     if (r === null) return '<span class="unrated">Not rated yet</span>';
     if (r === 'dud') return '<span class="stamp is-in">DUD</span>';
     if (r < 0) return `<span class="stamp is-in">MINUS ${-r}★</span>`;
-    return `<span class="stars lg is-in" style="--r:${Math.min(5, r) / 5}"><span class="stars-row"><i></i></span><span class="stars-text">${r} / 5</span></span>`;
+    return `<span class="stars lg is-in" style="--r:${Math.min(5, r) / 5}"><span class="stars-row"><i></i></span><span class="stars-text">${Number(r).toFixed(2)} / 5</span></span>`;
   };
 
   const login = $('#deskLogin'), app = $('#deskApp'), form = $('#matchForm');
@@ -85,7 +85,7 @@
     $('#matchList').innerHTML = list.map((m) => `
       <li><button type="button" data-open="${esc(m.id)}" aria-current="${m.id === current}">
         <b>${esc(m.data.title)}</b><span>${esc(m.data.event)} · ${esc(m.data.date)}</span>
-        <em>${m.data.my_rating === null ? 'Not rated' : m.data.my_rating === 'dud' ? 'DUD' : `${m.data.my_rating}★`}${m.body ? ' · reviewed' : ''}</em>
+        <em>${m.data.my_rating === null ? 'Not rated' : m.data.my_rating === 'dud' ? 'DUD' : `${Number(m.data.my_rating).toFixed(2)}★`}${m.body ? ' · reviewed' : ''}</em>
       </button></li>`).join('') || '<li class="desk-hint">No matches found.</li>';
   }
   $('#matchSearch').addEventListener('input', renderList);
@@ -215,12 +215,15 @@
   /* ---------- rating control ---------- */
   function renderRating() {
     $$('[data-my]').forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.my === my.mode)));
-    $('#myRange').disabled = my.mode !== 'stars';
+    const starsMode = my.mode === 'stars';
+    $('#myRange').disabled = !starsMode;
+    $('#myExact').disabled = !starsMode;
+    $$('[data-nudge]').forEach((b) => { b.disabled = !starsMode; });
     $('#myRange').value = String(my.value);
+    if (document.activeElement !== $('#myExact')) $('#myExact').value = my.value.toFixed(2);
     $('#negField').hidden = my.mode !== 'negative';
     if (my.mode === 'negative') $('#negValue').value = String(my.value || 1);
     const r = my.mode === 'none' ? null : my.mode === 'dud' ? 'dud' : my.mode === 'negative' ? -Math.abs(Number($('#negValue').value)) : my.value;
-    $('#myOut').textContent = my.mode === 'stars' ? `${my.value} / 5` : '';
     $('#myPreview').innerHTML = stars(r);
   }
   $$('[data-my]').forEach((b) => b.addEventListener('click', () => {
@@ -228,7 +231,15 @@
     if (my.mode === 'stars' && !my.value) my.value = 3;
     renderRating(); form.dispatchEvent(new Event('input'));
   }));
-  $('#myRange').addEventListener('input', (e) => { my.value = Number(e.target.value); renderRating(); });
+  // 0.01 precision: slider for feel, exact box for typing, nudges for fine-tuning.
+  const setMy = (v) => {
+    my.value = Math.min(5, Math.max(0, Math.round(Number(v) * 100) / 100 || 0));
+    renderRating(); form.dispatchEvent(new Event('input'));
+  };
+  $('#myRange').addEventListener('input', (e) => setMy(e.target.value));
+  $('#myExact').addEventListener('input', (e) => { if (e.target.value !== '') setMy(e.target.value); });
+  $('#myExact').addEventListener('blur', () => renderRating());
+  $$('[data-nudge]').forEach((b) => b.addEventListener('click', () => setMy(my.value + Number(b.dataset.nudge))));
   $('#negValue').addEventListener('input', (e) => { my.value = Number(e.target.value); renderRating(); });
 
   /* ---------- previews ---------- */

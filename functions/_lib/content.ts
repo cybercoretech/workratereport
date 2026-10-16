@@ -18,18 +18,19 @@ export const slugify = (s: string) =>
     .replace(/["'’.]/g, '').replace(/&/g, ' and ').replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '').slice(0, 80);
 
 const quarter = (n: number) => Math.round(n * 4) === n * 4;
+const hundredth = (n: number) => Math.abs(Math.round(n * 100) - n * 100) < 1e-6;
 const str = (v: unknown, max = 300) => (typeof v === 'string' ? v.trim().slice(0, max) : '');
 const list = (v: unknown, max = 40) => (Array.isArray(v) ? v.map((x) => str(x, 200)).filter(Boolean).slice(0, max) : []);
 
-function rating(v: unknown, cap: number, field: string, errors: string[]): Rating {
+function rating(v: unknown, cap: number, field: string, errors: string[], precise = false): Rating {
   if (v === null || v === undefined || v === '') return null;
   if (v === 'dud') return 'dud';
   const n = typeof v === 'number' ? v : Number(v);
   if (!Number.isFinite(n)) { errors.push(`${field}: not a number`); return null; }
-  if (!quarter(n)) errors.push(`${field}: use quarter-star steps (like 4.25 or 4.75)`);
+  if (precise ? !hundredth(n) : !quarter(n)) errors.push(precise ? `${field}: use at most two decimals (like 4.89)` : `${field}: use quarter-star steps (like 4.25 or 4.75)`);
   if (n > cap) errors.push(`${field}: ${cap} is the most allowed`);
   if (n < -5) errors.push(`${field}: -5 is the lowest allowed`);
-  return n;
+  return precise ? Math.round(n * 100) / 100 : n;
 }
 
 /** Accepts a YouTube URL or bare ID; returns the 11-character ID or null. */
@@ -66,7 +67,7 @@ export function validateMatch(raw: Record<string, unknown>, cat: Catalog) {
     title, date, promotion, event, venue: str(raw.venue, 200) || undefined, wrestlers, era: era ?? 'modern', type,
     title_match: str(raw.title_match, 200) || undefined, duration: str(raw.duration, 20) || undefined,
     result: str(raw.result, 200) || undefined,
-    my_rating: rating(raw.my_rating, 5, 'My rating', errors),
+    my_rating: rating(raw.my_rating, 5, 'My rating', errors, true),
     meltzer_rating: rating(raw.meltzer_rating, 10, 'Meltzer rating', errors),
     youtube: yt ?? null, where_to_watch: list(raw.where_to_watch, 10), dna,
     tags: list(raw.tags, 20).map(slugify).filter(Boolean), featured: raw.featured === true,
