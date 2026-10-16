@@ -1,0 +1,32 @@
+---
+import { getCollection, render } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import Crumbs from '../../components/Crumbs.astro';
+import SectionHead from '../../components/SectionHead.astro';
+import MatchGrid from '../../components/MatchGrid.astro';
+import { matches, byRatingDesc } from '../../lib/site';
+export async function getStaticPaths() {
+  return (await getCollection('promotions')).filter((p) => p.data.group !== 'modern').map((p) => ({ params: { promo: p.id }, props: { p } }));
+}
+const { p } = Astro.props;
+const list = (await matches()).filter((m) => m.data.promotion.id === p.id).sort(byRatingDesc);
+const { Content } = await render(p);
+const hasHistory = (p.body ?? '').replace(/<!--[\s\S]*?-->/g, '').trim().length > 0;
+const territory = p.data.group === 'territory';
+---
+<Base title={p.data.name} section="/vault/" vault description={p.data.summary}>
+  <Crumbs trail={[['Classic Vault', '/vault/'], ...(territory ? [['Territories', '/vault/territories/'] as [string, string]] : []), [p.data.short]]} />
+  <section class="hero vault-hero"><div class="hero-glow" aria-hidden="true"></div><div class="wrap">
+    <p class="eyebrow">{territory ? 'Territory' : 'Classic Vault'} · {p.data.years}</p>
+    <h1>{p.data.name}</h1>
+    <p class="lede">{p.data.summary}</p>
+  </div></section>
+  <section class="section wrap">
+    <SectionHead eyebrow="History" title="The story" />
+    {hasHistory ? <div class="prose"><Content /></div> : <p class="placeholder">The history of {p.data.short} (rise, peak, key feuds and how it ended) is being written.</p>}
+  </section>
+  <section class="section wrap">
+    <SectionHead eyebrow="Must-watch" title="Matches, best first" href={`/matches/promotion/${p.id}/`} />
+    <MatchGrid list={list} />
+  </section>
+</Base>

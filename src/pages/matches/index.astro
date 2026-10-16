@@ -1,0 +1,49 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import Crumbs from '../../components/Crumbs.astro';
+import SectionHead from '../../components/SectionHead.astro';
+import MatchGrid from '../../components/MatchGrid.astro';
+import { matches, pick, byRatingDesc, year } from '../../lib/site';
+const all = await matches();
+const promos = (await getCollection('promotions')).sort((a, b) => a.data.order - b.data.order);
+const count = (id: string) => all.filter((m) => m.data.promotion.id === id).length;
+const years = [...new Set(all.map(year))].sort((a, b) => b - a);
+---
+<Base title="Match Guide" section="/matches/">
+  <Crumbs trail={[['Match Guide']]} />
+  <section class="hero">
+    <div class="hero-glow" aria-hidden="true"></div>
+    <div class="wrap">
+      <p class="eyebrow">Match Guide</p>
+      <h1>The <em>Match</em> Guide</h1>
+      <p class="lede">Every review in one place. Browse by era, promotion, year or match type, or go straight to the top-rated matches.</p>
+      <div class="btn-row"><a class="btn" href="/matches/all/">All matches + filters</a><a class="btn ghost" href="/matches/top-rated/">Top rated</a></div>
+    </div>
+  </section>
+  <section class="section wrap">
+    <SectionHead eyebrow="Featured" title="Must-see matches" href="/matches/top-rated/" />
+    <MatchGrid list={pick(all, 6, byRatingDesc)} />
+  </section>
+  <section class="section wrap">
+    <SectionHead eyebrow="Browse" title="By promotion" href="/matches/promotion/" />
+    <div class="tiles">
+      {promos.filter((p) => count(p.id)).map((p) => (
+        <a class="tile reveal" href={`/matches/promotion/${p.id}/`} style={`--tile:var(${p.data.group === 'modern' ? '--red' : '--gold'})`}>
+          <span class="count">{count(p.id)}</span><b>{p.data.short}</b><span>{p.data.years}</span>
+        </a>
+      ))}
+    </div>
+  </section>
+  <section class="section wrap">
+    <SectionHead eyebrow="Browse" title="By year" href="/matches/year/" />
+    <ul class="chips">{years.map((y) => <li><a href={`/matches/year/${y}/`}>{y}</a></li>)}</ul>
+  </section>
+  <section class="section wrap">
+    <SectionHead eyebrow="Browse" title="By era" />
+    <div class="tiles">
+      <a class="tile reveal" href="/matches/modern/" style="--tile:var(--red)"><span class="count">{all.filter((m) => m.data.era === 'modern').length}</span><b>Modern era</b><span>The current era, worldwide</span></a>
+      <a class="tile reveal" href="/matches/classic/" style="--tile:var(--gold)"><span class="count">{all.filter((m) => m.data.era === 'classic').length}</span><b>Classic era</b><span>NWA · WCW · WWF · territories</span></a>
+    </div>
+  </section>
+</Base>

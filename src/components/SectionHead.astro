@@ -1,0 +1,12 @@
+---
+interface Props { eyebrow?: string; title: string; href?: string; cta?: string; level?: 'h1' | 'h2' }
+const { eyebrow, title, href, cta = 'See all', level = 'h2' } = Astro.props;
+const H = level;
+---
+<div class="section-head reveal">
+  <div>
+    {eyebrow && <p class="eyebrow">{eyebrow}</p>}
+    <H set:html={title} />
+  </div>
+  {href && <a class="see-all" href={href}>{cta}</a>}
+</div>

@@ -1,0 +1,14 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import Crumbs from '../../components/Crumbs.astro';
+const list = (await getCollection('promotions')).filter((p) => p.data.group === 'territory').sort((a, b) => a.data.order - b.data.order);
+---
+<Base title="The territories" section="/vault/" vault>
+  <Crumbs trail={[['Classic Vault', '/vault/'], ['Territories']]} />
+  <section class="section wrap">
+    <p class="eyebrow">Classic Vault</p><h1>The territories</h1>
+    <p class="lede">The regional promotions of the 1980s that the national companies grew out of, and swallowed up.</p>
+    <div class="grid">{list.map((p) => <a class="card reveal" href={`/vault/${p.id}/`}><div class="card-meta"><span class="promo">{p.data.years}</span></div><h3>{p.data.name}</h3><p class="summary">{p.data.summary}</p></a>)}</div>
+  </section>
+</Base>

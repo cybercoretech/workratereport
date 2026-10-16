@@ -1,0 +1,24 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../../../layouts/Base.astro';
+import Crumbs from '../../../components/Crumbs.astro';
+import { matches } from '../../../lib/site';
+const all = await matches();
+const promos = (await getCollection('promotions')).sort((a, b) => a.data.order - b.data.order);
+const count = (id: string) => all.filter((m) => m.data.promotion.id === id).length;
+const groups = [['modern', 'Modern'], ['vault', 'Classic Vault'], ['territory', 'Territories']] as const;
+---
+<Base title="Matches by promotion" section="/matches/">
+  <Crumbs trail={[['Match Guide', '/matches/'], ['By promotion']]} />
+  <section class="section wrap">
+    <p class="eyebrow">Match Guide</p><h1>By promotion</h1>
+    {groups.map(([g, label]) => (
+      <>
+        <h2 style="margin-top:40px">{label}</h2>
+        <div class="tiles">{promos.filter((p) => p.data.group === g).map((p) => (
+          <a class="tile reveal" href={`/matches/promotion/${p.id}/`} style={`--tile:var(${g === 'modern' ? '--red' : '--gold'})`}><span class="count">{count(p.id)}</span><b>{p.data.short}</b><span>{p.data.years}</span></a>
+        ))}</div>
+      </>
+    ))}
+  </section>
+</Base>

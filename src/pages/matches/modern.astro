@@ -1,0 +1,7 @@
+---
+import ListPage from '../../components/ListPage.astro';
+import { matches } from '../../lib/site';
+const list = (await matches()).filter((m) => m.data.era === 'modern');
+---
+<ListPage title="Modern era" eyebrow="Match Guide" lede="WWE, AEW, New Japan, TNA and the independents."
+  list={list} trail={[['Match Guide', '/matches/'], ['Modern era']]} />

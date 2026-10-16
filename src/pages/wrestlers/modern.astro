@@ -1,0 +1,6 @@
+---
+import { getCollection } from 'astro:content';
+import WrestlerList from '../../components/WrestlerList.astro';
+const list = (await getCollection('wrestlers')).filter((w) => w.data.eras.includes('modern')).sort((a, b) => a.data.name.localeCompare(b.data.name));
+---
+<WrestlerList title="Modern roster" lede="Active and recent stars across WWE, AEW, New Japan and beyond." list={list} trail={[['Wrestlers', '/wrestlers/'], ['Modern roster']]} />

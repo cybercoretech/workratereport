@@ -1,0 +1,54 @@
+---
+import { getCollection, getEntry, render } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import Crumbs from '../../components/Crumbs.astro';
+import SectionHead from '../../components/SectionHead.astro';
+import MatchGrid from '../../components/MatchGrid.astro';
+import { matches, byRatingDesc } from '../../lib/site';
+export async function getStaticPaths() {
+  return (await getCollection('dna')).map((d) => ({ params: { slug: d.id }, props: { d } }));
+}
+const { d } = Astro.props;
+const modern = await getEntry(d.data.modern);
+const classic = await getEntry(d.data.classic);
+const all = await matches();
+const of = (id: string) => all.filter((m) => m.data.wrestlers.some((w) => w.id === id)).sort(byRatingDesc).slice(0, 3);
+const { Content } = await render(d);
+const hasVerdict = (d.body ?? '').replace(/<!--[\s\S]*?-->/g, '').trim().length > 0;
+const pending = (s: string) => s.startsWith('To be written');
+---
+<Base title={d.data.title} section="/dna/">
+  <Crumbs trail={[['Territory DNA', '/dna/'], [d.data.title]]} />
+  <section class="hero"><div class="hero-glow" aria-hidden="true"></div><div class="wrap">
+    <p class="eyebrow">Territory DNA {d.data.draft && '· Draft'}</p>
+    <h1 class="visually-hidden">{d.data.title}</h1>
+    <div class="dna-pair">
+      <div class="dna-side modern"><span class="era">Modern</span><h2><a href={`/wrestlers/${modern?.id}/`} style="color:inherit;text-decoration:none">{modern?.data.name}</a></h2></div>
+      <div class="dna-link" aria-hidden="true"><svg viewBox="0 0 60 60"><path d="M15 6c30 12-30 36 0 48M45 6c-30 12 30 36 0 48" fill="none" stroke="var(--blue)" stroke-width="3" stroke-linecap="round"/><path d="M20 18h20M18 30h24M20 42h20" stroke="var(--gold)" stroke-width="2"/></svg></div>
+      <div class="dna-side classic"><span class="era">Classic</span><h2><a href={`/wrestlers/${classic?.id}/`} style="color:inherit;text-decoration:none">{classic?.data.name}</a></h2></div>
+    </div>
+    <p class="lede" style="margin:24px auto 0;text-align:center">{d.data.summary}</p>
+  </div></section>
+  {d.data.traits.length > 0 && (
+    <section class="section wrap">
+      <SectionHead eyebrow="Side by side" title="The traits" />
+      <div class="panel table-scroll">
+        <table class="traits">
+          <thead><tr><th scope="col">Trait</th><th scope="col">{modern?.data.name}</th><th scope="col">{classic?.data.name}</th></tr></thead>
+          <tbody>{d.data.traits.map((t) => <tr><th scope="row">{t.trait}</th><td class:list={[pending(t.modern) && 'muted']}>{pending(t.modern) ? 'Coming soon' : t.modern}</td><td class:list={[pending(t.classic) && 'muted']}>{pending(t.classic) ? 'Coming soon' : t.classic}</td></tr>)}</tbody>
+        </table>
+      </div>
+    </section>
+  )}
+  <section class="section wrap">
+    <SectionHead eyebrow="Watch back to back" title="Paired matches" />
+    <div class="grid wide">
+      <div><p class="eyebrow">{modern?.data.name}</p><MatchGrid list={of(modern!.id)} /></div>
+      <div><p class="eyebrow">{classic?.data.name}</p><MatchGrid list={of(classic!.id)} /></div>
+    </div>
+  </section>
+  <section class="section wrap">
+    <SectionHead eyebrow="The verdict" title="Is the DNA real?" />
+    {hasVerdict ? <div class="prose"><Content /></div> : <p class="placeholder">The verdict is being written.</p>}
+  </section>
+</Base>

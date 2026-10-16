@@ -1,0 +1,14 @@
+---
+import Base from '../../../layouts/Base.astro';
+import Crumbs from '../../../components/Crumbs.astro';
+import { matches, year } from '../../../lib/site';
+const all = await matches();
+const years = [...new Set(all.map(year))].sort((a, b) => b - a);
+---
+<Base title="Matches by year" section="/matches/">
+  <Crumbs trail={[['Match Guide', '/matches/'], ['By year']]} />
+  <section class="section wrap">
+    <p class="eyebrow">Match Guide</p><h1>By year</h1>
+    <div class="tiles">{years.map((y) => <a class="tile reveal" href={`/matches/year/${y}/`}><span class="count">{all.filter((m) => year(m) === y).length}</span><b>{y}</b></a>)}</div>
+  </section>
+</Base>

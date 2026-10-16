@@ -1,0 +1,17 @@
+---
+import Base from '../../layouts/Base.astro';
+import Crumbs from '../../components/Crumbs.astro';
+import SectionHead from '../../components/SectionHead.astro';
+---
+<Base title="Where to watch" section="/watch/">
+  <Crumbs trail={[['Watch']]} />
+  <section class="hero"><div class="hero-glow" aria-hidden="true"></div><div class="wrap">
+    <p class="eyebrow">Watch</p><h1>Watch it <em>legally</em></h1>
+    <p class="lede">Where the matches live: official channels and licensed services only. Starter paths and Then &amp; Now pairings are on the way.</p>
+    <div class="btn-row"><a class="btn" href="/watch/services/">Services</a></div>
+  </div></section>
+  <section class="section wrap">
+    <SectionHead eyebrow="Coming soon" title="Starter paths" />
+    <p class="placeholder">Guided watch lists, like "10 matches to understand the Four Horsemen" and "Get into New Japan in 8 matches", are being put together.</p>
+  </section>
+</Base>

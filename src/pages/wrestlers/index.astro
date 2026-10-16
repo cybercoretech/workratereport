@@ -1,0 +1,35 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import Crumbs from '../../components/Crumbs.astro';
+import SectionHead from '../../components/SectionHead.astro';
+import WrestlerCard from '../../components/WrestlerCard.astro';
+import { matches } from '../../lib/site';
+const all = await matches();
+const ws = (await getCollection('wrestlers')).sort((a, b) => a.data.name.localeCompare(b.data.name));
+const factions = await getCollection('factions');
+const count = (id: string) => all.filter((m) => m.data.wrestlers.some((w) => w.id === id)).length;
+const featured = ws.filter((w) => w.data.featured);
+---
+<Base title="Wrestlers" section="/wrestlers/">
+  <Crumbs trail={[['Wrestlers']]} />
+  <section class="hero"><div class="hero-glow" aria-hidden="true"></div><div class="wrap">
+    <p class="eyebrow">Wrestlers</p><h1>The <em>roster</em></h1>
+    <p class="lede">From the Nature Boy to the Aerial Assassin: profiles, signature matches and where to start with each wrestler.</p>
+    <div class="btn-row"><a class="btn" href="/wrestlers/all/">A–Z</a><a class="btn ghost" href="/wrestlers/legends/">Legends</a></div>
+  </div></section>
+  <section class="section wrap">
+    <SectionHead eyebrow="Spotlight" title="Featured" href="/wrestlers/all/" />
+    <div class="grid">{featured.slice(0, 8).map((w) => <WrestlerCard w={w} count={count(w.id)} />)}</div>
+  </section>
+  <section class="section wrap">
+    <SectionHead eyebrow="Stables" title="Factions" href="/wrestlers/factions/" />
+    <div class="tiles">{factions.map((f) => <a class="tile reveal" href={`/wrestlers/factions/${f.id}/`}><b>{f.data.name}</b><span>{f.data.years}</span></a>)}</div>
+  </section>
+  <section class="section wrap">
+    <div class="tiles">
+      <a class="tile reveal" href="/wrestlers/modern/" style="--tile:var(--red)"><span class="count">{ws.filter((w) => w.data.eras.includes('modern')).length}</span><b>Modern roster</b></a>
+      <a class="tile reveal" href="/wrestlers/legends/" style="--tile:var(--gold)"><span class="count">{ws.filter((w) => w.data.eras.includes('classic')).length}</span><b>Legends</b></a>
+    </div>
+  </section>
+</Base>

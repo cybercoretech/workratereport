@@ -1,0 +1,33 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import Crumbs from '../../components/Crumbs.astro';
+import SectionHead from '../../components/SectionHead.astro';
+import MatchGrid from '../../components/MatchGrid.astro';
+import { matches, pick, byRatingDesc } from '../../lib/site';
+const all = (await matches()).filter((m) => m.data.era === 'classic');
+const promos = (await getCollection('promotions')).sort((a, b) => a.data.order - b.data.order);
+const big = promos.filter((p) => p.data.group === 'vault');
+const territories = promos.filter((p) => p.data.group === 'territory');
+const count = (id: string) => all.filter((m) => m.data.promotion.id === id).length;
+---
+<Base title="Classic Vault" section="/vault/" vault description="NWA/Crockett, WCW and the WWF: history, feuds and must-watch matches from 1980 on.">
+  <Crumbs trail={[['Classic Vault']]} />
+  <section class="hero vault-hero"><div class="hero-glow" aria-hidden="true"></div><div class="wrap">
+    <p class="eyebrow">Classic Vault · 1980 on</p>
+    <h1>The <em>Vault</em></h1>
+    <p class="lede">Jim Crockett Promotions and the NWA, WCW and the WWF: Dusty and Flair, Sting, the Four Horsemen, Savage and Steamboat, Bret and Austin. Plus the territories that fed them.</p>
+  </div></section>
+  <section class="section wrap">
+    <SectionHead eyebrow="Vault picks" title="Start here" href="/matches/classic/" />
+    <MatchGrid list={pick(all, 3, byRatingDesc)} />
+  </section>
+  <section class="section wrap">
+    <SectionHead eyebrow="The big three" title="Promotions" />
+    <div class="tiles">{big.map((p) => <a class="tile reveal" href={`/vault/${p.id}/`} style="--tile:var(--gold)"><span class="count">{count(p.id)}</span><b>{p.data.short}</b><span>{p.data.years}</span></a>)}</div>
+  </section>
+  <section class="section wrap">
+    <SectionHead eyebrow="Supporting history" title="The territories" href="/vault/territories/" />
+    <div class="tiles">{territories.map((p) => <a class="tile reveal" href={`/vault/${p.id}/`} style="--tile:var(--blue)"><b>{p.data.short}</b><span>{p.data.years}</span></a>)}</div>
+  </section>
+</Base>

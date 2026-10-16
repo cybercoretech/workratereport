@@ -1,0 +1,14 @@
+---
+import Base from '../layouts/Base.astro';
+import Crumbs from './Crumbs.astro';
+interface Props { title: string; eyebrow: string; description?: string }
+const { title, eyebrow, description } = Astro.props;
+---
+<Base title={title} description={description}>
+  <Crumbs trail={[[title]]} />
+  <section class="section wrap">
+    <p class="eyebrow">{eyebrow}</p>
+    <h1>{title}</h1>
+    <div class="prose"><slot /></div>
+  </section>
+</Base>

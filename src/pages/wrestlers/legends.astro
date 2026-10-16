@@ -1,0 +1,6 @@
+---
+import { getCollection } from 'astro:content';
+import WrestlerList from '../../components/WrestlerList.astro';
+const list = (await getCollection('wrestlers')).filter((w) => w.data.eras.includes('classic')).sort((a, b) => a.data.name.localeCompare(b.data.name));
+---
+<WrestlerList title="Legends" lede="The NWA, WCW, WWF and territory greats." list={list} trail={[['Wrestlers', '/wrestlers/'], ['Legends']]} />

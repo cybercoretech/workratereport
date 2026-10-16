@@ -1,0 +1,55 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import Crumbs from '../../components/Crumbs.astro';
+import MatchGrid from '../../components/MatchGrid.astro';
+import { matches, year } from '../../lib/site';
+const all = await matches();
+const promos = (await getCollection('promotions')).filter((p) => all.some((m) => m.data.promotion.id === p.id)).sort((a, b) => a.data.order - b.data.order);
+const years = [...new Set(all.map(year))].sort((a, b) => b - a);
+const types = [...new Set(all.map((m) => m.data.type))].sort();
+---
+<Base title="All matches" section="/matches/">
+  <Crumbs trail={[['Match Guide', '/matches/'], ['All matches']]} />
+  <section class="section wrap">
+    <p class="eyebrow">Match Guide</p>
+    <h1>All matches</h1>
+    <form class="filters" id="filters" role="search" aria-label="Filter matches" onsubmit="return false">
+      <label>Search<input type="search" name="q" placeholder="Wrestler, event…" autocomplete="off" /></label>
+      <label>Era<select name="era"><option value="">All eras</option><option value="modern">Modern</option><option value="classic">Classic</option></select></label>
+      <label>Promotion<select name="promotion"><option value="">All promotions</option>{promos.map((p) => <option value={p.id}>{p.data.short}</option>)}</select></label>
+      <label>Year<select name="year"><option value="">All years</option>{years.map((y) => <option>{y}</option>)}</select></label>
+      <label>Type<select name="type"><option value="">All types</option>{types.map((t) => <option value={t}>{t.replace('-', ' ')}</option>)}</select></label>
+      <label>My rating<select name="min"><option value="">Any</option><option value="5">★★★★★</option><option value="4.5">★★★★½ +</option><option value="4">★★★★ +</option><option value="3">★★★ +</option></select></label>
+    </form>
+    <p class="filter-count" id="filterCount" aria-live="polite">{all.length} matches</p>
+    <MatchGrid list={all} />
+  </section>
+  <script is:inline>
+    (() => {
+      const form = document.getElementById('filters');
+      const cards = [...document.querySelectorAll('[data-match]')];
+      const out = document.getElementById('filterCount');
+      const params = new URLSearchParams(location.search);
+      for (const [k, v] of params) if (form.elements[k]) form.elements[k].value = v;
+      function run() {
+        const f = Object.fromEntries(new FormData(form));
+        let n = 0;
+        for (const c of cards) {
+          const r = parseFloat(c.dataset.rating);
+          const ok = (!f.q || c.dataset.search.includes(f.q.toLowerCase().trim()))
+            && (!f.era || c.dataset.era === f.era) && (!f.promotion || c.dataset.promotion === f.promotion)
+            && (!f.year || c.dataset.year === f.year) && (!f.type || c.dataset.type === f.type)
+            && (!f.min || (!Number.isNaN(r) && r >= parseFloat(f.min)));
+          c.hidden = !ok; if (ok) { n++; c.classList.remove('is-in'); }
+        }
+        out.textContent = `${n} ${n === 1 ? 'match' : 'matches'}`;
+        const q = new URLSearchParams(Object.entries(f).filter(([, v]) => v));
+        history.replaceState(null, '', q.size ? `?${q}` : location.pathname);
+        document.querySelector('[data-grid]')?.dispatchEvent(new CustomEvent('wr:grid-updated', { bubbles: true }));
+      }
+      form.addEventListener('input', run);
+      if (params.size) run();
+    })();
+  </script>
+</Base>

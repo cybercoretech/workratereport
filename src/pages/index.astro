@@ -1,0 +1,100 @@
+---
+import { getCollection, getEntry } from 'astro:content';
+import Base from '../layouts/Base.astro';
+import Svg from '../components/Svg.astro';
+import SectionHead from '../components/SectionHead.astro';
+import MatchGrid from '../components/MatchGrid.astro';
+import MatchCard from '../components/MatchCard.astro';
+import Stars from '../components/Stars.astro';
+import Divider from '../components/Divider.astro';
+import { matches, pick, byRatingDesc, fmtDate } from '../lib/site';
+
+const all = await matches();
+const motw = all.find((m) => m.data.featured && m.data.era === 'modern') ?? all[0];
+const motwPromo = await getEntry(motw.data.promotion);
+const modern = pick(all.filter((m) => m.data.era === 'modern' && m.id !== motw.id), 6);
+const vault = pick(all.filter((m) => m.data.era === 'classic'), 3, byRatingDesc);
+const dna = (await getCollection('dna')).find((d) => d.data.flagship);
+const dnaModern = dna && (await getEntry(dna.data.modern));
+const dnaClassic = dna && (await getEntry(dna.data.classic));
+const meltzer = all.filter((m) => m.data.meltzer_rating !== null && m.data.my_rating !== null);
+const wrestlers = await getCollection('wrestlers');
+---
+<Base title="Home">
+  <section class="hero">
+    <div class="hero-glow" aria-hidden="true"></div>
+    <div class="wrap hero-grid">
+      <div>
+        <p class="eyebrow">Then &amp; Now · Since 1980</p>
+        <h1>Every match.<br /><em>Every era.</em><br />Rated.</h1>
+        <p class="lede">Modern classics from WWE, AEW and New Japan, backed by a vault of NWA, WCW and WWF history, all rated out of five stars by a fan who watched it the first time around.</p>
+        <div class="btn-row">
+          <a class="btn" href="/matches/">Match Guide</a>
+          <a class="btn ghost" href="/vault/">Enter the Vault</a>
+        </div>
+        <div class="stat-row">
+          <div class="stat"><b data-count={all.length}>{all.length}</b><span>Matches logged</span></div>
+          <div class="stat"><b data-count={wrestlers.length}>{wrestlers.length}</b><span>Wrestlers</span></div>
+          <div class="stat"><b data-count={new Date().getFullYear() - 1980}>{new Date().getFullYear() - 1980}</b><span>Years watching</span></div>
+        </div>
+      </div>
+      <Svg name="emblem" class="hero-emblem" />
+    </div>
+  </section>
+
+  <section class="section wrap five-star-burst" aria-labelledby="motw">
+    <SectionHead eyebrow="Match of the Week" title={`<span id="motw">${motw.data.title}</span>`} href={`/matches/${motw.id}/`} cta="Read the review" />
+    <div class="vault-panel reveal">
+      <div class="card-meta"><span class="promo">{motwPromo?.data.short}</span><span>{motw.data.event}</span><span>{fmtDate(motw.data.date)}</span></div>
+      {motw.data.summary && <p class="lede" style="margin-top:14px">{motw.data.summary}</p>}
+      <div class="card-ratings" style="gap:12px 30px">
+        <span><Stars rating={motw.data.my_rating} who="Mine" size="lg" /></span>
+        {motw.data.meltzer_rating !== null && <span><Stars rating={motw.data.meltzer_rating} who="Meltzer" size="lg" /></span>}
+      </div>
+    </div>
+  </section>
+
+  <section class="section wrap" aria-label="Latest reviews">
+    <SectionHead eyebrow="Modern era" title="Latest reviews" href="/matches/all/" />
+    <MatchGrid list={modern} />
+  </section>
+
+  <Divider />
+
+  <section class="section wrap vault-scope" aria-label="From the Vault">
+    <SectionHead eyebrow="Classic Vault · NWA · WCW · WWF" title="From the Vault" href="/vault/" cta="Open the Vault" />
+    <MatchGrid list={vault} />
+  </section>
+
+  {dna && dnaModern && dnaClassic && (
+    <section class="section wrap" aria-label="Territory DNA">
+      <SectionHead eyebrow="Territory DNA" title={dna.data.title} href={`/dna/${dna.id}/`} cta="Read the comparison" />
+      <a class="card featured reveal" href={`/dna/${dna.id}/`}>
+        <div class="dna-pair">
+          <div class="dna-side modern"><span class="era">Modern</span><h3>{dnaModern.data.name}</h3></div>
+          <div class="dna-link" aria-hidden="true"><svg viewBox="0 0 60 60"><path d="M15 6c30 12-30 36 0 48M45 6c-30 12 30 36 0 48" fill="none" stroke="var(--blue)" stroke-width="3" stroke-linecap="round"/><path d="M20 18h20M18 30h24M20 42h20" stroke="var(--gold)" stroke-width="2"/></svg></div>
+          <div class="dna-side classic"><span class="era">Classic</span><h3>{dnaClassic.data.name}</h3></div>
+        </div>
+        <p class="summary" style="text-align:center">{dna.data.summary}</p>
+      </a>
+    </section>
+  )}
+
+  {meltzer.length > 0 && (
+    <section class="section wrap" aria-label="Me vs. Meltzer">
+      <SectionHead eyebrow="Me vs. Meltzer" title="Where we disagree" href="/me-vs-meltzer/" />
+      <div class="grid wide">{meltzer.slice(0, 2).map((m) => <MatchCard match={m} />)}</div>
+    </section>
+  )}
+
+  <section class="section wrap" aria-label="Browse">
+    <SectionHead eyebrow="Browse" title="Pick your era" />
+    <div class="tiles">
+      <a class="tile reveal" href="/matches/modern/" style="--tile:var(--red)"><b>Modern era</b><span>WWE · AEW · NJPW · TNA · Indies</span></a>
+      <a class="tile reveal" href="/vault/jcp-nwa/" style="--tile:var(--gold)"><b>JCP / NWA</b><span>Starrcade, the Bash, the Horsemen</span></a>
+      <a class="tile reveal" href="/vault/wcw/" style="--tile:var(--gold)"><b>WCW</b><span>Clash of the Champions to Nitro</span></a>
+      <a class="tile reveal" href="/vault/wwf/" style="--tile:var(--hot)"><b>WWF</b><span>Golden Era, New Generation, Attitude</span></a>
+      <a class="tile reveal" href="/matches/top-rated/" style="--tile:var(--blue)"><b>Top rated</b><span>The best of the best</span></a>
+    </div>
+  </section>
+</Base>
