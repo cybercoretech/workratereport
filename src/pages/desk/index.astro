@@ -1,0 +1,141 @@
+---
+// The Author's Desk: the owner's private page for writing and publishing
+// reviews. Everything here is driven by /js/desk.js and /api/desk/*; the
+// page itself holds no data and isn't linked from the public site.
+import Base from '../../layouts/Base.astro';
+import { readFileSync } from 'node:fs';
+import { createHash } from 'node:crypto';
+const v = createHash('sha256').update(readFileSync('public/js/desk.js')).digest('hex').slice(0, 10);
+const types = ['singles', 'tag', 'six-man', 'triple-threat', 'fatal-four-way', 'cage', 'wargames', 'iron-man', 'ladder', 'submission', 'street-fight', 'battle-royal', 'other'];
+---
+<Base title="Author's Desk" noindex description="Private.">
+  <section class="section wrap desk">
+    <div id="deskLogin" class="desk-login panel" hidden>
+      <p class="eyebrow">Author's Desk</p>
+      <h1>Sign in</h1>
+      <form id="loginForm">
+        <label class="field">Password<input type="password" name="password" autocomplete="current-password" required /></label>
+        <button class="btn" type="submit">Sign in</button>
+        <p class="desk-msg" id="loginMsg" role="alert"></p>
+      </form>
+    </div>
+
+    <div id="deskApp" hidden>
+      <div class="desk-top">
+        <div><p class="eyebrow">Author's Desk</p><h1>Write a review</h1></div>
+        <div class="btn-row" style="margin:0">
+          <button class="btn ghost" type="button" id="newMatch">New match</button>
+          <button class="btn ghost" type="button" id="logout">Sign out</button>
+        </div>
+      </div>
+      <p class="desk-msg warn" id="configMsg" hidden></p>
+
+      <div class="desk-grid">
+        <aside class="panel desk-list">
+          <label class="field">Find a match<input type="search" id="matchSearch" placeholder="Wrestler, event, year…" autocomplete="off" /></label>
+          <ul id="matchList" aria-label="Matches"></ul>
+          <details class="desk-log"><summary>Recent publishes</summary><ul id="publishLog"></ul></details>
+        </aside>
+
+        <form id="matchForm" class="desk-form" novalidate>
+          <div class="panel">
+            <p class="eyebrow" id="formMode">New match</p>
+            <div class="fields">
+              <label class="field wide">Title<input name="title" required placeholder="Ric Flair vs. Ricky Steamboat" /></label>
+              <label class="field">Date<input name="date" type="date" required /></label>
+              <label class="field">Promotion<select name="promotion" id="promotionSelect" required></select></label>
+              <label class="field">Era<select name="era"><option value="modern">Modern</option><option value="classic">Classic</option></select></label>
+              <label class="field wide">Event<input name="event" required placeholder="WrestleWar '89" /></label>
+              <label class="field wide">Venue<input name="venue" placeholder="Nashville Municipal Auditorium, Nashville, TN" /></label>
+              <label class="field">Match type<select name="type">{types.map((t) => <option value={t}>{t.replace(/-/g, ' ')}</option>)}</select></label>
+              <label class="field">Time<input name="duration" placeholder="31:20" /></label>
+              <label class="field wide">Stakes / title<input name="title_match" placeholder="NWA World Heavyweight Championship" /></label>
+              <label class="field wide">Result<input name="result" placeholder="Flair won the title" /></label>
+            </div>
+          </div>
+
+          <div class="panel">
+            <p class="eyebrow">Wrestlers</p>
+            <div class="chips-input">
+              <ul id="wrestlerChips" class="chips"></ul>
+              <input id="wrestlerInput" list="wrestlerOptions" placeholder="Type a name and press Enter" autocomplete="off" aria-label="Add wrestler" />
+              <datalist id="wrestlerOptions"></datalist>
+            </div>
+            <p class="desk-hint">Not on the site yet? Type the full name and press Enter, and you'll be asked to add them.</p>
+          </div>
+
+          <div class="panel desk-ratings">
+            <div>
+              <p class="eyebrow">My rating</p>
+              <div class="rating-pick">
+                <input type="range" min="0" max="5" step="0.25" value="0" id="myRange" aria-label="My rating in stars" />
+                <output id="myOut"></output>
+              </div>
+              <div class="seg" role="group" aria-label="Special ratings">
+                <button type="button" data-my="none">Not rated</button>
+                <button type="button" data-my="stars">Stars</button>
+                <button type="button" data-my="dud">DUD</button>
+                <button type="button" data-my="negative">Negative</button>
+              </div>
+              <label class="field" id="negField" hidden>Minus stars<input type="number" min="0.25" max="5" step="0.25" id="negValue" value="1" /></label>
+              <div class="star-preview" id="myPreview" aria-hidden="true"></div>
+            </div>
+            <div>
+              <p class="eyebrow">Meltzer's rating</p>
+              <label class="field">Stars (blank = never rated, "dud" allowed)<input name="meltzer_rating" placeholder="e.g. 5.75" inputmode="decimal" /></label>
+              <p class="desk-hint">Can go past 5, exactly as he gave it.</p>
+            </div>
+          </div>
+
+          <div class="panel">
+            <p class="eyebrow">Video &amp; watching</p>
+            <div class="fields">
+              <label class="field wide">Official YouTube link or ID<input name="youtube" placeholder="https://www.youtube.com/watch?v=…" /></label>
+              <div class="yt-preview wide" id="ytPreview" hidden></div>
+              <label class="field wide">Where to watch (one per line)<textarea name="where_to_watch" rows="2" placeholder="Peacock (WWE library)"></textarea></label>
+            </div>
+            <p class="desk-hint">Only official uploads from promotions' own channels.</p>
+          </div>
+
+          <div class="panel">
+            <p class="eyebrow">The review</p>
+            <label class="field wide">One-line summary (cards and social previews)<input name="summary" maxlength="300" /></label>
+            <div class="review-panes">
+              <label class="field">Review<textarea name="body" id="reviewBody" rows="16" placeholder="Context going in, the match, why the rating. Blank line = new paragraph. **bold**, *italic*."></textarea></label>
+              <div><span class="field-label">Preview</span><div class="prose review-preview" id="reviewPreview"></div></div>
+            </div>
+            <p class="desk-hint" id="wordCount"></p>
+          </div>
+
+          <div class="panel">
+            <p class="eyebrow">Extras</p>
+            <div class="fields">
+              <fieldset class="field wide"><legend>Territory DNA</legend><div id="dnaBoxes" class="checks"></div></fieldset>
+              <label class="field wide">Tags (comma separated)<input name="tags" placeholder="feud-flair-steamboat, trilogy" /></label>
+              <label class="field wide">Still to verify (one per line)<textarea name="verify" rows="2"></textarea></label>
+              <label class="check"><input type="checkbox" name="featured" /> Feature this match in highlights</label>
+            </div>
+          </div>
+
+          <div class="desk-actions">
+            <p class="desk-msg" id="saveMsg" role="status" aria-live="polite"></p>
+            <span class="desk-hint" id="draftNote"></span>
+            <button class="btn" type="submit" id="publishBtn">Publish</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <dialog id="addWrestler" class="desk-dialog">
+      <form method="dialog" id="addWrestlerForm">
+        <h2>Add a wrestler</h2>
+        <label class="field">Name<input name="name" required /></label>
+        <fieldset class="field"><legend>Era</legend><div class="checks"><label class="check"><input type="checkbox" name="era" value="modern" /> Modern</label><label class="check"><input type="checkbox" name="era" value="classic" /> Classic</label></div></fieldset>
+        <fieldset class="field"><legend>Promotions</legend><div class="checks" id="addWrestlerPromos"></div></fieldset>
+        <p class="desk-msg" id="addWrestlerMsg" role="alert"></p>
+        <div class="btn-row"><button class="btn" value="add" type="submit">Add wrestler</button><button class="btn ghost" value="cancel" formnovalidate type="submit">Cancel</button></div>
+      </form>
+    </dialog>
+  </section>
+  <script is:inline slot="scripts" src={`/js/desk.js?v=${v}`} defer></script>
+</Base>

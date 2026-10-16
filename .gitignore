@@ -1,7 +1,8 @@
-node_modules/
-dist/
+.DS_Store
 .astro/
-.wrangler/
+.dev.vars
 .env
 .env.*
-.DS_Store
+.wrangler/
+dist/
+node_modules/

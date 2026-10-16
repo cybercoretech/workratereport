@@ -16,8 +16,10 @@ interface Props {
   section?: string;
   /** VHS flavour on Classic Vault pages */
   vault?: boolean;
+  /** Keep the page out of search engines (the Author's Desk) */
+  noindex?: boolean;
 }
-const { title, description = 'Pro wrestling match reviews, then and now: modern classics and the NWA, WCW and WWF vault, rated out of five stars by a fan since 1980.', section, vault = false } = Astro.props;
+const { title, description = 'Pro wrestling match reviews, then and now: modern classics and the NWA, WCW and WWF vault, rated out of five stars by a fan since 1980.', section, vault = false, noindex = false } = Astro.props;
 const pageTitle = title === 'Home' ? 'The Workrate Report: Then & Now' : `${title} · The Workrate Report`;
 const canonical = new URL(Astro.url.pathname, Astro.site);
 const og = new URL('/brand/og-card.png', Astro.site);
@@ -40,6 +42,7 @@ const isActive = (href: string) => (section ? section === href : Astro.url.pathn
   <title>{pageTitle}</title>
   <meta name="description" content={description} />
   <link rel="canonical" href={canonical} />
+  {noindex && <meta name="robots" content="noindex, nofollow" />}
   <meta name="theme-color" content="#111014" />
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="The Workrate Report" />
@@ -153,6 +156,7 @@ const isActive = (href: string) => (section ? section === href : Astro.url.pathn
   <main id="main">
     <slot />
   </main>
+  <slot name="scripts" />
 
   <footer class="site-footer">
     <div class="wrap">

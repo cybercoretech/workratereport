@@ -1,0 +1,16 @@
+# Cloudflare Pages config. When this file exists, Pages reads bindings from
+# it (the dashboard's binding settings become read-only). Secrets are NOT
+# stored here; set them with `wrangler pages secret put` (see README).
+name = "workrate-report"
+pages_build_output_dir = "./dist"
+compatibility_date = "2026-10-01"
+
+[vars]
+CONTENT_REPO = "cybercore-tech/workratereport"
+CONTENT_BRANCH = "main"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "workrate-report"
+database_id = "861ea80a-3d45-4394-978d-5b97f1816b13"
+migrations_dir = "migrations"

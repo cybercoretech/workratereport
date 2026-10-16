@@ -352,8 +352,10 @@ The site itself renders ratings with a CSS star component (one gold star row cli
 |---|---|
 | **0 · Brand** ✅ | Name, domain check, graphics, this blueprint |
 | **1 · Skeleton** ✅ (live 2026-10-16) | Astro project, layouts, header and footer, **hamburger drawer + theme picker** (§12), match page, section hubs, Match Guide list, first 10 matches, deploy to `pages.dev` |
+| **2A · Author's Desk** ✅ | Password-protected `/desk/` editor that publishes reviews live (§13.1), D1 database, Pages Functions |
 | **2 · Depth** | Wrestler profiles, Vault promotion pages, filters, Pagefind search |
 | **3 · Signature** | Territory DNA (MJF ↔ Flair first), Me vs. Meltzer, On This Day, Starter Paths, **full Pyro effects set** (§12.2) |
+| **3B · Members & forum** | Google sign-in, profiles, fan ratings, forum (option chosen from §13.3) |
 | **4 · Grow** | Buy domain, analytics, newsletter, dead-embed CI, columns cadence |
 
 ---
@@ -460,3 +462,45 @@ The same engine as the Cybercore project sites, so the wrestling site gets every
 | `attitude` | **ATTITUDE** | `demon` × `cyberdyne-judgment` | Late-90s WWF: black with scratched-in red |
 
 Before launch, each mashup gets a contrast check (WCAG AA for body text) in both the hub and the match-page layout.
+
+---
+
+## 13. Author's Desk, accounts & forum
+
+Added 2026-10-16. The site stays static and fast; everything interactive runs as **Cloudflare Pages Functions** (`functions/`) with a **D1 database** (`workrate-report`, binding `DB`, schema in `migrations/`).
+
+### 13.1 Author's Desk (built in Phase 2A)
+
+A private page at **`/desk/`** where the owner writes and publishes reviews. It isn't linked anywhere on the public site, is `noindex`, and is blocked in `robots.txt`.
+
+| Piece | How it works |
+|---|---|
+| **Sign-in** | One password. Only a PBKDF2-SHA256 hash (100,000 iterations, the Workers maximum) is stored, as the Pages secret `ADMIN_PASSWORD_HASH`, set with `node scripts/set-desk-password.mjs`. |
+| **Session** | A signed, HttpOnly, Secure, SameSite=Strict cookie (`wr_desk`, 12 hours), HMAC'd with the `SESSION_SECRET` Pages secret. Rotating that secret signs every session out. |
+| **Brute force** | 5 failed attempts per IP, or 50 from everyone, within 15 minutes locks sign-in (D1 table `desk_login_attempts`). |
+| **CSRF** | Every write must come from the site's own Origin with a JSON body. |
+| **Publishing** | **Decided 2026-10-16: live right away.** Publish validates the review with the same rules as the site's schema (5-star cap and all), writes the Markdown file and commits it to `main` through the GitHub API, using a fine-grained token (`DESK_GITHUB_TOKEN`: this repo only, Contents read/write). Cloudflare rebuilds in about a minute. Commits use the cybercore-tech noreply identity. Only `src/content/matches/` and `src/content/wrestlers/` can be written. This is the one exception to branch + PR, for the owner's content only. |
+| **Safety net** | Every publish is a Git commit (undo = revert) and is logged in D1 (`desk_publish_log`). If a file ever failed the build, Cloudflare keeps the last good version live. |
+| **Drafts** | Saved in the owner's browser as you type, and restored when you reopen the match. |
+| **Editor** | Match list with search, every match field, wrestler chips with quick-add, a quarter-star rating slider with live stars (plus DUD and negatives), Meltzer's rating, YouTube link → ID with thumbnail, where to watch, review with live preview and word count, DNA, tags, verify list, featured toggle. |
+
+### 13.2 Member accounts (planned, Phase 3)
+
+Modeled on Neon Coffin Video's Midnight Lounge (`~/Webdev/NeonCoffinVideo/website/COMMUNITY.md`, migrations `0001` and `0007`), which is already proven in production:
+
+- **Google sign-in:** server-side authorization-code flow with PKCE, one-use browser-bound `state`, verified userinfo. Sessions are hashed server-side in HttpOnly Secure SameSite cookies and revoked on logout. Google access tokens and real names aren't stored. The email is kept privately for authentication only.
+- **Profiles** at `/u/<handle>`: pseudonymous handle (changeable), display name, avatar (wrestling-themed presets plus optional upload), bio, favorite era/promotion/wrestler, "watching since" year, public/members/private visibility.
+- **The owner's account:** a Pages secret `ADMIN_GOOGLE_SUB` marks the owner's Google account as admin/moderator. The desk can then also accept that Google sign-in, with the password kept as a fallback.
+- **Fan ratings (recommended):** members rate matches on the same 5-star scale, and match pages show a third column (**Mine · Meltzer · Fans**).
+
+### 13.3 Forum options (for the user to choose)
+
+| Option | What it is | Pros | Cons |
+|---|---|---|---|
+| **A. Custom D1 forum** *(recommended)* | Adapt NCV's Midnight Lounge: rooms, threads, replies, spoiler tags, reactions, followed threads, reports + moderator desk, per-member rate limits | Same Google accounts and profiles; free tier; full control and design; proven code to adapt; can link threads to matches and wrestlers | The most work; we run moderation ourselves |
+| **B. Match discussions only** | No boards; each match, wrestler and DNA page gets a comment thread | Simplest; keeps talk on-topic | No general chat; less of a community hub |
+| **C. A + B hybrid** | The A forum, plus an automatic "Discuss this match" thread on every match page that lives in the forum | Best of both; reviews drive forum traffic | Slightly more than A |
+| **D. Hosted forum** (Discourse, Flarum) | A separate forum app on a subdomain | Mature moderation tools out of the box | Monthly cost or a server to run; separate accounts/SSO; doesn't match the site |
+| **E. Discord** | A community server linked from the site | Zero build; real-time chat | Off-site; no profiles or ratings on the site; not searchable |
+
+Room ideas for A/C (names to choose together): Main Event (general), The Vault (classic), Modern Era, Puroresu, Indies, Star Ratings Debate, Fantasy Booking, Live Thread (show nights).
