@@ -351,7 +351,7 @@ The site itself renders ratings with a CSS star component (one gold star row cli
 | Phase | Deliverable |
 |---|---|
 | **0 · Brand** ✅ | Name, domain check, graphics, this blueprint |
-| **1 · Skeleton** ✅ | Astro project, layouts, header and footer, **hamburger drawer + theme picker** (§12), match page, section hubs, Match Guide list, first 10 matches, deploy to `pages.dev` |
+| **1 · Skeleton** ✅ (live 2026-10-16) | Astro project, layouts, header and footer, **hamburger drawer + theme picker** (§12), match page, section hubs, Match Guide list, first 10 matches, deploy to `pages.dev` |
 | **2 · Depth** | Wrestler profiles, Vault promotion pages, filters, Pagefind search |
 | **3 · Signature** | Territory DNA (MJF ↔ Flair first), Me vs. Meltzer, On This Day, Starter Paths, **full Pyro effects set** (§12.2) |
 | **4 · Grow** | Buy domain, analytics, newsletter, dead-embed CI, columns cadence |
@@ -373,7 +373,6 @@ The site itself renders ratings with a CSS star component (one gold star row cli
 ### Still open
 
 1. **Body font:** a serif for reviews (recommended) or all sans-serif. This can be settled in Phase 1 by comparing both in the browser.
-2. **Cloudflare Pages project:** connect the repo in the Cloudflare dashboard once Phase 1 has a buildable site.
 
 ---
 

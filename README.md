@@ -10,7 +10,7 @@ A pro wrestling match-review site. It covers modern wrestling first (WWE, AEW, N
 
 - **Phase 0 · Brand:** done (PR #1).
 - **Phase 1 · Skeleton:** built. Astro static site with 83 pages, the ring-rope hamburger drawer, the Cybercore theme picker (90 themes), Pyro effects and 12 launch matches.
-- **Hosting:** Cloudflare Pages → `workrate-report.pages.dev`. The repo still needs connecting in the Cloudflare dashboard.
+- **Live:** 🌐 **https://workrate-report.pages.dev/** (Cloudflare Pages, auto-deploys from `main`).
 
 👉 The full plan is in **[BLUEPRINT.md](BLUEPRINT.md)**.
 
@@ -121,7 +121,7 @@ Links like `/?theme=attitude` open the site in that theme.
 
 ## 🚀 Deploying
 
-Cloudflare Pages, connected to this repo:
+Cloudflare Pages project `workrate-report`, connected to this repo (live since 2026-10-16):
 
 | Setting | Value |
 |---|---|

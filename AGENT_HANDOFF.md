@@ -5,9 +5,9 @@ The state of the project for the next agent (or person). Update it with every ph
 ## 📍 Repository state (2026-10-16)
 
 - **Repo:** `github.com/cybercore-tech/workratereport` (public) · local `~/Webdev/workrate-report`.
-- **`main`:** `d9e8be1`, the merge of PR #1 (Phase 0: brand + blueprint).
-- **Phase 1 (Astro skeleton)** is on branch `phase-1/skeleton` → PR #2. It builds 83 pages; `npm run check` is clean.
-- **Hosting:** Cloudflare Pages project `workrate-report` → `workrate-report.pages.dev`. **Not connected yet.** The user connects the repo in the Cloudflare dashboard (settings in README "Deploying"). Never hand-deploy without asking.
+- **`main`:** `71cbc27`, the merge of PR #2 (Phase 1: Astro site, 83 pages). `npm run check` is clean.
+- **Hosting: LIVE** at https://workrate-report.pages.dev/ (connected 2026-10-16). It's a Cloudflare **Pages** project (created via the dashboard's "Continue to Pages" link; the default "Continue with GitHub" makes a Worker instead) connected to this repo: preset Astro, `npm run build`, output `dist`, `NODE_VERSION=22`. Every push to `main` deploys; PRs get preview URLs. Never hand-deploy.
+- **New-hostname DNS:** for the first minutes after creation, `pages.dev` names can return NXDOMAIN (Cloudflare's nameservers update unevenly; 60 s negative TTL). Check with `dig @1.1.1.1` before assuming a problem.
 - **CI:** `.github/workflows/build.yml` runs `npm ci`, `npm run check` and `npm run build` on PRs and pushes to main.
 
 ## ✅ Resume checklist
@@ -57,13 +57,15 @@ The state of the project for the next agent (or person). Update it with every ph
 - A test file with `my_rating: 6` failed the build ("Too big: expected number to be <=5").
 - Headless Chromium screenshots at 1440px and 390px (home, match page) with reduced motion.
 - A CDP-driven test: drawer opens (focus → close button), sub-menu expands, Escape closes and returns focus to ☰. The theme registry loaded 90 options, the ATTITUDE mashup and synthwave-miami applied, `?theme=` updated, and the console was clean.
-- **Not verified:** the deployed Cloudflare build (not connected yet), real phones, Safari/Firefox rendering of `@property` and view transitions (they degrade gracefully by design), and mashup contrast against WCAG AA (BLUEPRINT §12.3 still requires that check).
+- **Live site (2026-10-16):** all key routes 200, 404 page works, `_headers` applied (nosniff, referrer policy, frame options; immutable `/js/*`), and the CDP test passed against the live origin (90 themes, theme switching, drawer, clean console).
+- **Not verified:** real phones, Safari/Firefox rendering of `@property` and view transitions (they degrade gracefully by design), and mashup contrast against WCAG AA (BLUEPRINT §12.3 still requires that check).
 
 ## 🔀 PR history
 
 - **#1** Phase 0: brand assets, blueprint, README, handoff (merged).
-- **#2** Phase 1: Astro skeleton, nav, theme picker, effects, launch content.
+- **#2** Phase 1: Astro skeleton, nav, theme picker, effects, launch content (merged).
+- **#3** Docs: record the live Cloudflare Pages deployment.
 
 ## ⏭️ Next (Phase 2, BLUEPRINT §10)
 
-Wrestler profile text and Vault history (author), Pagefind search, Lists and Columns hubs, events/feuds sub-pages, starter paths, a mashup contrast audit, then connect Cloudflare Pages.
+Wrestler profile text and Vault history (author), Pagefind search, Lists and Columns hubs, events/feuds sub-pages, starter paths, a mashup contrast audit.
