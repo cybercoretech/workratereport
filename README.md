@@ -38,7 +38,7 @@ npm run preview   # serve dist/
 
 ## 🖋️ The Author's Desk (owner only)
 
-**https://workrate-report.pages.dev/desk/**: sign in with the desk password, pick a match (or **New match**), set your rating with the star slider, write the review, and hit **Publish**. It's live in about a minute. Drafts are saved in your browser as you type.
+**https://workrate-report.pages.dev/desk/**: sign in with the desk password, pick a match (or **New match**), set your rating (the slider, the exact box, or the ±0.01 nudges for things like 4.89), write the review, and hit **Publish**. It's live in about a minute. Drafts are saved in your browser as you type.
 
 Under the hood, Publish commits the Markdown file to `main` through the GitHub API, and Cloudflare rebuilds. Every publish is a commit you can revert. See BLUEPRINT §13.1.
 
@@ -81,7 +81,7 @@ type: singles                  # singles, tag, cage, wargames, iron-man, submiss
 title_match: "IWGP Heavyweight Championship"
 duration: "46:45"
 result: "Okada retained"
-my_rating: 5                   # max 5, quarter steps (4.75), "dud", negatives, or null
+my_rating: 4.89                # max 5, up to two decimals (4.89), "dud", negatives, or null
 meltzer_rating: 6              # as he gave it; null if he never rated it
 youtube: null                  # official upload ID only, e.g. "dQw4w9WgXcQ"
 where_to_watch: ["NJPW World"]

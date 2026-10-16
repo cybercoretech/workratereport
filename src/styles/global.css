@@ -474,7 +474,9 @@ p { margin: 0 0 1em; }
 @media (min-width: 760px) { .desk-ratings { grid-template-columns: 1.3fr 1fr; } }
 .rating-pick { display: flex; align-items: center; gap: 14px; margin-bottom: 12px; }
 .rating-pick input[type=range] { flex: 1; accent-color: var(--gold); height: 32px; }
-.rating-pick output { font: 400 26px/1 var(--display); color: var(--gold); min-width: 70px; text-align: right; }
+.rating-exact { width: 104px !important; flex: none; min-height: 48px; border-radius: 10px; border: 1px solid var(--gold); background: color-mix(in oklab, var(--ink), var(--panel) 40%); color: var(--gold); font: 400 26px/1 var(--display); text-align: center; padding: 6px; }
+.rating-exact:disabled { opacity: .45; border-color: var(--line); }
+.nudge button:disabled { opacity: .4; cursor: default; }
 .seg { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 12px; }
 .seg button { padding: 9px 12px; border-radius: 8px; border: 1px solid var(--line); background: none; color: var(--soft); font: 700 12px/1 var(--ui); letter-spacing: .08em; text-transform: uppercase; cursor: pointer; }
 .seg button[aria-pressed='true'] { border-color: var(--gold); color: var(--ink); background: var(--gold); }

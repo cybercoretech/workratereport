@@ -171,7 +171,7 @@ era: modern            # modern | classic
 type: singles          # singles | tag | six-man | cage | wargames | iron-man | ...
 title_match: "IWGP Heavyweight Championship"
 duration: "46:45"
-my_rating: 5           # max 5, .25 steps; "dud"; negatives allowed (-1, -2...)
+my_rating: 4.89        # max 5, up to two decimals; "dud"; negatives allowed (-1, -2.5...)
 meltzer_rating: 6      # optional; omit if he never rated it
 youtube: null          # official upload ID only; null → show where_to_watch
 where_to_watch: [njpw-world]
@@ -215,7 +215,7 @@ Each has `title, date, summary`. A column adds `series` (`i-was-there` | `analys
 
 ## 5. Rating system
 
-Quarter stars on a **5-star scale**, following Meltzer's convention:
+A **5-star scale** following Meltzer's convention. **Our ratings are precise to 0.01** (user, 2026-10-16: "so I can make precise adjustments like 4.89, 4.97"). Meltzer's are quoted in his quarter steps. Reference points:
 
 | Rating | Meaning |
 |---|---|
@@ -306,7 +306,7 @@ The site supports a light mode (canvas background) and a dark mode (ink backgrou
 | `badge-modern-era.svg`, `badge-classic-vault.svg`, `badge-territory-dna.svg`, `badge-me-vs-meltzer.svg` | Section and match badges |
 | `divider-ropes.svg` | Red-white-blue ring-rope section divider |
 
-The site itself renders ratings with a CSS star component (one gold star row clipped to the rating width), so any quarter value looks exact. The SVG stars are for social images and fallbacks.
+The site itself renders ratings with a CSS star component (one gold star row clipped to the rating width), so any value down to 0.01 (like 4.89) fills exactly. The SVG stars are for social images and fallbacks.
 
 ---
 
@@ -482,7 +482,7 @@ A private page at **`/desk/`** where the owner writes and publishes reviews. It 
 | **Publishing** | **Decided 2026-10-16: live right away.** Publish validates the review with the same rules as the site's schema (5-star cap and all), writes the Markdown file and commits it to `main` through the GitHub API, using a fine-grained token (`DESK_GITHUB_TOKEN`: this repo only, Contents read/write). Cloudflare rebuilds in about a minute. Commits use the cybercore-tech noreply identity. Only `src/content/matches/` and `src/content/wrestlers/` can be written. This is the one exception to branch + PR, for the owner's content only. |
 | **Safety net** | Every publish is a Git commit (undo = revert) and is logged in D1 (`desk_publish_log`). If a file ever failed the build, Cloudflare keeps the last good version live. |
 | **Drafts** | Saved in the owner's browser as you type, and restored when you reopen the match. |
-| **Editor** | Match list with search, every match field, wrestler chips with quick-add, a quarter-star rating slider with live stars (plus DUD and negatives), Meltzer's rating, YouTube link → ID with thumbnail, where to watch, review with live preview and word count, DNA, tags, verify list, featured toggle. |
+| **Editor** | Match list with search, every match field, wrestler chips with quick-add, a 0.01-precision rating slider with an exact box, ±0.01/±0.25 nudges and live stars (plus DUD and negatives), Meltzer's rating, YouTube link → ID with thumbnail, where to watch, review with live preview and word count, DNA, tags, verify list, featured toggle. |
 
 ### 13.2 Member accounts (planned, Phase 3)
 
@@ -493,7 +493,9 @@ Modeled on Neon Coffin Video's Midnight Lounge (`~/Webdev/NeonCoffinVideo/websit
 - **The owner's account:** a Pages secret `ADMIN_GOOGLE_SUB` marks the owner's Google account as admin/moderator. The desk can then also accept that Google sign-in, with the password kept as a fallback.
 - **Fan ratings (recommended):** members rate matches on the same 5-star scale, and match pages show a third column (**Mine · Meltzer · Fans**).
 
-### 13.3 Forum options (for the user to choose)
+### 13.3 Forum options: **decided 2026-10-16, option C**
+
+The user chose **C (A + B hybrid)**: an NCV-style D1 forum plus an automatic "Discuss this match" thread on every review, alongside fan ratings (§13.2). The comparison is kept below for the record.
 
 | Option | What it is | Pros | Cons |
 |---|---|---|---|

@@ -13,6 +13,8 @@ export function text(r: Rating): string {
   const abs = Math.abs(r);
   // Meltzer past our cap reads as 6★, 7★
   if (abs > 5) return `${sign}${abs}★`;
+  // Precise ratings (4.89) read as numbers; quarter steps keep the classic look.
+  if (Math.round(abs * 4) !== abs * 4) return `${sign}${abs.toFixed(2)}★`;
   const whole = Math.floor(abs);
   const frac = FRACTIONS[(abs - whole).toFixed(2).replace(/0$/, '')] ?? '';
   if (whole === 0 && frac) return sign + frac + '*';
@@ -24,7 +26,7 @@ export function label(r: Rating, of = 5): string {
   if (r === null) return 'Not rated yet';
   if (r === 'dud') return 'DUD';
   if (r < 0) return `minus ${Math.abs(r)} stars`;
-  return `${r} out of ${of} stars`;
+  return `${Number.isInteger(r * 4) ? r : r.toFixed(2)} out of ${of} stars`;
 }
 
 export const isFiveStar = (r: Rating) => typeof r === 'number' && r >= 5;

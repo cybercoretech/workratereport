@@ -2,13 +2,14 @@ import { defineCollection, reference } from 'astro:content';
 import { glob } from 'astro/loaders';
 import { z } from 'astro/zod';
 
-// Ratings: quarter stars, 5 is the hard cap for our scale (BLUEPRINT §5).
+// Our ratings: precise to 0.01 (4.89, 4.97), 5 is the hard cap (BLUEPRINT §5).
 // "dud" and negatives are allowed. null = not rated yet.
 const quarter = (n: number) => Math.round(n * 4) === n * 4;
+const hundredth = (n: number) => Math.abs(Math.round(n * 100) - n * 100) < 1e-6;
 const myRating = z
-  .union([z.number().min(-5).max(5).refine(quarter, 'use quarter steps'), z.literal('dud')])
+  .union([z.number().min(-5).max(5).refine(hundredth, 'use at most two decimals (like 4.89)'), z.literal('dud')])
   .nullable();
-// Meltzer's scale has no cap (Omega/Okada went to 7).
+// Meltzer's scale: quarter stars, no cap (Omega/Okada went to 7).
 const meltzerRating = z
   .union([z.number().min(-5).max(10).refine(quarter, 'use quarter steps'), z.literal('dud')])
   .nullable()
