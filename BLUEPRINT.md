@@ -370,7 +370,7 @@ The site itself renders ratings with a CSS star component (one gold star row cli
 | Decision | Answer |
 |---|---|
 | Rating cap | **5 stars maximum** |
-| Repository | `github.com/cybercore-tech/workratereport`; local `~/Webdev/workrate-report` |
+| Repository | `github.com/cybercoretech/workratereport`; local `~/Webdev/workrate-report` |
 | Territory DNA launch pairs | MJF ↔ Ric Flair, Cody Rhodes ↔ Dusty Rhodes |
 | Launch 10 | The §6 list as written |
 | Contact email | **info@cybercoretech.net** (/contact, /copyright, footer) |
@@ -432,7 +432,7 @@ Every effect is a wrestling moment, built with the techniques from the NCV sites
 
 The same engine as the Cybercore project sites, so the wrestling site gets every registry palette plus its own mashups.
 
-- **Registry:** `https://cybercore-tech.github.io/data` (`cybergrid.json` + `themes/<family>/<name>.json`, 11-slot palettes). It's served with `access-control-allow-origin: *`, so a Cloudflare Pages site can fetch it. `SITE.dataRoot` points there.
+- **Registry:** `https://cybercoretech.github.io/data` (`cybergrid.json` + `themes/<family>/<name>.json`, 11-slot palettes). It's served with `access-control-allow-origin: *`, so a Cloudflare Pages site can fetch it. `SITE.dataRoot` points there.
 - **Menu:** a "THEME" button in the header and in the drawer opens a dark categorized listbox: **Signature Mashups** first, then the families (Cybercore Tech, Cyberdyne, Cyberpunk, Default/Classics, Dystopian, Neosynth, Omarchy Live, Synthwave). Today that's 82 registry themes plus the site mashups.
 - **Persistence:** `localStorage` key `cybercore-theme`, and shareable links with `?theme=<id>`. (The key is the same as the kit's, but storage is per site, so the choice doesn't carry over from github.io.)
 - **Offline fallback:** if the registry can't be reached, the built-in **TEN POUNDS OF GOLD** palette is used and the menu shows only the local mashup.

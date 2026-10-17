@@ -4,7 +4,7 @@ The state of the project for the next agent (or person). Update it with every ph
 
 ## 📍 Repository state (2026-10-16)
 
-- **Repo:** `github.com/cybercore-tech/workratereport` (public) · local `~/Webdev/workrate-report`.
+- **Repo:** `github.com/cybercoretech/workratereport` (public) · local `~/Webdev/workrate-report`.
 - **`main`:** `7c61d1d`, the merge of PR #3 (docs: live deployment).
 - **Phase 2A (Author's Desk)** merged in PR #4 (main `5a2e201`): `/desk/` editor, Pages Functions in `functions/`, D1 `workrate-report` (id `861ea80a-3d45-4394-978d-5b97f1816b13`, migration 0001 applied remotely), `wrangler.toml`.
 - **Pages secrets:** `SESSION_SECRET` set (random, by Claude). `ADMIN_PASSWORD_HASH` and `DESK_GITHUB_TOKEN` set by the user 2026-10-16 (after one mis-set that leaked a token as a secret *name*; Claude deleted it and the user re-created the token). Never choose or see the user's password; never put a broad gh CLI token into Cloudflare.

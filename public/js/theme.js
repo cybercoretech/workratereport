@@ -1,6 +1,6 @@
 /* The Workrate Report: theme engine.
  * Adapted from the Cybercore project-site kit (sigilward/docs/app.js).
- * Registry: https://cybercore-tech.github.io/data (CORS *)
+ * Registry: https://cybercoretech.github.io/data (CORS *)
  *   cybergrid.json                     families → theme names
  *   themes/<family>/<name>.json        11-slot palettes
  * Signature mashups = surfaces from `base` + neons from `accent`.
@@ -8,7 +8,7 @@
  */
 (() => {
   const root = document.documentElement;
-  const DATA = 'https://cybercore-tech.github.io/data';
+  const DATA = 'https://cybercoretech.github.io/data';
   const STORE = 'cybercore-theme';
   const CACHE = 'wr-theme-palette';
   const DEFAULT = 'ten-pounds-of-gold';
