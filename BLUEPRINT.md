@@ -357,6 +357,7 @@ The site itself renders ratings with a CSS star component (one gold star row cli
 | **2B · Depth** ✅ | Pagefind search; ECW (Vault) and ROH (modern); 149 wrestlers with Commons photos, Wikidata facts and bios; Lists (auto + hand-picked); Columns (+ desk tab); Starter Paths; Then & Now; Vault events and feuds; contrast guard + CI audit |
 | **2 · Depth (original plan)** | Wrestler profiles, Vault promotion pages, filters, Pagefind search |
 | **3 · Signature** ✅ (2026-10-16) | Territory DNA (MJF ↔ Flair first), Me vs. Meltzer, On This Day, Starter Paths, **full Pyro effects set** (§12.2) |
+| **3B-A · Members** ✅ | Google sign-in, profiles at /u/<handle>, 8 avatar presets, fan ratings (Mine · Meltzer · Fans), privacy page |
 | **3B · Members & forum** | Google sign-in, profiles, fan ratings, forum (option chosen from §13.3) |
 | **4 · Grow** | Buy domain, analytics, newsletter, dead-embed CI, columns cadence |
 
@@ -486,7 +487,7 @@ A private page at **`/desk/`** where the owner writes and publishes reviews. It 
 | **Drafts** | Saved in the owner's browser as you type, and restored when you reopen the match. |
 | **Editor** | Match list with search, every match field, wrestler chips with quick-add, a 0.01-precision rating slider with an exact box, ±0.01/±0.25 nudges and live stars (plus DUD and negatives), Meltzer's rating, YouTube link → ID with thumbnail, where to watch, review with live preview and word count, DNA, tags, verify list, featured toggle. |
 
-### 13.2 Member accounts (planned, Phase 3)
+### 13.2 Member accounts (built in Phase 3B PR A, 2026-10-16)
 
 Modeled on Neon Coffin Video's Midnight Lounge (`~/Webdev/NeonCoffinVideo/website/COMMUNITY.md`, migrations `0001` and `0007`), which is already proven in production:
 

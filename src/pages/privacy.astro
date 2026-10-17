@@ -1,0 +1,12 @@
+---
+import InfoPage from '../components/InfoPage.astro';
+import { CONTACT } from '../lib/site';
+---
+<InfoPage title="Privacy" eyebrow="Policy" description="What The Workrate Report stores about members and visitors.">
+  <p><strong>Visitors.</strong> The site has no ads or trackers. Your theme, effects and bell settings are saved only in your own browser.</p>
+  <p><strong>Members.</strong> Signing in with Google gives us your Google account ID and email address, nothing else. We never see your password. Your email stays private: it's never shown on the site and never shared or sold. Everything public about you is what you choose: your handle, display name, avatar, bio, favorites and the ratings you give.</p>
+  <p><strong>Sign-in cookie.</strong> We set one secure cookie to keep you signed in for up to 90 days. We store only a scrambled version of it, and signing out deletes it.</p>
+  <p><strong>Profile visibility.</strong> You can make your profile public, members-only or private at any time from <a href="/account/">your account</a>.</p>
+  <p><strong>Leaving.</strong> To delete your account and everything attached to it, email <a href={`mailto:${CONTACT}`}>{CONTACT}</a> from the address you signed in with.</p>
+  <p class="muted">Members must be 13 or older.</p>
+</InfoPage>

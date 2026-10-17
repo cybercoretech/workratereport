@@ -49,9 +49,10 @@ const typeLabel = m.type.replace(/-/g, ' ');
         </div>
       ) : <p class="tape-names side" aria-hidden="true">{m.title}</p>}
       <p class="tape-event">{m.event} · {fmtDate(m.date)}{m.venue && ` · ${m.venue}`}</p>
-      <div class="ratings-bar">
+      <div class="ratings-bar three">
         <div class="panel"><span class="rating-who">My rating</span><Stars rating={m.my_rating} size="lg" /></div>
         <div class="panel"><span class="rating-who">Dave Meltzer, Wrestling Observer</span>{m.meltzer_rating === null ? <span class="unrated">Not on file</span> : <Stars rating={m.meltzer_rating} size="lg" />}</div>
+        <div class="panel fan-panel" data-fan-rating={match.id}><span class="rating-who">Fans</span><span class="unrated">Loading fan ratings…</span></div>
       </div>
       {both && (
         <div class="meter" role="img" aria-label={diff === 0 ? 'We agree' : diff > 0 ? `Meltzer rated it ${diff} stars higher` : `I rated it ${-diff} stars higher`}>

@@ -81,6 +81,7 @@ const isActive = (href: string) => (section ? section === href : Astro.url.pathn
   <script is:inline src={`/js/nav.js?v=${v('nav.js')}`} defer></script>
   <script is:inline src={`/js/pyro.js?v=${v('pyro.js')}`} defer></script>
   <script is:inline src={`/js/onthisday.js?v=${v('onthisday.js')}`} defer></script>
+  <script is:inline src={`/js/member.js?v=${v('member.js')}`} defer></script>
 </head>
 <body class:list={[vault && 'vault-scope']}>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -101,6 +102,7 @@ const isActive = (href: string) => (section ? section === href : Astro.url.pathn
           </button>
           <div id="themeMenuHeader" class="theme-menu" role="listbox" aria-label="Theme" hidden></div>
         </div>
+        <span class="account-slot" data-account><a class="account-btn signin" href="/account/">Sign in</a></span>
         <a class="search-link" href="/search/" aria-label="Search the site"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5" fill="none" stroke="currentColor" stroke-width="2.4"/><path d="M15.5 15.5 21 21" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg></a>
         <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="siteDrawer" aria-label="Open site navigation">
           <span></span><span></span><span></span>
@@ -196,6 +198,7 @@ const isActive = (href: string) => (section ? section === href : Astro.url.pathn
             <li><a href="/contact/">Contact</a></li>
             <li><a href="/copyright/">Copyright &amp; takedowns</a></li>
             <li><a href="/credits/">Photo credits</a></li>
+            <li><a href="/privacy/">Privacy</a></li>
           </ul>
         </div>
       </div>

@@ -9,6 +9,15 @@ export interface Env {
   SESSION_SECRET?: string;
   /** Fine-grained GitHub token: this repo only, Contents read/write. */
   DESK_GITHUB_TOKEN?: string;
+  /** Google OAuth client (Web application) for member sign-in. */
+  GOOGLE_CLIENT_ID?: string;
+  GOOGLE_CLIENT_SECRET?: string;
+  /** The owner's Google subject id: that member becomes admin. */
+  ADMIN_GOOGLE_SUB?: string;
+  /** Test-only overrides for Google's endpoints (local mock). Never set in production. */
+  GOOGLE_AUTH_URL?: string;
+  GOOGLE_TOKEN_URL?: string;
+  GOOGLE_USERINFO_URL?: string;
 }
 
 export const json = (data: unknown, status = 200, headers: HeadersInit = {}) =>

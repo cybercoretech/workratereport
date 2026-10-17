@@ -119,6 +119,21 @@ node scripts/fetch-promotion-data.mjs   # src/data/promotion-facts.json + public
 
 Logos appear only when Commons lists a free license; everyone else gets the site's own name badge. `SKIP_LOGO` in the script drops out-of-date marks (TNA's Wikidata logo is still Impact's).
 
+## 👥 Members (Google sign-in)
+
+`/account/` signs members in with Google, then lets them set a handle, display name, avatar (8 presets), bio, favorites and profile visibility. Public profiles live at `/u/<handle>/`. Signed-in members rate matches 0–5 in quarter stars, and match pages show **Mine · Meltzer · Fans**.
+
+- Only `openid email` is requested from Google. Email stays private, and names and access tokens aren't stored.
+- Authorization-code flow with PKCE (S256) and a one-use state bound to the browser; sessions are random tokens stored as SHA-256 hashes, 90 days, HttpOnly Secure SameSite=Lax.
+- Writes need our Origin; profile and rating writes are rate-limited; open redirects are blocked.
+
+### One-time Google setup
+
+1. In [Google Cloud](https://console.cloud.google.com/auth/overview), create a project, set up the consent screen (External, app name The Workrate Report), and create an **OAuth client → Web application** with the redirect URI `https://workrate-report.pages.dev/api/auth/callback`.
+2. Download its JSON and run `node scripts/configure-google.mjs <file>`. Then delete the file.
+3. Optional: set `ADMIN_GOOGLE_SUB` to the owner's Google account id to make that member the admin.
+4. Redeploy.
+
 ## 🎨 Theme readability
 
 `public/js/contrast.js` nudges any too-faint text color in a theme until it meets WCAG AA. Red and blue keep their true colors for backgrounds and get readable copies (`--red-text`, `--blue-text`) for text. Audit every theme with:
@@ -139,7 +154,7 @@ node scripts/contrast-audit.mjs   # also runs in CI; fails if any pair is below 
 | `src/styles/global.css` | Tokens, layout and all effect styles |
 | `public/js/` | `theme.js` (theme engine), `nav.js` (drawer), `pyro.js` (effects), `desk.js` (Author's Desk). Cache-busted by content hash |
 | `functions/` | Cloudflare Pages Functions: `/api/desk/*` (login, session, publish match, add wrestler, log) and `_lib/` helpers |
-| `migrations/` | D1 schema (`workrate-report` database) |
+| `migrations/` | D1 schema (`workrate-report` database): 0001 desk, 0002 members, sessions, OAuth state, fan ratings, rate limits |
 | `scripts/` | `set-desk-password.mjs`, `fetch-wrestler-data.mjs`, `fetch-promotion-data.mjs`, `contrast-audit.mjs` |
 | `src/data/` | `wrestler-facts.json`, `promotion-facts.json` (generated: Wikidata facts, photo and logo credits) |
 | `public/promotions/` | Free-license promotion logos (see `/credits/`) |
