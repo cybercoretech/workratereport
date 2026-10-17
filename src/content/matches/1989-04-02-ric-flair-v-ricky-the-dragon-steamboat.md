@@ -21,10 +21,10 @@ verify: []
 ---
 Going in.** Steamboat had taken the NWA World Heavyweight title from Flair at **Chi-Town Rumble on February 20, 1989**. The rematch went out free on TBS as the main event of **Clash of the Champions VI**: two out of three falls, an hour on the clock.
 
-**The first fall.** A long, careful opening of chops, holds and counter-holds, built to go the distance. Steamboat takes the first fall with a small package after a Flair cheating attempt backfires *(verify finish and time)*.
+The first fall. A long, careful opening of chops, holds and counter-holds, built to go the distance. Steamboat takes the first fall with a small package after a Flair cheating attempt backfires *(verify finish and time)*.
 
-**The second fall.** Flair goes to work on the legs and back, the Nature Boy in full heel mode. He evens it up with a roll-up/cradle *(verify)*, setting up a deciding fall with the clock running down.
+The second fall. Flair goes to work on the legs and back, the Nature Boy in full heel mode. He evens it up with a roll-up/cradle *(verify)*, setting up a deciding fall with the clock running down.
 
-**The third fall.** Both men exhausted, near-fall after near-fall. Steamboat wins with a double chickenwing, with the lasting controversy that **Flair's foot was under the bottom rope** and the referee missed it *(verify)*. Steamboat retains, two falls to one, close to the hour mark.
+The third fall. Both men exhausted, near-fall after near-fall. Steamboat wins with a double chickenwing, with the lasting controversy that **Flair's foot was under the bottom rope** and the referee missed it *(verify)*. Steamboat retains, two falls to one, close to the hour mark.
 
-**Aftermath.** The disputed finish set up the rubber match at **WrestleWar '89 (May 7, 1989, Nashville)**, judged by Lou Thesz, Pat O'Connor and Terry Funk. Flair regained the title, and Funk's attack afterward launched the Flair–Funk feud.
+Aftermath. The disputed finish set up the rubber match at **WrestleWar '89 (May 7, 1989, Nashville)**, judged by Lou Thesz, Pat O'Connor and Terry Funk. Flair regained the title, and Funk's attack afterward launched the Flair–Funk feud.
