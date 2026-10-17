@@ -6,7 +6,11 @@ export interface Photo { src: string; width: number; height: number; credit: str
 export interface Facts {
   qid: string | null; wikidata_label?: string | null; birth_name?: string | null; born?: string | null; died?: string | null;
   birthplace?: string | null; height_cm?: number | null; debut?: string | null; photo?: Photo | null;
+  wikipedia?: string; wikipedia_title?: string; birth_name_wp?: string | null; legal_name_wp?: string | null;
+  ring_names?: string[]; trained_by?: string[]; debut_wp?: string | null; retired_wp?: string | null;
 }
+/** Real name: the infobox birth name, else Wikidata's, else the legal name from the article's first line. */
+export const realName = (f: Facts) => f.birth_name_wp || f.birth_name || f.legal_name_wp || null;
 
 const all = data as Record<string, Facts>;
 export const factsFor = (slug: string): Facts => all[slug] ?? { qid: null };

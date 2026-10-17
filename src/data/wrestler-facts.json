@@ -16,7 +16,24 @@
       "license": "CC BY-SA 2.0",
       "license_url": "https://creativecommons.org/licenses/by-sa/2.0",
       "source": "https://commons.wikimedia.org/wiki/File:Adam_Cole,_June_2022_(cropped).jpg"
-    }
+    },
+    "wikipedia": "https://en.wikipedia.org/wiki/Adam_Cole",
+    "wikipedia_title": "Adam Cole",
+    "birth_name_wp": "Austin Kirk Jenkins",
+    "ring_names": [
+      "Adam Carelle",
+      "Adam Cole"
+    ],
+    "trained_by": [
+      "Al Snow",
+      "D. J. Hyde",
+      "Jon Dahmer",
+      "Les Thatcher",
+      "Shawn Michaels"
+    ],
+    "debut_wp": "2008",
+    "retired_wp": null,
+    "legal_name_wp": "Austin Kirk Jenkins"
   },
   "aj-styles": {
     "qid": "Q83816",
@@ -35,15 +52,29 @@
       "license": "CC BY-SA 2.0",
       "license_url": "https://creativecommons.org/licenses/by-sa/2.0",
       "source": "https://commons.wikimedia.org/wiki/File:AJ_Styles_WrestleMania_32_Axxess.jpg"
-    }
+    },
+    "wikipedia": "https://en.wikipedia.org/wiki/AJ_Styles",
+    "wikipedia_title": "AJ Styles",
+    "birth_name_wp": "Allen Neal Jones",
+    "ring_names": [
+      "Air Styles",
+      "AJ Styles",
+      "Mr. Olympia"
+    ],
+    "trained_by": [
+      "Rick Michaels"
+    ],
+    "debut_wp": "1998",
+    "retired_wp": "2026",
+    "legal_name_wp": "Allen Neal Jones"
   },
   "alberto-del-rio": {
     "qid": "Q79231",
     "wikidata_label": "Alberto Del Rio",
-    "birth_name": "Jos\u00e9 Alberto Rodr\u00edguez",
+    "birth_name": "José Alberto Rodríguez",
     "born": "1977-05-25",
     "died": null,
-    "birthplace": "San Luis Potos\u00ed",
+    "birthplace": "San Luis Potosí",
     "height_cm": 197,
     "debut": "2000",
     "photo": {
@@ -54,12 +85,44 @@
       "license": "CC BY-SA 2.0",
       "license_url": "https://creativecommons.org/licenses/by-sa/2.0",
       "source": "https://commons.wikimedia.org/wiki/File:Alberto_Del_Rio_RAW_2012.jpg"
-    }
+    },
+    "wikipedia": "https://en.wikipedia.org/wiki/Alberto_Del_Rio",
+    "wikipedia_title": "Alberto Del Rio",
+    "birth_name_wp": "José Alberto Rodríguez Chucuan",
+    "ring_names": [
+      "Alberto",
+      "Alberto Banderas",
+      "Alberto Del Rio",
+      "Alberto El Patrón",
+      "Alberto \"El Presidente\"",
+      "Dorado",
+      "Dos",
+      "Dos Caras",
+      "Dos Caras Jr.",
+      "El Dorado",
+      "El Hijo de Dos Caras",
+      "El Patrón",
+      "El Patrón Alberto",
+      "Hustle Kamen Gold"
+    ],
+    "trained_by": [
+      "Greco-Roman wrestling",
+      "Leonel Kolesni",
+      "Juan Fernández",
+      "Professional wrestling",
+      "Dos Caras",
+      "Sicodelico",
+      "Florida Championship Wrestling",
+      "MMA"
+    ],
+    "debut_wp": "2000",
+    "retired_wp": null,
+    "legal_name_wp": "José Alberto Rodríguez Chucuan"
   },
   "andre-the-giant": {
     "qid": "Q44368",
-    "wikidata_label": "Andr\u00e9 the Giant",
-    "birth_name": "Andr\u00e9 Ren\u00e9 Roussimof",
+    "wikidata_label": "André the Giant",
+    "birth_name": "André René Roussimof",
     "born": "1946-05-19",
     "died": "1993-01-28",
     "birthplace": "Coulommiers",
@@ -73,7 +136,28 @@
       "license": "Public domain",
       "license_url": null,
       "source": "https://commons.wikimedia.org/wiki/File:Andr%C3%A9_the_Giant_and_Bam_Bam_Bigelow,_circa_1988.jpg"
-    }
+    },
+    "wikipedia": "https://en.wikipedia.org/wiki/Andr%C3%A9_the_Giant",
+    "wikipedia_title": "André the Giant",
+    "birth_name_wp": "André René Roussimoff",
+    "ring_names": [
+      "André Roussimoff",
+      "André the Giant",
+      "André the Giant Frenchman",
+      "The Ultimate Giant",
+      "Géant Ferré",
+      "Giant Machine",
+      "Jean Ferré",
+      "Monster Eiffel Tower",
+      "Monster Roussimoff",
+      "The Polish Giant"
+    ],
+    "trained_by": [
+      "Michel Saulnier"
+    ],
+    "debut_wp": "1966",
+    "retired_wp": null,
+    "legal_name_wp": "André René Roussimoff"
   },
   "arn-anderson": {
     "qid": "Q690063",
@@ -92,12 +176,27 @@
       "license": "CC BY-SA 2.0",
       "license_url": "https://creativecommons.org/licenses/by-sa/2.0",
       "source": "https://commons.wikimedia.org/wiki/File:Brain_Busters_(Anderson_and_Blanchard).jpg"
-    }
+    },
+    "wikipedia": "https://en.wikipedia.org/wiki/Arn_Anderson",
+    "wikipedia_title": "Arn Anderson",
+    "birth_name_wp": "Martin Anthony Lunde",
+    "ring_names": [
+      "Arn Anderson",
+      "Super Olympia",
+      "Marty Lunde",
+      "Jim Vertaroso"
+    ],
+    "trained_by": [
+      "Ted Allen"
+    ],
+    "debut_wp": "1981",
+    "retired_wp": "2000",
+    "legal_name_wp": "Martin Anthony Lunde"
   },
   "asuka": {
     "qid": "Q6360112",
     "wikidata_label": "Asuka",
-    "birth_name": "\u6d66\u4e95 \u4f73\u5948\u5b50",
+    "birth_name": "浦井 佳奈子",
     "born": "1981-09-26",
     "died": null,
     "birthplace": "Osaka",
@@ -111,7 +210,25 @@
       "license": "CC BY-SA 4.0",
       "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
       "source": "https://commons.wikimedia.org/wiki/File:SHIMMER_Volume_61_-_KANA_04_(cropped).jpg"
-    }
+    },
+    "wikipedia": "https://en.wikipedia.org/wiki/Asuka_(wrestler)",
+    "wikipedia_title": "Asuka (wrestler)",
+    "birth_name_wp": "Kanako Urai",
+    "ring_names": [
+      "Asuka",
+      "Kana",
+      "Kana-hime",
+      "Princess Kana",
+      "Ramen Woman",
+      "Skull Reaper Kana",
+      "Tomoe Gozen"
+    ],
+    "trained_by": [
+      "Yuki Ishikawa"
+    ],
+    "debut_wp": "2004",
+    "retired_wp": null,
+    "legal_name_wp": "Kanako Urai"
   },
   "austin-aries": {
     "qid": "Q444275",
@@ -130,7 +247,22 @@
       "license": "CC BY-SA 2.0",
       "license_url": "https://creativecommons.org/licenses/by-sa/2.0",
       "source": "https://commons.wikimedia.org/wiki/File:A-U-S-T-I-N_ARIES.jpg"
-    }
+    },
+    "wikipedia": "https://en.wikipedia.org/wiki/Austin_Aries",
+    "wikipedia_title": "Austin Aries",
+    "birth_name_wp": "Daniel Healy Solwold Jr.",
+    "ring_names": [
+      "Austin Aries",
+      "Austin Starr",
+      "Dan Sexon"
+    ],
+    "trained_by": [
+      "Eddie Sharkey",
+      "Terry Fox"
+    ],
+    "debut_wp": "2000",
+    "retired_wp": null,
+    "legal_name_wp": "Daniel Healy Solwold Jr."
   },
   "bam-bam-bigelow": {
     "qid": "Q447661",
@@ -149,7 +281,21 @@
       "license": "CC BY-SA 3.0",
       "license_url": "https://creativecommons.org/licenses/by-sa/3.0",
       "source": "https://commons.wikimedia.org/wiki/File:Bam_Bam_Bigelow_in_1995.jpg"
-    }
+    },
+    "wikipedia": "https://en.wikipedia.org/wiki/Bam_Bam_Bigelow",
+    "wikipedia_title": "Bam Bam Bigelow",
+    "birth_name_wp": "Scott Charles Bigelow",
+    "ring_names": [
+      "Bam Bam Bigelow",
+      "Crusher Bam Bam Bigelow",
+      "Crusher Yurkov"
+    ],
+    "trained_by": [
+      "Larry Sharpe"
+    ],
+    "debut_wp": "1985",
+    "retired_wp": null,
+    "legal_name_wp": "Scott Charles Bigelow"
   },
   "barry-windham": {
     "qid": "Q734682",
@@ -168,7 +314,27 @@
       "license": "Public domain",
       "license_url": null,
       "source": "https://commons.wikimedia.org/wiki/File:Barry_Windham_1986.jpeg"
-    }
+    },
+    "wikipedia": "https://en.wikipedia.org/wiki/Barry_Windham",
+    "wikipedia_title": "Barry Windham",
+    "birth_name_wp": "Barry Clinton Windham",
+    "ring_names": [
+      "Barry Windham",
+      "Dirty Yellow Dog",
+      "Blackjack Mulligan Jr.",
+      "The Widowmaker",
+      "The Lone Wolf",
+      "Barry Windam",
+      "The Stalker",
+      "Blackjack Windham"
+    ],
+    "trained_by": [
+      "Blackjack Mulligan",
+      "Harley Race"
+    ],
+    "debut_wp": "1979",
+    "retired_wp": "2010",
+    "legal_name_wp": "Barry Clinton Windham"
   },
   "batista": {
     "qid": "Q44158",
@@ -187,7 +353,27 @@
       "license": "CC BY-SA 3.0",
       "license_url": "https://creativecommons.org/licenses/by-sa/3.0",
       "source": "https://commons.wikimedia.org/wiki/File:Dave_Bautista_by_Gage_Skidmore_2.jpg"
-    }
+    },
+    "wikipedia": "https://en.wikipedia.org/wiki/Dave_Bautista",
+    "wikipedia_title": "Dave Bautista",
+    "birth_name_wp": "David Michael Bautista Jr.",
+    "ring_names": [
+      "Batista",
+      "Dave Batista",
+      "Deacon Batista",
+      "Khan",
+      "Leviathan"
+    ],
+    "trained_by": [
+      "Professional wrestling:",
+      "Afa Anoaʻi",
+      "Jim Cornette",
+      "Muay Thai and Eskrima:",
+      "Marrese Crump"
+    ],
+    "debut_wp": "1999",
+    "retired_wp": "2019",
+    "legal_name_wp": "David Michael Bautista Jr."
   },
   "bayley": {
     "qid": "Q5279406",
@@ -206,7 +392,22 @@
       "license": "Public domain",
       "license_url": null,
       "source": "https://commons.wikimedia.org/wiki/File:Bayley_2018.jpg"
-    }
+    },
+    "wikipedia": "https://en.wikipedia.org/wiki/Bayley_(wrestler)",
+    "wikipedia_title": "Bayley (wrestler)",
+    "birth_name_wp": "Pamela Rose Martinez",
+    "ring_names": [
+      "Bayley",
+      "Davina Rose"
+    ],
+    "trained_by": [
+      "Jason Styles",
+      "Sara Del Rey",
+      "WWE Performance Center"
+    ],
+    "debut_wp": "2008",
+    "retired_wp": null,
+    "legal_name_wp": "Pamela Rose Martinez"
   },
   "becky-lynch": {
     "qid": "Q7301800",
@@ -225,7 +426,24 @@
       "license": "CC BY 4.0",
       "license_url": "https://creativecommons.org/licenses/by/4.0",
       "source": "https://commons.wikimedia.org/wiki/File:Becky_Lynch_at_Vulture_Festival_2024_03_(cropped).jpg"
-    }
+    },
+    "wikipedia": "https://en.wikipedia.org/wiki/Becky_Lynch",
+    "wikipedia_title": "Becky Lynch",
+    "birth_name_wp": "Rebecca Quin",
+    "ring_names": [
+      "Becky Lynch",
+      "La Luchadora",
+      "Rebecca Knox",
+      "Komeera"
+    ],
+    "trained_by": [
+      "Finn Bálor",
+      "Paul Tracey",
+      "NWA UK Hammerlock"
+    ],
+    "debut_wp": "2002",
+    "retired_wp": null,
+    "legal_name_wp": "Rebecca Quin"
   },
   "bianca-belair": {
     "qid": "Q30647464",
@@ -244,7 +462,22 @@
       "license": "Public domain",
       "license_url": null,
       "source": "https://commons.wikimedia.org/wiki/File:Bianca_Belair_Texas_2023.jpg"
-    }
+    },
+    "wikipedia": "https://en.wikipedia.org/wiki/Bianca_Belair",
+    "wikipedia_title": "Bianca Belair",
+    "birth_name_wp": "Bianca Nicole Blair",
+    "ring_names": [
+      "Bianca Belair",
+      "Bianca Blair",
+      "Binky Blair"
+    ],
+    "trained_by": [
+      "Sara Del Rey",
+      "WWE Performance Center"
+    ],
+    "debut_wp": "2016",
+    "retired_wp": null,
+    "legal_name_wp": "Bianca Nicole Crawford"
   },
   "big-e": {
     "qid": "Q601923",
@@ -263,7 +496,21 @@
       "license": "CC BY-SA 2.0",
       "license_url": "https://creativecommons.org/licenses/by-sa/2.0",
       "source": "https://commons.wikimedia.org/wiki/File:Big_E_HOF_2018.jpg"
-    }
+    },
+    "wikipedia": "https://en.wikipedia.org/wiki/Big_E_(wrestler)",
+    "wikipedia_title": "Big E (wrestler)",
+    "birth_name_wp": "Ettore Ewen",
+    "ring_names": [
+      "Big E",
+      "Big E Langston"
+    ],
+    "trained_by": [
+      "Florida Championship Wrestling",
+      "NXT"
+    ],
+    "debut_wp": "2009",
+    "retired_wp": "2025",
+    "legal_name_wp": "Ettore Ewen"
   },
   "big-show": {
     "qid": "Q44378",
@@ -282,7 +529,22 @@
       "license": "Public domain",
       "license_url": null,
       "source": "https://commons.wikimedia.org/wiki/File:Big-Show-T4.jpg"
-    }
+    },
+    "wikipedia": "https://en.wikipedia.org/wiki/Big_Show",
+    "wikipedia_title": "Big Show",
+    "birth_name_wp": "Paul Donald Wight II",
+    "ring_names": [
+      "(The) Big Show",
+      "(The) Giant",
+      "Paul Wight"
+    ],
+    "trained_by": [
+      "Larry Sharpe",
+      "Thrasher"
+    ],
+    "debut_wp": "1994",
+    "retired_wp": null,
+    "legal_name_wp": "Paul Donald Wight II"
   },
   "bob-backlund": {
     "qid": "Q730053",
@@ -301,7 +563,20 @@
       "license": "CC BY-SA 2.0",
       "license_url": "https://creativecommons.org/licenses/by-sa/2.0",
       "source": "https://commons.wikimedia.org/wiki/File:2015-03-26_17-28-48_ILCE-6000_DSC01727_(17121089828)_(cropped).jpg"
-    }
+    },
+    "wikipedia": "https://en.wikipedia.org/wiki/Bob_Backlund",
+    "wikipedia_title": "Bob Backlund",
+    "birth_name_wp": "Robert Louis Backlund",
+    "ring_names": [
+      "Bob Backlund",
+      "Mr. Backlund"
+    ],
+    "trained_by": [
+      "Eddie Sharkey"
+    ],
+    "debut_wp": "1973",
+    "retired_wp": "2018",
+    "legal_name_wp": "Robert Louis Backlund"
   },
   "bobby-eaton": {
     "qid": "Q4934975",
@@ -320,7 +595,20 @@
       "license": "Public domain",
       "license_url": null,
       "source": "https://commons.wikimedia.org/wiki/File:Bobeaton.jpg"
-    }
+    },
+    "wikipedia": "https://en.wikipedia.org/wiki/Bobby_Eaton",
+    "wikipedia_title": "Bobby Eaton",
+    "birth_name_wp": "Bobby Lee Eaton",
+    "ring_names": [
+      "\"Beautiful\" Bobby Eaton",
+      "Earl Robert Eaton"
+    ],
+    "trained_by": [
+      "Tojo Yamamoto"
+    ],
+    "debut_wp": "1976",
+    "retired_wp": "2016",
+    "legal_name_wp": "Bobby Lee Eaton"
   },
   "bobby-lashley": {
     "qid": "Q317370",
@@ -339,7 +627,21 @@
       "license": "CC BY-SA 2.0",
       "license_url": "https://creativecommons.org/licenses/by-sa/2.0",
       "source": "https://commons.wikimedia.org/wiki/File:Lashley_Raw_April_2018_(cropped).jpg"
-    }
+    },
+    "wikipedia": "https://en.wikipedia.org/wiki/Bobby_Lashley",
+    "wikipedia_title": "Bobby Lashley",
+    "birth_name_wp": "Franklin Roberto Lashley",
+    "ring_names": [
+      "Blaster Lashley",
+      "Bobby Lashley",
+      "Lashley"
+    ],
+    "trained_by": [
+      "Ohio Valley Wrestling"
+    ],
+    "debut_wp": "2005",
+    "retired_wp": null,
+    "legal_name_wp": "Franklin Roberto \"Bobby\" Lashley"
   },
   "booker-t": {
     "qid": "Q44633",
@@ -358,7 +660,25 @@
       "license": "CC BY 2.0",
       "license_url": "https://creativecommons.org/licenses/by/2.0",
       "source": "https://commons.wikimedia.org/wiki/File:Booker_T_2018.jpg"
-    }
+    },
+    "wikipedia": "https://en.wikipedia.org/wiki/Booker_T_(wrestler)",
+    "wikipedia_title": "Booker T (wrestler)",
+    "birth_name_wp": "Booker T. Huffman Jr.",
+    "ring_names": [
+      "Black Snow",
+      "Booker",
+      "Booker T",
+      "GI Bro",
+      "King Booker",
+      "Kole"
+    ],
+    "trained_by": [
+      "Ivan Putski",
+      "Scott Casey"
+    ],
+    "debut_wp": "1990",
+    "retired_wp": "2025",
+    "legal_name_wp": "Booker T. Huffman Jr."
   },
   "bray-wyatt": {
     "qid": "Q1139993",
@@ -377,7 +697,28 @@
       "license": "CC BY-SA 2.0",
       "license_url": "https://creativecommons.org/licenses/by-sa/2.0",
       "source": "https://commons.wikimedia.org/wiki/File:Bray_Wyatt_2017.jpg"
-    }
+    },
+    "wikipedia": "https://en.wikipedia.org/wiki/Bray_Wyatt",
+    "wikipedia_title": "Bray Wyatt",
+    "birth_name_wp": "Windham Lawrence Rotunda",
+    "ring_names": [
+      "Alex Rotunda",
+      "Axl Mulligan",
+      "Bray Wyatt",
+      "Duke Rotundo",
+      "The Fiend",
+      "Husky Harris",
+      "Tank Mulligan",
+      "Tank Rotundo"
+    ],
+    "trained_by": [
+      "Barry Windham",
+      "Florida Championship Wrestling",
+      "NXT"
+    ],
+    "debut_wp": "2009",
+    "retired_wp": null,
+    "legal_name_wp": "Windham Lawrence Rotunda"
   },
   "bret-hart": {
     "qid": "Q81324",
@@ -396,7 +737,22 @@
       "license": "CC BY-SA 3.0",
       "license_url": "https://creativecommons.org/licenses/by-sa/3.0",
       "source": "https://commons.wikimedia.org/wiki/File:Picture_of_Bret_Hart_in_Montreal.jpg"
-    }
+    },
+    "wikipedia": "https://en.wikipedia.org/wiki/Bret_Hart",
+    "wikipedia_title": "Bret Hart",
+    "birth_name_wp": "Bret Sergeant Hart",
+    "ring_names": [
+      "Bret Hart",
+      "Buddy Hart"
+    ],
+    "trained_by": [
+      "Stu Hart",
+      "Katsuji Adachi",
+      "Kazuo Sakurada"
+    ],
+    "debut_wp": "1978",
+    "retired_wp": "2011",
+    "legal_name_wp": "Bret Sergeant Hart"
   },
   "britt-baker": {
     "qid": "Q61750379",
@@ -415,7 +771,23 @@
       "license": "CC BY 2.0",
       "license_url": "https://creativecommons.org/licenses/by/2.0",
       "source": "https://commons.wikimedia.org/wiki/File:Britt_Baker_Photo_Op_GalaxyCon_Raleigh_2023.jpg"
-    }
+    },
+    "wikipedia": "https://en.wikipedia.org/wiki/Britt_Baker",
+    "wikipedia_title": "Britt Baker",
+    "birth_name_wp": "Brittany Ann Baker",
+    "ring_names": [
+      "Dr. Britt Baker, D.M.D.",
+      "Britt Baker"
+    ],
+    "trained_by": [
+      "Marshall Gambino",
+      "Super Hentai",
+      "Candice LeRae",
+      "Johnny Gargano"
+    ],
+    "debut_wp": "2015",
+    "retired_wp": null,
+    "legal_name_wp": "Brittany Ann Baker"
   },
   "brock-lesnar": {
     "qid": "Q220556",
@@ -426,7 +798,23 @@
     "birthplace": "Webster",
     "height_cm": 196,
     "debut": "2000",
-    "photo": null
+    "photo": null,
+    "wikipedia": "https://en.wikipedia.org/wiki/Brock_Lesnar",
+    "wikipedia_title": "Brock Lesnar",
+    "birth_name_wp": "Brock Edward Lesnar",
+    "ring_names": [
+      "Brock Lesnar"
+    ],
+    "trained_by": [
+      "Brad Rheingans",
+      "Curt Hennig",
+      "Dean Malenko",
+      "Doug Basham",
+      "Nightmare Danny Davis"
+    ],
+    "debut_wp": "2000",
+    "retired_wp": "2026",
+    "legal_name_wp": "Brock Edward Lesnar"
   },
   "bruiser-brody": {
     "qid": "Q4978729",
@@ -445,7 +833,24 @@
       "license": "Public domain",
       "license_url": null,
       "source": "https://commons.wikimedia.org/wiki/File:Bruiser_Brody_1986.png"
-    }
+    },
+    "wikipedia": "https://en.wikipedia.org/wiki/Bruiser_Brody",
+    "wikipedia_title": "Bruiser Brody",
+    "birth_name_wp": "Frank Donald Goodish",
+    "ring_names": [
+      "Bruiser Brody",
+      "Frank Goodish",
+      "King Kong Brody",
+      "The Masked Marauder",
+      "Frank Brody",
+      "Red River Jack"
+    ],
+    "trained_by": [
+      "Fritz Von Erich"
+    ],
+    "debut_wp": "1973",
+    "retired_wp": null,
+    "legal_name_wp": "Frank Donald Goodish"
   },
   "bryan-danielson": {
     "qid": "Q299355",
@@ -464,7 +869,31 @@
       "license": "CC BY-SA 2.0",
       "license_url": "https://creativecommons.org/licenses/by-sa/2.0",
       "source": "https://commons.wikimedia.org/wiki/File:Daniel_Bryan_in_April_2014.jpg"
-    }
+    },
+    "wikipedia": "https://en.wikipedia.org/wiki/Bryan_Danielson",
+    "wikipedia_title": "Bryan Danielson",
+    "birth_name_wp": "Bryan Lloyd Danielson",
+    "ring_names": [
+      "American Dragon",
+      "Bryan Danielson",
+      "Daniel Bryan",
+      "Daniel Wyatt",
+      "Dynamic Dragon",
+      "Infinito"
+    ],
+    "trained_by": [
+      "Professional wrestling:",
+      "Rudy Gonzalez",
+      "Shawn Michaels",
+      "Texas Wrestling Academy",
+      "Bobby Eaton",
+      "Tracy Smothers",
+      "William Regal",
+      "Memphis Championship Wrestling"
+    ],
+    "debut_wp": "1999",
+    "retired_wp": null,
+    "legal_name_wp": "Bryan Lloyd Danielson"
   },
   "charlotte-flair": {
     "qid": "Q2891336",
@@ -483,7 +912,23 @@
       "license": "CC BY 2.0",
       "license_url": "https://creativecommons.org/licenses/by/2.0",
       "source": "https://commons.wikimedia.org/wiki/File:Charlotte_Flair_Photo_Op_GalaxyCon_Raleigh_2019.jpg"
-    }
+    },
+    "wikipedia": "https://en.wikipedia.org/wiki/Charlotte_Flair",
+    "wikipedia_title": "Charlotte Flair",
+    "birth_name_wp": "Ashley Elizabeth Fliehr",
+    "ring_names": [
+      "Ashley Flair",
+      "Charlotte",
+      "Charlotte Flair"
+    ],
+    "trained_by": [
+      "Lodi",
+      "Sara Del Rey",
+      "Ric Flair"
+    ],
+    "debut_wp": "2012",
+    "retired_wp": null,
+    "legal_name_wp": "Ashley Elizabeth Fliehr"
   },
   "chris-jericho": {
     "qid": "Q44144",
@@ -502,7 +947,29 @@
       "license": "CC BY-SA 4.0",
       "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
       "source": "https://commons.wikimedia.org/wiki/File:Chris_Jericho_GalaxyCon_Raleigh_July,_25,_2026_681.jpg"
-    }
+    },
+    "wikipedia": "https://en.wikipedia.org/wiki/Chris_Jericho",
+    "wikipedia_title": "Chris Jericho",
+    "birth_name_wp": "Christopher Keith Irvine",
+    "ring_names": [
+      "Chris Jericho",
+      "Corazón de León",
+      "Jericho",
+      "Lionheart",
+      "León D'Oro",
+      "Lion Do",
+      "Painmaker",
+      "Super Liger"
+    ],
+    "trained_by": [
+      "Brad Young",
+      "Ed Langley",
+      "Keith Hart",
+      "Stu Hart"
+    ],
+    "debut_wp": "1990",
+    "retired_wp": null,
+    "legal_name_wp": "Christopher Keith Irvine"
   },
   "christian": {
     "qid": "Q44537",
@@ -521,7 +988,25 @@
       "license": "CC BY 2.0",
       "license_url": "https://creativecommons.org/licenses/by/2.0",
       "source": "https://commons.wikimedia.org/wiki/File:Christian_Photo_Op_GalaxyCon_Richmond_2020.jpg"
-    }
+    },
+    "wikipedia": "https://en.wikipedia.org/wiki/Christian_Cage",
+    "wikipedia_title": "Christian Cage",
+    "birth_name_wp": "William Jason Reso",
+    "ring_names": [
+      "Canadian Rage",
+      "Captain Charisma",
+      "Christian",
+      "Christian Cage",
+      "Conquistador Dos",
+      "Male Nurse"
+    ],
+    "trained_by": [
+      "Dory Funk Jr.",
+      "Ron Hutchison"
+    ],
+    "debut_wp": "1995",
+    "retired_wp": null,
+    "legal_name_wp": "William Jason Reso"
   },
   "cm-punk": {
     "qid": "Q215447",
@@ -540,7 +1025,26 @@
       "license": "CC BY 2.0",
       "license_url": "https://creativecommons.org/licenses/by/2.0",
       "source": "https://commons.wikimedia.org/wiki/File:CM_Punk_on_ring_apron.jpg"
-    }
+    },
+    "wikipedia": "https://en.wikipedia.org/wiki/CM_Punk",
+    "wikipedia_title": "CM Punk",
+    "birth_name_wp": "Phillip Jack Brooks",
+    "ring_names": [
+      "CM Punk"
+    ],
+    "trained_by": [
+      "Ace Steel",
+      "Danny Dominion",
+      "Kevin Quinn",
+      "Steel Dominion",
+      "Antonio Inoki",
+      "Inoki Dojo",
+      "Dave Taylor",
+      "Fit Finlay"
+    ],
+    "debut_wp": "1997",
+    "retired_wp": null,
+    "legal_name_wp": "Phillip Jack Brooks"
   },
   "cody-rhodes": {
     "qid": "Q299222",
@@ -559,7 +1063,30 @@
       "license": "CC BY 2.0",
       "license_url": "https://creativecommons.org/licenses/by/2.0",
       "source": "https://commons.wikimedia.org/wiki/File:Cody_Rhodes,_April_2024_(cropped).jpg"
-    }
+    },
+    "wikipedia": "https://en.wikipedia.org/wiki/Cody_Rhodes",
+    "wikipedia_title": "Cody Rhodes",
+    "birth_name_wp": "Cody Garrett Runnels",
+    "ring_names": [
+      "Cody",
+      "Cody R",
+      "Cody Rhodes",
+      "Cody Runnels",
+      "Fuego 2",
+      "Stardust"
+    ],
+    "trained_by": [
+      "Al Snow",
+      "Danny Davis",
+      "Dusty Rhodes",
+      "Dustin Rhodes",
+      "Randy Orton",
+      "Ricky Morton",
+      "Shawn Spears"
+    ],
+    "debut_wp": "2006",
+    "retired_wp": null,
+    "legal_name_wp": "Cody Garrett Runnels Rhodes"
   },
   "curt-hennig": {
     "qid": "Q282078",
@@ -578,7 +1105,21 @@
       "license": "Public domain",
       "license_url": null,
       "source": "https://commons.wikimedia.org/wiki/File:Curt_Hennig_at_WrestleMania_X_in_March_1994.jpg"
-    }
+    },
+    "wikipedia": "https://en.wikipedia.org/wiki/Curt_Hennig",
+    "wikipedia_title": "Curt Hennig",
+    "birth_name_wp": "Curtis Michael Hennig",
+    "ring_names": [
+      "Curt Hennig",
+      "Mr. Perfect"
+    ],
+    "trained_by": [
+      "Verne Gagne",
+      "Larry Hennig"
+    ],
+    "debut_wp": "1980",
+    "retired_wp": null,
+    "legal_name_wp": "Curtis Michael Hennig"
   },
   "darby-allin": {
     "qid": "Q60194617",
@@ -597,7 +1138,21 @@
       "license": "CC0",
       "license_url": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
       "source": "https://commons.wikimedia.org/wiki/File:Darby_Allin_in_2019_(cropped).jpg"
-    }
+    },
+    "wikipedia": "https://en.wikipedia.org/wiki/Darby_Allin",
+    "wikipedia_title": "Darby Allin",
+    "birth_name_wp": "Samuel Ratsch",
+    "ring_names": [
+      "Darby Allin",
+      "Darby Graves"
+    ],
+    "trained_by": [
+      "AR Fox",
+      "Buddy Wayne"
+    ],
+    "debut_wp": "2014",
+    "retired_wp": null,
+    "legal_name_wp": "Samuel Ratsch"
   },
   "diamond-dallas-page": {
     "qid": "Q382078",
@@ -616,7 +1171,20 @@
       "license": "CC BY-SA 4.0",
       "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
       "source": "https://commons.wikimedia.org/wiki/File:DDP_Headshot_1_Landscape.jpg"
-    }
+    },
+    "wikipedia": "https://en.wikipedia.org/wiki/Diamond_Dallas_Page",
+    "wikipedia_title": "Diamond Dallas Page",
+    "birth_name_wp": "Page Joseph Falkinburg Jr.",
+    "ring_names": [
+      "Diamond Dallas Page (DDP)"
+    ],
+    "trained_by": [
+      "Jake Roberts",
+      "WCW Power Plant"
+    ],
+    "debut_wp": "1979",
+    "retired_wp": "2020",
+    "legal_name_wp": "Dallas Page"
   },
   "drew-mcintyre": {
     "qid": "Q311944",
@@ -635,7 +1203,24 @@
       "license": "CC BY 2.0",
       "license_url": "https://creativecommons.org/licenses/by/2.0",
       "source": "https://commons.wikimedia.org/wiki/File:Drew_McIntyre,_WrestleMania_XL_(cropped).jpg"
-    }
+    },
+    "wikipedia": "https://en.wikipedia.org/wiki/Drew_McIntyre",
+    "wikipedia_title": "Drew McIntyre",
+    "birth_name_wp": "Andrew McLean Galloway IV",
+    "ring_names": [
+      "Drew Galloway",
+      "Drew McIntyre"
+    ],
+    "trained_by": [
+      "Spinner McKenzie",
+      "Justin Richards",
+      "Mark Sloan",
+      "James Tighe",
+      "Colin McKay"
+    ],
+    "debut_wp": "2001",
+    "retired_wp": null,
+    "legal_name_wp": "Andrew McLean Galloway IV"
   },
   "dusty-rhodes": {
     "qid": "Q361235",
@@ -654,7 +1239,24 @@
       "license": "CC BY-SA 3.0",
       "license_url": "https://creativecommons.org/licenses/by-sa/3.0",
       "source": "https://commons.wikimedia.org/wiki/File:Dusty_Rhodes_cropped_and_retouched.jpg"
-    }
+    },
+    "wikipedia": "https://en.wikipedia.org/wiki/Dusty_Rhodes",
+    "wikipedia_title": "Dusty Rhodes",
+    "birth_name_wp": "Virgil Riley Runnels Jr.",
+    "ring_names": [
+      "The Bounty Hunter",
+      "Dusty Rhodes",
+      "Dusty Runnels",
+      "The Midnight Rider",
+      "Mr. Ichiban",
+      "Uvalde Slim"
+    ],
+    "trained_by": [
+      "Joe Blanchard"
+    ],
+    "debut_wp": "1967",
+    "retired_wp": "2010",
+    "legal_name_wp": "Virgil Riley Runnels Jr."
   },
   "eddie-guerrero": {
     "qid": "Q44374",
@@ -673,7 +1275,25 @@
       "license": "CC BY-SA 2.0",
       "license_url": "https://creativecommons.org/licenses/by-sa/2.0",
       "source": "https://commons.wikimedia.org/wiki/File:Eddie_Guerrero_2004.jpg"
-    }
+    },
+    "wikipedia": "https://en.wikipedia.org/wiki/Eddie_Guerrero",
+    "wikipedia_title": "Eddie Guerrero",
+    "birth_name_wp": "Eduardo Gory Guerrero Llanes",
+    "ring_names": [
+      "Black Tiger (II)",
+      "El Caliente",
+      "Eddie Guerrero",
+      "Eddy Guerrero",
+      "Gory Guerrero Jr.",
+      "Máscara Mágica",
+      "Latino Heat"
+    ],
+    "trained_by": [
+      "Gory Guerrero"
+    ],
+    "debut_wp": "1986",
+    "retired_wp": null,
+    "legal_name_wp": "Eduardo Gory Guerrero Llanes"
   },
   "eddie-kingston": {
     "qid": "Q1282865",
@@ -692,7 +1312,27 @@
       "license": "CC BY 2.0",
       "license_url": "https://creativecommons.org/licenses/by/2.0",
       "source": "https://commons.wikimedia.org/wiki/File:Eddie_Kingston_in_Chikara.jpg"
-    }
+    },
+    "wikipedia": "https://en.wikipedia.org/wiki/Eddie_Kingston",
+    "wikipedia_title": "Eddie Kingston",
+    "birth_name_wp": "Edward Moore",
+    "ring_names": [
+      "Dragon Dragon",
+      "Eddie Kingston",
+      "Eddie Moore",
+      "King",
+      "Kingston"
+    ],
+    "trained_by": [
+      "Chikara Wrestle Factory",
+      "Chris Hero",
+      "Kevin Knight",
+      "Mike Quackenbush",
+      "Reckless Youth"
+    ],
+    "debut_wp": "2002",
+    "retired_wp": null,
+    "legal_name_wp": "Edward Moore"
   },
   "edge": {
     "qid": "Q44164",
@@ -711,11 +1351,33 @@
       "license": "CC BY 2.0",
       "license_url": "https://creativecommons.org/licenses/by/2.0",
       "source": "https://commons.wikimedia.org/wiki/File:Adam_Copeland_2013.jpg"
-    }
+    },
+    "wikipedia": "https://en.wikipedia.org/wiki/Edge_(wrestler)",
+    "wikipedia_title": "Edge (wrestler)",
+    "birth_name_wp": "Adam Joseph Copeland",
+    "ring_names": [
+      "Adam Copeland",
+      "Adam Impact",
+      "Cope",
+      "Conquistador Uno",
+      "Damon Striker",
+      "Edge",
+      "Sexton Hardcastle"
+    ],
+    "trained_by": [
+      "Bret Hart",
+      "Dory Funk Jr.",
+      "Leo Burke",
+      "Ron Hutchison",
+      "Sweet Daddy Siki"
+    ],
+    "debut_wp": "1992",
+    "retired_wp": null,
+    "legal_name_wp": "Adam Joseph Copeland"
   },
   "finn-balor": {
     "qid": "Q984334",
-    "wikidata_label": "Finn B\u00e1lor",
+    "wikidata_label": "Finn Bálor",
     "birth_name": null,
     "born": "1981-07-25",
     "died": null,
@@ -730,7 +1392,25 @@
       "license": "CC BY-SA 4.0",
       "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
       "source": "https://commons.wikimedia.org/wiki/File:Finn_B%C3%A1lor_Backstage_cropped.jpg"
-    }
+    },
+    "wikipedia": "https://en.wikipedia.org/wiki/Finn_B%C3%A1lor",
+    "wikipedia_title": "Finn Bálor",
+    "birth_name_wp": "Fergal Devitt",
+    "ring_names": [
+      "C.T.U Ranger Red (II)",
+      "Fergal Devitt",
+      "\"The Demon\"",
+      "Finn Bálor",
+      "Pegasus Kid (II)",
+      "Prince Devitt"
+    ],
+    "trained_by": [
+      "New Japan Inoki Dojo",
+      "NWA UK Hammerlock"
+    ],
+    "debut_wp": "2001",
+    "retired_wp": null,
+    "legal_name_wp": "Fergal Devitt"
   },
   "gail-kim": {
     "qid": "Q233896",
@@ -749,7 +1429,22 @@
       "license": "CC BY-SA 3.0",
       "license_url": "https://creativecommons.org/licenses/by-sa/3.0",
       "source": "https://commons.wikimedia.org/wiki/File:Gail_Kim_by_Gage_Skidmore.jpg"
-    }
+    },
+    "wikipedia": "https://en.wikipedia.org/wiki/Gail_Kim",
+    "wikipedia_title": "Gail Kim",
+    "birth_name_wp": null,
+    "ring_names": [
+      "Gail Kim",
+      "La Felina"
+    ],
+    "trained_by": [
+      "Ron Hutchison",
+      "Rob Etcheverria",
+      "Dave Finlay"
+    ],
+    "debut_wp": "2000",
+    "retired_wp": "2019",
+    "legal_name_wp": "Gail Kim-Irvine"
   },
   "goldberg": {
     "qid": "Q115547",
@@ -768,7 +1463,22 @@
       "license": "CC BY-SA 4.0",
       "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
       "source": "https://commons.wikimedia.org/wiki/File:Bill_Goldberg_Boerne_01_(cropped).jpg"
-    }
+    },
+    "wikipedia": "https://en.wikipedia.org/wiki/Bill_Goldberg",
+    "wikipedia_title": "Bill Goldberg",
+    "birth_name_wp": "William Scott Goldberg",
+    "ring_names": [
+      "Bill Gold",
+      "Bill Goldberg",
+      "Goldberg"
+    ],
+    "trained_by": [
+      "DeWayne Bruce",
+      "WCW Power Plant"
+    ],
+    "debut_wp": "1997",
+    "retired_wp": "2025",
+    "legal_name_wp": "William Scott Goldberg"
   },
   "gunther": {
     "qid": "Q11330762",
@@ -787,7 +1497,27 @@
       "license": "CC BY 2.0",
       "license_url": "https://creativecommons.org/licenses/by/2.0",
       "source": "https://commons.wikimedia.org/wiki/File:Gunther_August_2024_(headshot).jpg"
-    }
+    },
+    "wikipedia": "https://en.wikipedia.org/wiki/Gunther_(wrestler)",
+    "wikipedia_title": "Gunther (wrestler)",
+    "birth_name_wp": "Walter Hahn",
+    "ring_names": [
+      "Big Daddy Walter",
+      "Big Van Walter",
+      "Herr Shark",
+      "Gha-cha-ping",
+      "Gunther",
+      "Walter"
+    ],
+    "trained_by": [
+      "Michael Kovac",
+      "Riki Choshu",
+      "Tatsuhito Takaiwa",
+      "Tomohiro Ishii"
+    ],
+    "debut_wp": "2005",
+    "retired_wp": null,
+    "legal_name_wp": "Walter Hahn"
   },
   "hangman-adam-page": {
     "qid": "Q16525240",
@@ -806,7 +1536,20 @@
       "license": "CC BY 2.0",
       "license_url": "https://creativecommons.org/licenses/by/2.0",
       "source": "https://commons.wikimedia.org/wiki/File:Adam_Page,_July_2022_2_(headshot).jpg"
-    }
+    },
+    "wikipedia": "https://en.wikipedia.org/wiki/Adam_Page",
+    "wikipedia_title": "Adam Page",
+    "birth_name_wp": "Stephen Blake Woltz",
+    "ring_names": [
+      "Adam Page",
+      "\"Hangman\" Adam Page"
+    ],
+    "trained_by": [
+      "Jimmy Valiant"
+    ],
+    "debut_wp": "2008",
+    "retired_wp": null,
+    "legal_name_wp": "Stephen Blake Woltz"
   },
   "harley-race": {
     "qid": "Q707647",
@@ -825,7 +1568,27 @@
       "license": "CC0",
       "license_url": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
       "source": "https://commons.wikimedia.org/wiki/File:Harley_race.jpg"
-    }
+    },
+    "wikipedia": "https://en.wikipedia.org/wiki/Harley_Race",
+    "wikipedia_title": "Harley Race",
+    "birth_name_wp": "Harley Leland Race",
+    "ring_names": [
+      "The Great Mortimer",
+      "Harley Race",
+      "Jack Long",
+      "The King",
+      "Handsome Harley Race",
+      "King Harley Race"
+    ],
+    "trained_by": [
+      "Buddy Austin",
+      "Ray Hrstich",
+      "Stanislaus Zbyszko",
+      "Władek Zbyszko"
+    ],
+    "debut_wp": "1959",
+    "retired_wp": "1990",
+    "legal_name_wp": "Harley Leland Race"
   },
   "hiromu-takahashi": {
     "qid": "Q11671227",
@@ -833,18 +1596,35 @@
     "birth_name": null,
     "born": "1989-12-04",
     "died": null,
-    "birthplace": "Hachi\u014dji-shi",
+    "birthplace": "Hachiōji-shi",
     "height_cm": 171,
     "debut": "2010",
     "photo": {
       "src": "/wrestlers/hiromu-takahashi.jpg",
       "width": 400,
       "height": 543,
-      "credit": "\u30be\u30fc\u30d2\u30e7\u30fc",
+      "credit": "ゾーヒョー",
       "license": "CC BY-SA 4.0",
       "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
       "source": "https://commons.wikimedia.org/wiki/File:Hiromu_Takahashi.jpg"
-    }
+    },
+    "wikipedia": "https://en.wikipedia.org/wiki/Hiromu_Takahashi",
+    "wikipedia_title": "Hiromu Takahashi",
+    "birth_name_wp": null,
+    "ring_names": [
+      "Hiromu Takahashi",
+      "Kamaitachi",
+      "Kyoki"
+    ],
+    "trained_by": [
+      "NJPW Dojo",
+      "Tetsuya Naito",
+      "Jado",
+      "Hiroyoshi Tenzan"
+    ],
+    "debut_wp": "2010",
+    "retired_wp": null,
+    "legal_name_wp": "Hiromu Takahashi"
   },
   "hiroshi-tanahashi": {
     "qid": "Q1189750",
@@ -852,7 +1632,7 @@
     "birth_name": null,
     "born": "1976-11-13",
     "died": null,
-    "birthplace": "\u014cgaki-shi",
+    "birthplace": "Ōgaki-shi",
     "height_cm": 181,
     "debut": "1999",
     "photo": {
@@ -863,7 +1643,28 @@
       "license": "CC BY-SA 3.0",
       "license_url": "https://creativecommons.org/licenses/by-sa/3.0",
       "source": "https://commons.wikimedia.org/wiki/File:Hiroshi_Tanahashi_(cropped).jpg"
-    }
+    },
+    "wikipedia": "https://en.wikipedia.org/wiki/Hiroshi_Tanahashi",
+    "wikipedia_title": "Hiroshi Tanahashi",
+    "birth_name_wp": null,
+    "ring_names": [
+      "Hiroshi Tanahashi",
+      "Masked Devilock",
+      "Super Strong Machine Ace",
+      "Tanahashi",
+      "Gokiburi Mask",
+      "Wrestle Lando"
+    ],
+    "trained_by": [
+      "Keiji Muto",
+      "Kensuke Sasaki",
+      "Kotetsu Yamamoto",
+      "NJPW Dojo",
+      "Tatsumi Fujinami"
+    ],
+    "debut_wp": "1999",
+    "retired_wp": "2026",
+    "legal_name_wp": "Hiroshi Tanahashi"
   },
   "hulk-hogan": {
     "qid": "Q44176",
@@ -882,12 +1683,32 @@
       "license": "Public domain",
       "license_url": null,
       "source": "https://commons.wikimedia.org/wiki/File:Hulk_Hogan,_circa_1985.jpg"
-    }
+    },
+    "wikipedia": "https://en.wikipedia.org/wiki/Hulk_Hogan",
+    "wikipedia_title": "Hulk Hogan",
+    "birth_name_wp": "Terry Gene Bollea",
+    "ring_names": [
+      "Hollywood Hogan",
+      "Hollywood Hulk Hogan",
+      "Hulk Boulder",
+      "Hulk Hogan",
+      "Hulk Machine",
+      "Mr. America",
+      "Sterling Golden",
+      "Terry Boulder",
+      "The Super Destroyer"
+    ],
+    "trained_by": [
+      "Hiro Matsuda"
+    ],
+    "debut_wp": "1977",
+    "retired_wp": "2012",
+    "legal_name_wp": "Terry Gene Bollea"
   },
   "iron-sheik": {
     "qid": "Q289781",
     "wikidata_label": "The Iron Sheik",
-    "birth_name": "\u062d\u0633\u06cc\u0646 \u062e\u0633\u0631\u0648 \u0639\u0644\u06cc \u0648\u0632\u06cc\u0631\u06cc",
+    "birth_name": "حسین خسرو علی وزیری",
     "born": "1942-03-15",
     "died": "2023-06-07",
     "birthplace": "Damghan",
@@ -901,7 +1722,24 @@
       "license": "CC BY-SA 2.0",
       "license_url": "https://creativecommons.org/licenses/by-sa/2.0",
       "source": "https://commons.wikimedia.org/wiki/File:The_Iron_Sheik_2009.jpg"
-    }
+    },
+    "wikipedia": "https://en.wikipedia.org/wiki/The_Iron_Sheik",
+    "wikipedia_title": "The Iron Sheik",
+    "birth_name_wp": "Hossein Khosrow Ali Vaziri",
+    "ring_names": [
+      "Ali Vaziri",
+      "Col. Mustafa",
+      "Great Hossein Arab",
+      "Muhammad Farouk",
+      "The Iron Sheik"
+    ],
+    "trained_by": [
+      "Verne Gagne",
+      "Billy Robinson"
+    ],
+    "debut_wp": "1972",
+    "retired_wp": "2010",
+    "legal_name_wp": "Hossein Khosrow Ali Vaziri"
   },
   "iyo-sky": {
     "qid": "Q6061727",
@@ -920,7 +1758,28 @@
       "license": "CC BY 2.0",
       "license_url": "https://creativecommons.org/licenses/by/2.0",
       "source": "https://commons.wikimedia.org/wiki/File:Iyo_Sky,_WrestleMania_XL.jpg"
-    }
+    },
+    "wikipedia": "https://en.wikipedia.org/wiki/Iyo_Sky",
+    "wikipedia_title": "Iyo Sky",
+    "birth_name_wp": "Masami Odate",
+    "ring_names": [
+      "Biba Kasai",
+      "Hitokiri",
+      "Io Shirai",
+      "Iotica",
+      "Iyo Sky",
+      "Midnight Angel",
+      "Oyuki",
+      "T-2 Mask",
+      "Tenkū Shōjo Lusca"
+    ],
+    "trained_by": [
+      "Takashi Sasaki",
+      "Tomohiko Hashimoto"
+    ],
+    "debut_wp": "2007",
+    "retired_wp": null,
+    "legal_name_wp": "Masami Odate"
   },
   "jake-roberts": {
     "qid": "Q919492",
@@ -939,7 +1798,26 @@
       "license": "CC BY-SA 2.0",
       "license_url": "https://creativecommons.org/licenses/by-sa/2.0",
       "source": "https://commons.wikimedia.org/wiki/File:Jake_Roberts_2013.jpg"
-    }
+    },
+    "wikipedia": "https://en.wikipedia.org/wiki/Jake_Roberts",
+    "wikipedia_title": "Jake Roberts",
+    "birth_name_wp": "Aurelian Smith Jr.",
+    "ring_names": [
+      "El Diablo",
+      "Fred Platt",
+      "Jake \"The Snake\" Roberts",
+      "Jake Roberts",
+      "Jake Smith Jr.",
+      "The Snake",
+      "The Texan"
+    ],
+    "trained_by": [
+      "Buck Robley",
+      "Moose Morowski"
+    ],
+    "debut_wp": "1975",
+    "retired_wp": "2018",
+    "legal_name_wp": "Aurelian Smith Jr."
   },
   "jay-briscoe": {
     "qid": "Q13411562",
@@ -954,11 +1832,26 @@
       "src": "/wrestlers/jay-briscoe.jpg",
       "width": 400,
       "height": 500,
-      "credit": "\u30be\u30fc\u30d2\u30e7\u30fc",
+      "credit": "ゾーヒョー",
       "license": "CC BY-SA 4.0",
       "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
       "source": "https://commons.wikimedia.org/wiki/File:Jay_Briscoe_2016.JPG"
-    }
+    },
+    "wikipedia": "https://en.wikipedia.org/wiki/Jay_Briscoe",
+    "wikipedia_title": "Jay Briscoe",
+    "birth_name_wp": "Jamin Dale Pugh",
+    "ring_names": [
+      "Jay Briscoe",
+      "Kenny Murdoch"
+    ],
+    "trained_by": [
+      "Eddie Valentine",
+      "Glen Osbourne",
+      "Jim Kettner"
+    ],
+    "debut_wp": "2000",
+    "retired_wp": null,
+    "legal_name_wp": "Jamin Dale Pugh"
   },
   "jay-lethal": {
     "qid": "Q952803",
@@ -977,7 +1870,28 @@
       "license": "CC BY-SA 2.0",
       "license_url": "https://creativecommons.org/licenses/by-sa/2.0",
       "source": "https://commons.wikimedia.org/wiki/File:Jay_Lethal_-_2005.jpg"
-    }
+    },
+    "wikipedia": "https://en.wikipedia.org/wiki/Jay_Lethal",
+    "wikipedia_title": "Jay Lethal",
+    "birth_name_wp": "Jamar Shipman",
+    "ring_names": [
+      "Black Machismo",
+      "Hydro",
+      "Jamar Cunningham",
+      "Jay Lethal",
+      "J.R. Lethal",
+      "RPM",
+      "El Lethál"
+    ],
+    "trained_by": [
+      "Dan Maff",
+      "Jersey All Pro Wrestling",
+      "Mikey Whipwreck",
+      "Christian Dittmann"
+    ],
+    "debut_wp": "2001",
+    "retired_wp": null,
+    "legal_name_wp": "Jamar Shipman"
   },
   "jay-white": {
     "qid": "Q28151840",
@@ -996,7 +1910,22 @@
       "license": "CC BY-SA 4.0",
       "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
       "source": "https://commons.wikimedia.org/wiki/File:Jay_White_-_AEW_Dynamite_-_2023-04-26050_(cropped).jpg"
-    }
+    },
+    "wikipedia": "https://en.wikipedia.org/wiki/Jay_White",
+    "wikipedia_title": "Jay White",
+    "birth_name_wp": "Jamie White",
+    "ring_names": [
+      "Jay White"
+    ],
+    "trained_by": [
+      "The UK Kid",
+      "NJPW Dojo",
+      "Yuji Nagata",
+      "Hiroyoshi Tenzan"
+    ],
+    "debut_wp": "2013",
+    "retired_wp": null,
+    "legal_name_wp": "Jamie White"
   },
   "jbl": {
     "qid": "Q44692",
@@ -1015,7 +1944,28 @@
       "license": "Public domain",
       "license_url": null,
       "source": "https://commons.wikimedia.org/wiki/File:John_Bradshaw_Layfield_081204-A-5049R-108.jpg"
-    }
+    },
+    "wikipedia": "https://en.wikipedia.org/wiki/John_Layfield",
+    "wikipedia_title": "John Layfield",
+    "birth_name_wp": "John Charles Layfield",
+    "ring_names": [
+      "Blackjack Bradshaw",
+      "Bradshaw",
+      "Death Mask",
+      "John \"Bradshaw\" Layfield",
+      "JBL",
+      "John Hawk",
+      "Johnny Hawk",
+      "Justin \"Hawk\" Bradshaw",
+      "Vampiro Americano"
+    ],
+    "trained_by": [
+      "Black Bart",
+      "Brad Rheingans"
+    ],
+    "debut_wp": "1992",
+    "retired_wp": "2009",
+    "legal_name_wp": "John Charles Layfield"
   },
   "jeff-hardy": {
     "qid": "Q44137",
@@ -1034,7 +1984,27 @@
       "license": "CC BY-SA 4.0",
       "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
       "source": "https://commons.wikimedia.org/wiki/File:Jeff_Hardy_GalaxyCon_Des_Moines_September,11,20262107.jpg"
-    }
+    },
+    "wikipedia": "https://en.wikipedia.org/wiki/Jeff_Hardy",
+    "wikipedia_title": "Jeff Hardy",
+    "birth_name_wp": "Jeffrey Nero Hardy",
+    "ring_names": [
+      "Brother Nero",
+      "Itchweed",
+      "Jeff Harvey",
+      "Jeff Hardy",
+      "Keith Davis",
+      "Wildo Jynx",
+      "Willow",
+      "Wolverine"
+    ],
+    "trained_by": [
+      "Dory Funk Jr.",
+      "Michael Hayes"
+    ],
+    "debut_wp": "1994",
+    "retired_wp": null,
+    "legal_name_wp": "Jeffrey Nero Hardy"
   },
   "jeff-jarrett": {
     "qid": "Q352873",
@@ -1053,7 +2023,20 @@
       "license": "Public domain",
       "license_url": null,
       "source": "https://commons.wikimedia.org/wiki/File:Jeff_Jarrett.jpg"
-    }
+    },
+    "wikipedia": "https://en.wikipedia.org/wiki/Jeff_Jarrett",
+    "wikipedia_title": "Jeff Jarrett",
+    "birth_name_wp": "Jeffrey Leonard Jarrett",
+    "ring_names": [
+      "The Blue Blazer",
+      "Jeff Jarrett"
+    ],
+    "trained_by": [
+      "Tojo Yamamoto"
+    ],
+    "debut_wp": "1986",
+    "retired_wp": null,
+    "legal_name_wp": "Jeffrey Leonard Jarrett"
   },
   "jerry-lawler": {
     "qid": "Q345019",
@@ -1072,7 +2055,19 @@
       "license": "CC BY-SA 4.0",
       "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
       "source": "https://commons.wikimedia.org/wiki/File:Jerry_Lawler_GalaxyCon_Nashville_052026-4.jpg"
-    }
+    },
+    "wikipedia": "https://en.wikipedia.org/wiki/Jerry_Lawler",
+    "wikipedia_title": "Jerry Lawler",
+    "birth_name_wp": "Jerry O'Neil Lawler",
+    "ring_names": [
+      "Jerry \"The King\" Lawler"
+    ],
+    "trained_by": [
+      "Jackie Fargo"
+    ],
+    "debut_wp": "1970",
+    "retired_wp": "2023",
+    "legal_name_wp": "Jerry O'Neil Lawler"
   },
   "jey-uso": {
     "qid": "Q2500320",
@@ -1091,7 +2086,25 @@
       "license": "CC BY-SA 2.0",
       "license_url": "https://creativecommons.org/licenses/by-sa/2.0",
       "source": "https://commons.wikimedia.org/wiki/File:Jey_Uso_2024_(cropped).jpg"
-    }
+    },
+    "wikipedia": "https://en.wikipedia.org/wiki/Jey_Uso",
+    "wikipedia_title": "Jey Uso",
+    "birth_name_wp": "Joshua Samuel Fatu",
+    "ring_names": [
+      "Jey Uso",
+      "Josh Fatu",
+      "Joshua Fatu",
+      "Jules Uso"
+    ],
+    "trained_by": [
+      "Rikishi",
+      "Booker T",
+      "Wild Samoan Training Center",
+      "Florida Championship Wrestling"
+    ],
+    "debut_wp": "2007",
+    "retired_wp": null,
+    "legal_name_wp": "Joshua Samuel Fatu"
   },
   "john-cena": {
     "qid": "Q44437",
@@ -1110,7 +2123,29 @@
       "license": "CC BY-SA 3.0",
       "license_url": "https://creativecommons.org/licenses/by-sa/3.0",
       "source": "https://commons.wikimedia.org/wiki/File:John_Cena_by_Gage_Skidmore.jpg"
-    }
+    },
+    "wikipedia": "https://en.wikipedia.org/wiki/John_Cena",
+    "wikipedia_title": "John Cena",
+    "birth_name_wp": "John Felix Anthony Cena",
+    "ring_names": [
+      "John Cena",
+      "Juan Cena",
+      "Mr. P",
+      "The Prototype"
+    ],
+    "trained_by": [
+      "Christopher Daniels",
+      "Mike Bell",
+      "Tom Howard",
+      "Ultimate Pro Wrestling",
+      "Danny Davis",
+      "Fit Finlay",
+      "Jim Cornette",
+      "Ohio Valley Wrestling"
+    ],
+    "debut_wp": "1999",
+    "retired_wp": "2025",
+    "legal_name_wp": "John Felix Anthony Cena"
   },
   "jon-moxley": {
     "qid": "Q113384",
@@ -1129,7 +2164,23 @@
       "license": "CC BY-SA 2.0",
       "license_url": "https://creativecommons.org/licenses/by-sa/2.0",
       "source": "https://commons.wikimedia.org/wiki/File:Dean_Ambrose_WrestleMania_32_Axxess.jpg"
-    }
+    },
+    "wikipedia": "https://en.wikipedia.org/wiki/Jon_Moxley",
+    "wikipedia_title": "Jon Moxley",
+    "birth_name_wp": "Jonathan David Good",
+    "ring_names": [
+      "Jon Moxley",
+      "Dean Ambrose",
+      "Jonathan Moxley",
+      "Moxley Moxx"
+    ],
+    "trained_by": [
+      "Cody Hawk",
+      "Les Thatcher"
+    ],
+    "debut_wp": "2004",
+    "retired_wp": null,
+    "legal_name_wp": "Jonathan David Good"
   },
   "junkyard-dog": {
     "qid": "Q598243",
@@ -1148,7 +2199,22 @@
       "license": "CC BY-SA 2.5",
       "license_url": "https://creativecommons.org/licenses/by-sa/2.5",
       "source": "https://commons.wikimedia.org/wiki/File:Sylvester_%22Junkyard_Dog%22_Ritter_in_the_mid-80s.jpg"
-    }
+    },
+    "wikipedia": "https://en.wikipedia.org/wiki/Junkyard_Dog",
+    "wikipedia_title": "Junkyard Dog",
+    "birth_name_wp": "Sylvester Ritter",
+    "ring_names": [
+      "Big Daddy Ritter",
+      "Junkyard Dog",
+      "Leroy Rochester",
+      "Stagger Lee"
+    ],
+    "trained_by": [
+      "Sonny King"
+    ],
+    "debut_wp": "1977",
+    "retired_wp": "1997",
+    "legal_name_wp": "Sylvester Ritter"
   },
   "jushin-thunder-liger": {
     "qid": "Q1395975",
@@ -1167,7 +2233,30 @@
       "license": "CC BY-SA 4.0",
       "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
       "source": "https://commons.wikimedia.org/wiki/File:Jushin_Thunder_Liger_2019_nakayama_(cropped).jpg"
-    }
+    },
+    "wikipedia": "https://en.wikipedia.org/wiki/Jushin_Liger",
+    "wikipedia_title": "Jushin Liger",
+    "birth_name_wp": "Keiichi Yamada",
+    "ring_names": [
+      "C.T.U Ranger Yellow",
+      "Fuji Yamada",
+      "Jushin Liger",
+      "Jushin Thunder Liger",
+      "Keiichi Yamada",
+      "Kishin Liger",
+      "Liger"
+    ],
+    "trained_by": [
+      "Antonio Inoki",
+      "Kotetsu Yamamoto",
+      "Tatsumi Fujinami",
+      "Yoshiaki Fujiwara",
+      "Stu Hart",
+      "Tokyo Joe"
+    ],
+    "debut_wp": "1984",
+    "retired_wp": "2020",
+    "legal_name_wp": "Keiichi Yamada"
   },
   "kane": {
     "qid": "Q44354",
@@ -1175,7 +2264,7 @@
     "birth_name": "Glenn Thomas Jacobs",
     "born": "1967-04-26",
     "died": null,
-    "birthplace": "Torrej\u00f3n de Ardoz",
+    "birthplace": "Torrejón de Ardoz",
     "height_cm": null,
     "debut": "1997",
     "photo": {
@@ -1186,7 +2275,31 @@
       "license": "CC BY-SA 2.0",
       "license_url": "https://creativecommons.org/licenses/by-sa/2.0",
       "source": "https://commons.wikimedia.org/wiki/File:Glenn_Jacobs_(2023).jpg"
-    }
+    },
+    "wikipedia": "https://en.wikipedia.org/wiki/Kane_(wrestler)",
+    "wikipedia_title": "Kane (wrestler)",
+    "birth_name_wp": "Glenn Thomas Jacobs",
+    "ring_names": [
+      "Angus King",
+      "Bruiser Mastino",
+      "The Christmas Creature",
+      "Diesel",
+      "Doomsday",
+      "Glenn Jacobs",
+      "Isaac Yankem, DDS",
+      "Kane",
+      "Spartacus",
+      "Unabomb",
+      "Mike Unabomb"
+    ],
+    "trained_by": [
+      "Dean Malenko",
+      "Jeff Bradley",
+      "Ray Candy"
+    ],
+    "debut_wp": "1992",
+    "retired_wp": null,
+    "legal_name_wp": "Glenn Thomas Jacobs"
   },
   "kazuchika-okada": {
     "qid": "Q1057868",
@@ -1194,18 +2307,35 @@
     "birth_name": null,
     "born": "1987-11-08",
     "died": null,
-    "birthplace": "Anj\u014d",
+    "birthplace": "Anjō",
     "height_cm": 191,
     "debut": "2004",
     "photo": {
       "src": "/wrestlers/kazuchika-okada.jpg",
       "width": 400,
       "height": 534,
-      "credit": "\u30be\u30fc\u30d2\u30e7\u30fc",
+      "credit": "ゾーヒョー",
       "license": "CC BY-SA 4.0",
       "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
       "source": "https://commons.wikimedia.org/wiki/File:Kazuchika_Okada_2016.JPG"
-    }
+    },
+    "wikipedia": "https://en.wikipedia.org/wiki/Kazuchika_Okada",
+    "wikipedia_title": "Kazuchika Okada",
+    "birth_name_wp": null,
+    "ring_names": [
+      "Kazuchika Okada",
+      "Okada",
+      "Suicide",
+      "Okato",
+      "Dragon George"
+    ],
+    "trained_by": [
+      "Último Dragón",
+      "Yuji Nagata"
+    ],
+    "debut_wp": "2004",
+    "retired_wp": null,
+    "legal_name_wp": "Kazuchika Okada"
   },
   "keiji-mutoh": {
     "qid": "Q927964",
@@ -1224,7 +2354,33 @@
       "license": "CC BY-SA 2.0",
       "license_url": "https://creativecommons.org/licenses/by-sa/2.0",
       "source": "https://commons.wikimedia.org/wiki/File:Keiji_Mutoh_2009.jpg"
-    }
+    },
+    "wikipedia": "https://en.wikipedia.org/wiki/Keiji_Muto",
+    "wikipedia_title": "Keiji Muto",
+    "birth_name_wp": null,
+    "ring_names": [
+      "Bach Mutoh",
+      "The Black Ninja",
+      "Great Mota",
+      "(The) Great Muta",
+      "Keiji Muto",
+      "Kokushi",
+      "Kokushi-Muso",
+      "The Space Lone Wolf",
+      "The Super Black Ninja",
+      "The Super Ninja",
+      "Takeda Shingen",
+      "Viet Cong Ming",
+      "The White Ninja"
+    ],
+    "trained_by": [
+      "Antonio Inoki",
+      "Hiro Matsuda",
+      "Kotetsu Yamamoto"
+    ],
+    "debut_wp": "1984",
+    "retired_wp": "2023",
+    "legal_name_wp": "Keiji Muto"
   },
   "kenny-omega": {
     "qid": "Q3195235",
@@ -1243,7 +2399,24 @@
       "license": "CC BY-SA 4.0",
       "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
       "source": "https://commons.wikimedia.org/wiki/File:All_Elite_Wrestling_Executive_Vice_President_-_Kenny_Omega_(headshot).jpg"
-    }
+    },
+    "wikipedia": "https://en.wikipedia.org/wiki/Kenny_Omega",
+    "wikipedia_title": "Kenny Omega",
+    "birth_name_wp": "Tyson Smith",
+    "ring_names": [
+      "Kenny Omega",
+      "Scott Carpenter"
+    ],
+    "trained_by": [
+      "Bobby Jay",
+      "Dave Taylor",
+      "Mentallo",
+      "Top Rope Championship Wrestling",
+      "Vance Nevada"
+    ],
+    "debut_wp": "2000",
+    "retired_wp": null,
+    "legal_name_wp": "Tyson Smith"
   },
   "kerry-von-erich": {
     "qid": "Q2412965",
@@ -1262,7 +2435,21 @@
       "license": "Public domain",
       "license_url": null,
       "source": "https://commons.wikimedia.org/wiki/File:Kerry_Von_Erich,_1987.jpg"
-    }
+    },
+    "wikipedia": "https://en.wikipedia.org/wiki/Kerry_Von_Erich",
+    "wikipedia_title": "Kerry Von Erich",
+    "birth_name_wp": "Kerry Gene Adkisson",
+    "ring_names": [
+      "Cosmic Cowboy No. 2",
+      "Kerry Von Erich",
+      "Texas Tornado"
+    ],
+    "trained_by": [
+      "Fritz Von Erich"
+    ],
+    "debut_wp": "1978",
+    "retired_wp": null,
+    "legal_name_wp": "Kerry Gene Adkisson"
   },
   "kevin-nash": {
     "qid": "Q280793",
@@ -1281,7 +2468,28 @@
       "license": "CC BY 2.0",
       "license_url": "https://creativecommons.org/licenses/by/2.0",
       "source": "https://commons.wikimedia.org/wiki/File:Kevin_Nash_2022.jpg"
-    }
+    },
+    "wikipedia": "https://en.wikipedia.org/wiki/Kevin_Nash",
+    "wikipedia_title": "Kevin Nash",
+    "birth_name_wp": "Kevin Scott Nash",
+    "ring_names": [
+      "Chet Lemon",
+      "Diesel",
+      "Dr. X",
+      "The Great Oz",
+      "Kevin Nash",
+      "The Master Blaster",
+      "Master Blaster Steel",
+      "Oz",
+      "Vinnie Vegas"
+    ],
+    "trained_by": [
+      "Jody Hamilton",
+      "WCW Power Plant"
+    ],
+    "debut_wp": "1987",
+    "retired_wp": "2020",
+    "legal_name_wp": "Kevin Scott Nash"
   },
   "kevin-owens": {
     "qid": "Q609472",
@@ -1300,7 +2508,23 @@
       "license": "CC BY 4.0",
       "license_url": "https://creativecommons.org/licenses/by/4.0",
       "source": "https://commons.wikimedia.org/wiki/File:Kevin_Owens_at_IGN_Live_2026.jpg"
-    }
+    },
+    "wikipedia": "https://en.wikipedia.org/wiki/Kevin_Owens",
+    "wikipedia_title": "Kevin Owens",
+    "birth_name_wp": "Kevin Yanick Steen",
+    "ring_names": [
+      "Kevin Owens",
+      "Kevin Steen"
+    ],
+    "trained_by": [
+      "Jacques Rougeau",
+      "Pierre Carl Ouellet",
+      "Serge Jodoin",
+      "Terry Taylor"
+    ],
+    "debut_wp": "2000",
+    "retired_wp": null,
+    "legal_name_wp": "Kevin Yanick Steen"
   },
   "kevin-von-erich": {
     "qid": "Q2715122",
@@ -1319,7 +2543,19 @@
       "license": "CC BY 2.0",
       "license_url": "https://creativecommons.org/licenses/by/2.0",
       "source": "https://commons.wikimedia.org/wiki/File:Kevin_Von_Erich_2009_(Cropped).png"
-    }
+    },
+    "wikipedia": "https://en.wikipedia.org/wiki/Kevin_Von_Erich",
+    "wikipedia_title": "Kevin Von Erich",
+    "birth_name_wp": "Kevin Ross Adkisson",
+    "ring_names": [
+      "Kevin Von Erich"
+    ],
+    "trained_by": [
+      "Fritz Von Erich"
+    ],
+    "debut_wp": "1976",
+    "retired_wp": "2017",
+    "legal_name_wp": "Kevin Ross Adkisson"
   },
   "kofi-kingston": {
     "qid": "Q44349",
@@ -1338,7 +2574,24 @@
       "license": "CC BY-SA 4.0",
       "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
       "source": "https://commons.wikimedia.org/wiki/File:Kofi_GalaxyCon_Oklahoma_City_052026-3.jpg"
-    }
+    },
+    "wikipedia": "https://en.wikipedia.org/wiki/Kofi_Kingston",
+    "wikipedia_title": "Kofi Kingston",
+    "birth_name_wp": "Kofi Nahaje Sarkodie-Mensah",
+    "ring_names": [
+      "Kofi",
+      "Kofi Kingston",
+      "Kofi Nahaje Kingston"
+    ],
+    "trained_by": [
+      "Chaotic Wrestling",
+      "Mike Hollow",
+      "Killer Kowalski",
+      "Ohio Valley Wrestling"
+    ],
+    "debut_wp": "2006",
+    "retired_wp": null,
+    "legal_name_wp": "Kofi Nahaje Sarkodie-Mensah"
   },
   "kota-ibushi": {
     "qid": "Q3201317",
@@ -1357,7 +2610,25 @@
       "license": "CC BY-SA 3.0",
       "license_url": "https://creativecommons.org/licenses/by-sa/3.0",
       "source": "https://commons.wikimedia.org/wiki/File:KotaIbushi.JPG"
-    }
+    },
+    "wikipedia": "https://en.wikipedia.org/wiki/Kota_Ibushi",
+    "wikipedia_title": "Kota Ibushi",
+    "birth_name_wp": null,
+    "ring_names": [
+      "Kota Ibushi",
+      "Hustle Kamen Orange",
+      "Oda Nobunaga",
+      "Robin Mask",
+      "Sammy Lee Jr.",
+      "Tiger Mask W"
+    ],
+    "trained_by": [
+      "Kyohei Mikami",
+      "Shuji Kondo"
+    ],
+    "debut_wp": "2004",
+    "retired_wp": null,
+    "legal_name_wp": "Kota Ibushi"
   },
   "kurt-angle": {
     "qid": "Q44453",
@@ -1376,7 +2647,18 @@
       "license": "CC BY 2.0",
       "license_url": "https://creativecommons.org/licenses/by/2.0",
       "source": "https://commons.wikimedia.org/wiki/File:Kurt_Angle_(53983148398).jpg"
-    }
+    },
+    "wikipedia": "https://en.wikipedia.org/wiki/Kurt_Angle",
+    "wikipedia_title": "Kurt Angle",
+    "birth_name_wp": null,
+    "ring_names": [],
+    "trained_by": [
+      "Dory Funk Jr.",
+      "Tom Prichard"
+    ],
+    "debut_wp": "1998",
+    "retired_wp": "2019",
+    "legal_name_wp": "Kurt Steven Angle"
   },
   "lex-luger": {
     "qid": "Q115347",
@@ -1395,7 +2677,25 @@
       "license": "CC BY 2.0",
       "license_url": "https://creativecommons.org/licenses/by/2.0",
       "source": "https://commons.wikimedia.org/wiki/File:Lex_Luger_(cropped).jpg"
-    }
+    },
+    "wikipedia": "https://en.wikipedia.org/wiki/Lex_Luger",
+    "wikipedia_title": "Lex Luger",
+    "birth_name_wp": "Lawrence Wendell Pfohl",
+    "ring_names": [
+      "Lex Lugar",
+      "Lex Luger",
+      "The Lugar",
+      "The Narcissist",
+      "The Total Package"
+    ],
+    "trained_by": [
+      "Barry Windham",
+      "Bob Roop",
+      "Hiro Matsuda"
+    ],
+    "debut_wp": "1985",
+    "retired_wp": "2006",
+    "legal_name_wp": "Lawrence Wendell Pfohl"
   },
   "lita": {
     "qid": "Q230060",
@@ -1414,7 +2714,24 @@
       "license": "CC BY 4.0",
       "license_url": "https://creativecommons.org/licenses/by/4.0",
       "source": "https://commons.wikimedia.org/wiki/File:Amy_Dumas_at_CCR_Ontario_2024.jpg"
-    }
+    },
+    "wikipedia": "https://en.wikipedia.org/wiki/Lita_(wrestler)",
+    "wikipedia_title": "Lita (wrestler)",
+    "birth_name_wp": "Amy Christine Dumas",
+    "ring_names": [
+      "Angelica",
+      "Lita",
+      "Miss Congeniality"
+    ],
+    "trained_by": [
+      "Dory Funk Jr.",
+      "El Dandy",
+      "Ricky Santana",
+      "Kevin Quinn"
+    ],
+    "debut_wp": "1999",
+    "retired_wp": null,
+    "legal_name_wp": "Amy Christine Dumas"
   },
   "madusa": {
     "qid": "Q3020929",
@@ -1433,7 +2750,22 @@
       "license": "CC BY-SA 2.0",
       "license_url": "https://creativecommons.org/licenses/by-sa/2.0",
       "source": "https://commons.wikimedia.org/wiki/File:Madusa.jpg"
-    }
+    },
+    "wikipedia": "https://en.wikipedia.org/wiki/Madusa",
+    "wikipedia_title": "Madusa",
+    "birth_name_wp": "Debrah Anne Miceli",
+    "ring_names": [
+      "Alundra Blayze",
+      "Madusa",
+      "Madusa Miceli"
+    ],
+    "trained_by": [
+      "Brad Rheingans",
+      "Eddie Sharkey"
+    ],
+    "debut_wp": "1984",
+    "retired_wp": "2018",
+    "legal_name_wp": "Debrah Ann Miceli"
   },
   "magnum-ta": {
     "qid": "Q953089",
@@ -1452,7 +2784,21 @@
       "license": "CC BY-SA 2.0",
       "license_url": "https://creativecommons.org/licenses/by-sa/2.0",
       "source": "https://commons.wikimedia.org/wiki/File:Magnum_T.A._2016.jpg"
-    }
+    },
+    "wikipedia": "https://en.wikipedia.org/wiki/Magnum_T._A.",
+    "wikipedia_title": "Magnum T. A.",
+    "birth_name_wp": "Terry Wayne Allen",
+    "ring_names": [
+      "Jesse James",
+      "Magnum T. A.",
+      "Terry Allen"
+    ],
+    "trained_by": [
+      "Pete Robinson"
+    ],
+    "debut_wp": "1981",
+    "retired_wp": "1986",
+    "legal_name_wp": "Terry Wayne Allen"
   },
   "mark-briscoe": {
     "qid": "Q13411563",
@@ -1471,7 +2817,22 @@
       "license": "CC BY 2.0",
       "license_url": "https://creativecommons.org/licenses/by/2.0",
       "source": "https://commons.wikimedia.org/wiki/File:The_Briscoes_ROH.jpg"
-    }
+    },
+    "wikipedia": "https://en.wikipedia.org/wiki/Mark_Briscoe",
+    "wikipedia_title": "Mark Briscoe",
+    "birth_name_wp": "Mark Pugh",
+    "ring_names": [
+      "Keno Murdoch",
+      "Mark Briscoe"
+    ],
+    "trained_by": [
+      "Angelo Bonaccorso",
+      "Glen Osbourne",
+      "Jim Kettner"
+    ],
+    "debut_wp": "2000",
+    "retired_wp": null,
+    "legal_name_wp": "Mark Pugh"
   },
   "mark-henry": {
     "qid": "Q310073",
@@ -1490,7 +2851,21 @@
       "license": "CC BY 2.0",
       "license_url": "https://creativecommons.org/licenses/by/2.0",
       "source": "https://commons.wikimedia.org/wiki/File:WHCmarkHenry.jpg"
-    }
+    },
+    "wikipedia": "https://en.wikipedia.org/wiki/Mark_Henry",
+    "wikipedia_title": "Mark Henry",
+    "birth_name_wp": "Mark Jerrold Henry",
+    "ring_names": [
+      "Mark Henry",
+      "Markswoggle"
+    ],
+    "trained_by": [
+      "Leo Burke",
+      "Tom Prichard"
+    ],
+    "debut_wp": "1996",
+    "retired_wp": "2018",
+    "legal_name_wp": "Mark Jerrold Henry"
   },
   "masahiro-chono": {
     "qid": "Q3090501",
@@ -1509,7 +2884,25 @@
       "license": "Public domain",
       "license_url": null,
       "source": "https://commons.wikimedia.org/wiki/File:Bonzaikid.jpg"
-    }
+    },
+    "wikipedia": "https://en.wikipedia.org/wiki/Masahiro_Chono",
+    "wikipedia_title": "Masahiro Chono",
+    "birth_name_wp": null,
+    "ring_names": [
+      "Kamikaze Chono",
+      "Masahiro Chono",
+      "Masa Chono",
+      "Tokyo Chono"
+    ],
+    "trained_by": [
+      "Stu Hart",
+      "Lou Thesz",
+      "Antonio Inoki",
+      "Kotetsu Yamamoto"
+    ],
+    "debut_wp": "1984",
+    "retired_wp": "2023",
+    "legal_name_wp": "Masahiro Chono"
   },
   "matt-hardy": {
     "qid": "Q26621",
@@ -1528,7 +2921,26 @@
       "license": "CC BY-SA 4.0",
       "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
       "source": "https://commons.wikimedia.org/wiki/File:Matt_Hardy_GalaxyCon_Des_Moines_September,11,20262108.jpg"
-    }
+    },
+    "wikipedia": "https://en.wikipedia.org/wiki/Matt_Hardy",
+    "wikipedia_title": "Matt Hardy",
+    "birth_name_wp": "Matthew Moore Hardy",
+    "ring_names": [
+      "Broken Matt",
+      "Damascus",
+      "High Voltage",
+      "Ingus Jinx",
+      "Ishan Hardy",
+      "Matt Hardy",
+      "Rahway Reaper",
+      "Surge"
+    ],
+    "trained_by": [
+      "Dory Funk Jr."
+    ],
+    "debut_wp": "1992",
+    "retired_wp": null,
+    "legal_name_wp": "Matthew Moore Hardy"
   },
   "matt-jackson": {
     "qid": "Q2596323",
@@ -1547,11 +2959,32 @@
       "license": "CC BY-SA 2.0",
       "license_url": "https://creativecommons.org/licenses/by-sa/2.0",
       "source": "https://commons.wikimedia.org/wiki/File:Max-Buck.jpg"
-    }
+    },
+    "wikipedia": "https://en.wikipedia.org/wiki/Matt_Jackson_(wrestler)",
+    "wikipedia_title": "Matt Jackson (wrestler)",
+    "birth_name_wp": null,
+    "ring_names": [
+      "The Cucamonga Kids",
+      "The Jackson Brothers",
+      "Los Gallineros",
+      "Max and Jeremy Buck",
+      "Matt and Nick Jackson",
+      "The Young Bucks",
+      "Generation Me",
+      "Matthew and Nicholas Jackson"
+    ],
+    "trained_by": [
+      "Ron Rivera",
+      "Rudos Dojo",
+      "Marty Jannetty"
+    ],
+    "debut_wp": "2004",
+    "retired_wp": null,
+    "legal_name_wp": null
   },
   "mercedes-mone": {
     "qid": "Q6818195",
-    "wikidata_label": "Mercedes Mon\u00e9",
+    "wikidata_label": "Mercedes Moné",
     "birth_name": "Mercedes Justine Kaestner-Varnado b",
     "born": "1992-01-26",
     "died": null,
@@ -1566,7 +2999,26 @@
       "license": "CC BY-SA 2.0",
       "license_url": "https://creativecommons.org/licenses/by-sa/2.0",
       "source": "https://commons.wikimedia.org/wiki/File:Sasha_Banks_WrestleMania_32_Axxess.jpg"
-    }
+    },
+    "wikipedia": "https://en.wikipedia.org/wiki/Mercedes_Mon%C3%A9",
+    "wikipedia_title": "Mercedes Moné",
+    "birth_name_wp": "Mercedes Justine Kaestner Varnado",
+    "ring_names": [
+      "Mercedes KV",
+      "Mercedes Moné",
+      "Miss Mercedes",
+      "Sasha Banks"
+    ],
+    "trained_by": [
+      "Todd Smith",
+      "Brian Fury",
+      "Brian Milonas",
+      "Sara Del Rey",
+      "WWE Performance Center"
+    ],
+    "debut_wp": "2010",
+    "retired_wp": null,
+    "legal_name_wp": "Mercedes Justine Kaestner Varnado"
   },
   "michael-hayes": {
     "qid": "Q974049",
@@ -1585,7 +3037,25 @@
       "license": "Public domain",
       "license_url": null,
       "source": "https://commons.wikimedia.org/wiki/File:Michael_Hayes_1987_colored.png"
-    }
+    },
+    "wikipedia": "https://en.wikipedia.org/wiki/Michael_Hayes_(wrestler)",
+    "wikipedia_title": "Michael Hayes (wrestler)",
+    "birth_name_wp": "Michael Seitz",
+    "ring_names": [
+      "Dok Hendrix",
+      "Lord Michael Hayes",
+      "Michael \"P.S.\" Hayes",
+      "Screaming Eagle",
+      "Freebird Michael Hayes"
+    ],
+    "trained_by": [
+      "Afa Anoa'i",
+      "Sika Anoa'i",
+      "Mike Boyette"
+    ],
+    "debut_wp": "1977",
+    "retired_wp": "1999",
+    "legal_name_wp": "Michael Seitz"
   },
   "mick-foley": {
     "qid": "Q10731",
@@ -1604,7 +3074,27 @@
       "license": "CC BY 2.0",
       "license_url": "https://creativecommons.org/licenses/by/2.0",
       "source": "https://commons.wikimedia.org/wiki/File:Mick_Foley_(49244078412).jpg"
-    }
+    },
+    "wikipedia": "https://en.wikipedia.org/wiki/Mick_Foley",
+    "wikipedia_title": "Mick Foley",
+    "birth_name_wp": "Michael Francis Foley",
+    "ring_names": [
+      "Cactus Jack",
+      "Cactus Jack Foley",
+      "Cactus Jack Manson",
+      "Dude Love",
+      "Jack Foley",
+      "Mankind",
+      "Mick Foley",
+      "Nick Foley",
+      "Zodiac #2"
+    ],
+    "trained_by": [
+      "Dominic DeNucci"
+    ],
+    "debut_wp": "1986",
+    "retired_wp": "2012",
+    "legal_name_wp": "Michael Francis Foley"
   },
   "mickie-james": {
     "qid": "Q270712",
@@ -1623,7 +3113,23 @@
       "license": "CC BY-SA 2.0",
       "license_url": "https://creativecommons.org/licenses/by-sa/2.0",
       "source": "https://commons.wikimedia.org/wiki/File:Mickie_James_in_April_2018.jpeg"
-    }
+    },
+    "wikipedia": "https://en.wikipedia.org/wiki/Mickie_James",
+    "wikipedia_title": "Mickie James",
+    "birth_name_wp": "Mickie Laree James",
+    "ring_names": [
+      "Alexis Laree",
+      "Mickie James",
+      "Princess Alexis",
+      "La Luchadora"
+    ],
+    "trained_by": [
+      "Funking Conservatory",
+      "KYDA Pro Training School"
+    ],
+    "debut_wp": "1999",
+    "retired_wp": null,
+    "legal_name_wp": "Mickie Laree James"
   },
   "mjf": {
     "qid": "Q61102628",
@@ -1642,7 +3148,25 @@
       "license": "CC BY-SA 4.0",
       "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
       "source": "https://commons.wikimedia.org/wiki/File:MJF_May_2019.jpg"
-    }
+    },
+    "wikipedia": "https://en.wikipedia.org/wiki/Maxwell_Jacob_Friedman",
+    "wikipedia_title": "Maxwell Jacob Friedman",
+    "birth_name_wp": "Maxwell Tyler Friedman",
+    "ring_names": [
+      "Maxwell Jacob Friedman",
+      "MJF",
+      "Maxwell Jacob Feinstein",
+      "Pete Lightning",
+      "Sandy Bunker"
+    ],
+    "trained_by": [
+      "Brian Myers",
+      "Create A Pro Wrestling Academy",
+      "Pat Buck"
+    ],
+    "debut_wp": "2015",
+    "retired_wp": null,
+    "legal_name_wp": "Maxwell Tyler Friedman"
   },
   "nick-bockwinkel": {
     "qid": "Q1560090",
@@ -1661,7 +3185,26 @@
       "license": "Public domain",
       "license_url": null,
       "source": "https://commons.wikimedia.org/wiki/File:Nick_Bockwinkel.jpg"
-    }
+    },
+    "wikipedia": "https://en.wikipedia.org/wiki/Nick_Bockwinkel",
+    "wikipedia_title": "Nick Bockwinkel",
+    "birth_name_wp": "Nicholas Warren Francis Bockwinkel",
+    "ring_names": [
+      "Dick Warren",
+      "Nick Bock",
+      "Nick Bockwinkel",
+      "Nicky Bockwinkel",
+      "Nick Warren",
+      "The Phantom",
+      "Roy Diamond"
+    ],
+    "trained_by": [
+      "Warren Bockwinkel",
+      "Lou Thesz"
+    ],
+    "debut_wp": "1954",
+    "retired_wp": "1993",
+    "legal_name_wp": "Nicholas Warren Francis Bockwinkel"
   },
   "nick-jackson": {
     "qid": "Q2226671",
@@ -1680,7 +3223,28 @@
       "license": "CC BY 2.0",
       "license_url": "https://creativecommons.org/licenses/by/2.0",
       "source": "https://commons.wikimedia.org/wiki/File:Nick_Jackson_(cropped).jpg"
-    }
+    },
+    "wikipedia": "https://en.wikipedia.org/wiki/Nick_Jackson_(wrestler)",
+    "wikipedia_title": "Nick Jackson (wrestler)",
+    "birth_name_wp": null,
+    "ring_names": [
+      "The Cucamonga Kids",
+      "The Jackson Brothers",
+      "Los Gallineros",
+      "Max and Jeremy Buck",
+      "Matt and Nick Jackson",
+      "The Young Bucks",
+      "Generation Me",
+      "Matthew and Nicholas Jackson"
+    ],
+    "trained_by": [
+      "Ron Rivera",
+      "Rudos Dojo",
+      "Marty Jannetty"
+    ],
+    "debut_wp": "2004",
+    "retired_wp": null,
+    "legal_name_wp": null
   },
   "nigel-mcguinness": {
     "qid": "Q930665",
@@ -1699,7 +3263,25 @@
       "license": "CC BY-SA 2.0",
       "license_url": "https://creativecommons.org/licenses/by-sa/2.0",
       "source": "https://commons.wikimedia.org/wiki/File:Desmond_Wolfe_July_2010_2.jpg"
-    }
+    },
+    "wikipedia": "https://en.wikipedia.org/wiki/Nigel_McGuinness",
+    "wikipedia_title": "Nigel McGuinness",
+    "birth_name_wp": "Steven Haworth",
+    "ring_names": [
+      "Desmond Wolfe",
+      "Nigel McGuinness",
+      "Vyvyan Edmondson",
+      "Kane"
+    ],
+    "trained_by": [
+      "Chic Cullen",
+      "Dave Taylor",
+      "Les Thatcher",
+      "Robbie Brookside"
+    ],
+    "debut_wp": "1999",
+    "retired_wp": null,
+    "legal_name_wp": "Steven Haworth"
   },
   "nikita-koloff": {
     "qid": "Q1885672",
@@ -1718,7 +3300,20 @@
       "license": "CC BY-SA 3.0",
       "license_url": "https://creativecommons.org/licenses/by-sa/3.0",
       "source": "https://commons.wikimedia.org/wiki/File:NikitaKoloff2006.png"
-    }
+    },
+    "wikipedia": "https://en.wikipedia.org/wiki/Nikita_Koloff",
+    "wikipedia_title": "Nikita Koloff",
+    "birth_name_wp": "Nelson Scott Simpson",
+    "ring_names": [
+      "Mr. Wrestling IV",
+      "Nikita Koloff"
+    ],
+    "trained_by": [
+      "Eddie Sharkey"
+    ],
+    "debut_wp": "1984",
+    "retired_wp": "1992",
+    "legal_name_wp": "Nikita Koloff"
   },
   "ole-anderson": {
     "qid": "Q240582",
@@ -1737,7 +3332,22 @@
       "license": "Public domain",
       "license_url": null,
       "source": "https://commons.wikimedia.org/wiki/File:Ole_Anderson_c.1982.png"
-    }
+    },
+    "wikipedia": "https://en.wikipedia.org/wiki/Ole_Anderson",
+    "wikipedia_title": "Ole Anderson",
+    "birth_name_wp": "Alan Robert Rogowski",
+    "ring_names": [
+      "Al Rogowski",
+      "Ole Anderson",
+      "Rock Rogowski"
+    ],
+    "trained_by": [
+      "Dick the Bruiser",
+      "Verne Gagne"
+    ],
+    "debut_wp": "1967",
+    "retired_wp": "1990",
+    "legal_name_wp": "Alan Robert Rogowski"
   },
   "owen-hart": {
     "qid": "Q317365",
@@ -1756,7 +3366,24 @@
       "license": "Public domain",
       "license_url": null,
       "source": "https://commons.wikimedia.org/wiki/File:Owen_Hart.jpg"
-    }
+    },
+    "wikipedia": "https://en.wikipedia.org/wiki/Owen_Hart",
+    "wikipedia_title": "Owen Hart",
+    "birth_name_wp": "Owen James Hart",
+    "ring_names": [
+      "The Rocket",
+      "The Blue Angel",
+      "The Blue Blazer",
+      "Owen Hart",
+      "Owen James",
+      "The Avenger"
+    ],
+    "trained_by": [
+      "Stu Hart"
+    ],
+    "debut_wp": "1988",
+    "retired_wp": null,
+    "legal_name_wp": "Owen James Hart"
   },
   "randy-orton": {
     "qid": "Q44449",
@@ -1775,7 +3402,22 @@
       "license": "CC BY 2.0",
       "license_url": "https://creativecommons.org/licenses/by/2.0",
       "source": "https://commons.wikimedia.org/wiki/File:Randy_Orton_Tribute_to_the_Troops_2010.jpg"
-    }
+    },
+    "wikipedia": "https://en.wikipedia.org/wiki/Randy_Orton",
+    "wikipedia_title": "Randy Orton",
+    "birth_name_wp": "Randal Keith Orton",
+    "ring_names": [
+      "Randy Orton"
+    ],
+    "trained_by": [
+      "Bob Orton Jr.",
+      "Fit Finlay",
+      "Mid Missouri Wrestling Alliance",
+      "Ohio Valley Wrestling"
+    ],
+    "debut_wp": "2000",
+    "retired_wp": null,
+    "legal_name_wp": "Randal Keith Orton"
   },
   "randy-savage": {
     "qid": "Q59635",
@@ -1794,7 +3436,25 @@
       "license": "CC BY 2.0",
       "license_url": "https://creativecommons.org/licenses/by/2.0",
       "source": "https://commons.wikimedia.org/wiki/File:Randy_Savage_1986.jpg"
-    }
+    },
+    "wikipedia": "https://en.wikipedia.org/wiki/Randy_Savage",
+    "wikipedia_title": "Randy Savage",
+    "birth_name_wp": "Randy Mario Poffo",
+    "ring_names": [
+      "Randy Poffo",
+      "Randy Savage",
+      "The Spider",
+      "The Big Geno",
+      "Mr. Madness",
+      "Destroyer",
+      "Executioner"
+    ],
+    "trained_by": [
+      "Angelo Poffo"
+    ],
+    "debut_wp": "1973",
+    "retired_wp": "2006",
+    "legal_name_wp": "Randy Mario Poffo"
   },
   "raven": {
     "qid": "Q452217",
@@ -1813,12 +3473,29 @@
       "license": "Public domain",
       "license_url": null,
       "source": "https://commons.wikimedia.org/wiki/File:Raven_2025_cropped.jpg"
-    }
+    },
+    "wikipedia": "https://en.wikipedia.org/wiki/Raven_(wrestler)",
+    "wikipedia_title": "Raven (wrestler)",
+    "birth_name_wp": "Scott Levy",
+    "ring_names": [
+      "Johnny Polo",
+      "Matman",
+      "Raven",
+      "Scott Anthony",
+      "Scotty the Body",
+      "Scotty Flamingo"
+    ],
+    "trained_by": [
+      "Larry Sharpe"
+    ],
+    "debut_wp": "1988",
+    "retired_wp": null,
+    "legal_name_wp": "Scott Levy"
   },
   "rey-mysterio": {
     "qid": "Q44152",
     "wikidata_label": "Rey Mysterio",
-    "birth_name": "\u00d3scar Guti\u00e9rrez",
+    "birth_name": "Óscar Gutiérrez",
     "born": "1974-12-11",
     "died": null,
     "birthplace": "San Diego",
@@ -1832,7 +3509,25 @@
       "license": "CC BY 4.0",
       "license_url": "https://creativecommons.org/licenses/by/4.0",
       "source": "https://commons.wikimedia.org/wiki/File:Rey_Mysterio_at_San_Diego_Comic_Con_2026_(3x4_cropped).jpg"
-    }
+    },
+    "wikipedia": "https://en.wikipedia.org/wiki/Rey_Mysterio",
+    "wikipedia_title": "Rey Mysterio",
+    "birth_name_wp": "Óscar Gutiérrez Rubio",
+    "ring_names": [
+      "Colibri",
+      "La Lagartija Verde",
+      "El Niño",
+      "Rey Misterio II",
+      "Rey Misterio Jr.",
+      "Rey Mysterio",
+      "Rey Mysterio Jr."
+    ],
+    "trained_by": [
+      "Rey Misterio"
+    ],
+    "debut_wp": "1989",
+    "retired_wp": null,
+    "legal_name_wp": "Óscar Gutiérrez Rubio"
   },
   "rhea-ripley": {
     "qid": "Q56259738",
@@ -1851,7 +3546,20 @@
       "license": "CC BY 2.0",
       "license_url": "https://creativecommons.org/licenses/by/2.0",
       "source": "https://commons.wikimedia.org/wiki/File:Rhea_Ripley,_April_2024_(cropped).jpg"
-    }
+    },
+    "wikipedia": "https://en.wikipedia.org/wiki/Rhea_Ripley",
+    "wikipedia_title": "Rhea Ripley",
+    "birth_name_wp": "Demi Bennett",
+    "ring_names": [
+      "Demi Bennett",
+      "Rhea Ripley"
+    ],
+    "trained_by": [
+      "WWE Performance Center"
+    ],
+    "debut_wp": "2013",
+    "retired_wp": null,
+    "legal_name_wp": "Demi Bennett"
   },
   "ric-flair": {
     "qid": "Q44546",
@@ -1870,7 +3578,21 @@
       "license": "CC BY 2.0",
       "license_url": "https://creativecommons.org/licenses/by/2.0",
       "source": "https://commons.wikimedia.org/wiki/File:Ric_Flair_Photo_Op_GalaxyCon_Austin_2023.jpg"
-    }
+    },
+    "wikipedia": "https://en.wikipedia.org/wiki/Ric_Flair",
+    "wikipedia_title": "Ric Flair",
+    "birth_name_wp": null,
+    "ring_names": [
+      "The Black Scorpion",
+      "Nature Boy",
+      "Ric Flair"
+    ],
+    "trained_by": [
+      "Verne Gagne"
+    ],
+    "debut_wp": "1972",
+    "retired_wp": "2022",
+    "legal_name_wp": "Richard Morgan Fliehr"
   },
   "rick-martel": {
     "qid": "Q1384985",
@@ -1889,7 +3611,22 @@
       "license": "CC BY 2.0",
       "license_url": "https://creativecommons.org/licenses/by/2.0",
       "source": "https://commons.wikimedia.org/wiki/File:Rick_Martel_2011_(cropped).jpg"
-    }
+    },
+    "wikipedia": "https://en.wikipedia.org/wiki/Rick_Martel",
+    "wikipedia_title": "Rick Martel",
+    "birth_name_wp": "Richard Vigneault",
+    "ring_names": [
+      "Gus Griffin",
+      "Pat Kelly",
+      "Rick Martel",
+      "The Model"
+    ],
+    "trained_by": [
+      "Pierre Martel"
+    ],
+    "debut_wp": "1973",
+    "retired_wp": "1999",
+    "legal_name_wp": "Richard Vigneault"
   },
   "rick-rude": {
     "qid": "Q732642",
@@ -1908,7 +3645,21 @@
       "license": "Public domain",
       "license_url": null,
       "source": "https://commons.wikimedia.org/wiki/File:Ravishing_Rick_Rude_1988.png"
-    }
+    },
+    "wikipedia": "https://en.wikipedia.org/wiki/Rick_Rude",
+    "wikipedia_title": "Rick Rude",
+    "birth_name_wp": "Richard Erwin Rood",
+    "ring_names": [
+      "Rick Rude",
+      "Ricky Rood",
+      "The WCW Phantom"
+    ],
+    "trained_by": [
+      "Eddie Sharkey"
+    ],
+    "debut_wp": "1982",
+    "retired_wp": "1994",
+    "legal_name_wp": "Richard Erwin Rood"
   },
   "ricky-morton": {
     "qid": "Q7332139",
@@ -1927,7 +3678,21 @@
       "license": "CC BY-SA 2.0",
       "license_url": "https://creativecommons.org/licenses/by-sa/2.0",
       "source": "https://commons.wikimedia.org/wiki/File:Ricky_Morton_May_2014.jpg"
-    }
+    },
+    "wikipedia": "https://en.wikipedia.org/wiki/Ricky_Morton",
+    "wikipedia_title": "Ricky Morton",
+    "birth_name_wp": "Richard Wendell Morton",
+    "ring_names": [
+      "Richard Morton",
+      "Rick Morton",
+      "Ricky Morton"
+    ],
+    "trained_by": [
+      "Ken Lucas"
+    ],
+    "debut_wp": "1977",
+    "retired_wp": null,
+    "legal_name_wp": "Richard Wendell Morton"
   },
   "ricky-steamboat": {
     "qid": "Q379538",
@@ -1946,7 +3711,24 @@
       "license": "CC BY-SA 3.0",
       "license_url": "https://creativecommons.org/licenses/by-sa/3.0",
       "source": "https://commons.wikimedia.org/wiki/File:Ricky_Steamboat_Greektown_2018_(cropped).jpg"
-    }
+    },
+    "wikipedia": "https://en.wikipedia.org/wiki/Ricky_Steamboat",
+    "wikipedia_title": "Ricky Steamboat",
+    "birth_name_wp": "Richard Henry Blood",
+    "ring_names": [
+      "Rick Blood",
+      "The Dragon",
+      "Richard Blood",
+      "Ricky Steamboat",
+      "Sam Steamboat Jr."
+    ],
+    "trained_by": [
+      "Verne Gagne",
+      "The Iron Sheik"
+    ],
+    "debut_wp": "1976",
+    "retired_wp": "2022",
+    "legal_name_wp": "Richard Henry Blood Sr."
   },
   "road-warrior-animal": {
     "qid": "Q725403",
@@ -1965,7 +3747,22 @@
       "license": "CC BY 2.0",
       "license_url": "https://creativecommons.org/licenses/by/2.0",
       "source": "https://commons.wikimedia.org/wiki/File:Road_Warrior_Animal_cropped.jpg"
-    }
+    },
+    "wikipedia": "https://en.wikipedia.org/wiki/Road_Warrior_Animal",
+    "wikipedia_title": "Road Warrior Animal",
+    "birth_name_wp": "Joseph Michael Laurinaitis",
+    "ring_names": [
+      "Animal",
+      "Animal Warrior",
+      "Road Warrior Animal",
+      "The Road Warrior"
+    ],
+    "trained_by": [
+      "Eddie Sharkey"
+    ],
+    "debut_wp": "1982",
+    "retired_wp": "2012",
+    "legal_name_wp": "Joseph Michael Laurinaitis"
   },
   "road-warrior-hawk": {
     "qid": "Q726060",
@@ -1984,7 +3781,22 @@
       "license": "Public domain",
       "license_url": null,
       "source": "https://commons.wikimedia.org/wiki/File:Road_Warrior_Hawk_1985.png"
-    }
+    },
+    "wikipedia": "https://en.wikipedia.org/wiki/Road_Warrior_Hawk",
+    "wikipedia_title": "Road Warrior Hawk",
+    "birth_name_wp": "Michael James Hegstrand",
+    "ring_names": [
+      "Crusher Von Haig",
+      "Hawk",
+      "Hawk Warrior",
+      "Road Warrior Hawk"
+    ],
+    "trained_by": [
+      "Eddie Sharkey"
+    ],
+    "debut_wp": "1983",
+    "retired_wp": null,
+    "legal_name_wp": "Michael James \"Mike\" Hegstrand"
   },
   "rob-van-dam": {
     "qid": "Q44628",
@@ -2003,7 +3815,22 @@
       "license": "CC BY 3.0",
       "license_url": "https://creativecommons.org/licenses/by/3.0",
       "source": "https://commons.wikimedia.org/wiki/File:Rob-van-dam.jpg"
-    }
+    },
+    "wikipedia": "https://en.wikipedia.org/wiki/Rob_Van_Dam",
+    "wikipedia_title": "Rob Van Dam",
+    "birth_name_wp": "Robert Szatkowski",
+    "ring_names": [
+      "Matt Burn",
+      "Rob Szatkowski",
+      "Rob Van Dam",
+      "Robbie V"
+    ],
+    "trained_by": [
+      "The Sheik"
+    ],
+    "debut_wp": "1990",
+    "retired_wp": null,
+    "legal_name_wp": "Robert Szatkowski"
   },
   "robert-gibson": {
     "qid": "Q7344756",
@@ -2022,7 +3849,20 @@
       "license": "CC BY-SA 2.0",
       "license_url": "https://creativecommons.org/licenses/by-sa/2.0",
       "source": "https://commons.wikimedia.org/wiki/File:Robert_Gibson_May_2014.jpg"
-    }
+    },
+    "wikipedia": "https://en.wikipedia.org/wiki/Robert_Gibson_(wrestler)",
+    "wikipedia_title": "Robert Gibson (wrestler)",
+    "birth_name_wp": "Reuben Cain",
+    "ring_names": [
+      "Robert Fuller Jr.",
+      "Robert Gibson"
+    ],
+    "trained_by": [
+      "Rick Gibson"
+    ],
+    "debut_wp": "1977",
+    "retired_wp": null,
+    "legal_name_wp": "Robert Gibson"
   },
   "roddy-piper": {
     "qid": "Q59630",
@@ -2041,7 +3881,25 @@
       "license": "CC BY-SA 2.0",
       "license_url": "https://creativecommons.org/licenses/by-sa/2.0",
       "source": "https://commons.wikimedia.org/wiki/File:Roddy_Piper,_August_2009.jpg"
-    }
+    },
+    "wikipedia": "https://en.wikipedia.org/wiki/Roddy_Piper",
+    "wikipedia_title": "Roddy Piper",
+    "birth_name_wp": "Roderick George Toombs",
+    "ring_names": [
+      "The Masked Canadian",
+      "Piper Machine",
+      "\"Rowdy\" Roddy Piper"
+    ],
+    "trained_by": [
+      "Gene LeBell",
+      "Leo Garibaldi",
+      "Tony Condello",
+      "Joe Fiorino",
+      "Stu Hart"
+    ],
+    "debut_wp": "1969",
+    "retired_wp": "2011",
+    "legal_name_wp": "Roderick George Toombs"
   },
   "roman-reigns": {
     "qid": "Q275971",
@@ -2060,7 +3918,21 @@
       "license": "CC BY 2.0",
       "license_url": "https://creativecommons.org/licenses/by/2.0",
       "source": "https://commons.wikimedia.org/wiki/File:Roman_Reigns_RR25_(1)_(headshot).jpg"
-    }
+    },
+    "wikipedia": "https://en.wikipedia.org/wiki/Roman_Reigns",
+    "wikipedia_title": "Roman Reigns",
+    "birth_name_wp": "Leati Joseph Anoaʻi",
+    "ring_names": [
+      "Leakee",
+      "Roman Leakee",
+      "Roman Reigns"
+    ],
+    "trained_by": [
+      "Steve Keirn"
+    ],
+    "debut_wp": "2010",
+    "retired_wp": null,
+    "legal_name_wp": "Leati Joseph \"Joe\" Anoaʻi"
   },
   "ron-simmons": {
     "qid": "Q447463",
@@ -2079,7 +3951,22 @@
       "license": "CC BY-SA 4.0",
       "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
       "source": "https://commons.wikimedia.org/wiki/File:Ron_Simmons_GalaxyCon_Des_Moines_September,11,2026_2177.jpg"
-    }
+    },
+    "wikipedia": "https://en.wikipedia.org/wiki/Ron_Simmons",
+    "wikipedia_title": "Ron Simmons",
+    "birth_name_wp": "Ronald Kyle Simmons",
+    "ring_names": [
+      "Doom #1",
+      "Faarooq",
+      "Faarooq Asaad",
+      "Ron Simmons"
+    ],
+    "trained_by": [
+      "Hiro Matsuda"
+    ],
+    "debut_wp": "1986",
+    "retired_wp": "2012",
+    "legal_name_wp": "Ronald Kyle Simmons"
   },
   "ronnie-garvin": {
     "qid": "Q3441390",
@@ -2098,7 +3985,23 @@
       "license": "CC BY-SA 2.0",
       "license_url": "https://creativecommons.org/licenses/by-sa/2.0",
       "source": "https://commons.wikimedia.org/wiki/File:%22Rugged%22_Ronnie_Garvin.jpg"
-    }
+    },
+    "wikipedia": "https://en.wikipedia.org/wiki/Ron_Garvin",
+    "wikipedia_title": "Ron Garvin",
+    "birth_name_wp": "Roger Barnes",
+    "ring_names": [
+      "Ronnie Garvin",
+      "Mr. Eau Gallie",
+      "Mr. Knoxville",
+      "Roger Barnes",
+      "Ron Garvin"
+    ],
+    "trained_by": [
+      "Pat Curry"
+    ],
+    "debut_wp": "1962",
+    "retired_wp": "2014",
+    "legal_name_wp": "Roger Barnes"
   },
   "sabu": {
     "qid": "Q445365",
@@ -2117,7 +4020,26 @@
       "license": "CC BY-SA 2.0",
       "license_url": "https://creativecommons.org/licenses/by-sa/2.0",
       "source": "https://commons.wikimedia.org/wiki/File:Sabu_2008.jpg"
-    }
+    },
+    "wikipedia": "https://en.wikipedia.org/wiki/Sabu_(wrestler)",
+    "wikipedia_title": "Sabu (wrestler)",
+    "birth_name_wp": "Terrance Michael Brunk",
+    "ring_names": [
+      "The Great Sabu",
+      "Sabu",
+      "Sabu the Elephant Boy",
+      "Samu",
+      "Terry S.R.",
+      "Terry Snuka",
+      "Terry Brunk",
+      "Sabu of the Jungle"
+    ],
+    "trained_by": [
+      "The Sheik"
+    ],
+    "debut_wp": "1985",
+    "retired_wp": "2025",
+    "legal_name_wp": "Terrance Michael Brunk"
   },
   "sami-zayn": {
     "qid": "Q376402",
@@ -2136,7 +4058,24 @@
       "license": "CC BY-SA 2.0",
       "license_url": "https://creativecommons.org/licenses/by-sa/2.0",
       "source": "https://commons.wikimedia.org/wiki/File:Sami_Zayn_WrestleMania_32_Axxess.jpg"
-    }
+    },
+    "wikipedia": "https://en.wikipedia.org/wiki/Sami_Zayn",
+    "wikipedia_title": "Sami Zayn",
+    "birth_name_wp": "Rami Sebei",
+    "ring_names": [
+      "Big Larry",
+      "El Generico",
+      "Rami Sebei",
+      "Sami Zayn",
+      "Stevie McFly"
+    ],
+    "trained_by": [
+      "Jerry Tuite",
+      "Savio Vega"
+    ],
+    "debut_wp": "2002",
+    "retired_wp": null,
+    "legal_name_wp": "Rami Sebei"
   },
   "samoa-joe": {
     "qid": "Q381825",
@@ -2155,7 +4094,25 @@
       "license": "Public domain",
       "license_url": null,
       "source": "https://commons.wikimedia.org/wiki/File:SamoaJoe.jpg"
-    }
+    },
+    "wikipedia": "https://en.wikipedia.org/wiki/Samoa_Joe",
+    "wikipedia_title": "Samoa Joe",
+    "birth_name_wp": "Nuufolau Joel Seanoa",
+    "ring_names": [
+      "Joe Seanoa",
+      "Joe Seannoa",
+      "King Joe",
+      "Samoa Joe"
+    ],
+    "trained_by": [
+      "John Delayo",
+      "Cincinnati Red",
+      "Johnny Hemp",
+      "Inoki Dojo"
+    ],
+    "debut_wp": "1999",
+    "retired_wp": null,
+    "legal_name_wp": "Nuufolau Joel Seanoa"
   },
   "scott-hall": {
     "qid": "Q352713",
@@ -2174,7 +4131,23 @@
       "license": "CC BY-SA 4.0",
       "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
       "source": "https://commons.wikimedia.org/wiki/File:Scott_Hall_with_Paul.jpg"
-    }
+    },
+    "wikipedia": "https://en.wikipedia.org/wiki/Scott_Hall",
+    "wikipedia_title": "Scott Hall",
+    "birth_name_wp": "Scott Oliver Hall",
+    "ring_names": [
+      "American Starship Coyote",
+      "Razor Ramon",
+      "Scott Hall",
+      "Texas Scott",
+      "Diamond Studd"
+    ],
+    "trained_by": [
+      "Hiro Matsuda"
+    ],
+    "debut_wp": "1984",
+    "retired_wp": "2010",
+    "legal_name_wp": "Scott Oliver Hall"
   },
   "scott-steiner": {
     "qid": "Q467367",
@@ -2193,7 +4166,21 @@
       "license": "Public domain",
       "license_url": null,
       "source": "https://commons.wikimedia.org/wiki/File:Tna_035.jpg"
-    }
+    },
+    "wikipedia": "https://en.wikipedia.org/wiki/Scott_Steiner",
+    "wikipedia_title": "Scott Steiner",
+    "birth_name_wp": "Scott Rechsteiner",
+    "ring_names": [
+      "Scott Rechsteiner",
+      "Scott Steiner"
+    ],
+    "trained_by": [
+      "Dr. Jerry Graham Jr.",
+      "The Sheik"
+    ],
+    "debut_wp": "1986",
+    "retired_wp": "2025",
+    "legal_name_wp": "Scott Rechsteiner"
   },
   "seth-rollins": {
     "qid": "Q715014",
@@ -2212,7 +4199,23 @@
       "license": "CC BY 2.0",
       "license_url": "https://creativecommons.org/licenses/by/2.0",
       "source": "https://commons.wikimedia.org/wiki/File:Seth_Rollins_July_2019.jpg"
-    }
+    },
+    "wikipedia": "https://en.wikipedia.org/wiki/Seth_Rollins",
+    "wikipedia_title": "Seth Rollins",
+    "birth_name_wp": "Colby Daniel Lopez",
+    "ring_names": [
+      "Gixx",
+      "Seth Rollins",
+      "Seth \"Freakin\" Rollins",
+      "Taj the Destroyer",
+      "Tyler Black"
+    ],
+    "trained_by": [
+      "Danny Daniels"
+    ],
+    "debut_wp": "2004",
+    "retired_wp": null,
+    "legal_name_wp": "Colby Daniel Lopez"
   },
   "sgt-slaughter": {
     "qid": "Q452590",
@@ -2231,7 +4234,24 @@
       "license": "CC BY-SA 3.0",
       "license_url": "http://creativecommons.org/licenses/by-sa/3.0/",
       "source": "https://commons.wikimedia.org/wiki/File:Wwe_wrestler_sgt_slaughter.jpg"
-    }
+    },
+    "wikipedia": "https://en.wikipedia.org/wiki/Sgt._Slaughter",
+    "wikipedia_title": "Sgt. Slaughter",
+    "birth_name_wp": "Robert Rudolph Remus",
+    "ring_names": [
+      "Bob Remus",
+      "Bob Slaughter",
+      "The Executioner",
+      "Sgt. Slaughter",
+      "Super Destroyer Mark II",
+      "Matt Burns"
+    ],
+    "trained_by": [
+      "Verne Gagne"
+    ],
+    "debut_wp": "1972",
+    "retired_wp": "2014",
+    "legal_name_wp": "Robert Rudolph Remus"
   },
   "shane-douglas": {
     "qid": "Q692991",
@@ -2250,7 +4270,24 @@
       "license": "CC BY-SA 3.0",
       "license_url": "https://creativecommons.org/licenses/by-sa/3.0",
       "source": "https://commons.wikimedia.org/wiki/File:Shane_Douglas_at_Alpha-10_April_2016.jpg"
-    }
+    },
+    "wikipedia": "https://en.wikipedia.org/wiki/Shane_Douglas",
+    "wikipedia_title": "Shane Douglas",
+    "birth_name_wp": "Troy Allan Martin",
+    "ring_names": [
+      "Dean Douglas",
+      "Mike Kelly",
+      "Shane Douglas",
+      "The Franchise",
+      "Troy Martin",
+      "Troy Orndorff"
+    ],
+    "trained_by": [
+      "Dominic DeNucci"
+    ],
+    "debut_wp": "1982",
+    "retired_wp": null,
+    "legal_name_wp": "Troy Allan Martin"
   },
   "shawn-michaels": {
     "qid": "Q31317",
@@ -2269,7 +4306,20 @@
       "license": "CC BY 2.0",
       "license_url": "https://creativecommons.org/licenses/by/2.0",
       "source": "https://commons.wikimedia.org/wiki/File:Shawn_Michaels_WM24_shot_(cropped).jpg"
-    }
+    },
+    "wikipedia": "https://en.wikipedia.org/wiki/Shawn_Michaels",
+    "wikipedia_title": "Shawn Michaels",
+    "birth_name_wp": "Michael Shawn Hickenbottom",
+    "ring_names": [
+      "Sean Michaels",
+      "Shawn Michaels"
+    ],
+    "trained_by": [
+      "José Lothario"
+    ],
+    "debut_wp": "1984",
+    "retired_wp": "2010",
+    "legal_name_wp": "Shawn Michaels"
   },
   "sheamus": {
     "qid": "Q222039",
@@ -2288,7 +4338,26 @@
       "license": "CC BY-SA 4.0",
       "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
       "source": "https://commons.wikimedia.org/wiki/File:Sheamus_March_2018.jpg"
-    }
+    },
+    "wikipedia": "https://en.wikipedia.org/wiki/Sheamus",
+    "wikipedia_title": "Sheamus",
+    "birth_name_wp": "Stephen Farrelly",
+    "ring_names": [
+      "Galldubh",
+      "King Sheamus",
+      "Sheamus",
+      "Sheamus O'Shaunessy",
+      "Stephen Farrelly"
+    ],
+    "trained_by": [
+      "Larry Sharpe",
+      "Jim Molineaux",
+      "Irish Whip Wrestling",
+      "Mark Starr"
+    ],
+    "debut_wp": "2002",
+    "retired_wp": null,
+    "legal_name_wp": "Stephen Farrelly"
   },
   "sherri-martel": {
     "qid": "Q115343",
@@ -2307,7 +4376,27 @@
       "license": "Public domain",
       "license_url": null,
       "source": "https://commons.wikimedia.org/wiki/File:Sherri_Martel_WWF_Women%27s_Champion.jpg"
-    }
+    },
+    "wikipedia": "https://en.wikipedia.org/wiki/Sherri_Martel",
+    "wikipedia_title": "Sherri Martel",
+    "birth_name_wp": "Sherry Lynn Russell",
+    "ring_names": [
+      "Peggy Sue",
+      "Queen Sherri",
+      "Scary Sherri",
+      "Sensational Sherri",
+      "Sensuous Sherri",
+      "Sherri Martel",
+      "Sherri Martine",
+      "Sister Sherri"
+    ],
+    "trained_by": [
+      "Donna Christanello",
+      "The Fabulous Moolah"
+    ],
+    "debut_wp": "1980",
+    "retired_wp": "2006",
+    "legal_name_wp": "Sherry Lynn Schrull"
   },
   "shinsuke-nakamura": {
     "qid": "Q1171177",
@@ -2322,11 +4411,29 @@
       "src": "/wrestlers/shinsuke-nakamura.jpg",
       "width": 400,
       "height": 514,
-      "credit": "\u30be\u30fc\u30d2\u30e7\u30fc",
+      "credit": "ゾーヒョー",
       "license": "CC BY-SA 4.0",
       "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
       "source": "https://commons.wikimedia.org/wiki/File:Shinsuke_Nakamura_2015.JPG"
-    }
+    },
+    "wikipedia": "https://en.wikipedia.org/wiki/Shinsuke_Nakamura",
+    "wikipedia_title": "Shinsuke Nakamura",
+    "birth_name_wp": "Shinsuke Nakamura",
+    "ring_names": [
+      "Banzai",
+      "King Nakamura",
+      "Nakamura",
+      "Shinsuke Nakamura"
+    ],
+    "trained_by": [
+      "Antonio Inoki",
+      "Inoki Dojo",
+      "Kotetsu Yamamoto",
+      "Osamu Kido"
+    ],
+    "debut_wp": "2002",
+    "retired_wp": null,
+    "legal_name_wp": "Shinsuke Nakamura"
   },
   "sid": {
     "qid": "Q703668",
@@ -2345,7 +4452,27 @@
       "license": "CC BY-SA 4.0",
       "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
       "source": "https://commons.wikimedia.org/wiki/File:Sycho_Sid_raw_1000.png"
-    }
+    },
+    "wikipedia": "https://en.wikipedia.org/wiki/Sid_Eudy",
+    "wikipedia_title": "Sid Eudy",
+    "birth_name_wp": "Sidney Raymond Eudy",
+    "ring_names": [
+      "Lord Humongous",
+      "Sid",
+      "Sid Cyclope",
+      "Sid Eudy",
+      "Sid Justice",
+      "Sid Steele",
+      "Sid Vicious",
+      "Sycho Sid",
+      "Vicious Warrior"
+    ],
+    "trained_by": [
+      "Tojo Yamamoto"
+    ],
+    "debut_wp": "1987",
+    "retired_wp": "2017",
+    "legal_name_wp": "Sidney Raymond Eudy"
   },
   "stan-hansen": {
     "qid": "Q2033317",
@@ -2364,7 +4491,21 @@
       "license": "CC BY-SA 4.0",
       "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
       "source": "https://commons.wikimedia.org/wiki/File:Stan_Hansen_2015_(cropped).jpg"
-    }
+    },
+    "wikipedia": "https://en.wikipedia.org/wiki/Stan_Hansen",
+    "wikipedia_title": "Stan Hansen",
+    "birth_name_wp": "John Stanley Hansen II",
+    "ring_names": [
+      "Stan \"The Lariat\" Hansen"
+    ],
+    "trained_by": [
+      "Dory Funk",
+      "Dory Funk Jr.",
+      "Terry Funk"
+    ],
+    "debut_wp": "1973",
+    "retired_wp": "2001",
+    "legal_name_wp": "John Stanley Hansen II"
   },
   "steve-austin": {
     "qid": "Q44313",
@@ -2383,7 +4524,23 @@
       "license": "CC BY-SA 3.0",
       "license_url": "https://creativecommons.org/licenses/by-sa/3.0",
       "source": "https://commons.wikimedia.org/wiki/File:Steve_Austin_by_Gage_Skidmore.jpg"
-    }
+    },
+    "wikipedia": "https://en.wikipedia.org/wiki/Stone_Cold_Steve_Austin",
+    "wikipedia_title": "Stone Cold Steve Austin",
+    "birth_name_wp": "Steven James Anderson",
+    "ring_names": [
+      "The Ringmaster",
+      "\"Stone Cold\" Steve Austin",
+      "\"Stunning\" Steve Austin",
+      "\"Superstar\" Steve Austin",
+      "Steve Williams"
+    ],
+    "trained_by": [
+      "Chris Adams"
+    ],
+    "debut_wp": "1986",
+    "retired_wp": "2003",
+    "legal_name_wp": "Steve Austin"
   },
   "steve-williams": {
     "qid": "Q1364352",
@@ -2402,7 +4559,21 @@
       "license": "Public domain",
       "license_url": null,
       "source": "https://commons.wikimedia.org/wiki/File:Steve_Williams_workout_1988.jpeg"
-    }
+    },
+    "wikipedia": "https://en.wikipedia.org/wiki/Steve_Williams_(wrestler)",
+    "wikipedia_title": "Steve Williams (wrestler)",
+    "birth_name_wp": "Steven Franklin Williams",
+    "ring_names": [
+      "Steve Williams",
+      "Dr. Death"
+    ],
+    "trained_by": [
+      "Bill Watts",
+      "Buddy Landel"
+    ],
+    "debut_wp": "1982",
+    "retired_wp": "2009",
+    "legal_name_wp": "Steven Franklin Williams"
   },
   "sting": {
     "qid": "Q44640",
@@ -2421,7 +4592,23 @@
       "license": "CC BY-SA 4.0",
       "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
       "source": "https://commons.wikimedia.org/wiki/File:20230122sting1_(cropped).jpg"
-    }
+    },
+    "wikipedia": "https://en.wikipedia.org/wiki/Sting_(wrestler)",
+    "wikipedia_title": "Sting (wrestler)",
+    "birth_name_wp": "Steve Borden",
+    "ring_names": [
+      "Blade Runner Flash",
+      "Blade Runner Sting",
+      "Steve Borden",
+      "Sting"
+    ],
+    "trained_by": [
+      "Red Bastien",
+      "Rick Bassman"
+    ],
+    "debut_wp": "1985",
+    "retired_wp": "2024",
+    "legal_name_wp": "Steve Borden"
   },
   "swerve-strickland": {
     "qid": "Q19668687",
@@ -2440,7 +4627,27 @@
       "license": "CC BY-SA 2.0",
       "license_url": "https://creativecommons.org/licenses/by-sa/2.0",
       "source": "https://commons.wikimedia.org/wiki/File:Shane_Strickland_2017.jpg"
-    }
+    },
+    "wikipedia": "https://en.wikipedia.org/wiki/Swerve_Strickland",
+    "wikipedia_title": "Swerve Strickland",
+    "birth_name_wp": "Stephon Strickland",
+    "ring_names": [
+      "Isaiah \"Swerve\" Scott",
+      "Killshot",
+      "Lt. Jermaine Strickland",
+      "Shane Strickland",
+      "Swerve Strickland",
+      "SW3RVE",
+      "SW3RVE the Realest"
+    ],
+    "trained_by": [
+      "Combat Zone Wrestling",
+      "D. J. Hyde",
+      "Ground Xero Wrestling"
+    ],
+    "debut_wp": "2009",
+    "retired_wp": null,
+    "legal_name_wp": "Stephon Strickland"
   },
   "taz": {
     "qid": "Q470015",
@@ -2459,7 +4666,24 @@
       "license": "CC BY 2.0",
       "license_url": "https://creativecommons.org/licenses/by/2.0",
       "source": "https://commons.wikimedia.org/wiki/File:Tazz_2.jpg"
-    }
+    },
+    "wikipedia": "https://en.wikipedia.org/wiki/Taz_(wrestler)",
+    "wikipedia_title": "Taz (wrestler)",
+    "birth_name_wp": "Peter Senerchia",
+    "ring_names": [
+      "Battlemaniac Taz",
+      "Kid Krush",
+      "The Tasmanian Devil",
+      "The Tazmaniac",
+      "Taz",
+      "Tazz"
+    ],
+    "trained_by": [
+      "Johnny Rodz"
+    ],
+    "debut_wp": "1987",
+    "retired_wp": "2006",
+    "legal_name_wp": "Peter Senerchia"
   },
   "ted-dibiase": {
     "qid": "Q344997",
@@ -2478,7 +4702,21 @@
       "license": "CC BY-SA 4.0",
       "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
       "source": "https://commons.wikimedia.org/wiki/File:Ted_DiBiase_GalaxyCon_Nashville_052026-4.jpg"
-    }
+    },
+    "wikipedia": "https://en.wikipedia.org/wiki/Ted_DiBiase",
+    "wikipedia_title": "Ted DiBiase",
+    "birth_name_wp": "Theodore Marvin Willis",
+    "ring_names": [
+      "Ted DiBiase",
+      "The Million Dollar Man"
+    ],
+    "trained_by": [
+      "Dory Funk Jr.",
+      "Terry Funk"
+    ],
+    "debut_wp": "1974",
+    "retired_wp": "1993",
+    "legal_name_wp": "Theodore Marvin DiBiase Sr."
   },
   "terry-funk": {
     "qid": "Q470019",
@@ -2497,7 +4735,22 @@
       "license": "CC BY-SA 2.0",
       "license_url": "https://creativecommons.org/licenses/by-sa/2.0",
       "source": "https://commons.wikimedia.org/wiki/File:Terry_Funk_September_2013_(cropped).jpg"
-    }
+    },
+    "wikipedia": "https://en.wikipedia.org/wiki/Terry_Funk",
+    "wikipedia_title": "Terry Funk",
+    "birth_name_wp": "Terrance Dee Funk",
+    "ring_names": [
+      "Black Baron",
+      "Chainsaw Charlie",
+      "Dr Knows-it-All",
+      "Terry Funk"
+    ],
+    "trained_by": [
+      "Dory Funk"
+    ],
+    "debut_wp": "1965",
+    "retired_wp": "2017",
+    "legal_name_wp": "Terrance Dee Funk"
   },
   "terry-gordy": {
     "qid": "Q715178",
@@ -2516,11 +4769,27 @@
       "license": "Public domain",
       "license_url": null,
       "source": "https://commons.wikimedia.org/wiki/File:Terry_Gordy_1985_(cropped).png"
-    }
+    },
+    "wikipedia": "https://en.wikipedia.org/wiki/Terry_Gordy",
+    "wikipedia_title": "Terry Gordy",
+    "birth_name_wp": "Terry Ray Gordy",
+    "ring_names": [
+      "The Executioner",
+      "Forest Druid",
+      "Terry \"Bam Bam\" Gordy",
+      "Terry Mecca"
+    ],
+    "trained_by": [
+      "Archie Gouldie",
+      "Lou Thesz"
+    ],
+    "debut_wp": "1977",
+    "retired_wp": null,
+    "legal_name_wp": "Terry Ray Gordy Sr."
   },
   "tetsuya-naito": {
     "qid": "Q2836958",
-    "wikidata_label": "Tetsuya Nait\u014d",
+    "wikidata_label": "Tetsuya Naitō",
     "birth_name": null,
     "born": "1982-06-22",
     "died": null,
@@ -2535,7 +4804,24 @@
       "license": "CC BY-SA 3.0",
       "license_url": "https://creativecommons.org/licenses/by-sa/3.0",
       "source": "https://commons.wikimedia.org/wiki/File:Tetsuya_Nait%C5%8D.jpg"
-    }
+    },
+    "wikipedia": "https://en.wikipedia.org/wiki/Tetsuya_Naito",
+    "wikipedia_title": "Tetsuya Naito",
+    "birth_name_wp": null,
+    "ring_names": [
+      "Tetsuya Naito",
+      "Naito",
+      "Naitoh"
+    ],
+    "trained_by": [
+      "Animal Hamaguchi",
+      "Takada Dojo",
+      "NJPW Dojo",
+      "Hiroyoshi Tenzan"
+    ],
+    "debut_wp": "2006",
+    "retired_wp": null,
+    "legal_name_wp": "Tetsuya Naito"
   },
   "the-miz": {
     "qid": "Q44379",
@@ -2554,7 +4840,24 @@
       "license": "CC BY-SA 2.0",
       "license_url": "https://creativecommons.org/licenses/by-sa/2.0",
       "source": "https://commons.wikimedia.org/wiki/File:The_Miz_April_2014.jpg"
-    }
+    },
+    "wikipedia": "https://en.wikipedia.org/wiki/The_Miz",
+    "wikipedia_title": "The Miz",
+    "birth_name_wp": "Michael Gregory Mizanin",
+    "ring_names": [
+      "Calgary Kid",
+      "Mike Mizanin",
+      "The Miz",
+      "Mike The Miz"
+    ],
+    "trained_by": [
+      "Al Snow",
+      "Bill DeMott",
+      "Ultimate Pro Wrestling"
+    ],
+    "debut_wp": "2003",
+    "retired_wp": null,
+    "legal_name_wp": "Michael Gregory Mizanin"
   },
   "the-rock": {
     "qid": "Q10738",
@@ -2573,7 +4876,23 @@
       "license": "CC BY-SA 4.0",
       "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
       "source": "https://commons.wikimedia.org/wiki/File:Dwayne_Johnson-1809_(cropped).jpg"
-    }
+    },
+    "wikipedia": "https://en.wikipedia.org/wiki/Dwayne_Johnson",
+    "wikipedia_title": "Dwayne Johnson",
+    "birth_name_wp": "Dwayne Douglas Johnson",
+    "ring_names": [
+      "Flex Kavana",
+      "Rocky Maivia",
+      "The Rock"
+    ],
+    "trained_by": [
+      "Pat Patterson",
+      "Rocky Johnson",
+      "Tom Prichard"
+    ],
+    "debut_wp": "1996",
+    "retired_wp": null,
+    "legal_name_wp": "Dwayne Douglas Johnson"
   },
   "the-sandman": {
     "qid": "Q532927",
@@ -2592,7 +4911,25 @@
       "license": "CC BY-SA 3.0",
       "license_url": "http://creativecommons.org/licenses/by-sa/3.0/",
       "source": "https://commons.wikimedia.org/wiki/File:Sandman_ECW.jpg"
-    }
+    },
+    "wikipedia": "https://en.wikipedia.org/wiki/The_Sandman_(wrestler)",
+    "wikipedia_title": "The Sandman (wrestler)",
+    "birth_name_wp": "James Fullington",
+    "ring_names": [
+      "Mr. Sandman",
+      "The Sandman",
+      "Hardcore Hak",
+      "Hak"
+    ],
+    "trained_by": [
+      "Larry Winters",
+      "Tri-State Wrestling Academy",
+      "Mark Tendler",
+      "J. T. Smith"
+    ],
+    "debut_wp": "1989",
+    "retired_wp": "2026",
+    "legal_name_wp": "James Fullington"
   },
   "tommy-dreamer": {
     "qid": "Q313706",
@@ -2611,7 +4948,20 @@
       "license": "CC BY-SA 4.0",
       "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
       "source": "https://commons.wikimedia.org/wiki/File:Tommy_Dreamer_Oshkosh_WI_030808.jpg"
-    }
+    },
+    "wikipedia": "https://en.wikipedia.org/wiki/Tommy_Dreamer",
+    "wikipedia_title": "Tommy Dreamer",
+    "birth_name_wp": "Thomas James Laughlin",
+    "ring_names": [
+      "T.D. Madison",
+      "Tommy Dreamer"
+    ],
+    "trained_by": [
+      "Johnny Rodz"
+    ],
+    "debut_wp": "1989",
+    "retired_wp": null,
+    "legal_name_wp": "Thomas James Laughlin"
   },
   "toni-storm": {
     "qid": "Q27049393",
@@ -2630,7 +4980,20 @@
       "license": "CC BY-SA 4.0",
       "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
       "source": "https://commons.wikimedia.org/wiki/File:Toni_Storm_2019.05.16.jpg"
-    }
+    },
+    "wikipedia": "https://en.wikipedia.org/wiki/Toni_Storm",
+    "wikipedia_title": "Toni Storm",
+    "birth_name_wp": "Toni Rossall",
+    "ring_names": [
+      "Storm",
+      "Toni Storm"
+    ],
+    "trained_by": [
+      "Dean Allmark"
+    ],
+    "debut_wp": "2009",
+    "retired_wp": null,
+    "legal_name_wp": "Toni Rossall"
   },
   "triple-h": {
     "qid": "Q44567",
@@ -2649,7 +5012,26 @@
       "license": "CC BY 2.0",
       "license_url": "https://creativecommons.org/licenses/by/2.0",
       "source": "https://commons.wikimedia.org/wiki/File:Triple_H_November_2017.jpg"
-    }
+    },
+    "wikipedia": "https://en.wikipedia.org/wiki/Triple_H",
+    "wikipedia_title": "Triple H",
+    "birth_name_wp": "Paul Michael Levesque",
+    "ring_names": [
+      "Hunter Hearst Helmsley",
+      "Jean-Paul Lévesque",
+      "Paul Levesque",
+      "Paul \"Triple H\" Levesque",
+      "Terra Risin'",
+      "Terra Ryzing",
+      "Terror Rising",
+      "Triple H"
+    ],
+    "trained_by": [
+      "Killer Kowalski"
+    ],
+    "debut_wp": "1992",
+    "retired_wp": "2022",
+    "legal_name_wp": "Paul Michael Levesque"
   },
   "trish-stratus": {
     "qid": "Q229310",
@@ -2668,7 +5050,20 @@
       "license": "CC BY 4.0",
       "license_url": "https://creativecommons.org/licenses/by/4.0",
       "source": "https://commons.wikimedia.org/wiki/File:Trish_Stratus_at_CCR_Ontario_2024.jpg"
-    }
+    },
+    "wikipedia": "https://en.wikipedia.org/wiki/Trish_Stratus",
+    "wikipedia_title": "Trish Stratus",
+    "birth_name_wp": "Patricia Anne Stratigeas",
+    "ring_names": [
+      "Trish Stratus"
+    ],
+    "trained_by": [
+      "Ron Hutchison",
+      "Fit Finlay"
+    ],
+    "debut_wp": "2000",
+    "retired_wp": null,
+    "legal_name_wp": "Patricia Anne Stratigeas"
   },
   "tully-blanchard": {
     "qid": "Q651329",
@@ -2687,7 +5082,22 @@
       "license": "CC BY-SA 2.0",
       "license_url": "https://creativecommons.org/licenses/by-sa/2.0",
       "source": "https://commons.wikimedia.org/wiki/File:Tully_Blanchard_Aug_2014.jpg"
-    }
+    },
+    "wikipedia": "https://en.wikipedia.org/wiki/Tully_Blanchard",
+    "wikipedia_title": "Tully Blanchard",
+    "birth_name_wp": "Tully Arthur Blanchard",
+    "ring_names": [
+      "The Midnight Stallion",
+      "The Outlaw",
+      "Tully Blanchard"
+    ],
+    "trained_by": [
+      "Joe Blanchard",
+      "José Lothario"
+    ],
+    "debut_wp": "1975",
+    "retired_wp": null,
+    "legal_name_wp": "Tully Arthur Blanchard"
   },
   "ultimate-warrior": {
     "qid": "Q333421",
@@ -2706,7 +5116,26 @@
       "license": "CC BY-SA 2.0",
       "license_url": "https://creativecommons.org/licenses/by-sa/2.0",
       "source": "https://commons.wikimedia.org/wiki/File:The_Ultimate_Warrior_April_2014.jpg"
-    }
+    },
+    "wikipedia": "https://en.wikipedia.org/wiki/Ultimate_Warrior",
+    "wikipedia_title": "Ultimate Warrior",
+    "birth_name_wp": "James Brian Hellwig",
+    "ring_names": [
+      "Blade Runner Rock",
+      "Dingo Warrior",
+      "Jim Hellwig",
+      "Jim Justice",
+      "Ultimate Warrior",
+      "Warrior"
+    ],
+    "trained_by": [
+      "Billy Anderson",
+      "Rick Bassman",
+      "Red Bastien"
+    ],
+    "debut_wp": "1985",
+    "retired_wp": "2008",
+    "legal_name_wp": "Ultimate Warrior"
   },
   "undertaker": {
     "qid": "Q44304",
@@ -2725,7 +5154,32 @@
       "license": "Public domain",
       "license_url": null,
       "source": "https://commons.wikimedia.org/wiki/File:The_Undertaker_US_Marine_Visit_2019_(cropped)2.jpg"
-    }
+    },
+    "wikipedia": "https://en.wikipedia.org/wiki/The_Undertaker",
+    "wikipedia_title": "The Undertaker",
+    "birth_name_wp": "Mark William Calaway",
+    "ring_names": [
+      "Cain the Undertaker",
+      "Commando",
+      "Boris Dragu",
+      "Mark Callous",
+      "Mean Mark Callous",
+      "Mean Mark",
+      "Dice Morgan",
+      "The Master of Pain",
+      "The Punisher",
+      "Texas Red",
+      "Texas Red Jack",
+      "The Undertaker"
+    ],
+    "trained_by": [
+      "Buzz Sawyer",
+      "Rick Davidson",
+      "John Davidson"
+    ],
+    "debut_wp": "1984",
+    "retired_wp": "2020",
+    "legal_name_wp": "Mark William Calaway"
   },
   "vader": {
     "qid": "Q26848",
@@ -2744,7 +5198,24 @@
       "license": "CC BY 2.0",
       "license_url": "https://creativecommons.org/licenses/by/2.0",
       "source": "https://commons.wikimedia.org/wiki/File:Vader_2014_(cropped).jpg"
-    }
+    },
+    "wikipedia": "https://en.wikipedia.org/wiki/Big_Van_Vader",
+    "wikipedia_title": "Big Van Vader",
+    "birth_name_wp": "Leon Allen White",
+    "ring_names": [
+      "Baby Bull",
+      "Bull Power",
+      "Big Van Vader",
+      "Leon White",
+      "Super Vader",
+      "Vader"
+    ],
+    "trained_by": [
+      "Brad Rheingans"
+    ],
+    "debut_wp": "1985",
+    "retired_wp": "2017",
+    "legal_name_wp": "Leon Allen White"
   },
   "wahoo-mcdaniel": {
     "qid": "Q360247",
@@ -2763,7 +5234,19 @@
       "license": "Public domain",
       "license_url": null,
       "source": "https://commons.wikimedia.org/wiki/File:Wahoo_McDaniel_1979.jpg"
-    }
+    },
+    "wikipedia": "https://en.wikipedia.org/wiki/Wahoo_McDaniel",
+    "wikipedia_title": "Wahoo McDaniel",
+    "birth_name_wp": "Edward Hugh McDaniel",
+    "ring_names": [
+      "Wahoo McDaniel"
+    ],
+    "trained_by": [
+      "Dory Funk"
+    ],
+    "debut_wp": "1961",
+    "retired_wp": "1996",
+    "legal_name_wp": "Edward Hugh McDaniel"
   },
   "will-ospreay": {
     "qid": "Q21622285",
@@ -2782,12 +5265,29 @@
       "license": "CC BY 3.0",
       "license_url": "https://creativecommons.org/licenses/by/3.0",
       "source": "https://commons.wikimedia.org/wiki/File:Will_Ospreay,_AEW_Revolution_2024_(cropped).jpg"
-    }
+    },
+    "wikipedia": "https://en.wikipedia.org/wiki/Will_Ospreay",
+    "wikipedia_title": "Will Ospreay",
+    "birth_name_wp": "William Peter Charles Ospreay",
+    "ring_names": [
+      "Jason Artem",
+      "Dark Britannico",
+      "Neo Britannico",
+      "Will Ospreay"
+    ],
+    "trained_by": [
+      "Garry Vanderhorn",
+      "Greg Burridge",
+      "London School of Lucha Libre"
+    ],
+    "debut_wp": "2012",
+    "retired_wp": null,
+    "legal_name_wp": "William Peter Charles Ospreay"
   },
   "yokozuna": {
     "qid": "Q314633",
     "wikidata_label": "Yokozuna",
-    "birth_name": "Rodney Agatupu Anoa\u02bbi",
+    "birth_name": "Rodney Agatupu Anoaʻi",
     "born": "1966-10-02",
     "died": "2000-10-23",
     "birthplace": "San Francisco",
@@ -2801,7 +5301,26 @@
       "license": "CC BY-SA 2.0",
       "license_url": "https://creativecommons.org/licenses/by-sa/2.0",
       "source": "https://commons.wikimedia.org/wiki/File:Yokozuna_walking.jpg"
-    }
+    },
+    "wikipedia": "https://en.wikipedia.org/wiki/Yokozuna_(wrestler)",
+    "wikipedia_title": "Yokozuna (wrestler)",
+    "birth_name_wp": "Rodney Agatupu Anoa'i",
+    "ring_names": [
+      "Giant Kokina",
+      "Great Kokina",
+      "Kokina",
+      "Kokina Anoai",
+      "Kokina Maximus",
+      "Kokina the Samoan",
+      "Wild Samoan Kokina",
+      "Yokozuna"
+    ],
+    "trained_by": [
+      "Afa Anoaʻi"
+    ],
+    "debut_wp": "1985",
+    "retired_wp": null,
+    "legal_name_wp": "Rodney Agatupu Anoaʻi"
   },
   "zack-sabre-jr": {
     "qid": "Q137195",
@@ -2820,6 +5339,22 @@
       "license": "CC BY-SA 2.0",
       "license_url": "https://creativecommons.org/licenses/by-sa/2.0",
       "source": "https://commons.wikimedia.org/wiki/File:Sabre_wrestling_hold.jpg"
-    }
+    },
+    "wikipedia": "https://en.wikipedia.org/wiki/Zack_Sabre_Jr.",
+    "wikipedia_title": "Zack Sabre Jr.",
+    "birth_name_wp": "Luke James Uggles Eatwell",
+    "ring_names": [
+      "Zack Sabre Jr."
+    ],
+    "trained_by": [
+      "Andre Baker",
+      "Chris Hero",
+      "Taka Michinoku",
+      "Yoshinari Ogawa",
+      "Jon Ryan"
+    ],
+    "debut_wp": "2004",
+    "retired_wp": null,
+    "legal_name_wp": "Lucas James Uggles Eatwell"
   }
 }

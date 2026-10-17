@@ -628,3 +628,8 @@ p { margin: 0 0 1em; }
 .member-bio { margin-top: 10px; }
 .member-ratings { list-style: none; padding: 0; display: grid; gap: 8px; }
 .member-ratings li { display: flex; justify-content: space-between; gap: 12px; border-bottom: 1px solid var(--line); padding: 8px 0; }
+
+/* ---------- wrestler key facts ---------- */
+.wkeys { display: grid; gap: 16px; align-items: start; grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr)); }
+.wkeys .panel p:last-child { margin-bottom: 0; }
+.wkeys .chips { margin-top: 4px; }

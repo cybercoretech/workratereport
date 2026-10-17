@@ -134,6 +134,17 @@ Logos appear only when Commons lists a free license; everyone else gets the site
 3. Optional: set `ADMIN_GOOGLE_SUB` to the owner's Google account id to make that member the admin.
 4. Redeploy.
 
+## 📖 Wrestler bios
+
+Every wrestler has a full career bio (in the Markdown body), a `breakout` moment and a `signature_match` in frontmatter, and optional `gimmicks` notes. Real names, previous ring names and gimmicks, trainers and debut/retirement years come from each wrestler's Wikipedia infobox:
+
+```sh
+node scripts/fetch-wikipedia-facts.mjs                 # all wrestlers
+node scripts/fetch-wikipedia-facts.mjs --leads <dir> sting   # one wrestler, saving its article intro for reference
+```
+
+Wikipedia is used **as a source of facts only**. Bios are written in our own words, never copied (Wikipedia text is CC BY-SA), and each profile links to its Wikipedia and Wikidata sources. Keep the `--leads` folder out of the repo.
+
 ## 🎨 Theme readability
 
 `public/js/contrast.js` nudges any too-faint text color in a theme until it meets WCAG AA. Red and blue keep their true colors for backgrounds and get readable copies (`--red-text`, `--blue-text`) for text. Audit every theme with:

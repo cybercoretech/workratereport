@@ -67,6 +67,7 @@ The state of the project for the next agent (or person). Update it with every ph
 - **Bell:** WebAudio synthesis in `pyro.js` (`window.WRBell`), off by default (`wr-bell`), and only ever played on a click, because browsers block audio without a user gesture.
 - **Members:** Google OAuth in `functions/api/auth/{google,callback,logout}.ts`, sessions in `_lib/members.ts` (hashed tokens, cookie `wr_member`), `/api/me` (GET/PATCH), `/api/members/<handle>`, `/api/ratings/<match>` (GET/PUT/DELETE, quarter stars). `/u/<handle>/` is served by `functions/u/[[path]].ts` → the static `/u/` shell. Decisions: only `openid email`, 13+, 8 preset avatars (no uploads yet), the admin is set by `ADMIN_GOOGLE_SUB`. `GOOGLE_*_URL` overrides exist **for local mock testing only**; never set them in production.
 - **Front-end race:** page scripts must wait on `WRMember.ready` (a promise), not the `wr:member` event, which can fire before a deferred page script loads (this blanked `/account/` once).
+- **Bios:** all 149 written by Claude on 2026-10-16 from Wikipedia facts (original prose; never copy Wikipedia text, which is CC BY-SA). They were checked twice for accuracy and over 20 claims were corrected. `breakout` / `signature_match` / `gimmicks` live in frontmatter; ring names, trainers and real names come from `scripts/fetch-wikipedia-facts.mjs` into `wrestler-facts.json`. Benoit isn't named anywhere (user decision).
 - **Contrast:** never use `var(--red)`/`var(--blue)` for text; use `--red-text`/`--blue-text`. The CI audit fails if any theme drops below target.
 - `functions/` has its own tsconfig (Workers types) and is excluded from the root one; `npm run check` runs both.
 - **When the content schema changes, update `functions/_lib/content.ts` too**, or the desk could publish a file the build rejects. Cloudflare would then keep the old version live, but the review wouldn't appear.
@@ -91,7 +92,10 @@ The state of the project for the next agent (or person). Update it with every ph
 - **#5** Roster to 138 wrestlers, 0.01-precision ratings, forum option C recorded (merged).
 - **#6** Phase 2B: search, ECW/ROH, photos + facts + bios, lists, columns (+ desk), starter paths, Then & Now, events, feuds, contrast guard (merged).
 - **#7** Promotions page: 26 companies with bios/facts/logos; 12 new promotions; 30 wrestlers tagged (merged).
-- **#8** Phase 3: On This Day, Me vs. Meltzer scoreboard, ring bell.
+- **#8** Phase 3: On This Day, Me vs. Meltzer scoreboard, ring bell (merged).
+- **#9** Desk fix: typed wrestler names auto-add; "Live now" only after the rebuild (merged).
+- **#10** Full wrestler bios for 149 (Wikipedia facts, original prose).
+- **#11** Phase 3B-A: member accounts, profiles, fan ratings (merged before #10; #10 rebased onto it).
 
 ## 🧪 How Phase 2A was verified
 
