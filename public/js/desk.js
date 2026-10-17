@@ -178,23 +178,36 @@
     chosen = chosen.filter((x) => x !== b.dataset.drop);
     renderChips(); form.dispatchEvent(new Event('input'));
   });
+  // Turn whatever is typed in the Wrestlers box into chips. Accepts several
+  // names separated by commas. Known names are added; the first unknown one
+  // opens "Add a wrestler" when `ask` is true, and is reported otherwise.
+  function takeTyped({ ask }) {
+    const input = $('#wrestlerInput');
+    const names = input.value.split(',').map((x) => x.trim()).filter(Boolean);
+    if (!names.length) return { unknown: [] };
+    const unknown = [];
+    for (const v of names) {
+      const w = catalog.wrestlers.find((x) => x.name.replace(/"/g, '').toLowerCase() === v.replace(/"/g, '').toLowerCase() || x.id === v.toLowerCase());
+      if (w) { if (!chosen.includes(w.id)) chosen.push(w.id); } else unknown.push(v);
+    }
+    input.value = unknown.join(', ');
+    renderChips(); form.dispatchEvent(new Event('input'));
+    if (unknown.length && ask) {
+      $('#addWrestlerForm').elements.name.value = unknown[0];
+      $('#addWrestlerMsg').textContent = '';
+      $$('#addWrestlerForm input[type=checkbox]').forEach((c) => { c.checked = c.value === form.elements.era.value || c.value === form.elements.promotion.value; });
+      $('#addWrestler').showModal();
+    }
+    return { unknown };
+  }
   $('#wrestlerInput').addEventListener('keydown', (e) => {
     if (e.key !== 'Enter') return;
     e.preventDefault();
-    const v = e.target.value.trim();
-    if (!v) return;
-    const w = catalog.wrestlers.find((x) => x.name.toLowerCase() === v.toLowerCase() || x.id === v.toLowerCase());
-    if (w) {
-      if (!chosen.includes(w.id)) chosen.push(w.id);
-      e.target.value = ''; renderChips(); form.dispatchEvent(new Event('input'));
-    } else {
-      const dlg = $('#addWrestler');
-      $('#addWrestlerForm').elements.name.value = v;
-      $('#addWrestlerMsg').textContent = '';
-      $$('#addWrestlerForm input[type=checkbox]').forEach((c) => { c.checked = c.value === form.elements.era.value || c.value === form.elements.promotion.value; });
-      dlg.showModal();
-    }
+    takeTyped({ ask: true });
   });
+  // Picking from the suggestions list, or leaving the box, adds known names too.
+  $('#wrestlerInput').addEventListener('change', () => takeTyped({ ask: false }));
+
   $('#addWrestlerForm').addEventListener('submit', async (e) => {
     if (e.submitter?.value !== 'add') return;
     e.preventDefault();
@@ -268,6 +281,14 @@
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
     const msg = $('#saveMsg'), btn = $('#publishBtn');
+    // A name typed but not yet turned into a chip still counts.
+    const { unknown } = takeTyped({ ask: false });
+    if (unknown.length) {
+      msg.className = 'desk-msg warn';
+      msg.textContent = `"${unknown[0]}" isn't on the site yet. Press Enter in the Wrestlers box to add them, then publish.`;
+      $('#wrestlerInput').focus();
+      return;
+    }
     btn.disabled = true; msg.className = 'desk-msg'; msg.textContent = 'Publishing…';
     const data = collect();
     const r = await api('match', { method: 'PUT', body: JSON.stringify({ id: current, create: !current, data, body: form.elements.body.value }) });
