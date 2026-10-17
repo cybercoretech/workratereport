@@ -277,6 +277,26 @@
     $('#wordCount').textContent = `${words} ${words === 1 ? 'word' : 'words'}`;
   }
 
+  /* ---------- wait for the rebuild ---------- */
+  // Cloudflare needs about a minute to rebuild after a publish. Watch the
+  // site's build time (catalog.json "built") so links only appear once the
+  // new version is actually live, for new pages and edits alike.
+  function whenLive(msgEl, pageUrl, commitUrl, label) {
+    const started = Date.now();
+    const link = `<a href="${esc(pageUrl)}" target="_blank" rel="noopener">view ${label}</a> · <a href="${esc(commitUrl)}" target="_blank" rel="noopener">commit</a>`;
+    msgEl.className = 'desk-msg ok';
+    msgEl.innerHTML = `✅ Published. Building the site… <span class="muted">(usually about a minute)</span>`;
+    const tick = async () => {
+      try {
+        const c = await (await fetch('/data/catalog.json', { cache: 'no-store' })).json();
+        if (Date.parse(c.built) >= started - 5000) { msgEl.innerHTML = `✅ Live now: ${link}`; return; }
+      } catch {}
+      if (Date.now() - started > 5 * 60 * 1000) { msgEl.className = 'desk-msg warn'; msgEl.innerHTML = `Published, but the site hasn't rebuilt after 5 minutes. Check the Cloudflare dashboard. ${link}`; return; }
+      setTimeout(tick, 8000);
+    };
+    setTimeout(tick, 20000);
+  }
+
   /* ---------- publish ---------- */
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
@@ -307,9 +327,8 @@
     current = r.id;
     $('#formMode').textContent = `Editing · ${r.id}`;
     $('#draftNote').textContent = '';
-    msg.className = 'desk-msg ok';
-    msg.innerHTML = r.unchanged ? 'No changes to publish.' :
-      `✅ Published. The site rebuilds in about a minute: <a href="${esc(r.pageUrl)}" target="_blank" rel="noopener">view the page</a> · <a href="${esc(r.commitUrl)}" target="_blank" rel="noopener">commit</a>`;
+    if (r.unchanged) { msg.className = 'desk-msg ok'; msg.textContent = 'No changes to publish.'; }
+    else whenLive(msg, r.pageUrl, r.commitUrl, 'the page');
     renderList(); loadLog();
   });
 
@@ -386,8 +405,8 @@
     if (i === -1) catalog.columns.unshift(entry); else catalog.columns[i] = entry;
     currentColumn = r.id;
     $('#columnMode').textContent = `Editing · ${r.id}`;
-    msg.className = 'desk-msg ok';
-    msg.innerHTML = r.unchanged ? 'No changes to publish.' : `✅ Published. Live in about a minute: <a href="${esc(r.pageUrl)}" target="_blank" rel="noopener">view the column</a> · <a href="${esc(r.commitUrl)}" target="_blank" rel="noopener">commit</a>`;
+    if (r.unchanged) { msg.className = 'desk-msg ok'; msg.textContent = 'No changes to publish.'; }
+    else whenLive(msg, r.pageUrl, r.commitUrl, 'the column');
     renderColumns(); loadLog();
   });
 
