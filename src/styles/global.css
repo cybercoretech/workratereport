@@ -585,3 +585,11 @@ p { margin: 0 0 1em; }
 .pprofile { display: grid; gap: clamp(24px, 4vw, 48px); align-items: center; }
 @media (min-width: 860px) { .pprofile { grid-template-columns: 320px minmax(0, 1fr); } }
 .chip-plain { display: inline-block; padding: 7px 12px; border-radius: 999px; border: 1px dashed var(--line); color: var(--soft); font-size: 14px; font-weight: 600; }
+
+/* ---------- on this day ---------- */
+.otd-cal { display: grid; gap: 18px; grid-template-columns: repeat(auto-fill, minmax(min(100%, 260px), 1fr)); }
+.otd-month b { display: block; font: 400 22px/1 var(--display); text-transform: uppercase; color: var(--gold); margin-bottom: 8px; }
+.otd-month > div { display: grid; grid-template-columns: repeat(7, 1fr); gap: 4px; }
+.otd-day { display: grid; place-items: center; aspect-ratio: 1; border-radius: 8px; font: 600 12px/1 var(--ui); color: var(--muted); text-decoration: none; border: 1px solid transparent; }
+.otd-day:hover { border-color: var(--line); color: var(--canvas); }
+.otd-day.has { background: color-mix(in oklab, var(--gold), transparent 78%); color: var(--canvas); border-color: color-mix(in oklab, var(--gold), transparent 50%); }

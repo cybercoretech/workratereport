@@ -80,6 +80,7 @@ const isActive = (href: string) => (section ? section === href : Astro.url.pathn
   <script is:inline src={`/js/theme.js?v=${v('theme.js')}`} defer></script>
   <script is:inline src={`/js/nav.js?v=${v('nav.js')}`} defer></script>
   <script is:inline src={`/js/pyro.js?v=${v('pyro.js')}`} defer></script>
+  <script is:inline src={`/js/onthisday.js?v=${v('onthisday.js')}`} defer></script>
 </head>
 <body class:list={[vault && 'vault-scope']}>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -158,6 +159,7 @@ const isActive = (href: string) => (section ? section === href : Astro.url.pathn
         <div id="themeMenuDrawer" class="theme-menu" role="listbox" aria-label="Theme" hidden></div>
       </div>
       <button class="pyro-toggle" type="button" data-pyro-toggle aria-pressed="true">Pyro effects <span data-pyro-state>ON</span></button>
+      <button class="pyro-toggle" type="button" data-bell-toggle aria-pressed="false">Ring bell on video play <span data-bell-state>OFF</span></button>
     </div>
     <p class="drawer-contact">Corrections or questions: <a href={`mailto:${CONTACT}`}>{CONTACT}</a></p>
   </aside>
