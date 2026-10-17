@@ -15,10 +15,10 @@ The state of the project for the next agent (or person). Update it with every ph
 ## ✅ Resume checklist
 
 1. Read this file, `README.md`, then `BLUEPRINT.md` (§11 decisions, §12 nav/effects/themes).
-2. `git status`, `git log --oneline -5`; check PRs with `GH_TOKEN=$(gh auth token -u cybercore-tech) gh pr list -R cybercore-tech/workratereport`.
+2. `git status`, `git log --oneline -5`; check PRs with `GH_TOKEN=$(gh auth token -u darkstardevx) gh pr list -R cybercoretech/workratereport`.
 3. `npm install && npm run check && npm run build` before changing anything.
-4. Before committing, `git config --show-scope --get user.email` must be `global  332800418+cybercore-tech@users.noreply.github.com`. Abort otherwise.
-5. Work on a branch, one PR per phase, never stacked. The user merges. **Open PRs with the explicit `GH_TOKEN=$(gh auth token -u cybercore-tech)` prefix:** plain `gh pr create -R ...` picked the darkstardevx token and failed ("must be a collaborator").
+4. Before committing, `git config --show-scope --get user.email` must be `global  19244308+darkstardevx@users.noreply.github.com`. Abort otherwise.
+5. Work on a branch, one PR per phase, never stacked. The user merges. Open PRs against `cybercoretech/workratereport` using the `darkstardevx` account.
 6. Every change updates README, BLUEPRINT (if the plan changes), this file, the Wiki page `~/Wiki/src/web/workrate-report.md`, and the vault note `~/Vaults/blackbox-notes/Projects/Workrate-Report.md`.
 
 ## 🧭 Decisions already made
@@ -103,7 +103,7 @@ The state of the project for the next agent (or person). Update it with every ph
   - Unauthenticated session → 401; wrong password → 401 with tries left; foreign Origin → 403; right password → cookie, and the session works.
   - A rating of 6 → 422; add wrestler → commit; create match → commit; duplicate create → 409; update → commit; identical save → "unchanged"; publish log listed.
   - 5 failures → 429 lockout, and the correct password is refused while locked.
-- The `desk-test` branch with the desk-written files passed `astro build`. Quotes, colons, Unicode, YouTube URL → ID and type slugging all came through, and all commits used the cybercore-tech noreply identity.
+- The `desk-test` branch with the desk-written files passed `astro build`. Quotes, colons, Unicode, YouTube URL → ID and type slugging all came through, and all commits used the darkstardevx noreply identity.
 - A CDP browser run: login screen, wrong-password message, sign-in, list (10 matches), open a match (fields + wrestler chips), rating slider (4.75), review preview, draft saved in localStorage, clean console.
 - `wrangler pages functions build` compiled; `npm run check` clean for site and functions.
 - **Not verified:** the live production desk, until the user sets `ADMIN_PASSWORD_HASH` + `DESK_GITHUB_TOKEN` and PR #4 deploys.

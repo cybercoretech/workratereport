@@ -51,7 +51,7 @@ Under the hood, Publish commits the Markdown file to `main` through the GitHub A
 |---|---|
 | `SESSION_SECRET` | Already set (random). Re-run to sign every session out: `node -e "process.stdout.write(require('crypto').randomBytes(32).toString('base64url'))" \| npx wrangler pages secret put SESSION_SECRET --project-name workrate-report` |
 | `ADMIN_PASSWORD_HASH` | `node scripts/set-desk-password.mjs` in your own terminal. It asks for the password twice (hidden) and uploads only a PBKDF2 hash. |
-| `DESK_GITHUB_TOKEN` | A GitHub **fine-grained** token from the cybercore-tech account: repository access *only* `workratereport`, permission **Contents: Read and write**. Then `npx wrangler pages secret put DESK_GITHUB_TOKEN --project-name workrate-report` and paste it. |
+| `DESK_GITHUB_TOKEN` | A GitHub **fine-grained** token from the `darkstardevx` account: repository access *only* `cybercoretech/workratereport`, permission **Contents: Read and write**. Then `npx wrangler pages secret put DESK_GITHUB_TOKEN --project-name workrate-report` and paste it. |
 
 Secrets take effect on the next deployment (a merge to `main`, or **Retry deployment** in the Cloudflare dashboard).
 

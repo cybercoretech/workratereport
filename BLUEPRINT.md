@@ -324,7 +324,7 @@ The site itself renders ratings with a CSS star component (one gold star row cli
 | On this day | Daily rebuild via a Pages deploy hook on a cron (GitHub Actions) | Keeps the date-based page fresh |
 
 ### Deploy path
-1. Code in **`cybercore-tech/workratereport`** (public) → connect it to Cloudflare Pages → auto-deploys on every push to `main`. Work happens on branches and merges through PRs.
+1. Code in **`cybercoretech/workratereport`** (public) → connect it to Cloudflare Pages → auto-deploys on every push to `main`. Work happens on branches and merges through PRs.
 2. Project name `workrate-report` → site at `workrate-report.pages.dev`.
 3. Later: buy `workratereport.com`, add it under Pages → Custom domains.
 
@@ -482,7 +482,7 @@ A private page at **`/desk/`** where the owner writes and publishes reviews. It 
 | **Session** | A signed, HttpOnly, Secure, SameSite=Strict cookie (`wr_desk`, 12 hours), HMAC'd with the `SESSION_SECRET` Pages secret. Rotating that secret signs every session out. |
 | **Brute force** | 5 failed attempts per IP, or 50 from everyone, within 15 minutes locks sign-in (D1 table `desk_login_attempts`). |
 | **CSRF** | Every write must come from the site's own Origin with a JSON body. |
-| **Publishing** | **Decided 2026-10-16: live right away.** Publish validates the review with the same rules as the site's schema (5-star cap and all), writes the Markdown file and commits it to `main` through the GitHub API, using a fine-grained token (`DESK_GITHUB_TOKEN`: this repo only, Contents read/write). Cloudflare rebuilds in about a minute. Commits use the cybercore-tech noreply identity. Only `src/content/matches/` and `src/content/wrestlers/` can be written. This is the one exception to branch + PR, for the owner's content only. |
+| **Publishing** | **Decided 2026-10-16: live right away.** Publish validates the review with the same rules as the site's schema (5-star cap and all), writes the Markdown file and commits it to `main` through the GitHub API, using a fine-grained token (`DESK_GITHUB_TOKEN`: this repo only, Contents read/write). Cloudflare rebuilds in about a minute. Commits use the darkstardevx noreply identity. Only `src/content/matches/` and `src/content/wrestlers/` can be written. This is the one exception to branch + PR, for the owner's content only. |
 | **Safety net** | Every publish is a Git commit (undo = revert) and is logged in D1 (`desk_publish_log`). If a file ever failed the build, Cloudflare keeps the last good version live. |
 | **Drafts** | Saved in the owner's browser as you type, and restored when you reopen the match. |
 | **Editor** | Match list with search, every match field, wrestler chips with quick-add, a 0.01-precision rating slider with an exact box, ±0.01/±0.25 nudges and live stars (plus DUD and negatives), Meltzer's rating, YouTube link → ID with thumbnail, where to watch, review with live preview and word count, DNA, tags, verify list, featured toggle. |
