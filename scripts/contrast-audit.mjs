@@ -6,7 +6,7 @@ import { readFileSync } from 'node:fs';
 
 const load = (file) => { const module = { exports: {} }; new Function('module', readFileSync(file, 'utf8'))(module); return module.exports; };
 const { guard, report } = load('public/js/contrast.js');
-const DATA = 'https://cybercore-tech.github.io/data';
+const DATA = 'https://cybercoretech.github.io/data';
 const themeSrc = readFileSync('public/js/theme.js', 'utf8');
 const MASHUPS = [...themeSrc.matchAll(/\{ id: '([\w-]+)', label: '([^']+)', base: '([\w-]+)', accent: '([\w-]+)' \}/g)].map((m) => ({ id: m[1], label: m[2], base: m[3], accent: m[4] }));
 const BUILTIN = JSON.parse(themeSrc.match(/'ten-pounds-of-gold': (\{[^}]+\})/)[1].replace(/(\w+):/g, '"$1":').replace(/'/g, '"'));

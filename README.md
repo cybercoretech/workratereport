@@ -172,7 +172,7 @@ Needs Python 3 with `fontTools`, plus `rsvg-convert` (librsvg).
 
 ## 🎨 Themes
 
-The picker loads the shared registry from `https://cybercore-tech.github.io/data` (it allows cross-origin requests). If the registry is unreachable, the built-in **Ten Pounds of Gold** palette is used. Signature mashups:
+The picker loads the shared registry from `https://cybercoretech.github.io/data` (it allows cross-origin requests). If the registry is unreachable, the built-in **Ten Pounds of Gold** palette is used. Signature mashups:
 
 | Mashup | Base × Accent |
 |---|---|
