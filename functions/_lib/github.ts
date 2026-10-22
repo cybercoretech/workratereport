@@ -2,9 +2,9 @@
 import { b64, unb64 } from './crypto';
 import type { Env } from './env';
 
-// Commits are attributed to the cybercore-tech noreply address so no
+// Commits are attributed to the darkstardevx noreply address so no
 // personal email is ever published (see the repo's git identity rules).
-const IDENTITY = { name: 'darkstar', email: '332800418+cybercore-tech@users.noreply.github.com' };
+const IDENTITY = { name: 'darkstar', email: '19244308+darkstardevx@users.noreply.github.com' };
 
 const api = (env: Env, path: string) =>
   `https://api.github.com/repos/${env.CONTENT_REPO}/contents/${path.split('/').map(encodeURIComponent).join('/')}`;

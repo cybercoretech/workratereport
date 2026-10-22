@@ -80,6 +80,11 @@ const wrestlers = await getCollection('wrestlers');
     </section>
   )}
 
+  <section class="section wrap" aria-label="On this day">
+    <SectionHead eyebrow="On this day" title="Wrestling history" href="/on-this-day/" cta="Every day" />
+    <div data-otd="home"><p class="placeholder">Loading today's matches…</p></div>
+  </section>
+
   {meltzer.length > 0 && (
     <section class="section wrap" aria-label="Me vs. Meltzer">
       <SectionHead eyebrow="Me vs. Meltzer" title="Where we disagree" href="/me-vs-meltzer/" />

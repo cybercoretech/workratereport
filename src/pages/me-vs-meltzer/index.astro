@@ -1,4 +1,5 @@
 ---
+import { getCollection } from 'astro:content';
 import Base from '../../layouts/Base.astro';
 import Crumbs from '../../components/Crumbs.astro';
 import MatchGrid from '../../components/MatchGrid.astro';
@@ -6,21 +7,44 @@ import SectionHead from '../../components/SectionHead.astro';
 import { matches } from '../../lib/site';
 import { value } from '../../lib/ratings';
 const all = await matches();
-const both = all.filter((m) => m.data.my_rating !== null && m.data.meltzer_rating !== null)
-  .sort((a, b) => Math.abs(value(b.data.meltzer_rating) - value(b.data.my_rating)) - Math.abs(value(a.data.meltzer_rating) - value(a.data.my_rating)));
-const higher = both.filter((m) => value(m.data.my_rating) > value(m.data.meltzer_rating));
-const lower = both.filter((m) => value(m.data.my_rating) < value(m.data.meltzer_rating));
+const both = all.filter((m) => typeof m.data.my_rating === 'number' && typeof m.data.meltzer_rating === 'number');
+const gap = (m: (typeof all)[number]) => value(m.data.my_rating) - value(m.data.meltzer_rating); // + = I rated higher
+both.sort((a, b) => Math.abs(gap(b)) - Math.abs(gap(a)));
+const higher = both.filter((m) => gap(m) > 0.25);
+const lower = both.filter((m) => gap(m) < -0.25);
+const agree = both.filter((m) => Math.abs(gap(m)) <= 0.25);
+const avg = both.length ? both.reduce((s, m) => s + gap(m), 0) / both.length : 0;
 const waiting = all.filter((m) => m.data.meltzer_rating !== null && m.data.my_rating === null);
+const promos = Object.fromEntries((await getCollection('promotions')).map((p) => [p.id, p.data.short]));
+const byPromo = Object.entries(both.reduce<Record<string, number[]>>((acc, m) => { (acc[m.data.promotion.id] ??= []).push(gap(m)); return acc; }, {}))
+  .map(([id, g]) => ({ id, n: g.length, avg: g.reduce((a, b) => a + b, 0) / g.length })).sort((a, b) => b.n - a.n);
+const fmt = (n: number) => `${n > 0 ? '+' : n < 0 ? '−' : '±'}${Math.abs(n).toFixed(2)}`;
 ---
 <Base title="Me vs. Meltzer" section="/me-vs-meltzer/">
   <Crumbs trail={[['Me vs. Meltzer']]} />
   <section class="hero"><div class="hero-glow" aria-hidden="true"></div><div class="wrap">
     <p class="eyebrow">Me vs. Meltzer</p>
     <h1>Was it <em>really</em> five stars?</h1>
-    <p class="lede">Every match where both of us gave a rating, biggest disagreement first. Our scale stops at five; his doesn't.</p>
+    <p class="lede">Every match where both of us gave a rating. Our scale stops at five; his doesn't. A gap of a quarter star or less counts as agreeing.</p>
+    <div class="stat-row">
+      <div class="stat"><b data-count={both.length}>{both.length}</b><span>Matches compared</span></div>
+      <div class="stat"><b data-count={agree.length}>{agree.length}</b><span>We agree</span></div>
+      <div class="stat"><b data-count={higher.length}>{higher.length}</b><span>I rated higher</span></div>
+      <div class="stat"><b data-count={lower.length}>{lower.length}</b><span>Meltzer rated higher</span></div>
+      <div class="stat"><b>{both.length ? fmt(avg) : '—'}</b><span>Average gap (stars)</span></div>
+    </div>
   </div></section>
-  <section class="section wrap"><SectionHead eyebrow="Biggest gaps" title="Disagreements" /><MatchGrid list={both} empty="Once matches have both ratings, the biggest disagreements show up here." /></section>
+  {both.length === 0 && <section class="section wrap"><p class="placeholder">Once matches have both ratings, the scoreboard fills in here. {waiting.length > 0 && `${waiting.length} ${waiting.length === 1 ? 'match is' : 'matches are'} waiting on your rating.`}</p></section>}
+  {both.length > 0 && <section class="section wrap"><SectionHead eyebrow="Biggest gaps" title="Disagreements" /><MatchGrid list={both.filter((m) => Math.abs(gap(m)) > 0.25).slice(0, 12)} empty="No real disagreements yet." /></section>}
+  {byPromo.length > 0 && (
+    <section class="section wrap">
+      <SectionHead eyebrow="By promotion" title="Where we split" />
+      <div class="panel table-scroll"><table class="traits"><thead><tr><th scope="col">Promotion</th><th scope="col">Matches</th><th scope="col">Average gap</th><th scope="col">Lean</th></tr></thead>
+        <tbody>{byPromo.map((r) => <tr><th scope="row"><a href={`/promotions/${r.id}/`}>{promos[r.id] ?? r.id}</a></th><td>{r.n}</td><td>{fmt(r.avg)}</td><td>{Math.abs(r.avg) <= 0.25 ? 'We agree' : r.avg > 0 ? 'I like it more' : 'Meltzer likes it more'}</td></tr>)}</tbody></table></div>
+    </section>
+  )}
   {higher.length > 0 && <section class="section wrap"><SectionHead eyebrow="I rated it higher" title="Underrated by the Observer" /><MatchGrid list={higher} /></section>}
   {lower.length > 0 && <section class="section wrap"><SectionHead eyebrow="Meltzer rated it higher" title="Overrated?" /><MatchGrid list={lower} /></section>}
+  {agree.length > 0 && <section class="section wrap"><SectionHead eyebrow="Within a quarter star" title="We agree" /><MatchGrid list={agree} /></section>}
   {waiting.length > 0 && <section class="section wrap"><SectionHead eyebrow="Waiting on my rating" title="Meltzer has spoken" /><MatchGrid list={waiting} /></section>}
 </Base>

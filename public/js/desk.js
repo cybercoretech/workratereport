@@ -178,23 +178,36 @@
     chosen = chosen.filter((x) => x !== b.dataset.drop);
     renderChips(); form.dispatchEvent(new Event('input'));
   });
+  // Turn whatever is typed in the Wrestlers box into chips. Accepts several
+  // names separated by commas. Known names are added; the first unknown one
+  // opens "Add a wrestler" when `ask` is true, and is reported otherwise.
+  function takeTyped({ ask }) {
+    const input = $('#wrestlerInput');
+    const names = input.value.split(',').map((x) => x.trim()).filter(Boolean);
+    if (!names.length) return { unknown: [] };
+    const unknown = [];
+    for (const v of names) {
+      const w = catalog.wrestlers.find((x) => x.name.replace(/"/g, '').toLowerCase() === v.replace(/"/g, '').toLowerCase() || x.id === v.toLowerCase());
+      if (w) { if (!chosen.includes(w.id)) chosen.push(w.id); } else unknown.push(v);
+    }
+    input.value = unknown.join(', ');
+    renderChips(); form.dispatchEvent(new Event('input'));
+    if (unknown.length && ask) {
+      $('#addWrestlerForm').elements.name.value = unknown[0];
+      $('#addWrestlerMsg').textContent = '';
+      $$('#addWrestlerForm input[type=checkbox]').forEach((c) => { c.checked = c.value === form.elements.era.value || c.value === form.elements.promotion.value; });
+      $('#addWrestler').showModal();
+    }
+    return { unknown };
+  }
   $('#wrestlerInput').addEventListener('keydown', (e) => {
     if (e.key !== 'Enter') return;
     e.preventDefault();
-    const v = e.target.value.trim();
-    if (!v) return;
-    const w = catalog.wrestlers.find((x) => x.name.toLowerCase() === v.toLowerCase() || x.id === v.toLowerCase());
-    if (w) {
-      if (!chosen.includes(w.id)) chosen.push(w.id);
-      e.target.value = ''; renderChips(); form.dispatchEvent(new Event('input'));
-    } else {
-      const dlg = $('#addWrestler');
-      $('#addWrestlerForm').elements.name.value = v;
-      $('#addWrestlerMsg').textContent = '';
-      $$('#addWrestlerForm input[type=checkbox]').forEach((c) => { c.checked = c.value === form.elements.era.value || c.value === form.elements.promotion.value; });
-      dlg.showModal();
-    }
+    takeTyped({ ask: true });
   });
+  // Picking from the suggestions list, or leaving the box, adds known names too.
+  $('#wrestlerInput').addEventListener('change', () => takeTyped({ ask: false }));
+
   $('#addWrestlerForm').addEventListener('submit', async (e) => {
     if (e.submitter?.value !== 'add') return;
     e.preventDefault();
@@ -264,10 +277,38 @@
     $('#wordCount').textContent = `${words} ${words === 1 ? 'word' : 'words'}`;
   }
 
+  /* ---------- wait for the rebuild ---------- */
+  // Cloudflare needs about a minute to rebuild after a publish. Watch the
+  // site's build time (catalog.json "built") so links only appear once the
+  // new version is actually live, for new pages and edits alike.
+  function whenLive(msgEl, pageUrl, commitUrl, label) {
+    const started = Date.now();
+    const link = `<a href="${esc(pageUrl)}" target="_blank" rel="noopener">view ${label}</a> · <a href="${esc(commitUrl)}" target="_blank" rel="noopener">commit</a>`;
+    msgEl.className = 'desk-msg ok';
+    msgEl.innerHTML = `✅ Published. Building the site… <span class="muted">(usually about a minute)</span>`;
+    const tick = async () => {
+      try {
+        const c = await (await fetch('/data/catalog.json', { cache: 'no-store' })).json();
+        if (Date.parse(c.built) >= started - 5000) { msgEl.innerHTML = `✅ Live now: ${link}`; return; }
+      } catch {}
+      if (Date.now() - started > 5 * 60 * 1000) { msgEl.className = 'desk-msg warn'; msgEl.innerHTML = `Published, but the site hasn't rebuilt after 5 minutes. Check the Cloudflare dashboard. ${link}`; return; }
+      setTimeout(tick, 8000);
+    };
+    setTimeout(tick, 20000);
+  }
+
   /* ---------- publish ---------- */
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
     const msg = $('#saveMsg'), btn = $('#publishBtn');
+    // A name typed but not yet turned into a chip still counts.
+    const { unknown } = takeTyped({ ask: false });
+    if (unknown.length) {
+      msg.className = 'desk-msg warn';
+      msg.textContent = `"${unknown[0]}" isn't on the site yet. Press Enter in the Wrestlers box to add them, then publish.`;
+      $('#wrestlerInput').focus();
+      return;
+    }
     btn.disabled = true; msg.className = 'desk-msg'; msg.textContent = 'Publishing…';
     const data = collect();
     const r = await api('match', { method: 'PUT', body: JSON.stringify({ id: current, create: !current, data, body: form.elements.body.value }) });
@@ -286,9 +327,8 @@
     current = r.id;
     $('#formMode').textContent = `Editing · ${r.id}`;
     $('#draftNote').textContent = '';
-    msg.className = 'desk-msg ok';
-    msg.innerHTML = r.unchanged ? 'No changes to publish.' :
-      `✅ Published. The site rebuilds in about a minute: <a href="${esc(r.pageUrl)}" target="_blank" rel="noopener">view the page</a> · <a href="${esc(r.commitUrl)}" target="_blank" rel="noopener">commit</a>`;
+    if (r.unchanged) { msg.className = 'desk-msg ok'; msg.textContent = 'No changes to publish.'; }
+    else whenLive(msg, r.pageUrl, r.commitUrl, 'the page');
     renderList(); loadLog();
   });
 
@@ -365,8 +405,8 @@
     if (i === -1) catalog.columns.unshift(entry); else catalog.columns[i] = entry;
     currentColumn = r.id;
     $('#columnMode').textContent = `Editing · ${r.id}`;
-    msg.className = 'desk-msg ok';
-    msg.innerHTML = r.unchanged ? 'No changes to publish.' : `✅ Published. Live in about a minute: <a href="${esc(r.pageUrl)}" target="_blank" rel="noopener">view the column</a> · <a href="${esc(r.commitUrl)}" target="_blank" rel="noopener">commit</a>`;
+    if (r.unchanged) { msg.className = 'desk-msg ok'; msg.textContent = 'No changes to publish.'; }
+    else whenLive(msg, r.pageUrl, r.commitUrl, 'the column');
     renderColumns(); loadLog();
   });
 

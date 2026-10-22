@@ -52,6 +52,10 @@ const wrestlers = defineCollection({
     factions: z.array(reference('factions')).default([]),
     featured: z.boolean().default(false),
     summary: z.string().optional(),
+    // Profile details (facts from Wikipedia, written in our own words).
+    breakout: z.string().optional(),          // when they first showed star potential
+    signature_match: z.string().optional(),   // the match they're best known for
+    gimmicks: z.string().optional(),          // notes on notable personas, beyond the plain ring-name list
   }),
 });
 

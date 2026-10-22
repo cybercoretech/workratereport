@@ -12,6 +12,7 @@ A pro wrestling match-review site. It covers modern wrestling first (WWE, AEW, N
 - **Phase 1 · Skeleton:** built. Astro static site with 83 pages, the ring-rope hamburger drawer, the Cybercore theme picker (90 themes), Pyro effects and 12 launch matches.
 - **Live:** 🌐 **https://workrate-report.pages.dev/** (Cloudflare Pages, auto-deploys from `main`).
 - **Phase 2A · Author's Desk:** a private `/desk/` page to write and publish reviews and columns from the browser.
+- **Phase 3:** On This Day (homepage block, ticker item, calendar, 366 day pages), the Me vs. Meltzer scoreboard (agreement, average gap, by promotion), and an optional ring-bell sound on video play.
 - **Promotions page:** 26 companies (majors, independents, Vault, territories) with bios, founders, owners, standout stars, official sites and free-license logos.
 - **Phase 2B · Depth:** search, 149 wrestler profiles with photos and bios, Lists, Columns, Starter Paths, Then & Now, Vault events and feuds, ECW and ROH, and a contrast guard on all 90 themes.
 
@@ -50,7 +51,7 @@ Under the hood, Publish commits the Markdown file to `main` through the GitHub A
 |---|---|
 | `SESSION_SECRET` | Already set (random). Re-run to sign every session out: `node -e "process.stdout.write(require('crypto').randomBytes(32).toString('base64url'))" \| npx wrangler pages secret put SESSION_SECRET --project-name workrate-report` |
 | `ADMIN_PASSWORD_HASH` | `node scripts/set-desk-password.mjs` in your own terminal. It asks for the password twice (hidden) and uploads only a PBKDF2 hash. |
-| `DESK_GITHUB_TOKEN` | A GitHub **fine-grained** token from the cybercore-tech account: repository access *only* `workratereport`, permission **Contents: Read and write**. Then `npx wrangler pages secret put DESK_GITHUB_TOKEN --project-name workrate-report` and paste it. |
+| `DESK_GITHUB_TOKEN` | A GitHub **fine-grained** token from the `darkstardevx` account: repository access *only* `cybercoretech/workratereport`, permission **Contents: Read and write**. Then `npx wrangler pages secret put DESK_GITHUB_TOKEN --project-name workrate-report` and paste it. |
 
 Secrets take effect on the next deployment (a merge to `main`, or **Retry deployment** in the Cloudflare dashboard).
 
@@ -118,6 +119,32 @@ node scripts/fetch-promotion-data.mjs   # src/data/promotion-facts.json + public
 
 Logos appear only when Commons lists a free license; everyone else gets the site's own name badge. `SKIP_LOGO` in the script drops out-of-date marks (TNA's Wikidata logo is still Impact's).
 
+## 👥 Members (Google sign-in)
+
+`/account/` signs members in with Google, then lets them set a handle, display name, avatar (8 presets), bio, favorites and profile visibility. Public profiles live at `/u/<handle>/`. Signed-in members rate matches 0–5 in quarter stars, and match pages show **Mine · Meltzer · Fans**.
+
+- Only `openid email` is requested from Google. Email stays private, and names and access tokens aren't stored.
+- Authorization-code flow with PKCE (S256) and a one-use state bound to the browser; sessions are random tokens stored as SHA-256 hashes, 90 days, HttpOnly Secure SameSite=Lax.
+- Writes need our Origin; profile and rating writes are rate-limited; open redirects are blocked.
+
+### One-time Google setup
+
+1. In [Google Cloud](https://console.cloud.google.com/auth/overview), create a project, set up the consent screen (External, app name The Workrate Report), and create an **OAuth client → Web application** with the redirect URI `https://workrate-report.pages.dev/api/auth/callback`.
+2. Download its JSON and run `node scripts/configure-google.mjs <file>`. Then delete the file.
+3. Optional: set `ADMIN_GOOGLE_SUB` to the owner's Google account id to make that member the admin.
+4. Redeploy.
+
+## 📖 Wrestler bios
+
+Every wrestler has a full career bio (in the Markdown body), a `breakout` moment and a `signature_match` in frontmatter, and optional `gimmicks` notes. Real names, previous ring names and gimmicks, trainers and debut/retirement years come from each wrestler's Wikipedia infobox:
+
+```sh
+node scripts/fetch-wikipedia-facts.mjs                 # all wrestlers
+node scripts/fetch-wikipedia-facts.mjs --leads <dir> sting   # one wrestler, saving its article intro for reference
+```
+
+Wikipedia is used **as a source of facts only**. Bios are written in our own words, never copied (Wikipedia text is CC BY-SA), and each profile links to its Wikipedia and Wikidata sources. Keep the `--leads` folder out of the repo.
+
 ## 🎨 Theme readability
 
 `public/js/contrast.js` nudges any too-faint text color in a theme until it meets WCAG AA. Red and blue keep their true colors for backgrounds and get readable copies (`--red-text`, `--blue-text`) for text. Audit every theme with:
@@ -138,7 +165,7 @@ node scripts/contrast-audit.mjs   # also runs in CI; fails if any pair is below 
 | `src/styles/global.css` | Tokens, layout and all effect styles |
 | `public/js/` | `theme.js` (theme engine), `nav.js` (drawer), `pyro.js` (effects), `desk.js` (Author's Desk). Cache-busted by content hash |
 | `functions/` | Cloudflare Pages Functions: `/api/desk/*` (login, session, publish match, add wrestler, log) and `_lib/` helpers |
-| `migrations/` | D1 schema (`workrate-report` database) |
+| `migrations/` | D1 schema (`workrate-report` database): 0001 desk, 0002 members, sessions, OAuth state, fan ratings, rate limits |
 | `scripts/` | `set-desk-password.mjs`, `fetch-wrestler-data.mjs`, `fetch-promotion-data.mjs`, `contrast-audit.mjs` |
 | `src/data/` | `wrestler-facts.json`, `promotion-facts.json` (generated: Wikidata facts, photo and logo credits) |
 | `public/promotions/` | Free-license promotion logos (see `/credits/`) |
