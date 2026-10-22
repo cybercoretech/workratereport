@@ -1,0 +1,26 @@
+---
+import Base from '../../layouts/Base.astro';
+import Crumbs from '../../components/Crumbs.astro';
+import SectionHead from '../../components/SectionHead.astro';
+import { byDay, allDays, dayLabel } from '../../lib/onthisday';
+const days = await byDay();
+const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+const grid = months.map((name, i) => ({ name, days: allDays().filter((k) => Number(k.slice(0, 2)) === i + 1) }));
+---
+<Base title="On this day" section="/on-this-day/" description="What happened on this day in wrestling history, from the matches on The Workrate Report.">
+  <Crumbs trail={[['On this day']]} />
+  <section class="hero"><div class="hero-glow" aria-hidden="true"></div><div class="wrap">
+    <p class="eyebrow">On this day</p><h1 data-otd-heading>Today in <em>wrestling</em></h1>
+    <p class="lede">Matches from today's date in every year on the site. Pick any day from the calendar below.</p>
+  </div></section>
+  <section class="section wrap"><div data-otd="page"><p class="placeholder">Loading today's matches…</p></div></section>
+  <section class="section wrap">
+    <SectionHead eyebrow="Calendar" title="Every day" />
+    <div class="otd-cal">{grid.map((m) => (
+      <div class="otd-month"><b>{m.name}</b><div>{m.days.map((k) => {
+        const n = days.get(k)?.length ?? 0;
+        return <a href={`/on-this-day/${k}/`} class:list={['otd-day', n > 0 && 'has']} title={`${dayLabel(k)}: ${n} ${n === 1 ? 'match' : 'matches'}`} aria-label={`${dayLabel(k)}, ${n} ${n === 1 ? 'match' : 'matches'}`}>{Number(k.slice(3))}</a>;
+      })}</div></div>
+    ))}</div>
+  </section>
+</Base>

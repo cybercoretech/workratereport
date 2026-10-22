@@ -6,7 +6,7 @@ pages_build_output_dir = "./dist"
 compatibility_date = "2026-10-01"
 
 [vars]
-CONTENT_REPO = "cybercore-tech/workratereport"
+CONTENT_REPO = "cybercoretech/workratereport"
 CONTENT_BRANCH = "main"
 
 [[d1_databases]]

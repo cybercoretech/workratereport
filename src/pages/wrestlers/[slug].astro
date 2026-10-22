@@ -7,7 +7,7 @@ import MatchGrid from '../../components/MatchGrid.astro';
 import { matches, byRatingDesc } from '../../lib/site';
 import WrestlerPhoto from '../../components/WrestlerPhoto.astro';
 import PhotoCredit from '../../components/PhotoCredit.astro';
-import { factsFor, fmtFactDate, fmtHeight, ageAt } from '../../lib/facts';
+import { factsFor, fmtFactDate, fmtHeight, ageAt, realName } from '../../lib/facts';
 export async function getStaticPaths() {
   return (await getCollection('wrestlers')).map((w) => ({ params: { slug: w.id }, props: { w } }));
 }
@@ -21,12 +21,18 @@ const hasBio = (w.body ?? '').replace(/<!--[\s\S]*?-->/g, '').trim().length > 0;
 const legend = w.data.eras.includes('classic');
 const f = factsFor(w.id);
 const age = ageAt(f.born, f.died);
+const real = realName(f);
+const plainName = w.data.name.replace(/"/g, '');
+// Other names worn, minus the current one and plain variants of it.
+const aka = (f.ring_names ?? []).filter((n) => n.replace(/"/g, '').toLowerCase() !== plainName.toLowerCase() && n !== real);
 const factRows = ([
-  ['Real name', f.birth_name],
+  ['Real name', real && real.toLowerCase() !== plainName.toLowerCase() ? real : null],
   ['Born', f.born && `${fmtFactDate(f.born)}${f.birthplace ? `, ${f.birthplace}` : ''}${!f.died && age !== null ? ` (age ${age})` : ''}`],
   ['Died', f.died && `${fmtFactDate(f.died)}${age !== null ? ` (aged ${age})` : ''}`],
   ['Height', fmtHeight(f.height_cm)],
-  ['Debut', f.debut],
+  ['Debut', f.debut ?? f.debut_wp],
+  ['Retired', f.retired_wp],
+  ['Trained by', f.trained_by?.length ? f.trained_by.join(', ') : null],
 ] as [string, string | null | undefined][]).filter(([, v]) => v);
 ---
 <Base title={w.data.name} section="/wrestlers/" vault={legend && !w.data.eras.includes('modern')} search="Wrestler">
@@ -51,9 +57,21 @@ const factRows = ([
       <p class="stat-row" style="margin-top:20px"><span class="stat"><b>{list.length}</b><span>{list.length === 1 ? 'Match' : 'Matches'} logged</span></span></p>
     </div>
   </div></section>
+  {(w.data.breakout || w.data.signature_match || aka.length > 0) && (
+    <section class="section wrap">
+      <div class="wkeys">
+        {w.data.breakout && <div class="panel reveal"><p class="eyebrow">The breakout</p><p>{w.data.breakout}</p></div>}
+        {w.data.signature_match && <div class="panel reveal"><p class="eyebrow">Signature match</p><p>{w.data.signature_match}</p></div>}
+        {aka.length > 0 && <div class="panel reveal"><p class="eyebrow">Also known as</p><ul class="chips">{aka.map((n) => <li><span class="chip-plain">{n}</span></li>)}</ul>{w.data.gimmicks && <p class="desk-hint">{w.data.gimmicks}</p>}</div>}
+      </div>
+    </section>
+  )}
   <section class="section wrap">
+    <p class="eyebrow">Career</p>
     {hasBio ? <div class="prose"><Content /></div> : <p class="placeholder">A full profile is being written.</p>}
-    {f.qid && <p class="muted" style="font-size:13px;margin-top:18px">Birth and career facts from <a href={`https://www.wikidata.org/wiki/${f.qid}`} rel="noopener" target="_blank">Wikidata</a>.</p>}
+    <p class="muted" style="font-size:13px;margin-top:18px">
+      Written for The Workrate Report.{f.wikipedia && <> Sources: <a href={f.wikipedia} rel="noopener" target="_blank">Wikipedia</a></>}{f.qid && <>{f.wikipedia ? ', ' : ' Sources: '}<a href={`https://www.wikidata.org/wiki/${f.qid}`} rel="noopener" target="_blank">Wikidata</a></>}.
+    </p>
   </section>
   <section class="section wrap"><SectionHead eyebrow="Signature matches" title="Best first" /><MatchGrid list={list} /></section>
 </Base>
