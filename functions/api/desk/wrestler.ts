@@ -1,9 +1,16 @@
 import { fail, json, type Env } from '../../_lib/env';
 import { slugify, wrestlerFile } from '../../_lib/content';
 import { loadCatalog } from '../../_lib/catalog';
-import { getFile, putFile } from '../../_lib/github';
+import { GitHubError, getFile, putFile } from '../../_lib/github';
 
-export const onRequestPost: PagesFunction<Env> = async ({ request, env }) => {
+export const onRequestPost: PagesFunction<Env> = async (ctx) => {
+  try { return await handle(ctx); } catch (e) {
+    if (e instanceof GitHubError) { console.error('desk/wrestler publish:', e.message); return fail(502, e.message); }
+    throw e;
+  }
+};
+
+const handle: PagesFunction<Env> = async ({ request, env }) => {
   if (!env.DESK_GITHUB_TOKEN) return fail(503, 'Publishing is not configured yet (missing DESK_GITHUB_TOKEN).');
   let raw: { name?: unknown; eras?: unknown; promotions?: unknown };
   try { raw = await request.json(); } catch { return fail(400, 'Bad JSON'); }

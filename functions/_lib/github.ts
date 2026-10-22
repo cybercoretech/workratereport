@@ -16,10 +16,14 @@ const headers = (env: Env) => ({
   'user-agent': 'workrate-report-desk',
 });
 
+// Thrown when GitHub refuses a call; handlers surface these to the desk UI
+// instead of letting a bare 500 render as the generic "Publishing failed".
+export class GitHubError extends Error {}
+
 export async function getFile(env: Env, path: string): Promise<{ sha: string; text: string } | null> {
   const res = await fetch(`${api(env, path)}?ref=${encodeURIComponent(env.CONTENT_BRANCH)}`, { headers: headers(env) });
   if (res.status === 404) return null;
-  if (!res.ok) throw new Error(`GitHub read ${res.status}`);
+  if (!res.ok) throw new GitHubError(`GitHub read ${res.status}`);
   const body = (await res.json()) as { sha: string; content: string };
   return { sha: body.sha, text: new TextDecoder().decode(unb64(body.content.replace(/\n/g, ''))) };
 }
@@ -35,7 +39,7 @@ export async function putFile(env: Env, path: string, text: string, message: str
   });
   if (!res.ok) {
     const detail = await res.text();
-    throw new Error(`GitHub write ${res.status}: ${detail.slice(0, 200)}`);
+    throw new GitHubError(`GitHub write ${res.status}: ${detail.slice(0, 200)}`);
   }
   const out = (await res.json()) as { commit: { sha: string; html_url: string } };
   return out.commit;
