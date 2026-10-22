@@ -66,7 +66,7 @@ export const publicMember = (m: Member) => ({
   watching_since: m.watching_since, role: m.role, joined: m.created,
 });
 
-export const AVATARS = ['belt', 'mask', 'bell', 'mic', 'chair', 'ropes', 'boots', 'turnbuckle'];
+export const AVATARS = ['belt', 'mask', 'bell', 'mic', 'chair', 'ropes', 'boots', 'turnbuckle', 'emblem', 'ladder', 'ref', 'stars'];
 
 /** Same-origin path only: blocks open redirects. */
 export const safeReturn = (v: string | null) => (v && /^\/(?!\/)[\w\-./?=&%#]*$/.test(v) ? v : '/');

@@ -121,7 +121,7 @@ Logos appear only when Commons lists a free license; everyone else gets the site
 
 ## 👥 Members (Google sign-in)
 
-`/account/` signs members in with Google, then lets them set a handle, display name, avatar (8 presets), bio, favorites and profile visibility. Public profiles live at `/u/<handle>/`. Signed-in members rate matches 0–5 in quarter stars, and match pages show **Mine · Meltzer · Fans**.
+`/account/` signs members in with Google, then lets them set a handle, display name, avatar (12 presets), bio, favorites and profile visibility. Public profiles live at `/u/<handle>/`. Signed-in members rate matches 0–5 in quarter stars, and match pages show **Mine · Meltzer · Fans**.
 
 - Only `openid email` is requested from Google. Email stays private, and names and access tokens aren't stored.
 - Authorization-code flow with PKCE (S256) and a one-use state bound to the browser; sessions are random tokens stored as SHA-256 hashes, 90 days, HttpOnly Secure SameSite=Lax.
