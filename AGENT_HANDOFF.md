@@ -2,15 +2,17 @@
 
 The state of the project for the next agent (or person). Update it with every phase or significant change.
 
-## 📍 Repository state (2026-10-16)
+## 📍 Repository state (2026-10-22)
 
-- **Repo:** `github.com/cybercoretech/workratereport` (public) · local `~/Webdev/workrate-report`.
-- **`main`:** `7c61d1d`, the merge of PR #3 (docs: live deployment).
-- **Phase 2A (Author's Desk)** merged in PR #4 (main `5a2e201`): `/desk/` editor, Pages Functions in `functions/`, D1 `workrate-report` (id `861ea80a-3d45-4394-978d-5b97f1816b13`, migration 0001 applied remotely), `wrangler.toml`.
-- **Pages secrets:** `SESSION_SECRET` set (random, by Claude). `ADMIN_PASSWORD_HASH` and `DESK_GITHUB_TOKEN` set by the user 2026-10-16 (after one mis-set that leaked a token as a secret *name*; Claude deleted it and the user re-created the token). Never choose or see the user's password; never put a broad gh CLI token into Cloudflare.
-- **Hosting: LIVE** at https://workrate-report.pages.dev/ (connected 2026-10-16). It's a Cloudflare **Pages** project (created via the dashboard's "Continue to Pages" link; the default "Continue with GitHub" makes a Worker instead) connected to this repo: preset Astro, `npm run build`, output `dist`, `NODE_VERSION=22`. Every push to `main` deploys; PRs get preview URLs. Never hand-deploy.
+- **Repo:** `github.com/cybercoretech/workratereport` (public) · local `~/Webdev/workrate-report`. **The old `cybercore-tech` account was suspended and the repo was recreated under `cybercoretech` on 2026-10-17** (all branches bulk-pushed within seconds of creation). GitHub PR numbering restarted: old-repo PRs #1–#11 below exist only in git history; see "PR history" for both series.
+- **`main`: `697bd9d`** — after the migration repair of 2026-10-22 (new-repo PRs): **#1** org-links fix, **#2** restored everything that had been stranded on `content/full-bios` (Phase 3, the desk fix, the 149 full bios, Phase 3B-A members) onto `main`, **#3** added the `workflow_dispatch` trigger. `npm run check`, `npm run build` and the contrast audit all pass on it, and CI ran green.
+- **⚠️ Hosting: auto-deploy is BROKEN until the user reconnects Pages (dashboard, can't be done via API).** The live site is up at https://workrate-report.pages.dev/ but the project's GitHub source still points at the dead `cybercore-tech` repo (`owner_id 332800418`, `repo_id 1422681823`); last deployment is `f0d003c` from 2026-10-17 (PR #11 merge — has members/On This Day, **not** the full bios). Verified dead ends: `PATCH …/pages/projects/workrate-report` accepts a `source` body but silently ignores it, and an ad-hoc deployment fails with "Unable to find a branch with the provided name" (it resolves against the suspended account). **Fix (user): Cloudflare dashboard → Workers & Pages → workrate-report → Settings → Builds & deployments → Connect to Git → GitHub → authorize the Cloudflare app on the `cybercoretech` org → select `cybercoretech/workratereport`, production branch `main`.** Build settings (preset Astro, `npm run build`, output `dist`, `NODE_VERSION=22`) are project-level and survive; reconnecting will immediately build `main` — do it only after PR #2 is on `main` (it is). Never hand-deploy.
+- **Desk publish path:** `CONTENT_REPO` env var fixed to `cybercoretech/workratereport` in **both** preview and production (Cloudflare API `PATCH` on `deployment_configs.*.env_vars` **merges** — verified it does not wipe sibling vars or the secrets; D1 binding intact). **Still broken: `DESK_GITHUB_TOKEN`** is the old fine-grained token scoped to the dead repo — the user must create a new fine-grained PAT (`darkstardevx` → repository access only `cybercoretech/workratereport`, Contents: Read and write; see README's secrets table) and run `npx wrangler pages secret put DESK_GITHUB_TOKEN --project-name workrate-report`, pasting at the prompt. Desk login/publish will fail until then.
+- **Pages secrets:** `SESSION_SECRET`, `ADMIN_PASSWORD_HASH`, `DESK_GITHUB_TOKEN` all still set (production). Never choose or see the user's password; never put a broad gh CLI token into Cloudflare.
+- **Zero-runs CI incident (resolved 2026-10-22):** from creation until 2026-10-22 02:28 UTC the repo had **zero** workflow runs although every API setting read `enabled: true` / `allowed_actions: all` / workflow `active` — the workflow files arrived in the initial bulk push, and GitHub gates those behind a **UI-only** acknowledgment ("Workflows aren't being run on this repository… I understand my workflows and want to enable them") that the API does not expose. It was acknowledged ~02:12–02:28 and PR #3's events then fired within 3 s (both runs green). **If CI goes silent again, check the Actions tab banner before trusting the API settings.** Note the `events` API feed also drops `PushEvent`s (best-effort) — its silence proves nothing.
+- **CI:** `.github/workflows/build.yml` runs `npm ci`, `npm run check`, `npm run build` and `node scripts/contrast-audit.mjs` on PRs and pushes to `main`; it also has `workflow_dispatch` (manual Run-workflow button).
+- **Google sign-in (members)** still needs the user's OAuth client: `GOOGLE_CLIENT_ID` / `GOOGLE_CLIENT_SECRET` / `ADMIN_GOOGLE_SUB` are not set on production (known pending step since PR #11).
 - **New-hostname DNS:** for the first minutes after creation, `pages.dev` names can return NXDOMAIN (Cloudflare's nameservers update unevenly; 60 s negative TTL). Check with `dig @1.1.1.1` before assuming a problem.
-- **CI:** `.github/workflows/build.yml` runs `npm ci`, `npm run check` and `npm run build` on PRs and pushes to main.
 
 ## ✅ Resume checklist
 
@@ -85,6 +87,8 @@ The state of the project for the next agent (or person). Update it with every ph
 
 ## 🔀 PR history
 
+The first eleven PRs below are from the **old** `cybercore-tech/workratereport` repo (suspended 2026-10; they live on in git history). The recreated `cybercoretech/workratereport` restarted numbering — see the second list.
+
 - **#1** Phase 0: brand assets, blueprint, README, handoff (merged).
 - **#2** Phase 1: Astro skeleton, nav, theme picker, effects, launch content (merged).
 - **#3** Docs: record the live Cloudflare Pages deployment (merged).
@@ -94,8 +98,14 @@ The state of the project for the next agent (or person). Update it with every ph
 - **#7** Promotions page: 26 companies with bios/facts/logos; 12 new promotions; 30 wrestlers tagged (merged).
 - **#8** Phase 3: On This Day, Me vs. Meltzer scoreboard, ring bell (merged).
 - **#9** Desk fix: typed wrestler names auto-add; "Live now" only after the rebuild (merged).
-- **#10** Full wrestler bios for 149 (Wikipedia facts, original prose).
+- **#10** Full wrestler bios for 149 (Wikipedia facts, original prose) (merged).
 - **#11** Phase 3B-A: member accounts, profiles, fan ratings (merged before #10; #10 rebased onto it).
+
+New repo (`cybercoretech`), 2026-10-21/22:
+
+- **#1** fix: point links at the cybercoretech org (merged).
+- **#2** Restore phases 3–3B + full bios onto `main` (the migration had stranded them on `content/full-bios`) (merged 2026-10-22).
+- **#3** ci: add `workflow_dispatch` trigger (merged 2026-10-22; also proved CI live after the enablement fix).
 
 ## 🧪 How Phase 2A was verified
 
@@ -118,4 +128,13 @@ The state of the project for the next agent (or person). Update it with every ph
 
 ## ⏭️ Next
 
-1. **Full wrestler bios** (user, 2026-10-16): real names, previous ring names and gimmicks, breakout moment, signature match, multi-paragraph bios, using Wikipedia as the **fact source** (original prose plus a source link; never copy CC BY-SA text). 2. **Phase 3B community:** Google sign-in, profiles, fan ratings, forum (option C). Content for the author: Vault promotion histories, starter paths, hand-picked lists, columns.
+**Blocking / pending user steps (2026-10-22):**
+
+1. **Reconnect Pages to GitHub** (dashboard steps in "Repository state" above) — until then nothing deploys and the live site stays on the 10-17 build without the full bios.
+2. **New `DESK_GITHUB_TOKEN`** fine-grained PAT + `wrangler pages secret put` (steps above) — the desk cannot publish until then.
+3. **Google OAuth client** for member sign-in (`GOOGLE_CLIENT_ID` / `GOOGLE_CLIENT_SECRET` / `ADMIN_GOOGLE_SUB`; `node scripts/configure-google.mjs` helps).
+
+**Content / product work:**
+
+4. **Phase 3B community remainder:** the forum (option C: D1 forum + automatic "Discuss this match" thread per review + fan ratings — fan ratings shipped in 3B-A, the forum has not).
+5. **Content for the author:** Vault promotion histories, starter paths, hand-picked lists, columns (the `paths`, `lists`, `columns` collections are scaffolded but empty), plus `verify:` flags still to clear.
