@@ -131,7 +131,7 @@ Logos appear only when Commons lists a free license; everyone else gets the site
 
 1. In [Google Cloud](https://console.cloud.google.com/auth/overview), create a project, set up the consent screen (External, app name The Workrate Report), and create an **OAuth client → Web application** with the redirect URI `https://workrate-report.pages.dev/api/auth/callback`.
 2. Download its JSON and run `node scripts/configure-google.mjs <file>`. Then delete the file.
-3. Optional: set `ADMIN_GOOGLE_SUB` to the owner's Google account id to make that member the admin.
+3. Optional: make the owner admin — `echo -n '<their google sub>' | npx wrangler pages secret put ADMIN_GOOGLE_SUB --project-name workrate-report`. **It has to be a secret**: plain-text vars that `wrangler.toml`'s `[vars]` doesn't declare are dropped after the next deploy (see AGENT_HANDOFF). The role applies on the owner's next sign-in (promotion runs in the callback).
 4. Redeploy.
 
 ## 📖 Wrestler bios
