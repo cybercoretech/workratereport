@@ -5,8 +5,8 @@ import Crumbs from '../../components/Crumbs.astro';
 import { readFileSync } from 'node:fs';
 import { createHash } from 'node:crypto';
 const v = createHash('sha256').update(readFileSync('public/js/account.js')).digest('hex').slice(0, 10);
-const avatars = ['belt', 'mask', 'bell', 'mic', 'chair', 'ropes', 'boots', 'turnbuckle'];
-const labels: Record<string, string> = { belt: 'Title belt', mask: 'Luchador mask', bell: 'Ring bell', mic: 'Microphone', chair: 'Steel chair', ropes: 'Ring ropes', boots: 'Boots', turnbuckle: 'Turnbuckle' };
+const avatars = ['belt', 'mask', 'bell', 'mic', 'chair', 'ropes', 'boots', 'turnbuckle', 'emblem', 'ladder', 'ref', 'stars'];
+const labels: Record<string, string> = { belt: 'Title belt', mask: 'Luchador mask', bell: 'Ring bell', mic: 'Promo microphone', chair: 'Steel chair', ropes: 'Ring ropes', boots: 'Wrestling boots', turnbuckle: 'Turnbuckle', emblem: 'Workrate Report emblem', ladder: 'Ladder match', ref: 'Referee', stars: 'Five-star rating' };
 ---
 <Base title="Your account" noindex description="Sign in to rate matches and join the conversation.">
   <Crumbs trail={[['Your account']]} />
