@@ -1,11 +1,18 @@
 import { fail, json, type Env } from '../../_lib/env';
 import { matchFile, matchSlug, validateMatch } from '../../_lib/content';
 import { loadCatalog } from '../../_lib/catalog';
-import { getFile, putFile } from '../../_lib/github';
+import { GitHubError, getFile, putFile } from '../../_lib/github';
 
 interface Body { id?: string; data?: Record<string, unknown>; body?: string; create?: boolean }
 
-export const onRequestPut: PagesFunction<Env> = async ({ request, env }) => {
+export const onRequestPut: PagesFunction<Env> = async (ctx) => {
+  try { return await handle(ctx); } catch (e) {
+    if (e instanceof GitHubError) { console.error('desk/match publish:', e.message); return fail(502, e.message); }
+    throw e;
+  }
+};
+
+const handle: PagesFunction<Env> = async ({ request, env }) => {
   if (!env.DESK_GITHUB_TOKEN) return fail(503, 'Publishing is not configured yet (missing DESK_GITHUB_TOKEN).');
   let input: Body;
   try { input = (await request.json()) as Body; } catch { return fail(400, 'Bad JSON'); }
